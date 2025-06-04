@@ -1,0 +1,17 @@
+node_modules
+.DS_Store
+dist
+node
+dist-ssr
+*.local
+.eslintcache
+yarn-error.log
+nginx/logs/*
+login-dev.ts
+.devcontainer/
+.history/
+cli/
+package-lock.json
+.vscode
+*.zip
+coverage/
