@@ -1,0 +1,61 @@
+const domainMap = {
+  dev: {
+    'op-sign': 'http://dev-op-sign.xcan.cloud',
+    op: 'http://dev-op.xcan.cloud',
+    sign: 'http://dev-sign.xcan.cloud',
+    my: 'http://dev-my.xcan.cloud',
+    gm: 'http://dev-gm.xcan.cloud',
+    expense: 'http://dev-expense.xcan.cloud',
+    wo: 'http://dev-wo.xcan.cloud',
+    store: 'http://dev-store.xcan.cloud',
+    privStore: 'http://dev-priv-store.xcan.cloud',
+    share: 'http://dev-share.xcan.cloud',
+    at: 'http://dev-tester.xcan.cloud',
+    www: 'http://dev-www.xcan.cloud',
+    mobile: 'http://dev-mobile.xcan.cloud',
+    assets: 'http://dev-web-assets.xcan.cloud',
+    apis: 'http://dev-apis.xcan.cloud',
+    files: 'http:///dev-files.xcan.cloud',
+    socket: 'ws://dev-apis.xcan.cloud'
+  },
+  beta: {
+    'op-sign': 'https://beta-op-sign.xcan.cloud',
+    op: 'https://beta-op.xcan.cloud',
+    sign: 'https://beta-sign.xcan.cloud',
+    my: 'https://beta-my.xcan.cloud',
+    gm: 'https://beta-gm.xcan.cloud',
+    expense: 'https://beta-expense.xcan.cloud',
+    wo: 'https://beta-wo.xcan.cloud',
+    store: 'https://beta-store.xcan.cloud',
+    privStore: 'https://beta-priv-store.xcan.cloud',
+    share: 'https://beta-share.xcan.cloud',
+    at: 'https://beta-tester.xcan.cloud',
+    www: 'https://beta-www.xcan.cloud',
+    mobile: 'https://beta-mobile.xcan.cloud',
+    assets: 'https://beta-web-assets.xcan.cloud',
+    apis: 'https://beta-apis.xcan.cloud',
+    files: 'https://beta-files.xcan.cloud',
+    socket: 'wss://beta-apis.xcan.cloud'
+  },
+  prod: {
+    'op-sign': 'https://op-sign.xcan.cloud',
+    op: 'https://op.xcan.cloud',
+    sign: 'https://sign.xcan.cloud',
+    my: 'https://my.xcan.cloud',
+    gm: 'https://gm.xcan.cloud',
+    expense: 'https://expense.xcan.cloud',
+    wo: 'https://wo.xcan.cloud',
+    store: 'https://store.xcan.cloud',
+    privStore: 'https://priv-store.xcan.cloud',
+    share: 'https://share.xcan.cloud',
+    at: 'https://tester.xcan.cloud',
+    www: 'https://www.xcan.cloud',
+    mobile: 'https://mobile.xcan.cloud',
+    assets: 'https://web-assets.xcan.cloud',
+    apis: 'https://bj-c1-prod-apis.xcan.cloud',
+    files: 'https://bj-c1-prod-files.xcan.cloud',
+    socket: 'wss://bj-c1-prod-apis.xcan.cloud'
+  }
+};
+
+export { domainMap };
