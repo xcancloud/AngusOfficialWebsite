@@ -1,7 +1,7 @@
 import axios from 'axios';
 import cookie from 'js-cookie';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
-import { PUB_GM } from '@xcan-angus/tools';
+import { PUB_GM, http } from '@xcan-angus/tools';
 
 
 import { toSign } from '../site';
@@ -249,12 +249,6 @@ async function patch(url, data, config) {
   return await to(httpClient.patch(url, data, config));
 }
 
-export default {
-  del,
-  get,
-  patch,
-  post,
-  put,
-  toSign,
-  getURLSearchParams
-};
+http.create();
+
+export default http;

@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitepress';
 import type { DefaultTheme } from 'vitepress';
-
+import server from './dev-server';
 
 const nav:DefaultTheme.NavItem[] = [
  
@@ -60,6 +60,6 @@ export default defineConfig({
     fa: { label: 'فارسی' }
   },
   vite: {
-
+    server: server
   }
 })
