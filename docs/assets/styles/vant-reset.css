@@ -1,0 +1,38 @@
+.van-toast__text {
+  height: 50px;
+  padding: 0 30px;
+  font-size: 28px;
+  line-height: 50px;
+}
+
+.van-dialog {
+  font-size: 28px;
+}
+
+.van-dialog .van-dialog__header {
+  padding-top: 36px;
+  line-height: 28px;
+}
+
+.van-dialog .van-dialog__message {
+  line-height: 40px;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  transition: background-color 50000s ease-in-out 0s;
+  background-color: transparent;
+  background-image: none;
+  box-shadow: 0 0 0 1000px transparent  inset !important;
+}
+
+.van-cell {
+  background-color: transparent !important;
+}
+
+.van-toast .van-toast__text {
+  height: auto;
+  line-height: 36px;
+  text-align: left;
+}

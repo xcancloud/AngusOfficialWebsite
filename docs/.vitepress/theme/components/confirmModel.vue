@@ -7,14 +7,10 @@ const visible = ref(false);
 
 const props = withDefaults(defineProps<{
   content: string|number,
-  visible: boolean;
 }>(), {
   content: undefined,
-  visible: false
+
 })
-
-const emits = defineEmits<{(e: 'update:visible', value: boolean):void}>();
-
 
 const cancel = () => {
   confirm.value = false;
@@ -25,7 +21,7 @@ const ok = () => {
   cancel();
 }
 
-watch(() => confirm.value, (newValue) => {
+watch(() => confirm.value, (newValue, old) => {
   visible.value = newValue;
 }, {
   immediate: true
@@ -35,7 +31,7 @@ watch(() => confirm.value, (newValue) => {
 <template>
   <Modal
     title="还未登录"
-    :open="confirm"
+    :open="visible"
     @cancel="cancel">
     {{ props.content }}
     <template #footer>

@@ -1,7 +1,9 @@
 import axios from 'axios';
 import cookie from 'js-cookie';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
-import { PUB_GM, http } from '@xcan-angus/tools';
+import { angusTools } from '../index';
+
+const { http, PUB_ESS } = angusTools;
 
 
 import { toSign } from '../site';
@@ -105,7 +107,7 @@ httpClient.interceptors.response.use((response) => {
           scope: 'sign'
         };
         isRefreshing = true;
-        let renewurl = `${PUB_GM}/auth/user/renew?` + getURLSearchParams(params, true);
+        let renewurl = `${PUB_ESS}/auth/user/renew?` + getURLSearchParams(params, true);
         if (process.env.NODE_ENV === 'production') {
           renewurl = process.env.VUE_APP_APIS + renewurl;
         }

@@ -17,6 +17,7 @@
   "dependencies": {
     "@fingerprintjs/fingerprintjs": "^4.6.2",
     "@xcan-angus/tools": "^1.0.0",
+    "@xcan-angus/vue-ui": "^1.0.0",
     "ant-design-vue": "^4.2.6",
     "axios": "^1.9.0",
     "dayjs": "^1.11.13",

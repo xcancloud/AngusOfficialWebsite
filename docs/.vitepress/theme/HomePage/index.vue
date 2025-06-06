@@ -3,6 +3,7 @@
   import { isSignin } from '../../../../utils/site/index';
   import http from '../../../../utils/http';
   import { getDeviceInfo, getSearchTerms, angusTools } from '../../../../utils';
+  import { Icon } from '@xcan-angus/vue-ui';
 
   const { PUB_ESS } = angusTools;
 
@@ -11,6 +12,11 @@
   const clientWidth = ref(window.innerWidth);
   const signinFlag = ref(false);
   const pageContent = ref({});
+  const pluginsTabActive = ref(0);
+
+  const selectPlugins = (index) => {
+    pluginsTabActive.value = index;
+  }
 
   const getClientWidth = () => {
     clientWidth.value = window.innerWidth;
@@ -28,9 +34,9 @@
   onMounted(async () => {
     window.addEventListener('resize', getClientWidth);
     signinFlag.value = await isSignin();
-    if (!signinFlag.value) {
-      confirmVisible.value = true;
-    }
+    // if (!signinFlag.value) {
+    //   confirmVisible.value = true;
+    // }
     const deviceInfos = getDeviceInfo();
     const searchTerms = getSearchTerms(['source', 'plan', 'unit', 'keyword']);
     if (!deviceInfos?.deviceId) {
@@ -69,5 +75,539 @@
   });
 </script>
 <template>
-  <div>{{ pageContent }}</div>
+  <div class="home-page">
+    <div class="mt-10 adjust-content-padding py-10">
+      <div class="text-center font-semibold text-black-color text-8">
+        {{ pageContent.productAdvantage?.name }}
+      </div>
+      <div class="flex justify-between text-3.5 mt-10">
+        <div v-for="(item, idx) in pageContent.productAdvantage?.advantages" class="text-center">
+          <img :src="item.iconUrl" class="inline-block w-20">
+          <div class="font-semibold text-5 mt-5">
+            {{ item.title }}
+          </div>
+          <div v-for="desc in item.description">
+            {{ desc }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 adjust-content-padding py-10 text-center ">
+      <div class="font-semibold text-black-color text-8">
+        {{ pageContent.productFlow?.name }}
+      </div>
+      <div class=" mt-5">
+        {{ pageContent.productFlow?.description }}
+      </div>
+      <img :src="pageContent.productFlow?.imageUrl" class="mt-10">
+    </div>
+
+    <div class="mt-10 adjust-content-padding py-10 text-center ">
+      <div class="font-semibold text-black-color text-8">
+        {{ pageContent.productFunction?.name }}
+      </div>
+      <div class=" mt-5">
+        {{ pageContent.productFunction?.description }}
+      </div>
+      <img :src="pageContent.productFunction?.imageUrl" class="mt-10">
+    </div>
+
+    <div class="adjust-content-padding py-10 mt-10" style="padding-bottom: 0;">
+      <p class="text-8 font-semibold text-center text-black-color">
+        {{ pageContent.productFeature?.name }}
+      </p>
+      <div class="mt-15 flex justify-between flex-wrap">
+        <div
+          v-for="(item, index) in pageContent.productFeature?.features"
+          :key="index"
+          class="product-features-item"
+        >
+          <div class="flex items-center">
+            <div
+              class="w-12 h-12 flex justify-center items-center rounded-full"
+              :style="{
+                background: `rgba(${item.iconContent.color[0]},0.3)`,
+                lineClamp: 3,
+              }"
+              style="min-width: 36px; margin-right: 24px;"
+            >
+              <Icon class="text-7" :icon="item.iconContent.icon" />
+            </div>
+            <div class="font-semibold text-5 text-black-color">
+              {{ item.feature }}
+            </div>
+          </div>
+          <div
+            class="mt-4 text-black-header-color leading-6.5 font-normal"
+            style="font-size: 14px;"
+          >
+            {{ item.detail }}
+          </div>
+        </div>
+        <!-- <div
+          v-for="item in 3 - (pageContent.productFeature?.features?.length % 3)"
+          v-show="pageContent.productFeature?.features && pageContent.productFeature?.features?.length % 3 !== 0"
+          :key="item + 100"
+          class="w-78.25 mb-22.5"
+        /> -->
+      </div>
+    </div>
+    
+    <div class="adjust-content-padding bg-blue-link-bg py-10 mt-10">
+      <div class="flex items-center justify-between">
+        <div class="flex-col items-center justify-between mr-5">
+          <div>
+            <p class="text-8 font-semibold text-center">
+              {{ pageContent.plugins?.name }}
+            </p>
+            <div
+              v-if="pageContent.plugins"
+              class="mt-10 flex justify-between box-border px-5 space-x-8"
+            >
+              <div
+                v-for="(item, index) in [
+                  pageContent.plugins.protocol,
+                  {},
+                  pageContent.plugins.mockdata,
+                  {},
+                  pageContent.plugins.function,
+                  {},
+                  pageContent.plugins.middleware,
+                ]"
+                :key="index"
+                class="text-center cursor-pointer"
+                @click="selectPlugins(index)"
+              >
+                <template v-if="![1,3,5].includes(index)">
+                  <div
+                    :class="[
+                      'w-25 h-25 mx-auto flex justify-center items-center rounded-full',
+                      pluginsTabActive === index
+                        ? 'bg-blue text-white-1'
+                        : 'bg-blue-main-10 text-blue',
+                    ]"
+                  >
+                    <Icon class="text-15" :icon="item.iconContent.icon" />
+                  </div>
+                  <p
+                    :class="[
+                      'text-5 pt-4 pb-2 m-0',
+                      pluginsTabActive === index
+                        ? 'text-black-color font-semibold'
+                        : 'text-gray-hot-code font-normal',
+                    ]"
+                  >
+                    {{ item.name }}
+                  </p>
+                  <Icon
+                    icon="icon-hengjiantou"
+                    :class="['text-base', pluginsTabActive !== index && 'opacity-0']"
+                  />
+                </template>
+                <div
+                  v-else
+                  class="w-px h-15 opacity-30 bg-black-1 transform rotate-12 -translate-y-2 mt-2"
+                  style="pointer-events: none;"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex-1">
+          <div
+            v-show="pluginsTabActive === 0"
+            class="w-110 flex items-center flex-wrap mx-auto"
+          >
+            <div
+              v-for="(item, index) in pageContent.plugins?.protocol?.kind"
+              :key="index"
+              :class="
+                item.releaseFlag === true || item.releaseFlag === 'true'
+                  ? 'text-blue border-blue-main'
+                  : 'text-gray-hot-code border-gray-hot-code'
+              "
+              class="font-semibold border bg-white-1 text-center text-3.5 flex items-center rounded mr-4 mb-4"
+              style="padding: 3px 12px;"
+            >
+              {{ item.name }}
+            </div>
+          </div>
+          <div
+            v-show="pluginsTabActive === 2"
+            class="w-110 flex items-center flex-wrap mx-auto"
+          >
+            <div
+              v-for="(item, index) in pageContent?.plugins?.mockdata?.kind"
+              :key="index"
+              :class="
+                item.releaseFlag === true || item.releaseFlag === 'true'
+                  ? 'text-blue border-blue-main'
+                  : 'text-gray-hot-code border-gray-hot-code'
+              "
+              class="font-semibold border bg-white-1 text-center text-3.5 flex items-center rounded mr-4 mb-4"
+              style="padding: 3px 12px;"
+            >
+              {{ item.name }}
+            </div>
+          </div>
+          <div
+            v-show="pluginsTabActive === 4"
+            class="w-110 flex items-center flex-wrap mx-auto"
+          >
+            <div
+              v-for="(item, index) in pageContent.plugins?.function?.kind"
+              :key="index"
+              :class="
+                item.releaseFlag === true || item.releaseFlag === 'true'
+                  ? 'text-blue border-blue-main'
+                  : 'text-gray-hot-code border-gray-hot-code'
+              "
+              class="font-semibold border bg-white-1 text-center text-3.5 flex items-center rounded mr-4 mb-4"
+              style="padding: 3px 12px;"
+            >
+              {{ item.name }}
+            </div>
+          </div>
+          <div v-show="pluginsTabActive === 6" class="box-border pr-10 flex justify-center">
+            <div class="mt-2">
+              <div
+                v-for="(item, index) in Object.values(pageContent.plugins?.middleware?.kind || {})"
+                :key="index"
+                class="whitespace-no-wrap font-medium text-3.5 text-black-header-color mb-7"
+              >
+                {{ item.name }}：
+              </div>
+            </div>
+            <div>
+              <div
+                v-for="(item, index) in Object.values(pageContent.plugins?.middleware?.kind || {})"
+                v-show="pluginsTabActive === 6"
+                :key="index"
+                class="flex flex-1"
+              >
+                <div
+                  v-for="(btn, ind) in item.kind"
+                  :key="ind"
+                  :class="btn.releaseFlag === true || btn.releaseFlag === 'true'? 'text-blue border-blue-main':'text-gray-hot-code border-gray-hot-code'"
+                  class="font-semibold border text-center flex items-center rounded text-3.5 mr-4 mb-4 mt-1"
+                  style="padding: 3px 12px;"
+                >
+                  {{ btn.name }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="adjust-content-padding py-10 mt-10">
+      <p class="text-8 font-semibold text-center">
+        {{ pageContent.productEdition?.name }}
+      </p>
+
+      <div class="mt-15 flex items-center justify-between">
+        <div
+          v-for="(item, index) in pageContent.productEdition?.edition"
+          :key="index"
+          ref="card"
+          class="w-68 relative transform transition-all duration-300 ease-linear hover:-translate-y-5"
+          :style="{ height: heightPage }"
+        >
+          <img style="height: 520px;" :src="item.backgroundImage.image" alt="">
+          <div class="absolute top-0 left-0 w-full px-8 text-white-1">
+            <div class="pb-5 border-b border-white-300 text-2xl font-semibold mt-10">
+              {{ item.versionType }}
+            </div>
+            <div
+              ref="cardDetail"
+              style="height: 320px;"
+            >
+              <ul class="list-disc ml-4 mt-4">
+                <li
+                  v-for="(dtl,ind) in item.detail"
+                  :key="ind"
+                  class="text-white-1 mb-2"
+                >
+                  <div
+                    class="text-white-1"
+                    style="font-size: 14px; line-height: 18px;"
+                  >
+                    {{ dtl }}
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <RouterLink
+              v-if="item.detailUrl.includes('cloud_service')"
+              to="/pricing?v=c"
+            >
+              <div class="w-28 h-9 flex items-center justify-center border border-white-600 rounded text-3.5 cursor-pointer absolute bottom-0 text-white-1">
+                <span class="font-medium leading-3.5">{{
+                  item.buttonName
+                }}</span>
+                <Icon type="icon-hengjiantou" class="text-3.5 ml-2.5" />
+              </div>
+            </RouterLink>
+            <RouterLink v-else to="/pricing">
+              <div class="w-28 h-9 flex items-center justify-center border border-white-600 rounded text-3.5 cursor-pointer absolute bottom-0 text-white-1">
+                <span class="font-medium leading-3.5">{{
+                  item.buttonName
+                }}</span>
+                <Icon type="icon-hengjiantou" class="text-3.5 ml-2.5" />
+              </div>
+            </RouterLink>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
+<style scoped>
+.adaptive-padding {
+  padding-right: 0;
+  padding-left: 5rem;
+}
+
+@media (min-width: 1440px) {
+  .adaptive-padding {
+    padding-right: 5rem;
+    padding-left: 7.5rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .adaptive-padding {
+    padding-right: 6rem;
+    padding-left: 10rem;
+  }
+}
+
+@media (min-width: 1768px) {
+  .adaptive-padding {
+    padding-right: 8rem;
+    padding-left: 18rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .adaptive-padding {
+    padding-right: 10rem;
+    padding-left: 22.5rem;
+  }
+}
+
+.adaptive-padding .title {
+  width: 120%;
+}
+
+.home-main-button {
+  margin-top: 80px;
+}
+
+@media (min-width: 1440px) {
+  .home-main-button {
+    margin-top: 128px;
+  }
+}
+
+.home-header-img {
+  width: 36rem;
+  margin-left: -20px;
+}
+
+.home-header-img-action {
+  width: 8rem;
+  height: 8rem;
+}
+
+@media (min-width: 1600px) {
+  .home-header-img {
+    width: 39rem;
+  }
+
+  .home-header-img-action {
+    width: 9rem;
+    height: 9rem;
+  }
+}
+
+@media (min-width: 1768px) {
+  .home-header-img {
+    width: 42rem;
+  }
+
+  .home-header-img-action {
+    width: 11rem;
+    height: 11rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .home-header-img {
+    width: 810px;
+  }
+
+  .home-header-img-action {
+    width: 13rem;
+    height: 13rem;
+  }
+}
+
+.ball-yellow-1 {
+  top: 6rem;
+  left: 4rem;
+}
+
+@media (min-width: 1600px) {
+  .ball-yellow-1 {
+    top: 8rem;
+    left: 4rem;
+  }
+}
+
+@media (min-width: 1768px) {
+  .ball-yellow-1 {
+    top: 12.9375rem;
+    left: 11.875rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .ball-yellow-1 {
+    top: 51.75;
+    left: 47.5;
+  }
+}
+
+.ball-green-1 {
+  top: 10rem;
+  right: 0.25rem;
+}
+
+@media (min-width: 1600px) {
+  .ball-green-1 {
+    top: 12rem;
+    right: 1rem;
+  }
+}
+
+@media (min-width: 1768px) {
+  .ball-green-1 {
+    top: 12rem;
+    right: 1.5rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .ball-green-1 {
+    top: 15rem;
+    right: 2rem;
+  }
+}
+
+.buy-btn-hover {
+  border-color: #f7f8fa;
+  background-color: #f7f8fa;
+  color: #07f;
+  font-weight: 600;
+}
+
+.buy-btn-hover:hover {
+  background-color: white;
+  color: #0f9fff;
+}
+
+.detail-btn-hover {
+  border: 2px solid #f7f8fa;
+  color: white;
+  font-weight: 600;
+  line-height: 48px;
+}
+
+.detail-btn-hover:hover {
+  background-color: white;
+  color: #0f9fff;
+}
+
+.detail-btn-hover-quick {
+  border: 2px solid rgb(255, 129, 0);
+  background-color: rgb(255, 129, 0);
+  color: #fff;
+  font-weight: 600;
+  line-height: 48px;
+}
+
+.adjust-content-padding {
+  padding-right: 5rem;
+  padding-left: 5rem;
+}
+
+@media (min-width: 1440px) {
+  .adjust-content-padding {
+    padding-right: 7.5rem;
+    padding-left: 7.5rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .adjust-content-padding {
+    padding-right: 10rem;
+    padding-left: 10rem;
+  }
+}
+
+@media (min-width: 1768px) {
+  .adjust-content-padding {
+    padding-right: 18rem;
+    padding-left: 18rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .adjust-content-padding {
+    padding-right: 22.5rem;
+    padding-left: 22.5rem;
+  }
+}
+
+.label-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.label-item .divider {
+  width: 2px;
+  height: 20px;
+  margin-right: 24px;
+  margin-left: 24px;
+  background: #f0f0f0;
+}
+
+.product-features-item {
+  width: calc((100% - 260px) / 3);
+  margin-bottom: 60px;
+}
+
+.home-page .quick-links .quick-links-content > div {
+  align-items: center;
+  justify-content: center;
+  min-width: calc((100% - 100px) / 5);
+  color: #07f;
+  font-size: 14px;
+  text-align: center;
+}
+
+.home-page .quick-links .quick-links-content > div:hover {
+  color: rgba(40, 177, 255, 100%);
+}
+
+.home-page .quick-links .quick-links-content .icon {
+  margin-left: 8px;
+}
+</style>

@@ -31,6 +31,10 @@ const nav:DefaultTheme.NavItem[] = [
 export default defineConfig({
   title: "XCan Cloud",
   description: "A VitePress Site",
+  head: [
+    //<script src="src/iconfont/iconfont.js"></script>
+    ['script', { src: '/assets/iconfont/iconfont.js' }],
+  ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: nav,
@@ -41,7 +45,23 @@ export default defineConfig({
           text: 'Examples',
           items: [
             { text: 'Markdown Examples', link: '/example/markdown-examples' },
-            { text: 'Runtime API Examples', link: '/example/api-examples' }
+            { text: 'Runtime API Examples', link: '/example/api-examples' },
+          ]
+        }
+      ],
+      '/help/angusload/': [
+        {
+          text: 'AngusLoad',
+          items: [
+            { text: '产品介绍', link: '/help/angusload/introduce' },
+          ]
+        }
+      ],
+      '/help/gm/': [
+        {
+          text: 'GM',
+          items: [
+            { text: '产品介绍', link: '/help/gm/introduce' },
           ]
         }
       ]

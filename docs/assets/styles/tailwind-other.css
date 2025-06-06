@@ -1,0 +1,35 @@
+/* overflow */
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.pointer-events-none {
+  pointer-events: none;
+}
+
+.break-word {
+  word-break: break-word;
+}
+
+.whitespace-pre-wrap {
+  white-space: pre-wrap;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
+

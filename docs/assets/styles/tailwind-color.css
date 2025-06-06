@@ -1,0 +1,68 @@
+/* text color */
+.text-title {
+  color: rgba(15, 23, 35, 100%);
+}
+
+.text-content {
+  color: rgba(68, 76, 90, 100%);
+}
+
+.text-sub-content {
+  color: rgba(130, 136, 148, 100%);
+}
+
+.text-blue {
+  color: #07f;
+}
+
+.text-link {
+  color: rgba(0, 119, 255, 100%);
+}
+
+.text-white {
+  color: rgba(255, 255, 255, 100%);
+}
+
+.text-red {
+  color: #f00;
+}
+
+.text-tip {
+  color: rgba(255, 129, 0, 100%);
+}
+
+/* border-color */
+.border-blue {
+  border-color: rgba(0, 119, 255, 100%);
+}
+
+.border-gray {
+  border-color: rgba(240, 240, 240, 100%);
+}
+
+/* background-color */
+.bg-gray {
+  background-color: rgba(229, 229, 229, 100%);
+}
+
+.bg-white {
+  background-color: rgba(255, 255, 255, 100%);
+}
+
+.bg-gray-light {
+  background-color: rgba(247, 248, 251, 100%);
+}
+
+.bg-blue {
+  background-color: #07f;
+}
+
+.bg-blue-light {
+  background-color: rgba(0, 119, 255, 20%);
+}
+
+/* bg-blue-main */
+
+.text-white-1 {
+  color: white;
+}
