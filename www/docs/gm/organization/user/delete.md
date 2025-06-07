@@ -1,0 +1,20 @@
+删除用户
+===
+
+`删除用户`是指应用系统中，通过特定的操作将某个用户的账户和相关信息从系统中永久性地移除的过程。删除用户通常是由系统管理员或具有相应权限的用户执行的敏感操作。
+
+`删除用户`是一项慎重的操作，通常需要在确保不会导致数据丢失或系统不稳定的情况下进行。这一功能有助于系统管理员有效地管理用户，确保系统的整体运行和安全性。
+
+## 操作方式
+
+**方式1：在用户列表操作中删除**
+
+登录应用后进入"AngusGM"->"组织人员"->"用户"，在用户列表中找到对应用户，点击右侧操作选项中"删除"，如下图：
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/user-delete.png?fid=207887590483820662&fpt=PjFRfbZEuOoYP2ynRIQ1VOD4UV0FAKEY8ff9z6lS)
+
+**方式2：在用户详情中删除**
+
+登录应用后进入"AngusGM"->"组织人员"->"用户"，在用户列表中找到对应用户，进入详情后点击"删除"操作，如下图：
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/user-delete2.png?fid=207887590483820664&fpt=UFWil3WzNXKZRJpPIjMOtKUXmrqft3FcKFvHmXFC)

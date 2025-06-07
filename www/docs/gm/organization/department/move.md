@@ -1,0 +1,18 @@
+移动部门
+===
+
+`移动部门`是指应用系统中调整部门的位置，将其从一个位置或层次移动到另一个位置或层次。这种操作可以涉及更改部门的隶属关系、层级结构或组织图中的位置。
+
+## 操作方式
+
+**第一步：登录应用后进入"AngusGM"->"组织人员"->"部门"，在左侧部门树中选择需要移动的部门，点击右侧操作选项中"移动"，如下图：**
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/dept-move.png?fid=207887511026925709&fpt=AGjl7TP3clRsnlFKZtumAT7nbIjwz8kjE6hBjjIs)
+
+**第二步：编辑部门信息并保存，如下图：**
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/dept-moveinfo.png?fid=207887511026925711&fpt=3QPDd0V6reUSOMeU0tPXFwIydq0iwiT4B43QwC3L)
+
+**第三步：查看已移动部门，如下图：**
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/dept-movelist.png?fid=207887511026925713&fpt=YAwDS19jhUCplqhPJBZA0h11y18oo609tErDp092)

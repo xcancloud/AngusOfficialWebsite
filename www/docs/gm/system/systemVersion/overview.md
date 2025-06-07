@@ -1,0 +1,18 @@
+系统版本
+===
+
+`系统版本`是指在当前应用系统中主应用的版本信息和授权信息，具体信息包括版本类型、应用编码、应用版本、过期时间等。
+
+## 常用操作
+
+**1. 查看系统版本**
+
+登录应用后进入"AngusGM"->"系统"->"系统版本"，在顶部系统版本中可以看到具体信息，如下图：
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/systemversion-installed.png?fid=207887590483820786&fpt=L7hCIHK5Lx5kaUA2keFKofWfzED370qEWUf2NYjX)
+
+**2. 查看最新版本**
+
+登录应用后进入"AngusGM"->"系统"->"系统版本"，在底部最新版本中可以看到是否有最新版本，如下图：
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/systemversion-leasted.png?fid=207887590483820788&fpt=plHb8G8Uw2fyoEiIQn4soTZzSXrppvqWBBoNyk7Y)

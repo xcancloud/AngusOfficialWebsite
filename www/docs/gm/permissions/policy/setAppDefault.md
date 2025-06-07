@@ -1,0 +1,24 @@
+设置应用默认授权
+===
+
+`设置应用默认授权`指的是在应用系统中，指定用户进入应用后默认权限策略，用于简化权限管理过程，降低操作失误的风险。
+
+## 操作步骤
+
+**第一步：登录应用后进入"AngusGM"->"全局权限"->"权限策略"，鼠标滑动到"应用默认授权"如下图：**
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/policy-default.png?fid=207887511026925759&fpt=8mZpxtcFwRC3XB8QMBBg3tyAP0NGFANvAubptO8o)
+
+**第二步：选择默认权限并保存，如下图：**
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/policy-defaultset.png?fid=207887511026925763&fpt=vT9YpPleVADtaXNjuNhL2VoNfGoasufAr58pQQWa)
+
+**第三步：查看已经权限策略，如下图：**
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/policy-defaultlist.png?fid=207887511026925761&fpt=uMYzTxm2FUY1jeQk0PsCV7ALovMK69wOnAFekVYS)
+
+### 注意事项
+
+- 默认情况下，如果用户未修改默认设置，系统会为所有用户设置“一般用户”或“访客”作为应用默认访问权限。
+- 设置应用默认访问权限后新加入用户会自动被授权。
+- 如果想改变用户默认访问权限，请修改下面应用默认访问策略，如果想禁止应用默认访问权限通过手动来授权，请选择“禁止访问”。

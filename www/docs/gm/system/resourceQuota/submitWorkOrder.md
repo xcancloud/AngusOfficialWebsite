@@ -1,0 +1,15 @@
+提交修改资源配额工单
+---
+
+`提交修改资源配额工单`功能只适用于云服务版版本（私有化不支持）中，用户通过提交工单方式来调整资源配额限制。
+
+## 操作方式
+
+**第一步：登录应用后进入"AngusGM"->"系统"->"资源配额"，在列表顶部信息中点击"提交订单"，如下图：**
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/quota-order.png?fid=207887511026925849&fpt=I1ScFaUL3ORB6C4JiTyslpy164jWcPOQ6AGyp2H4)
+
+**第二步：点击自动跳转官网提交工单页面后，填写需要变更资源和配额信息并提交，工单提交后运营人员会根据工单信息调整租户配额，如下图**
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/quota-orderinfo.png?fid=207887511026925851&fpt=e9Mi9WeORYVGr6EtkusHWDx3BBaNSBYk4Wd4c1kp)
+

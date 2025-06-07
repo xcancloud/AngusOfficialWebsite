@@ -1,0 +1,10 @@
+删除目录和数据
+===
+
+`删除目录和数据`是指应用系统中，删除一个已存在的LDAP目录并停止自动同步。这个过程会将已同步信息从组织人员的中移除，这可能会导致所属的团队、人员和任务的重新分配。
+
+## 操作方式
+
+登录应用后进入"AngusGM"->"系统"->"LDAP"，选择列表中需要删除的目录服务，点击"删除目录和数据"操作，如下图：
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/ldap-deleteall.png?fid=207887590483820806&fpt=gEVLRlkFEn4ki5N6Jaj6EZL657CCXxCcF1h80KbR)

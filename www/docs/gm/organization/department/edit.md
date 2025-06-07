@@ -1,0 +1,18 @@
+编辑部门
+===
+
+`编辑部门`用于对已存在的部门信息进行修改或更新。这一功能允许管理员或有相应权限的用户对现有部门进行调整，以适应变化的需求或确保准确性。
+
+## 操作步骤
+
+**第一步：登录应用后进入"AngusGM"->"组织人员"->"用户"，在左侧部门树中选择需要编辑的部门，右键点击"编辑"，如下图：**
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/dept-edit.png?fid=207887511026925701&fpt=aciXccVpCOgbdspOKSrCJtpbLUImyxwbHXxnyq06)
+
+**第二步：编辑部门信息并保存，如下图：**
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/dept-editinfo.png?fid=207887511026925703&fpt=G1lhc2SbUjolXZgKfuFU8srwFxSNV0u2Mv2wgOJX)
+
+**第三步：查看已经编辑部门，如下图：**
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/dept-editlist.png?fid=207887511026925705&fpt=g8RuhdS01iMCSz4Xe9MgGZao6u2Jp4yNDvLx4h9E)

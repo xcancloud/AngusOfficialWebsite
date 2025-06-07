@@ -1,0 +1,18 @@
+编辑目录
+===
+
+`编辑目录`用于修改已添加的LDAP目录服务。这一功能允许管理员或有相应权限的用户对现有LDAP目录服务配置信息进行调整，以适应变化的需求或确保准确性。
+ 
+## 操作步骤
+
+**第一步：登录应用后进入"AngusGM"->"系统"->"LDAP"，点击列表右上角"添加LDAP服务"，如下图：**
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/ldap-edit.png?fid=207887590483820810&fpt=CVoOujdtNg7LMQS61M3biv01a2jARpUVvuCZXqnm)
+
+**第二步：编辑LDAP目录信息并保存，这里以修改主机为例，如下图：**
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/ldap-editinfo.png?fid=207887590483820812&fpt=pgrw5V5Spp1rj06LaTUZWUeytzHXx8ex0TU5cEE2)
+
+**第三步：查看已编辑LDAP目录服务，如下图：**
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/ldap-editlist.png?fid=207887590483820814&fpt=fK6jL5wpBZ4UsltwpkmCUfFM39SOKUnaMuVPK3pM)

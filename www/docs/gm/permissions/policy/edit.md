@@ -1,0 +1,18 @@
+修改权限策略
+===
+
+`修改权限策略`用于对已存在的权限策略信息进行修改或更新。这一功能允许管理员或有相应权限的用户对现有权限策略等进行调整，以适应变化的需求或确保准确性。
+
+## 操作步骤
+
+**第一步：登录应用后进入"AngusGM"->"全局权限"->"权限策略"，在"权限策略"列表中找到对应权限策略，点击右侧"修改策略"操作，如下图：**
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/policy-edit.png?fid=207887511026925771&fpt=A8DMlL30dwcSoi72XY14g4j1PI88pIx80m4e5cVz)
+
+**第二步：点击右侧"修改策略"操作后，页面会自动回到顶部"添加权限策略"表单页面，编辑权限信息并保存，如下图：**
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/policy-editinfo.png?fid=207887511026925773&fpt=FgLPizIWnp1ywRmRCtWWwcl5TUX2cJUAusB8z9M5)
+
+**第三步：查看已经修改权限策略，如下图：**
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/policy-editlist.png?fid=207887511026925775&fpt=1HIo3jLxwNNB6V10wsIUiD85hciLWrjtZxL7F9NH)

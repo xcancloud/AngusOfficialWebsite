@@ -1,0 +1,18 @@
+发送消息
+===
+
+`发送消息`指的是在应用系统中，管理员或者有发布消息权限的用户向用户、部门、组发送站内消息和邮件消息。
+
+## 操作步骤
+
+**第一步：登录应用后进入"AngusGM"->"公告与消息"->"消息"，点击公告列表右上方"发送消息"，如下图：**
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/message-add.png?fid=207887590483820738&fpt=Dn4nYAiGtzyakw5ZjlzauYIig2U2V77zjowBtCf9)
+
+**第二步：在发送消息页面中编辑消息信息并保存，如下图：**
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/message-addinfo.png?fid=207887590483820740&fpt=mkJIGMUMUNVogTnF8SylApT3M03jEiRoM4x1s6Ma)
+
+**第三步：查看已发送消息，如下图：**
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/message-addlist.png?fid=207887590483820742&fpt=vpQiXpnmfYEZCjl40OnnUsD6geOMdeCQn97WcIHE)

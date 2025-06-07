@@ -1,0 +1,10 @@
+查看我的许可
+===
+
+`查看我的许可`指的是在云应用商店，浏览、搜索已购买应用和插件许可信息，以及许可详细（许可编号、订单号、适用版本、到期时间等）信息。
+
+## 操作方式
+
+登录应用后进入"AngusGM"->"商店"->"我的许可"，您可以看到全部购买应用和插件的许可，如下图：
+
+![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/license-list.png?fid=207887511026925813&fpt=fanIKrC7PD3oTvq4dqthA8AaijTtWuBBLVKn6EUx)

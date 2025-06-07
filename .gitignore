@@ -16,4 +16,4 @@ package-lock.json
 .vscode
 *.zip
 coverage/
-docs/.vitepress/cache/*/**
+www/.vitepress/cache/*/**
