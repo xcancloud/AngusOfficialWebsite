@@ -1,23 +1,7 @@
 const gateways = [
-  '/aas/',
-  '/account/',
-  '/alctrl/',
-  '/cm/',
-  '/comm/',
-  '/defender/',
-  '/emailpxy/',
-  '/event/',
-  '/filepxy/',
-  '/logger/',
-  '/message/',
-  '/paypxy/',
-  '/smspxy/',
-  '/store/',
-  '/thrid/',
-  '/uc/',
-  '/workorder/',
-  '/wpush/',
-  '/altester/',
+  '/gm/',
+  '/ess/',
+  '/tester/',
   '/storage/'
 ];
 
