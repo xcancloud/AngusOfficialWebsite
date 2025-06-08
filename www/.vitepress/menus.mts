@@ -1458,11 +1458,11 @@ export const testerDocsSidebar: DefaultTheme.SidebarItem[] = [
         ]
     },
     {
-        text: 'CLI',
+        text: '命令行 (CLI)',
         link: '/docs/tester/command/AngusRunner',
     },
     {
-        text: 'FAQ',
+        text: '常见问题 (FAQ)',
         collapsed: true,
         base: '/docs/tester/faq',
         items: [
