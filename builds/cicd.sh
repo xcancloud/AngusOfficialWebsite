@@ -43,7 +43,7 @@ prepare_environment() {
 # Build web module
 npm_build () {
   echo "INFO: npm install start"
-  npm install --omit=optional --legacy-peer-deps
+  npm install
 
   if [ $? -ne 0 ]; then
     echo "ERROR: 'npm install --no-optional --legacy-peer-deps' failed, exiting script"
