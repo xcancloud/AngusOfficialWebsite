@@ -92,7 +92,9 @@ ci(){
 cd(){
   if [ -n "$hosts" ]; then
     echo "INFO: Starting deployment to hosts: ${hosts}"
-    IFS=',' read -ra HOST_LIST <<< "$hosts"
+    IFS=',' read -ra HOST_LIST <<EOF
+$hosts
+EOF
     for host in "${HOST_LIST[@]}"; do
         deploy_web
     done
