@@ -7,9 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "vitepress dev www",
     "docs:build": "vitepress build www",
-    "docs:build:env": "node ./scripts/build.js",
-    "docs:build:dev": "node ./scripts/build.js -- --env=dev",
-    "docs:build:prod": "node ./scripts/build.js -- --env=prod",
     "docs:preview": "vitepress preview www",
     "check:links": "vitepress build --failOnDedLinks"
   },

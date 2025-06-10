@@ -51,12 +51,10 @@ npm_build () {
   fi
   echo "INFO: npm install end"
 
-  echo "INFO: npm run docs:build:env start"
-  env0=${env##*.};
-  echo "INFO: npm build deployEnv=${env0}"
-  npm run docs:build:env -- --env=${env0}
+  echo "INFO: npm run docs:build start"
+  npm run docs:build
   if [ $? -ne 0 ]; then
-    echo "ERROR: 'npm run docs:build:env' failed, exiting script"
+    echo "ERROR: 'npm run docs:build' failed, exiting script"
     exit 1
   fi
   echo "INFO: npm build end"
@@ -71,7 +69,7 @@ deploy_web() {
   scp -rp "dist"/* "${host}:${REMOTE_APP_STATIC_DIR}/" || {
     echo "ERROR: Failed to copy web assets"; exit 1
   }
-  nginxFileName="public/nginx_${env##*.}_www.conf"
+  nginxFileName="nginx/nginx_${env##*.}_www.conf"
   scp -p ${nginxFileName} "${host}:${NGINX_CONFIG_DIR}/" || {
     echo "ERROR: Failed to copy web assets"; exit 1
   }
