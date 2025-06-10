@@ -25,7 +25,7 @@ function start () {
   const nginxContent = fs.readFileSync(resolve(`../nginx/nginx_${deployEnv}_www.conf`), 'utf8');
   fs.writeFileSync(resolve(`../public/nginx_${deployEnv}_www.conf`), nginxContent, 'utf8');
 
-  execSync(`npm run build0`, { stdio: 'inherit' });
+  execSync(`npm run docs:build`, { stdio: 'inherit' });
 }
 
 start();
