@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "vitepress dev www",
-    "docs:build": "vitepress build www",
+    "docs:build": "NODE_OPTIONS=--max-old-space-size=8192 vitepress build www",
     "docs:preview": "vitepress preview www",
     "check:links": "vitepress build --failOnDedLinks"
   },
