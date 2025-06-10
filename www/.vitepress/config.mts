@@ -5,6 +5,7 @@ import {gmDocsSidebar, nav, testerDocsSidebar} from './menus.mts';
 export default defineConfig({
     title: "XCan Cloud",
     description: "XCan Cloud Official WebSite (Https://www.xcan.cloud)",
+    outDir: '../dist',
     head: [
         ['script', {src: '/assets/iconfont/iconfont.js'}],
     ],

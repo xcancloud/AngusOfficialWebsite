@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build0": "vitepress build www",
     "docs:dev": "vitepress dev www",
-    "docs:build": "vitepress build www",
-    "docs:preview": "vitepress preview www"
+    "docs:build": "node ./scripts/build.js -- --env=dev",
+    "docs:preview": "vitepress preview www",
+    "check:links": "vitepress build --failOnDedLinks"
   },
   "author": "",
   "license": "XCBL V1.0",
