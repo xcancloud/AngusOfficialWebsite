@@ -73,9 +73,6 @@ deploy_web() {
   scp -p ${nginxFileName} "${hosts}:${NGINX_CONFIG_DIR}/" || {
     echo "ERROR: Failed to copy web assets"; exit 1
   }
-  ssh "$hosts" "mv -f ${REMOTE_APP_STATIC_DIR}/nginx_${env##*.}_*.conf ${NGINX_CONFIG_DIR}/" || {
-    echo "ERROR: Failed to clean static directory"; exit 1
-  }
   ssh "$hosts" "nginx -s reload" || {
     echo "ERROR: Failed to reload nginx"; exit 1
   }
