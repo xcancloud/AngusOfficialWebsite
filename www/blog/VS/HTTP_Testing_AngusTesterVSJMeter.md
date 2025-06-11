@@ -28,7 +28,7 @@ MacBookPro16 PC
 
 ### 服务配置
 
-```conf
+```ini
 ## Mock服务绑定IP，默认为0.0.0.0。
 angusmock.serverIp=0.0.0.0
 ## Mock服务绑定端口，默认为30010。

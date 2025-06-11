@@ -25,7 +25,7 @@
 
 - Nginx 配置
 
-```conf
+```ini
 worker_processes  24;
 worker_rlimit_nofile 200000;
 

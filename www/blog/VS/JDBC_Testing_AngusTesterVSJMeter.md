@@ -30,7 +30,7 @@ MacBookPro16 PC
 
 ### MySQL 配置
 
-```conf
+```ini
 character_set_server = utf8mb4
 skip-host-cache
 skip-name-resolve
