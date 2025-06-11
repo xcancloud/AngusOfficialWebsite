@@ -1,10 +1,14 @@
 import {defineConfig} from 'vitepress';
 import server from './dev-server';
-import {gmDocsSidebar, nav, testerDocsSidebar} from './menus.mts';
+import {gmDocsSidebar, nav, testerDocsSidebar} from './menus';
+
+const title = '晓蚕云';
+const description = '晓蚕云官网'
 
 export default defineConfig({
     lang: 'zh',
-    title: '晓蚕云',
+    title: title,
+    description: description,
 
     rewrites: {
         'zh/:rest*': ':rest*'
@@ -21,11 +25,35 @@ export default defineConfig({
     ],
 
     outDir: '../dist',
+
+    sitemap: {
+        hostname: 'https://www.xcan.cloud',
+        lastmodDateOnly: false,
+        transformItems(items) {
+            return items.map(it => {
+                it.lastmodrealtime = true
+                it.changefreq = 'weekly'
+                it.url = `/${it.url}`
+                return it;
+            })
+        }
+    },
+
     head: [
-        ['script', {src: '/assets/iconfont/iconfont.js'}],
+        // ['script', {src: '/assets/iconfont/iconfont.js'}],
+        ['link', {rel: 'icon', type: 'image/svg+xml', href: '/logo.svg'}],
+        ['link', {rel: 'icon', type: 'image/png', href: '/logo.png'}],
+        ['meta', {name: 'author', content: 'XCan Teams'}],
+        ['meta', {property: 'og:type', content: 'website'}],
+        ['meta', {name: 'og:title', content: title}],
+        ['meta', {name: 'og:description', content: description}],
+        ['meta', {property: 'og:site_name', content: 'XCan Cloud'}],
+        ['meta', {property: 'og:image', content: 'https://www.xcan.cloud/angustester-og.jpeg'}],
+        ['meta', {property: 'og:url', content: 'https://www.xcan.cloud'}],
     ],
+
     themeConfig: {
-        logo: { src: '/logo-mini.png', width: 28, height: 28 },
+        logo: {src: '/logo-mini.png', width: 28, height: 28},
 
         search: {
             provider: 'local',

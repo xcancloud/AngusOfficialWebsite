@@ -16,6 +16,7 @@
   "author": "",
   "license": "XCBL V1.0",
   "devDependencies": {
+    "sitemap": "^8.0.0",
     "vitepress": "^1.6.3"
   },
   "dependencies": {
