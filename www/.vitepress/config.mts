@@ -2,11 +2,9 @@ import {defineConfig} from 'vitepress';
 import server from './dev-server';
 import {gmDocsSidebar, nav, testerDocsSidebar} from './menus.mts';
 
-const title = '晓蚕云';
-
 export default defineConfig({
     lang: 'zh',
-    title: title,
+    title: '晓蚕云',
 
     rewrites: {
         'zh/:rest*': ':rest*'
@@ -34,8 +32,8 @@ export default defineConfig({
         },
         nav: nav,
         sidebar: {
-            '/zh/docs/gm/': gmDocsSidebar,
-            '/zh/docs/tester/': testerDocsSidebar
+            '/docs/gm/': gmDocsSidebar,
+            '/docs/tester/': testerDocsSidebar
         },
         socialLinks: [
             {icon: 'github', link: 'https://github.com/xcancloud'}
