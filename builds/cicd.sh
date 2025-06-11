@@ -62,21 +62,21 @@ npm_build () {
 
 # Deploy web module
 deploy_web() {
-  echo "INFO: Deploying web module to ${host}"
-  ssh "$host" "mkdir -p ${REMOTE_APP_STATIC_DIR} && rm -rf ${REMOTE_APP_STATIC_DIR}/*" || {
+  echo "INFO: Deploying web module to ${hosts}"
+  ssh "$hosts" "mkdir -p ${REMOTE_APP_STATIC_DIR} && rm -rf ${REMOTE_APP_STATIC_DIR}/*" || {
     echo "ERROR: Failed to clean static directory"; exit 1
   }
-  scp -rp "dist"/* "${host}:${REMOTE_APP_STATIC_DIR}/" || {
+  scp -rp "dist"/* "${hosts}:${REMOTE_APP_STATIC_DIR}/" || {
     echo "ERROR: Failed to copy web assets"; exit 1
   }
   nginxFileName="nginx/nginx_${env##*.}_www.conf"
-  scp -p ${nginxFileName} "${host}:${NGINX_CONFIG_DIR}/" || {
+  scp -p ${nginxFileName} "${hosts}:${NGINX_CONFIG_DIR}/" || {
     echo "ERROR: Failed to copy web assets"; exit 1
   }
-  ssh "$host" "mv -f ${REMOTE_APP_STATIC_DIR}/nginx_${env##*.}_*.conf ${NGINX_CONFIG_DIR}/" || {
+  ssh "$hosts" "mv -f ${REMOTE_APP_STATIC_DIR}/nginx_${env##*.}_*.conf ${NGINX_CONFIG_DIR}/" || {
     echo "ERROR: Failed to clean static directory"; exit 1
   }
-  ssh "$host" "nginx -s reload" || {
+  ssh "$hosts" "nginx -s reload" || {
     echo "ERROR: Failed to reload nginx"; exit 1
   }
 }
@@ -92,7 +92,6 @@ ci(){
 cd(){
   if [ -n "$hosts" ]; then
     echo "INFO: Starting deployment to hosts: ${hosts}"
-    host = $hosts
     deploy_web
   else
     echo "INFO: No hosts specified, skipping deployment"
