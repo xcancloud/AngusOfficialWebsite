@@ -6,8 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "vitepress dev www",
-    "docs:build": "NODE_OPTIONS=--max-old-space-size=3600 vitepress build www",
     "docs:preview": "vitepress preview www",
+    "copy-config": "node scripts/copyConfigs.js",
+    "docs:build": "NODE_OPTIONS=--max-old-space-size=3600 vitepress build www && npm run copy-config",
+    "docs:build:dev": "ENV_NAME=dev npm run docs:build",
+    "docs:build:prod": "ENV_NAME=prod npm run docs:build",
     "check:links": "vitepress build --failOnDedLinks"
   },
   "author": "",
