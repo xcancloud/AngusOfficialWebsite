@@ -41,8 +41,7 @@ export default defineConfig({
 
     head: [
         // ['script', {src: '/assets/iconfont/iconfont.js'}],
-        ['link', {rel: 'icon', type: 'image/svg+xml', href: '/logo.svg'}],
-        ['link', {rel: 'icon', type: 'image/png', href: '/logo.png'}],
+        ['link', {rel: 'icon', type: 'image/png', href: '/favicon.png'}],
         ['meta', {name: 'author', content: 'XCan Teams'}],
         ['meta', {property: 'og:type', content: 'website'}],
         ['meta', {name: 'og:title', content: title}],
