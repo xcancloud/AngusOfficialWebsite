@@ -9,29 +9,29 @@ export const nav: DefaultTheme.NavItem[] = [
                 items: [
                     {
                         text: 'AngusGM',
-                        link: '/docs/gm/introduction/about'
+                        link: '/zh/docs/gm/introduction/about'
                     },
                     {
                         text: 'AngusTester',
-                        link: '/docs/tester/introduction/about'
+                        link: '/zh/docs/tester/introduction/about'
                     }
                 ]
             },
             {
                 text: '快速入门',
-                link: '/gettingStarted'
+                link: '/zh/gettingStarted'
             },
             {
                 text: '快速部署',
-                link: '/deployment'
+                link: '/zh/deployment'
             },
             {
                 text: '技术支持',
-                link: '/support'
+                link: '/zh/support'
             },
             {
                 text: '常见问题',
-                link: '/faq'
+                link: '/zh/faq'
             }
         ]
     },
@@ -40,17 +40,17 @@ export const nav: DefaultTheme.NavItem[] = [
         items: [
             {
                 text: '业务场景',
-                link: '/business'
+                link: '/zh/cenario/business'
             },
             {
                 text: 'AI 场景',
-                link: '/ai'
+                link: '/zh/cenario/ai'
             }
         ]
     },
-    {text: '专题博客', link: '/blog'},
-    {text: '视频教学', link: '/video'},
-    {text: '购买&定价', link: '/pricing'}
+    {text: '专题博客', link: '/zh/blog'},
+    {text: '视频教学', link: '/zh/video'},
+    {text: '购买&定价', link: '/zh/pricing'}
 ]
 
 export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
@@ -60,19 +60,19 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
         items: [
             {
                 text: '关于应用',
-                link: '/docs/gm/introduction/about',
+                link: '/zh/docs/gm/introduction/about',
             },
             {
                 text: '功能总览',
-                link: '/docs/gm/introduction/feature',
+                link: '/zh/docs/gm/introduction/feature',
             },
             {
                 text: '基本概念',
-                link: '/docs/gm/introduction/concepts',
+                link: '/zh/docs/gm/introduction/concepts',
             },
             {
                 text: '资源配额',
-                link: '/docs/gm/introduction/quotas',
+                link: '/zh/docs/gm/introduction/quotas',
             }
         ]
     },
@@ -83,7 +83,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
                 text: '用户',
                 link: '/overview',
                 collapsed: true,
-                base: '/docs/gm/organization/user',
+                base: '/zh/docs/gm/organization/user',
                 items: [
                     {
                         text: '添加用户',
@@ -143,7 +143,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
                 text: '部门',
                 link: '/overview',
                 collapsed: true,
-                base: '/docs/gm/organization/department',
+                base: '/zh/docs/gm/organization/department',
                 items: [
                     {
                         text: '添加部门',
@@ -191,7 +191,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
                 text: '组',
                 link: '/overview',
                 collapsed: true,
-                base: '/docs/gm/organization/group',
+                base: '/zh/docs/gm/organization/group',
                 items: [
                     {
                         text: '添加组',
@@ -235,7 +235,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
                 text: '标签',
                 link: '/overview',
                 collapsed: true,
-                base: '/docs/gm/organization/tag',
+                base: '/zh/docs/gm/organization/tag',
                 items: [
                     {
                         text: '添加标签',
@@ -268,7 +268,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
                 text: '权限策略',
                 link: '/overview',
                 collapsed: true,
-                base: '/docs/gm/permissions/policy',
+                base: '/zh/docs/gm/permissions/policy',
                 items: [
                     {
                         text: '添加权限策略',
@@ -308,7 +308,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
                 text: '查看授权',
                 link: '/overview',
                 collapsed: true,
-                base: '/docs/gm/permissions/view',
+                base: '/zh/docs/gm/permissions/view',
                 items: [
                     {
                         text: '查看授权用户权限',
@@ -344,7 +344,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
             {
                 text: '公告',
                 collapsed: true,
-                base: '/docs/gm/messages/notice',
+                base: '/zh/docs/gm/messages/notice',
                 link: '/overview',
                 items: [
                     {
@@ -368,7 +368,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
             {
                 text: '消息',
                 collapsed: true,
-                base: '/docs/gm/messages/messages',
+                base: '/zh/docs/gm/messages/messages',
                 link: '/overview',
                 items: [
                     {
@@ -393,7 +393,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
             {
                 text: '云商店',
                 collapsed: true,
-                base: '/docs/gm/store/cloudStore',
+                base: '/zh/docs/gm/store/cloudStore',
                 link: '/overview',
                 items: [
                     {
@@ -409,7 +409,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
             {
                 text: '我的商品',
                 collapsed: true,
-                base: '/docs/gm/store/myGoods',
+                base: '/zh/docs/gm/store/myGoods',
                 link: '/overview',
                 items: [
                     {
@@ -425,7 +425,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
             {
                 text: '我的许可',
                 collapsed: true,
-                base: '/docs/gm/store/myLicense',
+                base: '/zh/docs/gm/store/myLicense',
                 link: '/overview',
                 items: [
                     {
@@ -445,12 +445,12 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
         items: [
             {
                 text: '系统版本',
-                link: '/docs/gm/system/systemVersion/overview',
+                link: '/zh/docs/gm/system/systemVersion/overview',
             },
             {
                 text: '实名认证',
                 collapsed: true,
-                base: '/docs/gm/system/realName',
+                base: '/zh/docs/gm/system/realName',
                 link: '/overview',
                 items: [
                     {
@@ -466,7 +466,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
             {
                 text: '安全设置',
                 collapsed: true,
-                base: '/docs/gm/system/securitySetting',
+                base: '/zh/docs/gm/system/securitySetting',
                 link: '/overview',
                 items: [
                     {
@@ -498,7 +498,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
                     {
                         text: '邮件服务器',
                         collapsed: true,
-                        base: '/docs/gm/system/email/server',
+                        base: '/zh/docs/gm/system/email/server',
                         link: '/overview',
                         items: [
                             {
@@ -526,7 +526,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
                     {
                         text: '发送记录',
                         collapsed: true,
-                        base: '/docs/gm/system/email/record',
+                        base: '/zh/docs/gm/system/email/record',
                         link: '/overview',
                         items: [
                             {
@@ -548,7 +548,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
                     {
                         text: '短信通道',
                         collapsed: true,
-                        base: '/docs/gm/system/sms/channel',
+                        base: '/zh/docs/gm/system/sms/channel',
                         link: '/overview',
                         items: [
                             {
@@ -568,7 +568,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
                     {
                         text: '短信模版',
                         collapsed: true,
-                        base: '/docs/gm/system/sms/template',
+                        base: '/zh/docs/gm/system/sms/template',
                         link: '/overview',
                         items: [
                             {
@@ -584,7 +584,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
                     {
                         text: '发送记录',
                         collapsed: true,
-                        base: '/docs/gm/system/sms/record',
+                        base: '/zh/docs/gm/system/sms/record',
                         link: '/overview',
                         items: [
                             {
@@ -606,7 +606,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
                     {
                         text: '接收通道',
                         collapsed: true,
-                        base: '/docs/gm/system/event/channel',
+                        base: '/zh/docs/gm/system/event/channel',
                         link: '/overview',
                         items: [
                             {
@@ -630,7 +630,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
                     {
                         text: '事件模版',
                         collapsed: true,
-                        base: '/docs/gm/system/event/template',
+                        base: '/zh/docs/gm/system/event/template',
                         link: '/overview',
                         items: [
                             {
@@ -646,7 +646,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
                     {
                         text: '事件记录',
                         collapsed: true,
-                        base: '/docs/gm/system/event/record',
+                        base: '/zh/docs/gm/system/event/record',
                         link: '/overview',
                         items: [
                             {
@@ -668,7 +668,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
                     {
                         text: '操作日志',
                         collapsed: true,
-                        base: '/docs/gm/system/log/operation',
+                        base: '/zh/docs/gm/system/log/operation',
                         link: '/overview',
                         items: [
                             {
@@ -685,7 +685,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
                     {
                         text: '请求日志',
                         collapsed: true,
-                        base: '/docs/gm/system/log/request',
+                        base: '/zh/docs/gm/system/log/request',
                         link: '/overview',
                         items: [
                             {
@@ -703,7 +703,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
             {
                 text: 'LDAP',
                 collapsed: true,
-                base: '/docs/gm/system/ldap',
+                base: '/zh/docs/gm/system/ldap',
                 link: '/overview',
                 items: [
                     {
@@ -743,7 +743,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
             {
                 text: '资源配额',
                 collapsed: true,
-                base: '/docs/gm/system/resourceQuota',
+                base: '/zh/docs/gm/system/resourceQuota',
                 link: '/overview',
                 items: [
                     {
@@ -763,7 +763,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
             {
                 text: '应用存储',
                 collapsed: true,
-                base: '/docs/gm/system/appStorage',
+                base: '/zh/docs/gm/system/appStorage',
                 link: '/overview',
                 items: [
                     {
@@ -783,7 +783,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
             {
                 text: '在线用户',
                 collapsed: true,
-                base: '/docs/gm/system/onlineUser',
+                base: '/zh/docs/gm/system/onlineUser',
                 link: '/overview',
                 items: [
                     {
@@ -799,7 +799,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
             {
                 text: '外观',
                 collapsed: true,
-                base: '/docs/gm/system/appearance',
+                base: '/zh/docs/gm/system/appearance',
                 link: '/overview',
                 items: [
                     {
@@ -815,7 +815,7 @@ export const gmDocsSidebar: DefaultTheme.SidebarItem[] = [
             {
                 text: '系统令牌',
                 collapsed: true,
-                base: '/docs/gm/system/systemToken',
+                base: '/zh/docs/gm/system/systemToken',
                 link: '/overview',
                 items: [
                     {
@@ -840,7 +840,7 @@ export const testerDocsSidebar: DefaultTheme.SidebarItem[] = [
     {
         text: 'AngusTester',
         collapsed: true,
-        base: '/docs/tester/introduction',
+        base: '/zh/docs/tester/introduction',
         items: [
             {
                 text: '关于应用',
@@ -875,7 +875,7 @@ export const testerDocsSidebar: DefaultTheme.SidebarItem[] = [
     {
         text: '安装应用',
         collapsed: true,
-        base: '/docs/tester/installation',
+        base: '/zh/docs/tester/installation',
         items: [
             {
                 text: '前置准备',
@@ -906,7 +906,7 @@ export const testerDocsSidebar: DefaultTheme.SidebarItem[] = [
     {
         text: '快速开始',
         collapsed: true,
-        base: '/docs/tester/quickStarted',
+        base: '/zh/docs/tester/quickStarted',
         items: [
             {
                 text: '如何调试接口',
@@ -945,7 +945,7 @@ export const testerDocsSidebar: DefaultTheme.SidebarItem[] = [
             {
                 text: '项目',
                 collapsed: true,
-                base: '/docs/tester/ui/project',
+                base: '/zh/docs/tester/ui/project',
                 items: [
                     {
                         text: '项目介绍',
@@ -972,7 +972,7 @@ export const testerDocsSidebar: DefaultTheme.SidebarItem[] = [
             {
                 text: '配置',
                 collapsed: true,
-                base: '/docs/tester/ui/configuration',
+                base: '/zh/docs/tester/ui/configuration',
                 items: [
                     {
                         text: '应用配置',
@@ -999,7 +999,7 @@ export const testerDocsSidebar: DefaultTheme.SidebarItem[] = [
             {
                 text: '看板',
                 collapsed: true,
-                base: '/docs/tester/ui/kanban',
+                base: '/zh/docs/tester/ui/kanban',
                 items: [
                     {
                         text: 'CTO看板',
@@ -1018,7 +1018,7 @@ export const testerDocsSidebar: DefaultTheme.SidebarItem[] = [
             {
                 text: '任务',
                 collapsed: true,
-                base: '/docs/tester/ui/task',
+                base: '/zh/docs/tester/ui/task',
                 items: [
                     {
                         text: '敏捷开发介绍',
@@ -1069,7 +1069,7 @@ export const testerDocsSidebar: DefaultTheme.SidebarItem[] = [
             {
                 text: '功能',
                 collapsed: true,
-                base: '/docs/tester/ui/function',
+                base: '/zh/docs/tester/ui/function',
                 items: [
                     {
                         text: '敏捷测试介绍',
@@ -1116,7 +1116,7 @@ export const testerDocsSidebar: DefaultTheme.SidebarItem[] = [
             {
                 text: '接口',
                 collapsed: true,
-                base: '/docs/tester/ui/apis',
+                base: '/zh/docs/tester/ui/apis',
                 items: [
                     {
                         text: '服务介绍',
@@ -1163,7 +1163,7 @@ export const testerDocsSidebar: DefaultTheme.SidebarItem[] = [
             {
                 text: '场景',
                 collapsed: true,
-                base: '/docs/tester/ui/scenarios',
+                base: '/zh/docs/tester/ui/scenarios',
                 items: [
                     {
                         text: '场景介绍',
@@ -1186,7 +1186,7 @@ export const testerDocsSidebar: DefaultTheme.SidebarItem[] = [
             {
                 text: '脚本',
                 collapsed: true,
-                base: '/docs/tester/ui/script',
+                base: '/zh/docs/tester/ui/script',
                 items: [
                     {
                         text: '脚本介绍',
@@ -1201,7 +1201,7 @@ export const testerDocsSidebar: DefaultTheme.SidebarItem[] = [
             {
                 text: '数据',
                 collapsed: true,
-                base: '/docs/tester/ui/data',
+                base: '/zh/docs/tester/ui/data',
                 items: [
                     {
                         text: '数据介绍',
@@ -1228,7 +1228,7 @@ export const testerDocsSidebar: DefaultTheme.SidebarItem[] = [
             {
                 text: '执行',
                 collapsed: true,
-                base: '/docs/tester/ui/execution',
+                base: '/zh/docs/tester/ui/execution',
                 items: [
                     {
                         text: '执行介绍',
@@ -1243,7 +1243,7 @@ export const testerDocsSidebar: DefaultTheme.SidebarItem[] = [
             {
                 text: 'Mock',
                 collapsed: true,
-                base: '/docs/tester/ui/mock',
+                base: '/zh/docs/tester/ui/mock',
                 items: [
                     {
                         text: 'Mock服务介绍',
@@ -1262,7 +1262,7 @@ export const testerDocsSidebar: DefaultTheme.SidebarItem[] = [
             {
                 text: '报告',
                 collapsed: true,
-                base: '/docs/tester/ui/report',
+                base: '/zh/docs/tester/ui/report',
                 items: [
                     {
                         text: '报告介绍',
@@ -1279,7 +1279,7 @@ export const testerDocsSidebar: DefaultTheme.SidebarItem[] = [
     {
         text: '产品指标',
         collapsed: true,
-        base: '/docs/tester/indicator',
+        base: '/zh/docs/tester/indicator',
         items: [
             {
                 text: '研发管理指标',
@@ -1302,7 +1302,7 @@ export const testerDocsSidebar: DefaultTheme.SidebarItem[] = [
     {
         text: '测试定义',
         collapsed: true,
-        base: '/docs/tester/testing',
+        base: '/zh/docs/tester/testing',
         items: [
             {
                 text: '测试定义',
@@ -1324,12 +1324,12 @@ export const testerDocsSidebar: DefaultTheme.SidebarItem[] = [
         items: [
             {
                 text: '规范介绍',
-                link: '/docs/tester/specification/introduction',
+                link: '/zh/docs/tester/specification/introduction',
             },
             {
                 text: '规范内容',
                 collapsed: true,
-                base: '/docs/tester/specification/content',
+                base: '/zh/docs/tester/specification/content',
                 items: [
                     {
                         text: '规范',
@@ -1363,7 +1363,7 @@ export const testerDocsSidebar: DefaultTheme.SidebarItem[] = [
                         text: '任务',
                         collapsed: true,
                         link: '/task',
-                        base: '/docs/tester/specification/content',
+                        base: '/zh/docs/tester/specification/content',
                         items: [
                             {
                                 text: '插件配置参数',
@@ -1372,7 +1372,7 @@ export const testerDocsSidebar: DefaultTheme.SidebarItem[] = [
                             {
                                 text: '测试任务编排',
                                 collapsed: true,
-                                base: '/docs/tester/specification/content/task/elements',
+                                base: '/zh/docs/tester/specification/content/task/elements',
                                 items: [
                                     {
                                         text: '控制器元素',
@@ -1437,7 +1437,7 @@ export const testerDocsSidebar: DefaultTheme.SidebarItem[] = [
     {
         text: 'Mock',
         collapsed: true,
-        base: '/docs/tester/mock',
+        base: '/zh/docs/tester/mock',
         items: [
             {
                 text: '模拟服务',
@@ -1459,12 +1459,12 @@ export const testerDocsSidebar: DefaultTheme.SidebarItem[] = [
     },
     {
         text: '命令行 (CLI)',
-        link: '/docs/tester/command/AngusRunner',
+        link: '/zh/docs/tester/command/AngusRunner',
     },
     {
         text: '常见问题 (FAQ)',
         collapsed: true,
-        base: '/docs/tester/faq',
+        base: '/zh/docs/tester/faq',
         items: [
             {
                 text: 'Backlog相关问题',

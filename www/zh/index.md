@@ -25,7 +25,7 @@ features:
 
 <script setup>
   import {  defineAsyncComponent } from 'vue';
-  const HomePage = defineAsyncComponent(() => import('./.vitepress/theme/home/index.vue'))
+  const HomePage = defineAsyncComponent(() => import('../.vitepress/theme/home/index.vue'))
 
 </script>
 <div>

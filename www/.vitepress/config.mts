@@ -2,21 +2,40 @@ import {defineConfig} from 'vitepress';
 import server from './dev-server';
 import {gmDocsSidebar, nav, testerDocsSidebar} from './menus.mts';
 
+const title = '晓蚕云';
+
 export default defineConfig({
-    title: "XCan Cloud",
-    description: "XCan Cloud Official WebSite (Https://www.xcan.cloud)",
+    lang: 'zh',
+    title: title,
+
+    rewrites: {
+        'zh/:rest*': ':rest*'
+    },
+
+    lastUpdated: true,
+    cleanUrls: true,
+    metaChunk: true,
+
+    ignoreDeadLinks: [
+        /:\/\/bj-c1-prod-files.xcan.cloud/,
+        /:\/\/dev-files.xcan.cloud/,
+        /:\/\/localhost/,
+    ],
+
     outDir: '../dist',
     head: [
         ['script', {src: '/assets/iconfont/iconfont.js'}],
     ],
     themeConfig: {
+        logo: { src: '/logo-mini.png', width: 28, height: 28 },
+
         search: {
             provider: 'local',
         },
         nav: nav,
         sidebar: {
-            '/docs/gm/': gmDocsSidebar,
-            '/docs/tester/': testerDocsSidebar
+            '/zh/docs/gm/': gmDocsSidebar,
+            '/zh/docs/tester/': testerDocsSidebar
         },
         socialLinks: [
             {icon: 'github', link: 'https://github.com/xcancloud'}
