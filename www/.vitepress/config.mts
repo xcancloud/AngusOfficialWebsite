@@ -1,4 +1,4 @@
-import {defineConfig} from 'vitepress';
+import {defineConfig} from 'vitepress'
 import server from './dev-server';
 import {gmDocsSidebar, nav, testerDocsSidebar} from './menus';
 
