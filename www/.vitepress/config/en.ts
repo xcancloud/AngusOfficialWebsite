@@ -17,7 +17,12 @@ export const enLocaleConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
         footer: {
             message: 'Released under the GPL-3.0 License.',
             copyright: 'Copyright © 2019-${new Date().getFullYear()} XCan Cloud'
-        }
+        },
+
+        outline: {
+            label: 'Navigation',
+            level: "deep"
+        },
     }
 };
 

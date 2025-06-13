@@ -19,13 +19,14 @@ export const zhLocaleConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
             copyright: `版权所有 © 2019-${new Date().getFullYear()} 晓蚕云`
         },
 
+        outline: {
+            label: '导航',
+            level: "deep"
+        },
+
         docFooter: {
             prev: '上一页',
             next: '下一页'
-        },
-
-        outline: {
-            label: '页面导航'
         },
 
         lastUpdated: {
