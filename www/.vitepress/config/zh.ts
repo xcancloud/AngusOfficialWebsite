@@ -81,7 +81,7 @@ function nav(): DefaultTheme.NavItem[] {
                     link: '/zh/support'
                 },
                 {
-                    text: '常见问题',
+                    text: '常见问题(FAQ)',
                     link: '/zh/faq'
                 }
             ]

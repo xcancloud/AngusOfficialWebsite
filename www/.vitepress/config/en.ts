@@ -50,7 +50,7 @@ function nav(): DefaultTheme.NavItem[] {
                     link: '/deployment'
                 },
                 {
-                    text: 'Support',
+                    text: 'Technical Support',
                     link: '/support'
                 },
                 {
@@ -112,752 +112,752 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                     base: '/docs/gm/organization/user',
                     items: [
                         {
-                            text: '添加用户',
-                            link: '/add',
+                            "text": "Add User",
+                            "link": "/add",
                         },
                         {
-                            text: '编辑用户',
-                            link: '/edit',
+                            "text": "Edit User",
+                            "link": "/edit",
                         },
                         {
-                            text: '删除用户',
-                            link: '/delete',
+                            "text": "Delete User",
+                            "link": "/delete",
                         },
                         {
-                            text: '禁用用户',
-                            link: '/disable',
+                            "text": "Disable User",
+                            "link": "/disable",
                         },
                         {
-                            text: '重置密码',
-                            link: '/resetPassword',
+                            "text": "Reset Password",
+                            "link": "/resetPassword",
                         },
                         {
-                            text: '锁定用户',
-                            link: '/lock',
+                            "text": "Lock User",
+                            "link": "/lock",
                         },
                         {
-                            text: '设置默认身份(角色)',
-                            link: '/defaultRole',
+                            "text": "Set Default Role",
+                            "link": "/defaultRole",
                         },
                         {
-                            text: '查看用户信息',
-                            link: '/detail',
+                            "text": "View User Information",
+                            "link": "/detail",
                         },
                         {
-                            text: '查看用户统计',
-                            link: '/statistics',
+                            "text": "View User Statistics",
+                            "link": "/statistics",
                         },
                         {
-                            text: '授权用户策略',
-                            link: '/grantPolicy',
+                            "text": "Grant User Policies",
+                            "link": "/grantPolicy",
                         },
                         {
-                            text: '关联用户部门',
-                            link: '/assocDepartment',
+                            "text": "Associate User Department",
+                            "link": "/assocDepartment",
                         },
                         {
-                            text: '关联用户组',
-                            link: '/assocGroup',
+                            "text": "Associate User Group",
+                            "link": "/assocGroup",
                         },
                         {
-                            text: '关联用户组',
-                            link: '/assocTag',
+                            "text": "Associate User Tags",
+                            "link": "/assocTag",
                         }
                     ],
                 },
                 {
-                    text: '部门',
+                    text: 'Department',
                     link: '/overview',
                     collapsed: true,
                     base: '/docs/gm/organization/department',
                     items: [
                         {
-                            text: '添加部门',
-                            link: '/add',
+                            "text": "Add Department",
+                            "link": "/add"
                         },
                         {
-                            text: '添加子部门',
-                            link: '/addSub',
+                            "text": "Add Sub-department",
+                            "link": "/addSub"
                         },
                         {
-                            text: '编辑部门',
-                            link: '/edit',
+                            "text": "Edit Department",
+                            "link": "/edit"
                         },
                         {
-                            text: '删除部门',
-                            link: '/delete',
+                            "text": "Delete Department",
+                            "link": "/delete"
                         },
                         {
-                            text: '移动部门',
-                            link: '/move',
+                            "text": "Move Department",
+                            "link": "/move"
                         },
                         {
-                            text: '查看部门信息',
-                            link: '/detail',
+                            "text": "View Department Information",
+                            "link": "/detail"
                         },
                         {
-                            text: '查看部门统计',
-                            link: '/statistics',
+                            "text": "View Department Statistics",
+                            "link": "/statistics"
                         },
                         {
-                            text: '授权部门策略',
-                            link: '/grantPolicy',
+                            "text": "Grant Department Policies",
+                            "link": "/grantPolicy"
                         },
                         {
-                            text: '关联部门用户',
-                            link: '/assocUser',
+                            "text": "Associate Department Users",
+                            "link": "/assocUser"
                         },
                         {
-                            text: '关联部门标签',
-                            link: '/assocTag',
+                            "text": "Associate Department Tags",
+                            "link": "/assocTag"
                         }
                     ],
                 },
                 {
-                    text: '组',
+                    text: 'Group',
                     link: '/overview',
                     collapsed: true,
                     base: '/docs/gm/organization/group',
                     items: [
                         {
-                            text: '添加组',
-                            link: '/add',
+                            "text": "Add Group",
+                            "link": "/add"
                         },
                         {
-                            text: '编辑组',
-                            link: '/edit',
+                            "text": "Edit Group",
+                            "link": "/edit"
                         },
                         {
-                            text: '删除组',
-                            link: '/delete',
+                            "text": "Delete Group",
+                            "link": "/delete"
                         },
                         {
-                            text: '禁用组',
-                            link: '/disable',
+                            "text": "Disable Group",
+                            "link": "/disable"
                         },
                         {
-                            text: '查看组信息',
-                            link: '/detail',
+                            "text": "View Group Information",
+                            "link": "/detail"
                         },
                         {
-                            text: '查看组统计',
-                            link: '/statistics',
+                            "text": "View Group Statistics",
+                            "link": "/statistics"
                         },
                         {
-                            text: '授权组策略',
-                            link: '/grantPolicy',
+                            "text": "Grant Group Policies",
+                            "link": "/grantPolicy"
                         },
                         {
-                            text: '关联组用户',
-                            link: '/assocUser',
+                            "text": "Associate Group Users",
+                            "link": "/assocUser"
                         },
                         {
-                            text: '关联组标签',
-                            link: '/assocTag',
+                            "text": "Associate Group Tags",
+                            "link": "/assocTag"
                         }
                     ],
                 },
                 {
-                    text: '标签',
+                    text: 'Tag',
                     link: '/overview',
                     collapsed: true,
                     base: '/docs/gm/organization/tag',
                     items: [
                         {
-                            text: '添加标签',
-                            link: '/add',
+                            "text": "Add Tag",
+                            "link": "/add"
                         },
                         {
-                            text: '编辑标签',
-                            link: '/edit',
+                            "text": "Edit Tag",
+                            "link": "/edit"
                         },
                         {
-                            text: '删除标签',
-                            link: '/delete',
+                            "text": "Delete Tag",
+                            "link": "/delete"
                         },
                         {
-                            text: '查看标签统计',
-                            link: '/statistics',
+                            "text": "View Tag Statistics",
+                            "link": "/statistics"
                         },
                         {
-                            text: '查看关联对象',
-                            link: '/assocOrg',
+                            "text": "View Associated Objects",
+                            "link": "/assocOrg"
                         }
                     ]
                 }
             ],
         },
         {
-            text: '全局权限',
+            text: 'Permissions',
             items: [
                 {
-                    text: '权限策略',
+                    text: 'Permission Policy',
                     link: '/overview',
                     collapsed: true,
                     base: '/docs/gm/permissions/policy',
                     items: [
                         {
-                            text: '添加权限策略',
-                            link: '/add',
+                            "text": "Add Permission Policy",
+                            "link": "/add"
                         },
                         {
-                            text: '设置应用默认授权',
-                            link: '/setAppDefault',
+                            "text": "Set Application Default Authorization",
+                            "link": "/setAppDefault"
                         },
                         {
-                            text: '查看权限列表',
-                            link: '/list',
+                            "text": "View Permission List",
+                            "link": "/list"
                         },
                         {
-                            text: '查看权限详细',
-                            link: '/detail',
+                            "text": "View Permission Details",
+                            "link": "/detail"
                         },
                         {
-                            text: '禁用权限策略',
-                            link: '/disable',
+                            "text": "Disable Permission Policy",
+                            "link": "/disable"
                         },
                         {
-                            text: '删除权限策略',
-                            link: '/delete',
+                            "text": "Delete Permission Policy",
+                            "link": "/delete"
                         },
                         {
-                            text: '修改权限策略',
-                            link: '/edit',
+                            "text": "Edit Permission Policy",
+                            "link": "/edit"
                         },
                         {
-                            text: '授权权限策略',
-                            link: '/grant',
+                            "text": "Grant Permission Policy",
+                            "link": "/grant"
                         }
                     ]
                 },
                 {
-                    text: '查看授权',
+                    text: 'View Permissions',
                     link: '/overview',
                     collapsed: true,
                     base: '/docs/gm/permissions/view',
                     items: [
                         {
-                            text: '查看授权用户权限',
-                            link: '/viewUserPermissions',
+                            "text": "View User Permissions",
+                            "link": "/viewUserPermissions"
                         },
                         {
-                            text: '取消授权用户权限',
-                            link: '/cancelUserPermissions',
+                            "text": "Revoke User Permissions",
+                            "link": "/cancelUserPermissions"
                         },
                         {
-                            text: '查看授权部门权限',
-                            link: '/viewDepartmentPermissions',
+                            "text": "View Department Permissions",
+                            "link": "/viewDepartmentPermissions"
                         },
                         {
-                            text: '取消授权部门权限',
-                            link: '/cancelDepartmentPermissions',
+                            "text": "Revoke Department Permissions",
+                            "link": "/cancelDepartmentPermissions"
                         },
                         {
-                            text: '查看授权组权限',
-                            link: '/viewGroupPermissions',
+                            "text": "View Group Permissions",
+                            "link": "/viewGroupPermissions"
                         },
                         {
-                            text: '取消授权组权限',
-                            link: '/cancelGroupPermissions',
+                            "text": "Revoke Group Permissions",
+                            "link": "/cancelGroupPermissions"
                         }
                     ]
                 }
             ],
         },
         {
-            text: '公告与消息',
+            text: 'Notice and Message',
             items: [
                 {
-                    text: '公告',
+                    text: 'Notice',
                     collapsed: true,
                     base: '/docs/gm/messages/notice',
                     link: '/overview',
                     items: [
                         {
-                            text: '发布公告(通知)',
-                            link: '/publish',
+                            "text": "Publish Notice",
+                            "link": "/publish"
                         },
                         {
-                            text: '删除公告',
-                            link: '/delete',
+                            "text": "Delete Notice",
+                            "link": "/delete"
                         },
                         {
-                            text: '查看公告信息',
-                            link: '/detail',
+                            "text": "View Notice Details",
+                            "link": "/detail"
                         },
                         {
-                            text: '查看公告统计',
-                            link: '/statistics',
+                            "text": "View Notice Statistics",
+                            "link": "/statistics"
                         }
                     ]
                 },
                 {
-                    text: '消息',
+                    text: 'Message',
                     collapsed: true,
                     base: '/docs/gm/messages/messages',
                     link: '/overview',
                     items: [
                         {
-                            text: '发送消息',
-                            link: '/send',
+                            "text": "Send Message",
+                            "link": "/send"
                         },
                         {
-                            text: '查看消息内容',
-                            link: '/content',
+                            "text": "View Message Content",
+                            "link": "/content"
                         },
                         {
-                            text: '查看消息统计',
-                            link: '/statistics',
+                            "text": "View Message Statistics",
+                            "link": "/statistics"
                         }
                     ]
                 },
             ],
         },
         {
-            text: '商店',
+            text: 'Store',
             items: [
                 {
-                    text: '云商店',
+                    text: 'Cloud Store',
                     collapsed: true,
                     base: '/docs/gm/store/cloudStore',
                     link: '/overview',
                     items: [
                         {
-                            text: '查看商品',
+                            text: 'View Goods',
                             link: '/view',
                         },
                         {
-                            text: '购买商品',
+                            text: 'Buy Goods',
                             link: '/buy',
                         }
                     ]
                 },
                 {
-                    text: '我的商品',
+                    text: 'My Goods',
                     collapsed: true,
                     base: '/docs/gm/store/myGoods',
                     link: '/overview',
                     items: [
                         {
-                            text: '查看我的商品',
-                            link: '/view',
+                            "text": "View My Goods",
+                            "link": "/view"
                         },
                         {
-                            text: '下载我的商品',
-                            link: '/download',
+                            "text": "Download My Goods",
+                            "link": "/download"
                         }
                     ]
                 },
                 {
-                    text: '我的许可',
+                    text: 'My License',
                     collapsed: true,
                     base: '/docs/gm/store/myLicense',
                     link: '/overview',
                     items: [
                         {
-                            text: '查看我的许可',
-                            link: '/view',
+                            "text": "View My License",
+                            "link": "/view"
                         },
                         {
-                            text: '下载我的许可',
-                            link: '/download',
+                            "text": "Download My Licenses",
+                            "link": "/download"
                         }
                     ]
                 },
             ],
         },
         {
-            text: '系统',
+            text: 'System',
             items: [
                 {
-                    text: '系统版本',
-                    link: '/docs/gm/system/systemVersion/overview',
+                    "text": "System Version",
+                    "link": "/docs/gm/system/systemVersion/overview"
                 },
                 {
-                    text: '实名认证',
-                    collapsed: true,
-                    base: '/docs/gm/system/realName',
-                    link: '/overview',
-                    items: [
+                    "text": "Real-name Authentication",
+                    "collapsed": true,
+                    "base": "/docs/gm/system/realName",
+                    "link": "/overview",
+                    "items": [
                         {
-                            text: '实名认证',
-                            link: '/auth',
+                            "text": "Real-name Authentication",
+                            "link": "/auth"
                         },
                         {
-                            text: '查看认证',
-                            link: '/view',
+                            "text": "View Authentication",
+                            "link": "/view"
                         }
                     ]
                 },
                 {
-                    text: '安全设置',
-                    collapsed: true,
-                    base: '/docs/gm/system/securitySetting',
-                    link: '/overview',
-                    items: [
+                    "text": "Security Settings",
+                    "collapsed": true,
+                    "base": "/docs/gm/system/securitySetting",
+                    "link": "/overview",
+                    "items": [
                         {
-                            text: '登录限制',
-                            link: '/signinLimit',
+                            "text": "Login Restrictions",
+                            "link": "/signinLimit"
                         },
                         {
-                            text: '允许注册',
-                            link: '/signupAllow',
+                            "text": "Allow Registration",
+                            "link": "/signupAllow"
                         },
                         {
-                            text: '修改密码策略',
-                            link: '/editPasswordPolicy',
+                            "text": "Modify Password Policy",
+                            "link": "/editPasswordPolicy"
                         },
                         {
-                            text: '注册账号',
-                            link: '/cancelSign',
+                            "text": "Register Account",
+                            "link": "/cancelSign"
                         },
                         {
-                            text: '安全告警',
-                            link: '/securityAlert',
+                            "text": "Security Alerts",
+                            "link": "/securityAlert"
                         }
                     ]
                 },
                 {
-                    text: '邮箱配置',
-                    collapsed: true,
-                    items: [
+                    "text": "Email Configuration",
+                    "collapsed": true,
+                    "items": [
                         {
-                            text: '邮件服务器',
-                            collapsed: true,
-                            base: '/docs/gm/system/email/server',
-                            link: '/overview',
-                            items: [
+                            "text": "Mail Server",
+                            "collapsed": true,
+                            "base": "/docs/gm/system/email/server",
+                            "link": "/overview",
+                            "items": [
                                 {
-                                    text: '添加邮件服务器',
-                                    link: '/add',
+                                    "text": "Add Mail Server",
+                                    "link": "/add"
                                 },
                                 {
-                                    text: '编辑邮件服务器',
-                                    link: '/edit',
+                                    "text": "Edit Mail Server",
+                                    "link": "/edit"
                                 },
                                 {
-                                    text: '设置默认邮件服务器',
-                                    link: '/setDefault',
+                                    "text": "Set Default Mail Server",
+                                    "link": "/setDefault"
                                 },
                                 {
-                                    text: '删除邮件服务器',
-                                    link: '/delete',
+                                    "text": "Delete Mail Server",
+                                    "link": "/delete"
                                 },
                                 {
-                                    text: '测试邮件服务器',
-                                    link: '/test',
+                                    "text": "Test Mail Server",
+                                    "link": "/test"
                                 }
                             ]
                         },
                         {
-                            text: '发送记录',
-                            collapsed: true,
-                            base: '/docs/gm/system/email/record',
-                            link: '/overview',
-                            items: [
+                            "text": "Sending Records",
+                            "collapsed": true,
+                            "base": "/docs/gm/system/email/record",
+                            "link": "/overview",
+                            "items": [
                                 {
-                                    text: '查看发送记录',
-                                    link: '/view',
+                                    "text": "View Sending Records",
+                                    "link": "/view"
                                 },
                                 {
-                                    text: '查看发送记录统计',
-                                    link: '/statistics',
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    text: '短信配置',
-                    collapsed: true,
-                    items: [
-                        {
-                            text: '短信通道',
-                            collapsed: true,
-                            base: '/docs/gm/system/sms/channel',
-                            link: '/overview',
-                            items: [
-                                {
-                                    text: '配置短信通道',
-                                    link: '/edit',
-                                },
-                                {
-                                    text: '测试短信通道',
-                                    link: '/test',
-                                },
-                                {
-                                    text: '启用或禁用短信通道',
-                                    link: '/enableOrDisable',
-                                }
-                            ]
-                        },
-                        {
-                            text: '短信模版',
-                            collapsed: true,
-                            base: '/docs/gm/system/sms/template',
-                            link: '/overview',
-                            items: [
-                                {
-                                    text: '查看短信模版',
-                                    link: '/view',
-                                },
-                                {
-                                    text: '编辑短信模版',
-                                    link: '/edit',
-                                }
-                            ]
-                        },
-                        {
-                            text: '发送记录',
-                            collapsed: true,
-                            base: '/docs/gm/system/sms/record',
-                            link: '/overview',
-                            items: [
-                                {
-                                    text: '查看发送记录',
-                                    link: '/view',
-                                },
-                                {
-                                    text: '查看发送记录统计',
-                                    link: '/statistics',
+                                    "text": "View Sending Statistics",
+                                    "link": "/statistics"
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    text: '事件配置',
-                    collapsed: true,
-                    items: [
+                    "text": "SMS Configuration",
+                    "collapsed": true,
+                    "items": [
                         {
-                            text: '接收通道',
-                            collapsed: true,
-                            base: '/docs/gm/system/event/channel',
-                            link: '/overview',
-                            items: [
+                            "text": "SMS Channel",
+                            "collapsed": true,
+                            "base": "/docs/gm/system/sms/channel",
+                            "link": "/overview",
+                            "items": [
                                 {
-                                    text: '配置WebHook',
-                                    link: '/editWebHook',
+                                    "text": "Configure SMS Channel",
+                                    "link": "/edit"
                                 },
                                 {
-                                    text: '配置邮件组',
-                                    link: '/editEmailGroup',
+                                    "text": "Test SMS Channel",
+                                    "link": "/test"
                                 },
                                 {
-                                    text: '配置钉钉机器人',
-                                    link: '/editDingRobot',
-                                },
-                                {
-                                    text: '配置企业微信机器人',
-                                    link: '/editWXRobot',
+                                    "text": "Enable or Disable SMS Channel",
+                                    "link": "/enableOrDisable"
                                 }
                             ]
                         },
                         {
-                            text: '事件模版',
-                            collapsed: true,
-                            base: '/docs/gm/system/event/template',
-                            link: '/overview',
-                            items: [
+                            "text": "SMS Template",
+                            "collapsed": true,
+                            "base": "/docs/gm/system/sms/template",
+                            "link": "/overview",
+                            "items": [
                                 {
-                                    text: '查看事件模版',
-                                    link: '/view',
+                                    "text": "View SMS Template",
+                                    "link": "/view"
                                 },
                                 {
-                                    text: '编辑事件模版',
-                                    link: '/edit',
+                                    "text": "Edit SMS Template",
+                                    "link": "/edit"
                                 }
                             ]
                         },
                         {
-                            text: '事件记录',
-                            collapsed: true,
-                            base: '/docs/gm/system/event/record',
-                            link: '/overview',
-                            items: [
+                            "text": "Sending Records",
+                            "collapsed": true,
+                            "base": "/docs/gm/system/sms/record",
+                            "link": "/overview",
+                            "items": [
                                 {
-                                    text: '查看事件记录',
-                                    link: '/view',
+                                    "text": "View Sending Records",
+                                    "link": "/view"
                                 },
                                 {
-                                    text: '查看事件记录统计',
-                                    link: '/statistics',
+                                    "text": "View Sending Statistics",
+                                    "link": "/statistics"
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    text: '审计日志',
-                    collapsed: true,
-                    items: [
+                    "text": "Event Configuration",
+                    "collapsed": true,
+                    "items": [
                         {
-                            text: '操作日志',
-                            collapsed: true,
-                            base: '/docs/gm/system/log/operation',
-                            link: '/overview',
-                            items: [
+                            "text": "Receiving Channels",
+                            "collapsed": true,
+                            "base": "/docs/gm/system/event/channel",
+                            "link": "/overview",
+                            "items": [
                                 {
-                                    text: '查看操作日志',
-                                    link: '/view',
+                                    "text": "Configure WebHook",
+                                    "link": "/editWebHook"
                                 },
                                 {
-                                    text: '查看操作日志统计',
-                                    link: '/statistics',
+                                    "text": "Configure Email Group",
+                                    "link": "/editEmailGroup"
+                                },
+                                {
+                                    "text": "Configure DingTalk Robot",
+                                    "link": "/editDingRobot"
+                                },
+                                {
+                                    "text": "Configure Enterprise WeChat Robot",
+                                    "link": "/editWXRobot"
                                 }
                             ]
                         },
-                        // TODO 系统日志
                         {
-                            text: '请求日志',
-                            collapsed: true,
-                            base: '/docs/gm/system/log/request',
-                            link: '/overview',
-                            items: [
+                            "text": "Event Template",
+                            "collapsed": true,
+                            "base": "/docs/gm/system/event/template",
+                            "link": "/overview",
+                            "items": [
                                 {
-                                    text: '查看请求日志',
-                                    link: '/view',
+                                    "text": "View Event Template",
+                                    "link": "/view"
                                 },
                                 {
-                                    text: '查看请求日志统计',
-                                    link: '/statistics',
+                                    "text": "Edit Event Template",
+                                    "link": "/edit"
+                                }
+                            ]
+                        },
+                        {
+                            "text": "Event Records",
+                            "collapsed": true,
+                            "base": "/docs/gm/system/event/record",
+                            "link": "/overview",
+                            "items": [
+                                {
+                                    "text": "View Event Records",
+                                    "link": "/view"
+                                },
+                                {
+                                    "text": "View Event Statistics",
+                                    "link": "/statistics"
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    text: 'LDAP',
-                    collapsed: true,
-                    base: '/docs/gm/system/ldap',
-                    link: '/overview',
-                    items: [
+                    "text": "Audit Logs",
+                    "collapsed": true,
+                    "items": [
                         {
-                            text: '添加目录',
-                            link: '/add',
+                            "text": "Operation Logs",
+                            "collapsed": true,
+                            "base": "/docs/gm/system/log/operation",
+                            "link": "/overview",
+                            "items": [
+                                {
+                                    "text": "View Operation Logs",
+                                    "link": "/view"
+                                },
+                                {
+                                    "text": "View Operation Statistics",
+                                    "link": "/statistics"
+                                }
+                            ]
                         },
+                        // TODO System Logs
                         {
-                            text: '修改目录',
-                            link: '/edit',
-                        },
-                        {
-                            text: '测试目录',
-                            link: '/test',
-                        },
-                        {
-                            text: '同步目录',
-                            link: '/sync',
-                        },
-                        {
-                            text: '移动目录',
-                            link: '/move',
-                        },
-                        {
-                            text: '删除目录',
-                            link: '/delete',
-                        },
-                        {
-                            text: '删除目录和数据',
-                            link: '/deleteAll',
-                        },
-                        {
-                            text: '禁用目录',
-                            link: '/disable',
+                            "text": "Request Logs",
+                            "collapsed": true,
+                            "base": "/docs/gm/system/log/request",
+                            "link": "/overview",
+                            "items": [
+                                {
+                                    "text": "View Request Logs",
+                                    "link": "/view"
+                                },
+                                {
+                                    "text": "View Request Statistics",
+                                    "link": "/statistics"
+                                }
+                            ]
                         }
                     ]
                 },
                 {
-                    text: '资源配额',
-                    collapsed: true,
-                    base: '/docs/gm/system/resourceQuota',
-                    link: '/overview',
-                    items: [
+                    "text": "LDAP",
+                    "collapsed": true,
+                    "base": "/docs/gm/system/ldap",
+                    "link": "/overview",
+                    "items": [
                         {
-                            text: '查看资源配额',
-                            link: '/view',
+                            "text": "Add Directory",
+                            "link": "/add"
                         },
                         {
-                            text: '修改资源配额',
-                            link: '/edit',
+                            "text": "Edit Directory",
+                            "link": "/edit"
                         },
                         {
-                            text: '提交修改资源配额工单',
-                            link: '/submitWorkOrder',
+                            "text": "Test Directory",
+                            "link": "/test"
+                        },
+                        {
+                            "text": "Synchronize Directory",
+                            "link": "/sync"
+                        },
+                        {
+                            "text": "Move Directory",
+                            "link": "/move"
+                        },
+                        {
+                            "text": "Delete Directory",
+                            "link": "/delete"
+                        },
+                        {
+                            "text": "Delete Directory and Data",
+                            "link": "/deleteAll"
+                        },
+                        {
+                            "text": "Disable Directory",
+                            "link": "/disable"
                         }
                     ]
                 },
                 {
-                    text: '应用存储',
-                    collapsed: true,
-                    base: '/docs/gm/system/appStorage',
-                    link: '/overview',
-                    items: [
+                    "text": "Resource Quota",
+                    "collapsed": true,
+                    "base": "/docs/gm/system/resourceQuota",
+                    "link": "/overview",
+                    "items": [
                         {
-                            text: '查看应用数据存储',
-                            link: '/viewAppStorage',
+                            "text": "View Resource Quota",
+                            "link": "/view"
                         },
                         {
-                            text: '查看业务数据存储',
-                            link: '/viewBusinessStorage',
+                            "text": "Modify Resource Quota",
+                            "link": "/edit"
                         },
                         {
-                            text: '修改业务数据存储类型',
-                            link: '/editBusinessStorage',
+                            "text": "Submit Work Order for Resource Quota",
+                            "link": "/submitWorkOrder"
                         }
                     ]
                 },
                 {
-                    text: '在线用户',
-                    collapsed: true,
-                    base: '/docs/gm/system/onlineUser',
-                    link: '/overview',
-                    items: [
+                    "text": "Application Storage",
+                    "collapsed": true,
+                    "base": "/docs/gm/system/appStorage",
+                    "link": "/overview",
+                    "items": [
                         {
-                            text: '查看在线用户',
-                            link: '/view',
+                            "text": "View Application Data Storage",
+                            "link": "/viewAppStorage"
                         },
                         {
-                            text: '强制退出用户',
-                            link: '/quit',
+                            "text": "View Business Data Storage",
+                            "link": "/viewBusinessStorage"
+                        },
+                        {
+                            "text": "Modify Business Storage Type",
+                            "link": "/editBusinessStorage"
                         }
                     ]
                 },
                 {
-                    text: '外观',
-                    collapsed: true,
-                    base: '/docs/gm/system/appearance',
-                    link: '/overview',
-                    items: [
+                    "text": "Online Users",
+                    "collapsed": true,
+                    "base": "/docs/gm/system/onlineUser",
+                    "link": "/overview",
+                    "items": [
                         {
-                            text: '查看站点应用',
-                            link: '/viewSite',
+                            "text": "View Online Users",
+                            "link": "/view"
                         },
                         {
-                            text: '修改站点应用',
-                            link: '/editSite',
+                            "text": "Force Logout User",
+                            "link": "/quit"
                         }
                     ]
                 },
                 {
-                    text: '系统令牌',
-                    collapsed: true,
-                    base: '/docs/gm/system/systemToken',
-                    link: '/overview',
-                    items: [
+                    "text": "Appearance",
+                    "collapsed": true,
+                    "base": "/docs/gm/system/appearance",
+                    "link": "/overview",
+                    "items": [
                         {
-                            text: '添加系统令牌',
-                            link: '/add',
+                            "text": "View Site Applications",
+                            "link": "/viewSite"
                         },
                         {
-                            text: '查看系统令牌',
-                            link: '/view',
-                        },
-                        {
-                            text: '删除系统令牌',
-                            link: '/delete',
+                            "text": "Modify Site Applications",
+                            "link": "/editSite"
                         }
                     ]
                 },
+                {
+                    "text": "System Tokens",
+                    "collapsed": true,
+                    "base": "/docs/gm/system/systemToken",
+                    "link": "/overview",
+                    "items": [
+                        {
+                            "text": "Add System Token",
+                            "link": "/add"
+                        },
+                        {
+                            "text": "View System Tokens",
+                            "link": "/view"
+                        },
+                        {
+                            "text": "Delete System Token",
+                            "link": "/delete"
+                        }
+                    ]
+                }
             ],
         },
     ]
@@ -866,654 +866,654 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
 function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
     return [
         {
-            text: 'AngusTester',
-            collapsed: true,
-            base: '/docs/tester/introduction',
-            items: [
+            "text": "AngusTester",
+            "collapsed": true,
+            "base": "/docs/tester/introduction",
+            "items": [
                 {
-                    text: '关于应用',
-                    link: '/about',
+                    "text": "About the Application",
+                    "link": "/about"
                 },
                 {
-                    text: '产品特性',
-                    link: '/feature',
+                    "text": "Product Features",
+                    "link": "/feature"
                 },
                 {
-                    text: '插件化实现',
-                    link: '/plugin',
+                    "text": "Plugin-based Implementation",
+                    "link": "/plugin"
                 },
                 {
-                    text: '产品版本',
-                    link: '/edition',
+                    "text": "Product Editions",
+                    "link": "/edition"
                 },
                 {
-                    text: '部署方式',
-                    link: '/deployment',
+                    "text": "Deployment Methods",
+                    "link": "/deployment"
                 },
                 {
-                    text: '应用场景',
-                    link: '/scenarios',
+                    "text": "Application Scenarios",
+                    "link": "/scenarios"
                 },
                 {
-                    text: '资源配额',
-                    link: '/quotas',
+                    "text": "Resource Quotas",
+                    "link": "/quotas"
                 }
             ]
         },
         {
-            text: '安装应用',
-            collapsed: true,
-            base: '/docs/tester/installation',
-            items: [
+            "text": "Application Installation",
+            "collapsed": true,
+            "base": "/docs/tester/installation",
+            "items": [
                 {
-                    text: '前置准备',
-                    link: '/prerequisites',
+                    "text": "Prerequisites",
+                    "link": "/prerequisites"
                 },
                 {
-                    text: '安装AngusTester',
-                    link: '/AngusTester',
+                    "text": "Install AngusTester",
+                    "link": "/AngusTester"
                 },
                 {
-                    text: '安装AngusAgent',
-                    link: '/AngusAgent',
+                    "text": "Install AngusAgent",
+                    "link": "/AngusAgent"
                 },
                 {
-                    text: '安装AngusProxy',
-                    link: '/AngusProxy',
+                    "text": "Install AngusProxy",
+                    "link": "/AngusProxy"
                 },
                 {
-                    text: '安装AngusMockService',
-                    link: '/AngusMockService',
+                    "text": "Install AngusMockService",
+                    "link": "/AngusMockService"
                 },
                 {
-                    text: '安装AngusRunner',
-                    link: '/AngusRunner',
+                    "text": "Install AngusRunner",
+                    "link": "/AngusRunner"
                 }
             ]
         },
         {
-            text: '快速开始',
-            collapsed: true,
-            base: '/docs/tester/quickStarted',
-            items: [
+            "text": "Quick Start",
+            "collapsed": true,
+            "base": "/docs/tester/quickStarted",
+            "items": [
                 {
-                    text: '如何调试接口',
-                    link: '/debugApi',
+                    "text": "How to Debug Interfaces",
+                    "link": "/debugApi"
                 },
                 {
-                    text: '如何快速创建一个脚本',
-                    link: '/creatScript',
+                    "text": "How to Quickly Create a Script",
+                    "link": "/creatScript"
                 },
                 {
-                    text: '如何运行测试脚本',
-                    link: '/runScript',
+                    "text": "How to Run Test Scripts",
+                    "link": "/runScript"
                 },
                 {
-                    text: '如何快速生成接口测试脚本',
-                    link: '/generateScriptByApi',
+                    "text": "How to Generate API Test Scripts Quickly",
+                    "link": "/generateScriptByApi"
                 },
                 {
-                    text: '如何快速生成接口测试任务',
-                    link: '/generateTaskByApi',
+                    "text": "How to Generate API Test Tasks Quickly",
+                    "link": "/generateTaskByApi"
                 },
                 {
-                    text: '如何导入外部接口',
-                    link: '/importOuterApis',
+                    "text": "How to Import External APIs",
+                    "link": "/importOuterApis"
                 },
                 {
-                    text: '如何获取许可',
-                    link: '/getSoftwareLicense',
+                    "text": "How to Obtain Software License",
+                    "link": "/getSoftwareLicense"
                 }
             ]
         },
         {
-            text: '用户界面',
-            collapsed: true,
-            items: [
+            "text": "User Interface (UI)",
+            "collapsed": true,
+            "items": [
                 {
-                    text: '项目',
-                    collapsed: true,
-                    base: '/docs/tester/ui/project',
-                    items: [
+                    "text": "Project",
+                    "collapsed": true,
+                    "base": "/docs/tester/ui/project",
+                    "items": [
                         {
-                            text: '项目介绍',
-                            link: '/introduction',
+                            "text": "Project Introduction",
+                            "link": "/introduction"
                         },
                         {
-                            text: '项目流程',
-                            link: '/flow',
+                            "text": "Project Workflow",
+                            "link": "/flow"
                         },
                         {
-                            text: '项目管理',
-                            link: '/management',
+                            "text": "Project Management",
+                            "link": "/management"
                         },
                         {
-                            text: '模块管理',
-                            link: '/module',
+                            "text": "Module Management",
+                            "link": "/module"
                         },
                         {
-                            text: '标签管理',
-                            link: '/tag',
+                            "text": "Tag Management",
+                            "link": "/tag"
                         }
                     ]
                 },
                 {
-                    text: '配置',
-                    collapsed: true,
-                    base: '/docs/tester/ui/configuration',
-                    items: [
+                    "text": "Configuration",
+                    "collapsed": true,
+                    "base": "/docs/tester/ui/configuration",
+                    "items": [
                         {
-                            text: '应用配置',
-                            link: '/application',
+                            "text": "Application Configuration",
+                            "link": "/application"
                         },
                         {
-                            text: '指标配置',
-                            link: '/indicator',
+                            "text": "Metrics Configuration",
+                            "link": "/indicator"
                         },
                         {
-                            text: '事件配置',
-                            link: '/event',
+                            "text": "Event Configuration",
+                            "link": "/event"
                         },
                         {
-                            text: '节点配置',
-                            link: '/node',
+                            "text": "Node Configuration",
+                            "link": "/node"
                         },
                         {
-                            text: '代理配置',
-                            link: '/agent',
-                        },
-                    ]
-                },
-                {
-                    text: '看板',
-                    collapsed: true,
-                    base: '/docs/tester/ui/kanban',
-                    items: [
-                        {
-                            text: 'CTO看板',
-                            link: '/cto',
-                        },
-                        {
-                            text: '数据资产看板',
-                            link: '/dataAsset',
-                        },
-                        {
-                            text: '效能统计看板',
-                            link: '/effectivenessStatistics',
-                        },
-                    ]
-                },
-                {
-                    text: '任务',
-                    collapsed: true,
-                    base: '/docs/tester/ui/task',
-                    items: [
-                        {
-                            text: '敏捷开发介绍',
-                            link: '/agileIntroduction',
-                        },
-                        {
-                            text: 'Backlog介绍',
-                            link: '/backlogIntroduction',
-                        },
-                        {
-                            text: 'Backlog管理',
-                            link: '/backlogManagement',
-                        },
-                        {
-                            text: '迭代介绍',
-                            link: '/sprintIntroduction',
-                        },
-                        {
-                            text: '迭代管理',
-                            link: '/sprintManagement',
-                        },
-                        {
-                            text: '研发任务介绍',
-                            link: '/taskIntroduction',
-                        },
-                        {
-                            text: '研发任务管理',
-                            link: '/taskManagement',
-                        },
-                        {
-                            text: '版本管理',
-                            link: '/versionManagement',
-                        },
-                        {
-                            text: '敏捷会议介绍',
-                            link: '/meetingIntroduction',
-                        },
-                        {
-                            text: '敏捷会议管理',
-                            link: '/meetingManagement',
-                        },
-                        {
-                            text: '分析管理',
-                            link: '/analysisManagement',
-                        },
-                    ]
-                },
-                {
-                    text: '功能',
-                    collapsed: true,
-                    base: '/docs/tester/ui/function',
-                    items: [
-                        {
-                            text: '敏捷测试介绍',
-                            link: '/agileIntroduction',
-                        },
-                        {
-                            text: '测试计划介绍',
-                            link: '/planIntroduction',
-                        },
-                        {
-                            text: '测试计划管理',
-                            link: '/planManagement',
-                        },
-                        {
-                            text: '功能用例介绍',
-                            link: '/caseIntroduction',
-                        },
-                        {
-                            text: '功能用例管理',
-                            link: '/caseManagement',
-                        },
-                        {
-                            text: '用例评审介绍',
-                            link: '/reviewIntroduction',
-                        },
-                        {
-                            text: '用例评审管理',
-                            link: '/reviewManagement',
-                        },
-                        {
-                            text: '用例基线介绍',
-                            link: '/baselineIntroduction',
-                        },
-                        {
-                            text: '用例基线管理',
-                            link: '/baselineManagement',
-                        },
-                        {
-                            text: '分析管理',
-                            link: '/analysisManagement',
-                        },
-                    ]
-                },
-                {
-                    text: '接口',
-                    collapsed: true,
-                    base: '/docs/tester/ui/apis',
-                    items: [
-                        {
-                            text: '服务介绍',
-                            link: '/servicesIntroduction',
-                        },
-                        {
-                            text: '服务管理',
-                            link: '/servicesManagement',
-                        },
-                        {
-                            text: '接口介绍',
-                            link: '/apisIntroduction',
-                        },
-                        {
-                            text: '接口管理',
-                            link: '/apisManagement',
-                        },
-                        {
-                            text: '设计介绍',
-                            link: '/designIntroduction',
-                        },
-                        {
-                            text: '设计管理',
-                            link: '/designManagement',
-                        },
-                        {
-                            text: '分享介绍',
-                            link: '/shareIntroduction',
-                        },
-                        {
-                            text: '分享管理',
-                            link: '/shareManagement',
-                        },
-                        {
-                            text: '服务器介绍',
-                            link: '/serverIntroduction',
-                        },
-                        {
-                            text: '服务器管理',
-                            link: '/serverManagement',
-                        },
-                    ]
-                },
-                {
-                    text: '场景',
-                    collapsed: true,
-                    base: '/docs/tester/ui/scenarios',
-                    items: [
-                        {
-                            text: '场景介绍',
-                            link: '/introduction',
-                        },
-                        {
-                            text: '场景管理',
-                            link: '/management',
-                        },
-                        {
-                            text: '场景监控介绍',
-                            link: '/monitorIntroduction',
-                        },
-                        {
-                            text: '场景监控管理',
-                            link: '/monitorManagement',
+                            "text": "Agent Configuration",
+                            "link": "/agent"
                         }
                     ]
                 },
                 {
-                    text: '脚本',
-                    collapsed: true,
-                    base: '/docs/tester/ui/script',
-                    items: [
+                    "text": "Dashboards",
+                    "collapsed": true,
+                    "base": "/docs/tester/ui/kanban",
+                    "items": [
                         {
-                            text: '脚本介绍',
-                            link: '/introduction',
+                            "text": "CTO Dashboard",
+                            "link": "/cto"
                         },
                         {
-                            text: '脚本管理',
-                            link: '/management',
+                            "text": "Data Assets Dashboard",
+                            "link": "/dataAsset"
                         },
+                        {
+                            "text": "Efficiency Statistics Dashboard",
+                            "link": "/effectivenessStatistics"
+                        }
                     ]
                 },
                 {
-                    text: '数据',
-                    collapsed: true,
-                    base: '/docs/tester/ui/data',
-                    items: [
+                    "text": "Tasks",
+                    "collapsed": true,
+                    "base": "/docs/tester/ui/task",
+                    "items": [
                         {
-                            text: '数据介绍',
-                            link: '/introduction',
+                            "text": "Agile Development Introduction",
+                            "link": "/agileIntroduction"
                         },
                         {
-                            text: '变量管理',
-                            link: '/variable',
+                            "text": "Backlog Introduction",
+                            "link": "/backlogIntroduction"
                         },
                         {
-                            text: '数据集管理',
-                            link: '/dataset',
+                            "text": "Backlog Management",
+                            "link": "/backlogManagement"
                         },
                         {
-                            text: '文件管理',
-                            link: '/file',
+                            "text": "Sprint Introduction",
+                            "link": "/sprintIntroduction"
                         },
                         {
-                            text: '数据源管理',
-                            link: '/datasource',
+                            "text": "Sprint Management",
+                            "link": "/sprintManagement"
                         },
+                        {
+                            "text": "Development Tasks Introduction",
+                            "link": "/taskIntroduction"
+                        },
+                        {
+                            "text": "Development Tasks Management",
+                            "link": "/taskManagement"
+                        },
+                        {
+                            "text": "Version Management",
+                            "link": "/versionManagement"
+                        },
+                        {
+                            "text": "Agile Meetings Introduction",
+                            "link": "/meetingIntroduction"
+                        },
+                        {
+                            "text": "Agile Meetings Management",
+                            "link": "/meetingManagement"
+                        },
+                        {
+                            "text": "Analysis Management",
+                            "link": "/analysisManagement"
+                        }
                     ]
                 },
                 {
-                    text: '执行',
-                    collapsed: true,
-                    base: '/docs/tester/ui/execution',
-                    items: [
+                    "text": "Functionalities",
+                    "collapsed": true,
+                    "base": "/docs/tester/ui/function",
+                    "items": [
                         {
-                            text: '执行介绍',
-                            link: '/introduction',
+                            "text": "Agile Testing Introduction",
+                            "link": "/agileIntroduction"
                         },
                         {
-                            text: '执行管理',
-                            link: '/management',
+                            "text": "Test Plans Introduction",
+                            "link": "/planIntroduction"
                         },
+                        {
+                            "text": "Test Plans Management",
+                            "link": "/planManagement"
+                        },
+                        {
+                            "text": "Functional Test Cases Introduction",
+                            "link": "/caseIntroduction"
+                        },
+                        {
+                            "text": "Functional Test Cases Management",
+                            "link": "/caseManagement"
+                        },
+                        {
+                            "text": "Test Case Reviews Introduction",
+                            "link": "/reviewIntroduction"
+                        },
+                        {
+                            "text": "Test Case Reviews Management",
+                            "link": "/reviewManagement"
+                        },
+                        {
+                            "text": "Test Case Baselines Introduction",
+                            "link": "/baselineIntroduction"
+                        },
+                        {
+                            "text": "Test Case Baselines Management",
+                            "link": "/baselineManagement"
+                        },
+                        {
+                            "text": "Analysis Management",
+                            "link": "/analysisManagement"
+                        }
                     ]
                 },
                 {
-                    text: 'Mock',
-                    collapsed: true,
-                    base: '/docs/tester/ui/mock',
-                    items: [
+                    "text": "APIs",
+                    "collapsed": true,
+                    "base": "/docs/tester/ui/apis",
+                    "items": [
                         {
-                            text: 'Mock服务介绍',
-                            link: '/introduction',
+                            "text": "Services Introduction",
+                            "link": "/servicesIntroduction"
                         },
                         {
-                            text: 'Mock服务管理',
-                            link: '/management',
+                            "text": "Services Management",
+                            "link": "/servicesManagement"
                         },
                         {
-                            text: 'Mock接口管理',
-                            link: '/apisManagement',
+                            "text": "APIs Introduction",
+                            "link": "/apisIntroduction"
                         },
+                        {
+                            "text": "APIs Management",
+                            "link": "/apisManagement"
+                        },
+                        {
+                            "text": "Design Introduction",
+                            "link": "/designIntroduction"
+                        },
+                        {
+                            "text": "Design Management",
+                            "link": "/designManagement"
+                        },
+                        {
+                            "text": "Sharing Introduction",
+                            "link": "/shareIntroduction"
+                        },
+                        {
+                            "text": "Sharing Management",
+                            "link": "/shareManagement"
+                        },
+                        {
+                            "text": "Servers Introduction",
+                            "link": "/serverIntroduction"
+                        },
+                        {
+                            "text": "Servers Management",
+                            "link": "/serverManagement"
+                        }
                     ]
                 },
                 {
-                    text: '报告',
-                    collapsed: true,
-                    base: '/docs/tester/ui/report',
-                    items: [
+                    "text": "Scenarios",
+                    "collapsed": true,
+                    "base": "/docs/tester/ui/scenarios",
+                    "items": [
                         {
-                            text: '报告介绍',
-                            link: '/introduction',
+                            "text": "Scenarios Introduction",
+                            "link": "/introduction"
                         },
                         {
-                            text: '报告管理',
-                            link: '/management',
+                            "text": "Scenarios Management",
+                            "link": "/management"
                         },
+                        {
+                            "text": "Scenario Monitoring Introduction",
+                            "link": "/monitorIntroduction"
+                        },
+                        {
+                            "text": "Scenario Monitoring Management",
+                            "link": "/monitorManagement"
+                        }
+                    ]
+                },
+                {
+                    "text": "Scripts",
+                    "collapsed": true,
+                    "base": "/docs/tester/ui/script",
+                    "items": [
+                        {
+                            "text": "Scripts Introduction",
+                            "link": "/introduction"
+                        },
+                        {
+                            "text": "Scripts Management",
+                            "link": "/management"
+                        }
+                    ]
+                },
+                {
+                    "text": "Data",
+                    "collapsed": true,
+                    "base": "/docs/tester/ui/data",
+                    "items": [
+                        {
+                            "text": "Data Introduction",
+                            "link": "/introduction"
+                        },
+                        {
+                            "text": "Variables Management",
+                            "link": "/variable"
+                        },
+                        {
+                            "text": "Datasets Management",
+                            "link": "/dataset"
+                        },
+                        {
+                            "text": "Files Management",
+                            "link": "/file"
+                        },
+                        {
+                            "text": "Data Sources Management",
+                            "link": "/datasource"
+                        }
+                    ]
+                },
+                {
+                    "text": "Execution",
+                    "collapsed": true,
+                    "base": "/docs/tester/ui/execution",
+                    "items": [
+                        {
+                            "text": "Execution Introduction",
+                            "link": "/introduction"
+                        },
+                        {
+                            "text": "Execution Management",
+                            "link": "/management"
+                        }
+                    ]
+                },
+                {
+                    "text": "Mock",
+                    "collapsed": true,
+                    "base": "/docs/tester/ui/mock",
+                    "items": [
+                        {
+                            "text": "Mock Services Introduction",
+                            "link": "/introduction"
+                        },
+                        {
+                            "text": "Mock Services Management",
+                            "link": "/management"
+                        },
+                        {
+                            "text": "Mock APIs Management",
+                            "link": "/apisManagement"
+                        }
+                    ]
+                },
+                {
+                    "text": "Reports",
+                    "collapsed": true,
+                    "base": "/docs/tester/ui/report",
+                    "items": [
+                        {
+                            "text": "Reports Introduction",
+                            "link": "/introduction"
+                        },
+                        {
+                            "text": "Reports Management",
+                            "link": "/management"
+                        }
                     ]
                 }
             ]
         },
         {
-            text: '产品指标',
-            collapsed: true,
-            base: '/docs/tester/indicator',
-            items: [
+            "text": "Product Metrics",
+            "collapsed": true,
+            "base": "/docs/tester/indicator",
+            "items": [
                 {
-                    text: '研发管理指标',
-                    link: '/RD',
+                    "text": "R&D Management Metrics",
+                    "link": "/RD"
                 },
                 {
-                    text: '测试管理指标',
-                    link: '/testing',
+                    "text": "Test Management Metrics",
+                    "link": "/testing"
                 },
                 {
-                    text: '性能测试指标',
-                    link: '/performance',
+                    "text": "Performance Testing Metrics",
+                    "link": "/performance"
                 },
                 {
-                    text: '节点监控指标',
-                    link: '/node',
+                    "text": "Node Monitoring Metrics",
+                    "link": "/node"
                 }
             ]
         },
         {
-            text: '测试定义',
-            collapsed: true,
-            base: '/docs/tester/testing',
-            items: [
+            "text": "Test Definition",
+            "collapsed": true,
+            "base": "/docs/tester/testing",
+            "items": [
                 {
-                    text: '测试定义',
-                    link: '/definition',
+                    "text": "Test Definition",
+                    "link": "/definition"
                 },
                 {
-                    text: '测试示例',
-                    link: '/demo',
+                    "text": "Test Examples",
+                    "link": "/demo"
                 },
                 {
-                    text: '测试服务',
-                    link: '/service',
+                    "text": "Test Services",
+                    "link": "/service"
                 }
             ]
         },
         {
-            text: '测试规范',
-            collapsed: true,
-            items: [
+            "text": "Test Specifications",
+            "collapsed": true,
+            "items": [
                 {
-                    text: '规范介绍',
-                    link: '/docs/tester/specification/introduction',
+                    "text": "Specification Introduction",
+                    "link": "/docs/tester/specification/introduction"
                 },
                 {
-                    text: '规范内容',
-                    collapsed: true,
-                    base: '/docs/tester/specification/content',
-                    items: [
+                    "text": "Specification Content",
+                    "collapsed": true,
+                    "base": "/docs/tester/specification/content",
+                    "items": [
                         {
-                            text: '规范',
-                            link: '/specification',
+                            "text": "Specification",
+                            "link": "/specification"
                         },
                         {
-                            text: 'Api版本',
-                            link: '/apiVersion',
+                            "text": "API Version",
+                            "link": "/apiVersion"
                         },
                         {
-                            text: '元信息',
-                            link: '/info',
+                            "text": "Metadata",
+                            "link": "/info"
                         },
                         {
-                            text: '标签',
-                            link: '/tag',
+                            "text": "Tags",
+                            "link": "/tag"
                         },
                         {
-                            text: '类型',
-                            link: '/type',
+                            "text": "Types",
+                            "link": "/type"
                         },
                         {
-                            text: '插件',
-                            link: '/plugin',
+                            "text": "Plugins",
+                            "link": "/plugin"
                         },
                         {
-                            text: '执行配置',
-                            link: '/executionConfiguration',
+                            "text": "Execution Configuration",
+                            "link": "/executionConfiguration"
                         },
                         {
-                            text: '任务',
-                            collapsed: true,
-                            link: '/task',
-                            base: '/docs/tester/specification/content',
-                            items: [
+                            "text": "Tasks",
+                            "collapsed": true,
+                            "link": "/task",
+                            "base": "/docs/tester/specification/content",
+                            "items": [
                                 {
-                                    text: '插件配置参数',
-                                    link: '/task/pluginConfiguration',
+                                    "text": "Plugin Configuration Parameters",
+                                    "link": "/task/pluginConfiguration"
                                 },
                                 {
-                                    text: '测试任务编排',
-                                    collapsed: true,
-                                    base: '/docs/tester/specification/content/task/elements',
-                                    items: [
+                                    "text": "Test Task Orchestration",
+                                    "collapsed": true,
+                                    "base": "/docs/tester/specification/content/task/elements",
+                                    "items": [
                                         {
-                                            text: '控制器元素',
-                                            link: '/controller',
+                                            "text": "Controller Elements",
+                                            "link": "/controller"
                                         },
                                         {
-                                            text: 'Http测试任务',
-                                            link: '/http',
+                                            "text": "HTTP Test Tasks",
+                                            "link": "/http"
                                         },
                                         {
-                                            text: 'WebSocket测试任务',
-                                            link: '/websocket',
+                                            "text": "WebSocket Test Tasks",
+                                            "link": "/websocket"
                                         },
                                         {
-                                            text: 'Jdbc测试任务',
-                                            link: '/jdbc',
+                                            "text": "JDBC Test Tasks",
+                                            "link": "/jdbc"
                                         },
                                         {
-                                            text: 'Ftp测试任务',
-                                            link: '/ftp',
+                                            "text": "FTP Test Tasks",
+                                            "link": "/ftp"
                                         },
                                         {
-                                            text: 'Ldap测试任务',
-                                            link: '/ldap',
+                                            "text": "LDAP Test Tasks",
+                                            "link": "/ldap"
                                         },
                                         {
-                                            text: 'Mail测试任务',
-                                            link: '/mail',
+                                            "text": "Mail Test Tasks",
+                                            "link": "/mail"
                                         },
                                         {
-                                            text: 'Smtp测试任务',
-                                            link: '/smtp',
+                                            "text": "SMTP Test Tasks",
+                                            "link": "/smtp"
                                         },
                                         {
-                                            text: 'Tcp测试任务',
-                                            link: '/tcp',
-                                        },
+                                            "text": "TCP Test Tasks",
+                                            "link": "/tcp"
+                                        }
                                     ]
                                 },
                                 {
-                                    text: '模拟数据任务',
-                                    link: '/task/mockDataTask',
+                                    "text": "Mock Data Tasks",
+                                    "link": "/task/mockDataTask"
                                 },
                                 {
-                                    text: '模拟接口任务',
-                                    link: '/task/mockApisTask',
+                                    "text": "Mock API Tasks",
+                                    "link": "/task/mockApisTask"
                                 },
                                 {
-                                    text: '参数化',
-                                    link: '/task/parameterization',
-                                },
+                                    "text": "Parameterization",
+                                    "link": "/task/parameterization"
+                                }
                             ]
                         },
                         {
-                            text: '扩展字段',
-                            link: '/extension',
+                            "text": "Extension Fields",
+                            "link": "/extension"
                         }
                     ]
                 }
             ]
         },
         {
-            text: 'Mock',
-            collapsed: true,
-            base: '/docs/tester/mock',
-            items: [
+            "text": "Mock",
+            "collapsed": true,
+            "base": "/docs/tester/mock",
+            "items": [
                 {
-                    text: '模拟服务',
-                    link: '/service',
+                    "text": "Mock Services",
+                    "link": "/service"
                 },
                 {
-                    text: '模拟接口',
-                    link: '/api',
+                    "text": "Mock APIs",
+                    "link": "/api"
                 },
                 {
-                    text: '模拟数据',
-                    link: '/data',
+                    "text": "Mock Data",
+                    "link": "/data"
                 },
                 {
-                    text: '模拟函数',
-                    link: '/function',
+                    "text": "Mock Functions",
+                    "link": "/function"
                 }
             ]
         },
         {
-            text: '命令行 (CLI)',
-            link: '/docs/tester/command/AngusRunner',
+            "text": "Command Line (CLI)",
+            "link": "/docs/tester/command/AngusRunner"
         },
         {
-            text: '常见问题 (FAQ)',
-            collapsed: true,
-            base: '/docs/tester/faq',
-            items: [
+            "text": "Frequently Asked Questions (FAQ)",
+            "collapsed": true,
+            "base": "/docs/tester/faq",
+            "items": [
                 {
-                    text: 'Backlog相关问题',
-                    link: '/backlog',
+                    "text": "Backlog Related Questions",
+                    "link": "/backlog"
                 },
                 {
-                    text: '产品迭代相关问题',
-                    link: '/sprint',
+                    "text": "Product Iteration Related Questions",
+                    "link": "/sprint"
                 },
                 {
-                    text: '安装部署相关问题',
-                    link: '/deployment',
+                    "text": "Installation and Deployment Related Questions",
+                    "link": "/deployment"
                 },
                 {
-                    text: '执行相关问题',
-                    link: '/execution',
+                    "text": "Execution Related Questions",
+                    "link": "/execution"
                 },
                 {
-                    text: '报告相关问题',
-                    link: '/report',
-                },
+                    "text": "Report Related Questions",
+                    "link": "/report"
+                }
             ]
         }
     ]
