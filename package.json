@@ -24,9 +24,10 @@
     "dayjs": "^1.11.13",
     "js-cookie": "^3.0.5",
     "sitemap": "^8.0.0",
-    "vitepress": "^1.6.3"
+    "vitepress": "^1.6.3",
+    "vitepress-plugin-image-viewer": "^1.1.6"
   },
   "dependencies": {
-    "vitepress-plugin-image-viewer": "^1.1.6"
+    "vitepress-plugin-group-icons": "^1.6.0"
   }
 }

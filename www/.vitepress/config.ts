@@ -3,6 +3,9 @@ import server from './dev-server';
 import {enLocaleConfig} from './config/en'
 import {zhLocaleConfig} from './config/zh'
 
+// plugin group-icons
+import {groupIconMdPlugin, groupIconVitePlugin} from 'vitepress-plugin-group-icons'
+
 export default defineConfig({
     title: 'XCan Cloud',
 
@@ -37,7 +40,10 @@ export default defineConfig({
         ['meta', {name: 'author', content: 'XCan Teams'}],
         ['meta', {property: 'og:type', content: 'website'}],
         ['meta', {name: 'og:title', content: 'XCan Cloud - AngusTester'}],
-        ['meta', {name: 'og:description', content: "Enable small and medium-sized enterprises to build their own R&D platform · Standardize processes · Improve efficiency"}],
+        ['meta', {
+            name: 'og:description',
+            content: "Enable small and medium-sized enterprises to build their own R&D platform · Standardize processes · Improve efficiency"
+        }],
         ['meta', {property: 'og:site_name', content: 'XCan Cloud'}],
         ['meta', {property: 'og:image', content: 'https://www.xcan.cloud/angustester-og.jpeg'}],
         ['meta', {property: 'og:url', content: 'https://www.xcan.cloud'}],
@@ -69,7 +75,17 @@ export default defineConfig({
         fa: {label: 'فارسی', lang: 'fa'}             // 波斯语
     },
 
+    markdown: {
+        config(md) {
+            md.use(groupIconMdPlugin)
+        },
+    },
+
     vite: {
+        plugins: [
+            groupIconVitePlugin()
+        ],
+
         server: server
     }
 })

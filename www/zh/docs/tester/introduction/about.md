@@ -46,4 +46,22 @@ AngusTester功能架构图提供了产品各个功能模块之间关系的清晰
 ![](./images/AngusTester-Function.png)
 
 
+## Installation
 
+::: code-group
+
+```bash [pnpm]
+pnpm add -D unocss
+```
+
+```bash [yarn]
+yarn add -D unocss
+```
+
+```bash [npm]
+npm install -D unocss
+```
+
+```bash [bun]
+bun add -D unocss
+```
