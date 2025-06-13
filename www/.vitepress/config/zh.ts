@@ -16,7 +16,7 @@ export const zhLocaleConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
         },
         footer: {
             message: '基于 GPL-3.0 许可发布',
-            copyright: `版权所有 © 2019-${new Date().getFullYear()} 晓蚕云`
+            copyright: `版权所有 © 2021-${new Date().getFullYear()} 晓蚕云`
         },
 
         outline: {
