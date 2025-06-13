@@ -6,9 +6,9 @@ import {zhLocaleConfig} from './config/zh'
 export default defineConfig({
     title: 'XCan Cloud',
 
-    // rewrites: {
-    //     'en/:rest*': ':rest*'
-    // },
+    rewrites: {
+        'en/:rest*': ':rest*'
+    },
 
     lastUpdated: true,
     cleanUrls: true,
