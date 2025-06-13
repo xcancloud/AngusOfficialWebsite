@@ -16,14 +16,17 @@
     "check:links": "vitepress build --failOnDedLinks"
   },
   "devDependencies": {
-    "sitemap": "^8.0.0",
-    "vitepress": "^1.6.3",
     "@fingerprintjs/fingerprintjs": "^4.6.2",
     "@xcan-angus/tools": "^1.0.0",
     "@xcan-angus/vue-ui": "^1.0.0",
     "ant-design-vue": "^4.2.6",
     "axios": "^1.9.0",
     "dayjs": "^1.11.13",
-    "js-cookie": "^3.0.5"
+    "js-cookie": "^3.0.5",
+    "sitemap": "^8.0.0",
+    "vitepress": "^1.6.3"
+  },
+  "dependencies": {
+    "vitepress-plugin-image-viewer": "^1.1.6"
   }
 }

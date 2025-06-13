@@ -31,19 +31,19 @@ AngusTester（简称 Tester）可以帮助软件研发团队高效且可持续�
 
 AngusTester系统架构图包含了主要应用、服务、组件之间关系以及数据流，可以帮助您更全面了解AngusTester快速完成部署。
 
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AngusTester-Art.png?fid=223372925418340382&fpt=B9KeNQV6yo93OftWYpnkc16ImPlZhVy3ngEi7jeu)
+![](./images/AngusTester-Art.png)
 
 - 流程
 
 AngusTester流程架构展示产品的工作流程和各环节之间的关系，帮助团队成员快速理解整体运作。
 
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AngusTester%E6%B5%81%E7%A8%8B%E6%9E%B6%E6%9E%84.png?fid=251751417168003097&fpt=1LcRkDRnLSdvy9ACFxJzu64yEGi7hqu2dCTunibr)
+![](./images/AngusTester-Flow.png)
 
 - 功能
 
 AngusTester功能架构图提供了产品各个功能模块之间关系的清晰视觉表示，帮助团队快速理解产品的整体结构。
 
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AngusTester%E5%8A%9F%E8%83%BD%E6%9E%B6%E6%9E%84.png?fid=251751417168003095&fpt=DwYK7Z0Ht2bPqMKY9V8jlhQt91syVXUoZQyiWbr6)
+![](./images/AngusTester-Function.png)
 
 
 
