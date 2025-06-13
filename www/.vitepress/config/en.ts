@@ -11,8 +11,8 @@ export const enLocaleConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
     themeConfig: {
         nav: nav(),
         sidebar: {
-            '/en/docs/gm/': {base: '/en/docs/gm/', items: gmDocsSidebar()},
-            '/en/docs/tester/': {base: '/en/docs/tester/', items: testerDocsSidebar()}
+            '/docs/gm/': {base: '/docs/gm/', items: gmDocsSidebar()},
+            '/docs/tester/': {base: '/docs/tester/', items: testerDocsSidebar()}
         },
         footer: {
             message: 'Released under the GPL-3.0 License.',
@@ -36,31 +36,31 @@ function nav(): DefaultTheme.NavItem[] {
                     items: [
                         {
                             text: 'AngusGM',
-                            link: '/en/docs/gm/introduction/about',
-                            activeMatch: '/en/docs/gm/'
+                            link: '/docs/gm/introduction/about',
+                            activeMatch: '/docs/gm/'
                         },
                         {
                             text: 'AngusTester',
-                            link: '/en/docs/tester/introduction/about',
-                            activeMatch: '/en/docs/tester/'
+                            link: '/docs/tester/introduction/about',
+                            activeMatch: '/docs/tester/'
                         }
                     ]
                 },
                 {
                     text: 'Getting Started',
-                    link: '/en/gettingStarted'
+                    link: '/gettingStarted'
                 },
                 {
                     text: 'Quick Deployment',
-                    link: '/en/deployment'
+                    link: '/deployment'
                 },
                 {
                     text: 'Technical Support',
-                    link: '/en/support'
+                    link: '/support'
                 },
                 {
                     text: 'FAQ',
-                    link: '/en/faq'
+                    link: '/faq'
                 }
             ]
         },
@@ -69,17 +69,17 @@ function nav(): DefaultTheme.NavItem[] {
             items: [
                 {
                     text: 'Business',
-                    link: '/en/scenario/business'
+                    link: '/scenario/business'
                 },
                 {
                     text: 'AI',
-                    link: '/en/scenario/ai'
+                    link: '/scenario/ai'
                 }
             ]
         },
-        {text: 'Blog', link: '/en/blog'},
-        {text: 'Video', link: '/en/video'},
-        {text: 'Pricing', link: '/en/pricing'}
+        {text: 'Blog', link: '/blog'},
+        {text: 'Video', link: '/video'},
+        {text: 'Pricing', link: '/pricing'}
     ]
 }
 
@@ -91,19 +91,19 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
             items: [
                 {
                     text: 'About',
-                    link: '/en/docs/gm/introduction/about',
+                    link: '/docs/gm/introduction/about',
                 },
                 {
                     text: 'Feature',
-                    link: '/en/docs/gm/introduction/feature',
+                    link: '/docs/gm/introduction/feature',
                 },
                 {
                     text: 'Concepts',
-                    link: '/en/docs/gm/introduction/concepts',
+                    link: '/docs/gm/introduction/concepts',
                 },
                 {
                     text: 'Quotas',
-                    link: '/en/docs/gm/introduction/quotas',
+                    link: '/docs/gm/introduction/quotas',
                 }
             ]
         },
@@ -114,7 +114,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                     text: 'User',
                     link: '/overview',
                     collapsed: true,
-                    base: '/en/docs/gm/organization/user',
+                    base: '/docs/gm/organization/user',
                     items: [
                         {
                             "text": "Add User",
@@ -174,7 +174,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                     text: 'Department',
                     link: '/overview',
                     collapsed: true,
-                    base: '/en/docs/gm/organization/department',
+                    base: '/docs/gm/organization/department',
                     items: [
                         {
                             "text": "Add Department",
@@ -222,7 +222,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                     text: 'Group',
                     link: '/overview',
                     collapsed: true,
-                    base: '/en/docs/gm/organization/group',
+                    base: '/docs/gm/organization/group',
                     items: [
                         {
                             "text": "Add Group",
@@ -266,7 +266,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                     text: 'Tag',
                     link: '/overview',
                     collapsed: true,
-                    base: '/en/docs/gm/organization/tag',
+                    base: '/docs/gm/organization/tag',
                     items: [
                         {
                             "text": "Add Tag",
@@ -299,7 +299,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                     text: 'Permission Policy',
                     link: '/overview',
                     collapsed: true,
-                    base: '/en/docs/gm/permissions/policy',
+                    base: '/docs/gm/permissions/policy',
                     items: [
                         {
                             "text": "Add Permission Policy",
@@ -339,7 +339,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                     text: 'View Permissions',
                     link: '/overview',
                     collapsed: true,
-                    base: '/en/docs/gm/permissions/view',
+                    base: '/docs/gm/permissions/view',
                     items: [
                         {
                             "text": "View User Permissions",
@@ -375,7 +375,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     text: 'Notice',
                     collapsed: true,
-                    base: '/en/docs/gm/messages/notice',
+                    base: '/docs/gm/messages/notice',
                     link: '/overview',
                     items: [
                         {
@@ -399,7 +399,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     text: 'Message',
                     collapsed: true,
-                    base: '/en/docs/gm/messages/messages',
+                    base: '/docs/gm/messages/messages',
                     link: '/overview',
                     items: [
                         {
@@ -424,7 +424,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     text: 'Cloud Store',
                     collapsed: true,
-                    base: '/en/docs/gm/store/cloudStore',
+                    base: '/docs/gm/store/cloudStore',
                     link: '/overview',
                     items: [
                         {
@@ -440,7 +440,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     text: 'My Goods',
                     collapsed: true,
-                    base: '/en/docs/gm/store/myGoods',
+                    base: '/docs/gm/store/myGoods',
                     link: '/overview',
                     items: [
                         {
@@ -456,7 +456,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     text: 'My License',
                     collapsed: true,
-                    base: '/en/docs/gm/store/myLicense',
+                    base: '/docs/gm/store/myLicense',
                     link: '/overview',
                     items: [
                         {
@@ -476,12 +476,12 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
             items: [
                 {
                     "text": "System Version",
-                    "link": "/en/docs/gm/system/systemVersion/overview"
+                    "link": "/docs/gm/system/systemVersion/overview"
                 },
                 {
                     "text": "Real-name Authentication",
                     "collapsed": true,
-                    "base": "/en/docs/gm/system/realName",
+                    "base": "/docs/gm/system/realName",
                     "link": "/overview",
                     "items": [
                         {
@@ -497,7 +497,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     "text": "Security Settings",
                     "collapsed": true,
-                    "base": "/en/docs/gm/system/securitySetting",
+                    "base": "/docs/gm/system/securitySetting",
                     "link": "/overview",
                     "items": [
                         {
@@ -529,7 +529,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                         {
                             "text": "Mail Server",
                             "collapsed": true,
-                            "base": "/en/docs/gm/system/email/server",
+                            "base": "/docs/gm/system/email/server",
                             "link": "/overview",
                             "items": [
                                 {
@@ -557,7 +557,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                         {
                             "text": "Sending Records",
                             "collapsed": true,
-                            "base": "/en/docs/gm/system/email/record",
+                            "base": "/docs/gm/system/email/record",
                             "link": "/overview",
                             "items": [
                                 {
@@ -579,7 +579,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                         {
                             "text": "SMS Channel",
                             "collapsed": true,
-                            "base": "/en/docs/gm/system/sms/channel",
+                            "base": "/docs/gm/system/sms/channel",
                             "link": "/overview",
                             "items": [
                                 {
@@ -599,7 +599,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                         {
                             "text": "SMS Template",
                             "collapsed": true,
-                            "base": "/en/docs/gm/system/sms/template",
+                            "base": "/docs/gm/system/sms/template",
                             "link": "/overview",
                             "items": [
                                 {
@@ -615,7 +615,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                         {
                             "text": "Sending Records",
                             "collapsed": true,
-                            "base": "/en/docs/gm/system/sms/record",
+                            "base": "/docs/gm/system/sms/record",
                             "link": "/overview",
                             "items": [
                                 {
@@ -637,7 +637,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                         {
                             "text": "Receiving Channels",
                             "collapsed": true,
-                            "base": "/en/docs/gm/system/event/channel",
+                            "base": "/docs/gm/system/event/channel",
                             "link": "/overview",
                             "items": [
                                 {
@@ -661,7 +661,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                         {
                             "text": "Event Template",
                             "collapsed": true,
-                            "base": "/en/docs/gm/system/event/template",
+                            "base": "/docs/gm/system/event/template",
                             "link": "/overview",
                             "items": [
                                 {
@@ -677,7 +677,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                         {
                             "text": "Event Records",
                             "collapsed": true,
-                            "base": "/en/docs/gm/system/event/record",
+                            "base": "/docs/gm/system/event/record",
                             "link": "/overview",
                             "items": [
                                 {
@@ -699,7 +699,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                         {
                             "text": "Operation Logs",
                             "collapsed": true,
-                            "base": "/en/docs/gm/system/log/operation",
+                            "base": "/docs/gm/system/log/operation",
                             "link": "/overview",
                             "items": [
                                 {
@@ -716,7 +716,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                         {
                             "text": "Request Logs",
                             "collapsed": true,
-                            "base": "/en/docs/gm/system/log/request",
+                            "base": "/docs/gm/system/log/request",
                             "link": "/overview",
                             "items": [
                                 {
@@ -734,7 +734,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     "text": "LDAP",
                     "collapsed": true,
-                    "base": "/en/docs/gm/system/ldap",
+                    "base": "/docs/gm/system/ldap",
                     "link": "/overview",
                     "items": [
                         {
@@ -774,7 +774,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     "text": "Resource Quota",
                     "collapsed": true,
-                    "base": "/en/docs/gm/system/resourceQuota",
+                    "base": "/docs/gm/system/resourceQuota",
                     "link": "/overview",
                     "items": [
                         {
@@ -794,7 +794,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     "text": "Application Storage",
                     "collapsed": true,
-                    "base": "/en/docs/gm/system/appStorage",
+                    "base": "/docs/gm/system/appStorage",
                     "link": "/overview",
                     "items": [
                         {
@@ -814,7 +814,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     "text": "Online Users",
                     "collapsed": true,
-                    "base": "/en/docs/gm/system/onlineUser",
+                    "base": "/docs/gm/system/onlineUser",
                     "link": "/overview",
                     "items": [
                         {
@@ -830,7 +830,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     "text": "Appearance",
                     "collapsed": true,
-                    "base": "/en/docs/gm/system/appearance",
+                    "base": "/docs/gm/system/appearance",
                     "link": "/overview",
                     "items": [
                         {
@@ -846,7 +846,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     "text": "System Tokens",
                     "collapsed": true,
-                    "base": "/en/docs/gm/system/systemToken",
+                    "base": "/docs/gm/system/systemToken",
                     "link": "/overview",
                     "items": [
                         {
@@ -873,7 +873,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
         {
             "text": "AngusTester",
             "collapsed": true,
-            "base": "/en/docs/tester/introduction",
+            "base": "/docs/tester/introduction",
             "items": [
                 {
                     "text": "About the Application",
@@ -908,7 +908,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
         {
             "text": "Application Installation",
             "collapsed": true,
-            "base": "/en/docs/tester/installation",
+            "base": "/docs/tester/installation",
             "items": [
                 {
                     "text": "Prerequisites",
@@ -939,7 +939,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
         {
             "text": "Quick Start",
             "collapsed": true,
-            "base": "/en/docs/tester/quickStarted",
+            "base": "/docs/tester/quickStarted",
             "items": [
                 {
                     "text": "How to Debug Interfaces",
@@ -978,7 +978,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     "text": "Project",
                     "collapsed": true,
-                    "base": "/en/docs/tester/ui/project",
+                    "base": "/docs/tester/ui/project",
                     "items": [
                         {
                             "text": "Project Introduction",
@@ -1005,7 +1005,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     "text": "Configuration",
                     "collapsed": true,
-                    "base": "/en/docs/tester/ui/configuration",
+                    "base": "/docs/tester/ui/configuration",
                     "items": [
                         {
                             "text": "Application Configuration",
@@ -1032,7 +1032,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     "text": "Dashboards",
                     "collapsed": true,
-                    "base": "/en/docs/tester/ui/kanban",
+                    "base": "/docs/tester/ui/kanban",
                     "items": [
                         {
                             "text": "CTO Dashboard",
@@ -1051,7 +1051,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     "text": "Tasks",
                     "collapsed": true,
-                    "base": "/en/docs/tester/ui/task",
+                    "base": "/docs/tester/ui/task",
                     "items": [
                         {
                             "text": "Agile Development Introduction",
@@ -1102,7 +1102,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     "text": "Functionalities",
                     "collapsed": true,
-                    "base": "/en/docs/tester/ui/function",
+                    "base": "/docs/tester/ui/function",
                     "items": [
                         {
                             "text": "Agile Testing Introduction",
@@ -1149,7 +1149,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     "text": "APIs",
                     "collapsed": true,
-                    "base": "/en/docs/tester/ui/apis",
+                    "base": "/docs/tester/ui/apis",
                     "items": [
                         {
                             "text": "Services Introduction",
@@ -1196,7 +1196,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     "text": "Scenarios",
                     "collapsed": true,
-                    "base": "/en/docs/tester/ui/scenarios",
+                    "base": "/docs/tester/ui/scenarios",
                     "items": [
                         {
                             "text": "Scenarios Introduction",
@@ -1219,7 +1219,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     "text": "Scripts",
                     "collapsed": true,
-                    "base": "/en/docs/tester/ui/script",
+                    "base": "/docs/tester/ui/script",
                     "items": [
                         {
                             "text": "Scripts Introduction",
@@ -1234,7 +1234,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     "text": "Data",
                     "collapsed": true,
-                    "base": "/en/docs/tester/ui/data",
+                    "base": "/docs/tester/ui/data",
                     "items": [
                         {
                             "text": "Data Introduction",
@@ -1261,7 +1261,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     "text": "Execution",
                     "collapsed": true,
-                    "base": "/en/docs/tester/ui/execution",
+                    "base": "/docs/tester/ui/execution",
                     "items": [
                         {
                             "text": "Execution Introduction",
@@ -1276,7 +1276,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     "text": "Mock",
                     "collapsed": true,
-                    "base": "/en/docs/tester/ui/mock",
+                    "base": "/docs/tester/ui/mock",
                     "items": [
                         {
                             "text": "Mock Services Introduction",
@@ -1295,7 +1295,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     "text": "Reports",
                     "collapsed": true,
-                    "base": "/en/docs/tester/ui/report",
+                    "base": "/docs/tester/ui/report",
                     "items": [
                         {
                             "text": "Reports Introduction",
@@ -1312,7 +1312,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
         {
             "text": "Product Metrics",
             "collapsed": true,
-            "base": "/en/docs/tester/indicator",
+            "base": "/docs/tester/indicator",
             "items": [
                 {
                     "text": "R&D Management Metrics",
@@ -1335,7 +1335,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
         {
             "text": "Test Definition",
             "collapsed": true,
-            "base": "/en/docs/tester/testing",
+            "base": "/docs/tester/testing",
             "items": [
                 {
                     "text": "Test Definition",
@@ -1357,12 +1357,12 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
             "items": [
                 {
                     "text": "Specification Introduction",
-                    "link": "/en/docs/tester/specification/introduction"
+                    "link": "/docs/tester/specification/introduction"
                 },
                 {
                     "text": "Specification Content",
                     "collapsed": true,
-                    "base": "/en/docs/tester/specification/content",
+                    "base": "/docs/tester/specification/content",
                     "items": [
                         {
                             "text": "Specification",
@@ -1396,7 +1396,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                             "text": "Tasks",
                             "collapsed": true,
                             "link": "/task",
-                            "base": "/en/docs/tester/specification/content",
+                            "base": "/docs/tester/specification/content",
                             "items": [
                                 {
                                     "text": "Plugin Configuration Parameters",
@@ -1405,7 +1405,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                                 {
                                     "text": "Test Task Orchestration",
                                     "collapsed": true,
-                                    "base": "/en/docs/tester/specification/content/task/elements",
+                                    "base": "/docs/tester/specification/content/task/elements",
                                     "items": [
                                         {
                                             "text": "Controller Elements",
@@ -1470,7 +1470,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
         {
             "text": "Mock",
             "collapsed": true,
-            "base": "/en/docs/tester/mock",
+            "base": "/docs/tester/mock",
             "items": [
                 {
                     "text": "Mock Services",
@@ -1492,12 +1492,12 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
         },
         {
             "text": "Command Line (CLI)",
-            "link": "/en/docs/tester/command/AngusRunner"
+            "link": "/docs/tester/command/AngusRunner"
         },
         {
             "text": "Frequently Asked Questions (FAQ)",
             "collapsed": true,
-            "base": "/en/docs/tester/faq",
+            "base": "/docs/tester/faq",
             "items": [
                 {
                     "text": "Backlog Related Questions",
