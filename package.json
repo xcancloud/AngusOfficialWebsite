@@ -1,8 +1,10 @@
 {
   "name": "angusofficialwebsite",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "type": "module",
+  "author": "",
+  "license": "XCBL V1.0",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "vitepress dev www",
@@ -13,13 +15,9 @@
     "docs:build:prod": "ENV_NAME=prod npm run docs:build",
     "check:links": "vitepress build --failOnDedLinks"
   },
-  "author": "",
-  "license": "XCBL V1.0",
   "devDependencies": {
     "sitemap": "^8.0.0",
-    "vitepress": "^1.6.3"
-  },
-  "dependencies": {
+    "vitepress": "^1.6.3",
     "@fingerprintjs/fingerprintjs": "^4.6.2",
     "@xcan-angus/tools": "^1.0.0",
     "@xcan-angus/vue-ui": "^1.0.0",

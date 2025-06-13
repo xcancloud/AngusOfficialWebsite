@@ -1,18 +1,14 @@
 import {defineConfig} from 'vitepress'
 import server from './dev-server';
-import {gmDocsSidebar, nav, testerDocsSidebar} from './menus';
-
-const title = '晓蚕云';
-const description = '晓蚕云官网'
+import {enLocaleConfig} from './config/en'
+import {zhLocaleConfig} from './config/zh'
 
 export default defineConfig({
-    lang: 'zh',
-    title: title,
-    description: description,
+    title: 'XCan Cloud',
 
-    rewrites: {
-        'zh/:rest*': ':rest*'
-    },
+    // rewrites: {
+    //     'en/:rest*': ':rest*'
+    // },
 
     lastUpdated: true,
     cleanUrls: true,
@@ -44,8 +40,8 @@ export default defineConfig({
         ['link', {rel: 'icon', type: 'image/png', href: '/favicon.png'}],
         ['meta', {name: 'author', content: 'XCan Teams'}],
         ['meta', {property: 'og:type', content: 'website'}],
-        ['meta', {name: 'og:title', content: title}],
-        ['meta', {name: 'og:description', content: description}],
+        ['meta', {name: 'og:title', content: 'XCan Cloud - AngusTester'}],
+        ['meta', {name: 'og:description', content: "Enable small and medium-sized enterprises to build their own R&D platform · Standardize processes · Improve efficiency"}],
         ['meta', {property: 'og:site_name', content: 'XCan Cloud'}],
         ['meta', {property: 'og:image', content: 'https://www.xcan.cloud/angustester-og.jpeg'}],
         ['meta', {property: 'og:url', content: 'https://www.xcan.cloud'}],
@@ -57,28 +53,26 @@ export default defineConfig({
         search: {
             provider: 'local',
         },
-        nav: nav,
-        sidebar: {
-            '/docs/gm/': gmDocsSidebar,
-            '/docs/tester/': testerDocsSidebar
-        },
+
         socialLinks: [
             {icon: 'github', link: 'https://github.com/xcancloud'}
         ]
     },
+
     locales: {
-        root: {label: '简体中文'},        // 默认语言
-        en: {label: 'English'},          // 英语
-        fr: {label: 'Français'},         // 法语
-        de: {label: 'Deutsch'},          // 德语
-        ja: {label: '日本語'},            // 日语
-        'zh-TW': {label: '繁體中文'},     // 繁体中文
-        pt: {label: 'Português'},        // 葡萄牙语
-        ru: {label: 'Русский'},          // 俄语
-        es: {label: 'Español'},          // 西班牙语
-        ko: {label: '한국어'},             // 韩语
-        fa: {label: 'فارسی'}             // 波斯语
+        root: {label: 'English', lang: 'en-US', link: '/en/', ...enLocaleConfig},      // 默认英语
+        zh: {label: '简体中文', lang: 'zh-CN', link: '/zh/', ...zhLocaleConfig},      // 简体中文
+        fr: {label: 'Français', lang: 'fr'},         // 法语
+        de: {label: 'Deutsch', lang: 'de'},          // 德语
+        ja: {label: '日本語', lang: 'ja'},            // 日语
+        'zh-TW': {label: '繁體中文', lang: 'zh-TW'},   // 繁体中文
+        pt: {label: 'Português', lang: 'pt'},        // 葡萄牙语
+        ru: {label: 'Русский', lang: 'ru'},          // 俄语
+        es: {label: 'Español', lang: 'es'},          // 西班牙语
+        ko: {label: '한국어', lang: 'ko'},             // 韩语
+        fa: {label: 'فارسی', lang: 'fa'}             // 波斯语
     },
+
     vite: {
         server: server
     }
