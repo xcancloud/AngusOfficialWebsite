@@ -50,7 +50,7 @@ export default defineConfig({
     ],
 
     themeConfig: {
-        logo: {src: '/logo-mini.png', width: 28, height: 28},
+        logo: {src: '/logo-mini.png', width: 22, height: 22},
 
         search: {
             provider: 'local',

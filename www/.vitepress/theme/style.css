@@ -42,8 +42,17 @@
  * - `danger`: Used to show error, or dangerous message to the users. Used
  *   in custom container, badges, etc.
  * -------------------------------------------------------------------------- */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
+  --vp-font-family-base: 'Inter', monospace, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  --vp-c-indigo-1: #6a85e1;
+  --vp-c-indigo-2: #5169bf;
+  --vp-c-indigo-3: #343efe;
+
   --vp-c-default-1: var(--vp-c-gray-1);
   --vp-c-default-2: var(--vp-c-gray-2);
   --vp-c-default-3: var(--vp-c-gray-3);
@@ -83,7 +92,7 @@
   --vp-button-brand-hover-bg: var(--vp-c-brand-2);
   --vp-button-brand-active-border: transparent;
   --vp-button-brand-active-text: var(--vp-c-white);
-  --vp-button-brand-active-bg: var(--vp-c-brand-1);
+  --vp-button-brand-active-bg: var(--vp-button-brand-bg);
 }
 
 /**
@@ -94,14 +103,14 @@
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: -webkit-linear-gradient(
     120deg,
-    #bd34fe 30%,
-    #41d1ff
+    #343efe 30%,
+    #ca9a5a
   );
 
   --vp-home-hero-image-background-image: linear-gradient(
     -45deg,
-    #bd34fe 50%,
-    #47caff 50%
+    #343efe 50%,
+    #ca9a5a 50%
   );
   --vp-home-hero-image-filter: blur(44px);
 }
@@ -135,5 +144,23 @@
 
 .DocSearch {
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
+}
+
+
+/**
+ * Angus Custom
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-font-size-base: 14px;
+  --vp-code-font-size: 13x;
+}
+
+body {
+  font-size: var(--vp-font-size-base);
+}
+
+.vp-doc div[class*='language-'] {
+  font-size: var(--vp-code-font-size);
 }
 

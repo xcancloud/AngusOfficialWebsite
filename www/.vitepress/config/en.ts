@@ -1,7 +1,11 @@
 import type {DefaultTheme, LocaleSpecificConfig} from 'vitepress'
+import {useSidebar} from "vitepress-openapi";
 
 const title = 'XCan Cloud';
 const description = 'AngusTester - Enable small and medium-sized enterprises to build their own R&D platform · Standardize processes · Improve efficiency';
+
+import gmEnSpec from '../../zh/docs/gm/apis/AngusGM-Api.json'; // TODO zh -> en
+import testerEnSpec from '../../zh/docs/tester/apis/AngusTester-Api.json' // TODO zh -> en
 
 export const enLocaleConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
     lang: 'en-US',
@@ -12,7 +16,7 @@ export const enLocaleConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
         nav: nav(),
         sidebar: {
             '/en/docs/gm/': {base: '/en/docs/gm/', items: gmDocsSidebar()},
-            '/en/docs/tester/': {base: '/en/docs/tester/', items: testerDocsSidebar()}
+            '/en/docs/tester/': {base: '/en/docs/tester/', items: testerDocsSidebar()},
         },
         footer: {
             message: 'Released under the GPL-3.0 License.',
@@ -84,6 +88,12 @@ function nav(): DefaultTheme.NavItem[] {
 }
 
 function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
+    const spec = gmEnSpec;
+    const apiSidebar = useSidebar({
+        spec,
+        linkPrefix: '/apis/'
+    });
+
     return [
         {
             text: 'AngusGM',
@@ -931,11 +941,31 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                     link: "/report"
                 }
             ]
+        },
+        {
+            text: "Api References",
+            collapsed: true,
+            items: [
+                {
+                    text: 'Instruction',
+                    link: '/apis/introduction',
+                },
+                {
+                    text: 'Definition',
+                    items: apiSidebar.itemsByTags({linkPrefix: "/apis/"})
+                }
+            ]
         }
     ]
 }
 
 function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
+    const spec = testerEnSpec;
+    const apiSidebar = useSidebar({
+        spec,
+        linkPrefix: '/apis/'
+    });
+
     return [
         {
             text: "AngusTester",
@@ -1559,7 +1589,13 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
         },
         {
             text: "Command Line (CLI)",
-            link: "/command/AngusRunner"
+            collapsed: true,
+            items: [
+                {
+                    text: 'AngusRunner CLI',
+                    link: '/command/AngusRunner'
+                }
+            ]
         },
         {
             text: "Frequently Asked Questions (FAQ)",
@@ -1585,6 +1621,21 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     text: "Report Related Questions",
                     link: "/report"
+                }
+            ]
+        },
+        ,
+        {
+            text: "Api References",
+            collapsed: true,
+            items: [
+                {
+                    text: 'Instruction',
+                    link: '/apis/introduction',
+                },
+                {
+                    text: 'Definition',
+                    items: apiSidebar.itemsByTags({linkPrefix: "/apis/"})
                 }
             ]
         }

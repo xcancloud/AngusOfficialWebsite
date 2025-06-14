@@ -2,35 +2,29 @@
 layout: home
 
 hero:
-  name: "XCan Cloud"
-  text: "A VitePress Site"
-  tagline: My great project tagline
+  name: "AngusTester"
+  text: "让企业快速搭建自己的研发中台"
+  tagline: "智能化 · 敏捷驱动 · 开放源码 · 高性能"
+  image:
+    src: /hero.png
+    alt: AngusTester
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: 免费试用
+      link: /signin
     - theme: alt
-      text: API Examples
-      link: /api-examples
-
-features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+      text: 快速入门
+      link: /zh/gettingStarted
+    - theme: alt
+      text: 下载安装
+      link: /zh/docs/tester/installation/AngusTester
 ---
 
-
-<script setup>
-  import {  defineAsyncComponent } from 'vue';
-  const HomePage = defineAsyncComponent(() => import('../.vitepress/theme/home/index.vue'))
-
-</script>
-<div>
-  <HomePage />
-</div>
-
-
-
+<style>
+@media (min-width: 960px) {
+    [data-v-72cc4481] .image-src {
+        max-width: 390px;
+        max-height: 390px;
+    }
+}
+</style>

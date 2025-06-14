@@ -19,13 +19,19 @@
     "@fingerprintjs/fingerprintjs": "^4.6.2",
     "@xcan-angus/tools": "^1.0.0",
     "@xcan-angus/vue-ui": "^1.0.0",
+    "@egoist/tailwindcss-icons": "^1.7.1",
+    "@iconify-json/mdi": "^1.1.63",
     "ant-design-vue": "^4.2.6",
     "axios": "^1.9.0",
     "dayjs": "^1.11.13",
     "js-cookie": "^3.0.5",
     "sitemap": "^8.0.0",
+    "postcss": "^8.4.38",
+    "autoprefixer": "^10.4.19",
+    "tailwindcss": "^3.4.3",
     "vitepress": "^1.6.3",
-    "vitepress-plugin-image-viewer": "^1.1.6",
-    "vitepress-plugin-group-icons": "^1.6.0"
+    "vitepress-openapi": "^0.0.3-alpha.81",
+    "vitepress-plugin-group-icons": "^1.6.0",
+    "vitepress-plugin-image-viewer": "^1.1.6"
   }
 }

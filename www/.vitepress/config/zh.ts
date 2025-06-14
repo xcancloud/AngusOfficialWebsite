@@ -1,7 +1,10 @@
 import type {DefaultTheme, LocaleSpecificConfig} from 'vitepress'
+import { useSidebar } from 'vitepress-openapi'
 
 const title = '晓蚕云';
 const description = 'AngusTester - 让中小企业搭建自己的研发中台 · 规范流程 · 提升效率'
+import gmZhSpec from '../../zh/docs/gm/apis/AngusGM-Api.json'
+import testerZhSpec from '../../zh/docs/tester/apis/AngusTester-Api.json'
 
 export const zhLocaleConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
     lang: 'zh-CN',
@@ -22,6 +25,11 @@ export const zhLocaleConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
         outline: {
             label: '导航',
             level: "deep"
+        },
+
+        search: {
+            provider: 'local',
+            options: searchOptions()
         },
 
         docFooter: {
@@ -107,6 +115,13 @@ function nav(): DefaultTheme.NavItem[] {
 }
 
 function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
+
+    const spec = gmZhSpec;
+    const apiSidebar = useSidebar({
+        spec,
+        linkPrefix: '/apis/'
+    });
+
     return [
         {
             text: 'AngusGM',
@@ -144,7 +159,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
             ]
         },
         {
-            text: '安装应用',
+            text: '部署应用',
             collapsed: true,
             base: '/zh/docs/gm/installation',
             items: [
@@ -954,11 +969,31 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                     link: '/report',
                 },
             ]
+        },
+        {
+            text: "接口参考",
+            collapsed: true,
+            items: [
+                {
+                    text: '说明',
+                    link: '/apis/introduction',
+                },
+                {
+                    text: '定义',
+                    items: apiSidebar.itemsByTags({linkPrefix: "/apis/"})
+                }
+            ]
         }
     ]
 }
 
 function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
+    const spec = testerZhSpec;
+    const apiSidebar = useSidebar({
+        spec,
+        linkPrefix: '/apis/'
+    });
+
     return [
         {
             text: 'AngusTester',
@@ -996,7 +1031,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
             ]
         },
         {
-            text: '安装应用',
+            text: '部署应用',
             collapsed: true,
             base: '/zh/docs/tester/installation',
             items: [
@@ -1582,7 +1617,13 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
         },
         {
             text: '命令行 (CLI)',
-            link: '/command/AngusRunner',
+            collapsed: true,
+            items: [
+                {
+                    text: 'AngusRunner CLI',
+                    link: '/command/AngusRunner'
+                }
+            ]
         },
         {
             text: '常见问题 (FAQ)',
@@ -1610,6 +1651,64 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                     link: '/report',
                 },
             ]
+        },
+        {
+            text: "接口参考",
+            collapsed: true,
+            items: [
+                {
+                    text: '说明',
+                    link: '/apis/introduction',
+                },
+                {
+                    text: '定义',
+                    items: apiSidebar.itemsByTags({linkPrefix: "/apis/"})
+                }
+            ]
         }
     ]
+}
+
+function searchOptions(): Partial<DefaultTheme.AlgoliaSearchOptions> {
+    return {
+        placeholder: '搜索文档',
+        translations: {
+            button: {
+                buttonText: '搜索文档',
+                buttonAriaLabel: '搜索文档'
+            },
+            modal: {
+                searchBox: {
+                    resetButtonTitle: '清除查询条件',
+                    resetButtonAriaLabel: '清除查询条件',
+                    cancelButtonText: '取消',
+                    cancelButtonAriaLabel: '取消'
+                },
+                startScreen: {
+                    recentSearchesTitle: '搜索历史',
+                    noRecentSearchesText: '没有搜索历史',
+                    saveRecentSearchButtonTitle: '保存至搜索历史',
+                    removeRecentSearchButtonTitle: '从搜索历史中移除',
+                    favoriteSearchesTitle: '收藏',
+                    removeFavoriteSearchButtonTitle: '从收藏中移除'
+                },
+                errorScreen: {
+                    titleText: '无法获取结果',
+                    helpText: '你可能需要检查你的网络连接'
+                },
+                footer: {
+                    selectText: '选择',
+                    navigateText: '切换',
+                    closeText: '关闭',
+                    searchByText: '搜索提供者'
+                },
+                noResultsScreen: {
+                    noResultsText: '无法找到相关结果',
+                    suggestedQueryText: '你可以尝试查询',
+                    reportMissingResultsText: '你认为该查询应该有结果？',
+                    reportMissingResultsLinkText: '点击反馈'
+                }
+            }
+        }
+    }
 }
