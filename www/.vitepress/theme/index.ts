@@ -15,7 +15,7 @@ import vImageViewer from 'vitepress-plugin-image-viewer/lib/vImageViewer.vue';
 import 'virtual:group-icons.css'
 
 // plugin openapi client
-import { theme } from 'vitepress-openapi/client'
+import { theme, useOpenapi } from 'vitepress-openapi/client'
 import 'vitepress-openapi/dist/style.css'
 
 export default {

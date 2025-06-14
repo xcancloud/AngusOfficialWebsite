@@ -6,16 +6,9 @@ title: vitepress-openapi
 
 <script setup>
 import { useRoute } from 'vitepress';
-import { useSidebar } from 'vitepress-openapi';
 import { useTheme } from 'vitepress-openapi/client';
 import { onBeforeMount } from 'vue';
-
-import spec from './AngusTester-Api.json';
-
-const sidebar = useSidebar({
-  spec,
-  linkPrefix: '/apis/',
-});
+import {testerSpec, testerSidebar} from './spec.mjs';
 
 onBeforeMount(() => {
     useTheme({
@@ -29,4 +22,4 @@ const route = useRoute();
 const tag = route.data.params.tag;
 </script>
 
-<OASpec :spec="spec" :tags="[tag]" hide-info hide-servers hide-paths-summary hide-branding />
+<OASpec :spec="testerSpec" :tags="[tag]" hide-info hide-servers hide-paths-summary hide-branding />

@@ -1,5 +1,5 @@
 import { usePaths } from 'vitepress-openapi'
-import spec from './AngusTester-Api.json' with { type: 'json' }
+import {testerSpec as spec} from './spec.mjs';
 
 export default {
     paths() {
