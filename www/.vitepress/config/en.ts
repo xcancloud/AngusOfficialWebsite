@@ -121,10 +121,6 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                     link: '/deployment',
                 },
                 {
-                    text: 'Scenarios',
-                    link: '/scenarios',
-                },
-                {
                     text: 'Quotas',
                     link: '/quotas',
                 }

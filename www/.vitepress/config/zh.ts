@@ -149,10 +149,6 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                     link: '/deployment',
                 },
                 {
-                    text: '应用场景',
-                    link: '/scenarios',
-                },
-                {
                     text: '资源配额',
                     link: '/quotas',
                 }

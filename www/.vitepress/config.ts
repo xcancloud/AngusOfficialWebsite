@@ -1,4 +1,5 @@
-import {defineConfig} from 'vitepress'
+import { withMermaid } from "vitepress-plugin-mermaid";
+
 import server from './dev-server';
 import {enLocaleConfig} from './config/en'
 import {zhLocaleConfig} from './config/zh'
@@ -6,7 +7,7 @@ import {zhLocaleConfig} from './config/zh'
 // plugin group-icons
 import {groupIconMdPlugin, groupIconVitePlugin} from 'vitepress-plugin-group-icons'
 
-export default defineConfig({
+export default withMermaid({
     title: 'XCan Cloud',
 
     lastUpdated: true,
@@ -87,5 +88,9 @@ export default defineConfig({
         ],
 
         server: server
-    }
-})
+    },
+
+    mermaid:{
+        //mermaidConfig !theme here works for light mode since dark theme is forced in dark mode
+    },
+});
