@@ -1,15 +1,57 @@
 {
     "openapi": "3.1.0",
     "info": {
-        "title": "AngusGM RESTFul OpenAPI Documentation",
-        "description": "AngusGM OpenAPI Documentation is a comprehensive, standards-compliant technical reference  that provides detailed specifications for all API endpoints, including authentication methods,  request/response schemas (with JSON/XML examples), HTTP status codes, error handling patterns, and interactive testing capabilities through Swagger UI integration, designed to empower developers  with version-controlled documentation for seamless third-party system integration.\n"
+        "title": "AngusGM RESTful APIs Documentation",
+        "description": "## API Specification\nAngusGM is built on **RESTful design principles** and strictly adheres to the [OpenAPI 3.0](https://swagger.io/specification/v3/) specification format.\n### 1. Protocol Specification\n- **Mandatory HTTPS Usage**  \n  APIs are always served over HTTPS to ensure secure data transmission.  \n  > **Note**: Private deployment customers may not have security certificates configured and require separate handling.\n\n- **API Version Management**  \n  Version numbers are embedded in URL paths:  \n  ```\n  /api/v1/resource\n  /api/v2/resource\n  ```\n\n### 2. Resource Naming Convention\n- Uniformly use **lowercase letters** or **lower camel case naming**   - Examples:  \n  ```\n  /user\n  /productCategories\n  /orderItems\n  ```\n\n### 3. HTTP Method Specification\n  | Method      | Description                              | Success Code | Example                   |\n  |-------------|------------------------------------------|--------------|---------------------------|\n  | **GET**     | Retrieve resources                       | 200          | `GET /users`              |\n  | **POST**    | Create resources                         | 201          | `POST /users`             |\n  | **PUT**     | Replace entire resource (create if absent)| 200          | `PUT /users/{id}`         |\n  | **PATCH**   | Partial resource update                  | 200          | `PATCH /users/{id}`       |\n  | **DELETE**  | Delete resources                         | 204          | `DELETE /users/{id}`      |\n\n**Special Operation Patterns** - Use verbs/adjectives for granular operations:  \n  ```\n  PATCH /users/{id}/enabled   # Enable user\n  POST /orders/{id}/cancel    # Cancel order\n  ```\n\n### 4. Security Authentication\n**OAuth 2.0 Authentication** - Protected resources require authentication header:  \n``` Authorization: Bearer <access_token> ```\n### 5. Request Parameter Specification\n#### Request Headers\n  ```\n  Content-Type: application/json\n  Accept: application/json\n  Authorization: Bearer xxxxxxxxxxxx\n  ```\n\n#### Query Parameters\n  | Parameter Type | Format Example                      | Description          |\n  |----------------|-------------------------------------|----------------------|\n  | Pagination     | `?pageNo=2&pageSize=20`             | Page number and size |\n  | Sorting        | `?orderBy=createdDate&orderSort=DESC` | Sort field and direction |\n  | Filtering      | `?status=active&role=admin`         | Field filters        |\n\n#### Request Body (JSON)\n  ```json\n  {\n    \"name\": \"John Doe\",\n    \"email\": \"john@example.com\",\n    \"role\": \"member\",\n    \"preferences\": {\n      \"notifications\": true,\n      \"theme\": \"dark\"\n    }\n  }\n  ```\n\n### 6. Response Specification\n#### Status Codes\n  | Code | Meaning                          |\n  |------|----------------------------------|\n  | 200  | OK - Request succeeded           |\n  | 201  | Created - Resource created       |\n  | 204  | No Content - Success, no content |\n  | 400  | Bad Request - Client error       |\n  | 401  | Unauthorized - Not authenticated |\n  | 403  | Forbidden - Access denied        |\n  | 404  | Not Found - Resource not exist   |\n  | 429  | Too Many Requests - Rate limited |\n  | 500  | Internal Server Error - Server failure |\n\n#### Response Body Structure\n  ```json\n  {\n    \"code\": \"S\",\n    \"msg\": \"Operation succeeded\",\n    \"data\": {\n      \"total\": 42,\n      \"list\": [\n        {\n          \"id\": \"301222970049691648\",\n          \"username\": \"U20250628001287\",\n          \"email\": \"user@example.com\"\n        }\n      ]\n    },\n    \"datetime\": \"2025-06-15 14:49:56\",\n    \"ext\": {}\n  }\n  ```\n\n## Quick Start Guide\n### 1. Obtaining Access Tokens\n#### System Access Token\n  **Use Case**: System-to-system integration  \n  **Acquisition Process**:\n  1. Log in to AngusGM application\n  2. Navigate to: **System** → **System Tokens**\n  3. Create new token:\n     - Enter token name\n     - Set permission scope\n     - Configure expiration time\n  4. Click **Create Token** to generate new credentials\n\n  > **Note**: System tokens have full API permissions without data restrictions.\n\n#### User Access Token\n  **Use Case**: User-level API operations  \n  **Acquisition Process**:\n  1. Log in to AngusGM application\n  2. Access: **User Profile** → **Access Tokens**\n  3. Create new token:\n     - Verify user password\n     - Set token name\n     - Configure validity period\n  4. Click **Create Token** to generate credentials\n\n  > **Note**: User tokens inherit the user's API permissions and data access rights.\n\n### 2. API Service Endpoints\n  | Deployment Type   | Service Endpoint                     |\n  |-------------------|--------------------------------------|\n  | SaaS Cloud Edition| `https://bj-c1-prod-apis.xcan.cloud/gm` |\n  | Private Deployment| `http://GM_HOST:GM_PORT` (default)   |\n  |                   | Or configured via `GM_APIS_URL_PREFIX` |\n\n### 3. API Call Example\n  ```bash\n  curl -i 'https://bj-c1-prod-apis.xcan.cloud/gm/api/v1/user/search?pageNo=1&pageSize=10' \\\n    -H 'Accept: application/json'\n    -H 'Authorization: Bearer 7RProMAjgCr40gMgrsnRROvMXHrXrDrzwqo7ti1V2ZXc6bjoWvVEOTkjbQnLAxMTi5fJrnET' \n  ```\n\n**Response Example**:\n  ```http\n  HTTP/1.1 200 OK\n  Date: Sun, 15 Jun 2025 06:49:56 GMT\n  Content-Type: application/json\n  XC-Request-Id: 34acb65c2c484188a2f9f3a3f4ca3d1f\n\n  {\n    \"code\": \"S\",\n    \"msg\": \"Success\",\n    \"data\": {\n      \"total\": \"1\",\n      \"list\": [\n        {\n          \"id\": \"301222970049691648\",\n          \"username\": \"U20250628001287\",\n          \"fullName\": \"Zhang San\",\n          \"email\": \"user@example.com\",\n          \"createdDate\": \"2025-06-12 11:19:21\"\n        }\n      ]\n    },\n    \"datetime\": \"2025-06-15 14:49:56\"\n  }\n  ```\n",
+        "contact": {
+            "url": "https://www.xcan.cloud",
+            "email": "technical_support@xcan.cloud"
+        },
+        "license": {
+            "name": "GPL-3.0",
+            "url": "https://github.com/xcancloud/AngusGM/blob/main/LICENSE"
+        },
+        "version": "1.0"
     },
     "servers": [
         {
-            "url": "http://192.168.0.70:1806",
-            "description": "Generated server url",
-            "emptyContent": false,
-            "notEmptyContent": true
+            "url": "{protocol}://{env}-apis.xcan.cloud/{route}/api/{version}",
+            "description": "Angus Application Api Base URL",
+            "variables": {
+                "protocol": {
+                    "description": "Http protocol",
+                    "default": "https",
+                    "enum": [
+                        "https",
+                        "http"
+                    ]
+                },
+                "env": {
+                    "description": "Environment variables",
+                    "default": "bj-c1-prod",
+                    "enum": [
+                        "bj-c1-prod",
+                        "dev"
+                    ]
+                },
+                "route": {
+                    "description": "Route Prefix",
+                    "default": "tester",
+                    "enum": [
+                        "tester",
+                        "gm"
+                    ]
+                },
+                "version": {
+                    "description": "API Version",
+                    "default": "v1",
+                    "enum": [
+                        "v1"
+                    ]
+                }
+            },
+            "notEmptyContent": true,
+            "emptyContent": false
         }
     ],
     "security": [
@@ -22,88 +64,228 @@
     ],
     "tags": [
         {
+            "name": "AnalysisCustomization",
+            "description": "Customized definition statistical analysis implementation apis, used to query supported analysis resource definition information and to retrieve analysis and statistical information."
+        },
+        {
+            "name": "Api",
+            "description": "Controls API endpoint definitions and access policies."
+        },
+        {
+            "name": "ApiLog",
+            "description": "Inspects recorded API transaction details for auditing or debugging."
+        },
+        {
             "name": "App",
             "description": "Manages application configurations and lifecycle processes."
         },
         {
-            "name": "SettingTenantQuota",
-            "description": "Assigns and initializes tenant resource quotas based on predefined policies or payment order."
+            "name": "AppFunc",
+            "description": "Organizes system function (menus, button, panel) and permission assignments."
         },
         {
-            "name": "Setting",
-            "description": "Centralizes system-wide settings for unified control and consistency."
+            "name": "AppFuncTag",
+            "description": "Provides tags management operation of application function (including application, menus, button and panel)."
         },
         {
-            "name": "Tenant",
-            "description": "Unified tenant management. Centralizes tenant account controls, configurations, and initialize access permissions, etc."
-        },
-        {
-            "name": "SettingUser",
-            "description": "Provides user-specific configuration access for personalized settings within authorized limits."
-        },
-        {
-            "name": "MessageCurrent",
-            "description": "Manages current individual user interactions with messages, including deletion, read status, and retrieval."
-        },
-        {
-            "name": "AuthUser",
-            "description": "Administers OAuth2 user identities and authorization grants."
+            "name": "AppOpen",
+            "description": "Enable automated onboarding and configuration of applications, granting authorized access to resources based on organizational/user permissions while enforcing security policies."
         },
         {
             "name": "AppOrgAuth",
             "description": "Retrieves user-specific application access permissions within an organization."
         },
         {
+            "name": "AppTag",
+            "description": "Assigns and categorizes applications using metadata tags."
+        },
+        {
             "name": "AuthPolicy",
             "description": "Provides a unified entry for authorization policies management. Authorization policies control access to resources and define permissions for users and applications."
         },
         {
-            "name": "ServiceApi",
-            "description": "Provides a unified entry for managing Angus series application services and associated apis."
+            "name": "AuthPolicyApp",
+            "description": "Provides a unified entry for querying the relationship between applications and authorization policies."
         },
         {
-            "name": "AuthUserToken",
-            "description": "Controls user token issuance, validation, and revocation."
-        },
-        {
-            "name": "TORole",
-            "description": "Operational role management. Streamlines organizational efficiency by defining responsibilities, coordinating workflows, and aligning permissions with business objectives."
+            "name": "AuthPolicyDept",
+            "description": "Provides a unified entry for querying the relationship between departments and authorization policies."
         },
         {
             "name": "AuthPolicyFunc",
             "description": "Provides a unified entry for querying the relationship between functions (button,  menus, panel) and authorization policies."
         },
         {
-            "name": "EventTemplate",
-            "description": "This category handles event template configurations, including predefined settings for receivers, notification channels."
+            "name": "AuthPolicyGroup",
+            "description": "Provides a unified entry for querying the relationship between groups and authorization policies."
         },
         {
-            "name": "Notice",
-            "description": "Application (or system) notice management, used for delivers real-time push and updates across application to inform users of critical events, required actions, or information changes."
+            "name": "AuthPolicyTenant",
+            "description": "Provides a unified entry for querying the relationship between tenant, application and authorization policies."
         },
         {
-            "name": "UserCurrent",
-            "description": "Personal center current user operation api entry."
+            "name": "AuthPolicyUser",
+            "description": "Provides a unified entry for querying the relationship between users and authorization policies."
+        },
+        {
+            "name": "AuthUser",
+            "description": "Administers OAuth2 user identities and authorization grants."
+        },
+        {
+            "name": "AuthUserToken",
+            "description": "Controls user token issuance, validation, and revocation."
+        },
+        {
+            "name": "Client",
+            "description": "Manages OAuth2 client registrations. The OAuth2 client acts on behalf of the user to request resource access permissions and securely exchange credentials for access tokens to interact with protected APIs."
+        },
+        {
+            "name": "CombinedNotice",
+            "description": "Provides a unified entry for users to send messages, such as in-site message, SMS, and email."
+        },
+        {
+            "name": "Country",
+            "description": "Query for supported country entrances."
+        },
+        {
+            "name": "CountryDistrict",
+            "description": "Query for supported district entrances."
+        },
+        {
+            "name": "Dept",
+            "description": "Manages department organizational unit creation, modification, and hierarchical structure maintenance, etc."
+        },
+        {
+            "name": "DeptTag",
+            "description": "Assigns tags to department for resource categorization, or query access control grouping."
+        },
+        {
+            "name": "DeptUser",
+            "description": "Controls department-to-user membership mappings to regulate user visibility and access privileges based on organizational departments."
         },
         {
             "name": "Email",
             "description": "Handles email message delivery operations, and audit logging for tracking sent communications."
         },
         {
-            "name": "AuthPolicyGroup",
-            "description": "Provides a unified entry for querying the relationship between groups and authorization policies."
-        },
-        {
-            "name": "User",
-            "description": "Unified user management entry for the system."
+            "name": "EmailServer",
+            "description": "Email server configuration management, authentication protocols, and delivery policies to ensure reliable, compliant email communication across systems."
         },
         {
             "name": "EmailTemplate",
             "description": "Standardizes email content creation through reusable templates with dynamic variables and multi-language support, maintaining brand consistency and operational efficiency."
         },
         {
+            "name": "Event",
+            "description": "enable retrieval of historical event records and associated channel configurations. Users can filter, sort, and paginate event logs, while also querying configured event channels to audit event routing and processing workflows."
+        },
+        {
+            "name": "EventChannel",
+            "description": "Manage event notification channels such as Webhooks, WeChat robots, and DingTalk robots."
+        },
+        {
+            "name": "EventTemplate",
+            "description": "This category handles event template configurations, including predefined settings for receivers, notification channels."
+        },
+        {
+            "name": "Group",
+            "description": "Manages group organizational unit creation, modification, and status maintenance, etc."
+        },
+        {
+            "name": "GroupTag",
+            "description": "Assigns tags to group for resource categorization, or query access control grouping."
+        },
+        {
+            "name": "GroupUser",
+            "description": "Controls group-to-user membership mappings to regulate user visibility and access privileges based on organizational groups."
+        },
+        {
+            "name": "Message",
+            "description": "Handles the lifecycle (send, delete, query) and targeted distribution of messages to diverse organizational entities."
+        },
+        {
+            "name": "MessageCenter",
+            "description": "Message center unified message dispatch. Enables centralized message distribution across multiple users from a single api."
+        },
+        {
+            "name": "MessageCenterOnline",
+            "description": "Monitors real-time user online statuses, such as querying online users or forced logouts."
+        },
+        {
+            "name": "MessageCurrent",
+            "description": "Manages current individual user interactions with messages, including deletion, read status, and retrieval."
+        },
+        {
+            "name": "Notice",
+            "description": "Application (or system) notice management, used for delivers real-time push and updates across application to inform users of critical events, required actions, or information changes."
+        },
+        {
             "name": "OperationLog",
             "description": "Provides a unified api for query user operation logs."
+        },
+        {
+            "name": "Service",
+            "description": "Provides a unified entry for managing Angus series application services."
+        },
+        {
+            "name": "ServiceApi",
+            "description": "Provides a unified entry for managing Angus series application services and associated apis."
+        },
+        {
+            "name": "ServiceDiscovery",
+            "description": "Provides a unified entry for querying AngusDiscovery (Service Registration Center) services and instances information."
+        },
+        {
+            "name": "Setting",
+            "description": "Centralizes system-wide settings for unified control and consistency."
+        },
+        {
+            "name": "SettingTenant",
+            "description": "Manages tenant-level configurations to customize shared settings across their ecosystem."
+        },
+        {
+            "name": "SettingTenantQuota",
+            "description": "Assigns and initializes tenant resource quotas based on predefined policies or payment order."
+        },
+        {
+            "name": "SettingUser",
+            "description": "Provides user-specific configuration access for personalized settings within authorized limits."
+        },
+        {
+            "name": "Sms",
+            "description": "Handles sms message delivery operations, and audit logging for tracking sent communications."
+        },
+        {
+            "name": "SmsChannel",
+            "description": "Provides management for third-party SMS channel configuration. If the SMS cannot be sent, please confirm whether the corresponding plugin for the SMS channel is installed or if the SMS template is correct."
+        },
+        {
+            "name": "SmsTemplate",
+            "description": "Standardizes sms content creation through reusable templates with dynamic variables and multi-language support, maintaining brand consistency and operational efficiency."
+        },
+        {
+            "name": "SystemLog",
+            "description": "Provides a unified entry for managing system logs (/actuator/systemlog)."
+        },
+        {
+            "name": "SystemToken",
+            "description": "System access tokens are digital \"ID cards\" that temporarily grant users or apps specific permissions to access systems or data. They act like a secure, time-limited passcode—unlike traditional passwords, tokens verify identity AND control exactly what actions are allowed (e.g. \"read-only access for 1 hour\")."
+        },
+        {
+            "name": "TORole",
+            "description": "Operational role management. Streamlines organizational efficiency by defining responsibilities, coordinating workflows, and aligning permissions with business objectives."
+        },
+        {
+            "name": "TOUser",
+            "description": "Provides an entry for managing operational users in the cloud service edition (SaaS)."
+        },
+        {
+            "name": "TOUserRole",
+            "description": "Provides a unified entry for querying or authorizing the relationship between users and operational roles."
+        },
+        {
+            "name": "Tenant",
+            "description": "Unified tenant management. Centralizes tenant account controls, configurations, and initialize access permissions, etc."
         },
         {
             "name": "TenantCertAudit",
@@ -114,172 +296,32 @@
             "description": "Validates official IDs or business licenses via third-party APIs for automated authentication."
         },
         {
-            "name": "AnalysisCustomization",
-            "description": "Customized definition statistical analysis implementation apis, used to query supported analysis resource definition information and to retrieve analysis and statistical information."
+            "name": "TenantSign",
+            "description": "Processes secure tenant account termination with data cleanup and permission revocation."
         },
         {
-            "name": "AuthPolicyDept",
-            "description": "Provides a unified entry for querying the relationship between departments and authorization policies."
+            "name": "User",
+            "description": "Unified user management entry for the system."
         },
         {
-            "name": "DeptUser",
-            "description": "Controls department-to-user membership mappings to regulate user visibility and access privileges based on organizational departments."
-        },
-        {
-            "name": "Client",
-            "description": "Manages OAuth2 client registrations. The OAuth2 client acts on behalf of the user to request resource access permissions and securely exchange credentials for access tokens to interact with protected APIs."
-        },
-        {
-            "name": "UserGroup",
-            "description": "Controls user-to-group membership mappings to regulate user visibility and access privileges based on organizational groups."
+            "name": "UserCurrent",
+            "description": "Personal center current user operation api entry."
         },
         {
             "name": "UserDept",
             "description": "Controls user-to-department membership mappings to regulate user visibility and access privileges based on organizational departments."
         },
         {
-            "name": "EmailServer",
-            "description": "Email server configuration management, authentication protocols, and delivery policies to ensure reliable, compliant email communication across systems."
-        },
-        {
             "name": "UserDirectory",
             "description": "User directory service management for system LDAP unified authentication login."
         },
         {
-            "name": "Event",
-            "description": "enable retrieval of historical event records and associated channel configurations. Users can filter, sort, and paginate event logs, while also querying configured event channels to audit event routing and processing workflows."
-        },
-        {
-            "name": "SmsTemplate",
-            "description": "Standardizes sms content creation through reusable templates with dynamic variables and multi-language support, maintaining brand consistency and operational efficiency."
-        },
-        {
-            "name": "ApiLog",
-            "description": "Inspects recorded API transaction details for auditing or debugging."
-        },
-        {
-            "name": "SystemLog",
-            "description": "Provides a unified entry for managing system logs (/actuator/systemlog)."
-        },
-        {
-            "name": "Service",
-            "description": "Provides a unified entry for managing Angus series application services."
-        },
-        {
-            "name": "SettingTenant",
-            "description": "Manages tenant-level configurations to customize shared settings across their ecosystem."
-        },
-        {
-            "name": "AuthPolicyApp",
-            "description": "Provides a unified entry for querying the relationship between applications and authorization policies."
-        },
-        {
-            "name": "ServiceDiscovery",
-            "description": "Provides a unified entry for querying AngusDiscovery (Service Registration Center) services and instances information."
-        },
-        {
-            "name": "EventChannel",
-            "description": "Manage event notification channels such as Webhooks, WeChat robots, and DingTalk robots."
+            "name": "UserGroup",
+            "description": "Controls user-to-group membership mappings to regulate user visibility and access privileges based on organizational groups."
         },
         {
             "name": "UserTag",
             "description": "Assigns tags to user for resource categorization, or query access control grouping."
-        },
-        {
-            "name": "Country",
-            "description": "Query for supported country entrances."
-        },
-        {
-            "name": "DeptTag",
-            "description": "Assigns tags to department for resource categorization, or query access control grouping."
-        },
-        {
-            "name": "GroupUser",
-            "description": "Controls group-to-user membership mappings to regulate user visibility and access privileges based on organizational groups."
-        },
-        {
-            "name": "AuthPolicyTenant",
-            "description": "Provides a unified entry for querying the relationship between tenant, application and authorization policies."
-        },
-        {
-            "name": "AppOpen",
-            "description": "Enable automated onboarding and configuration of applications, granting authorized access to resources based on organizational/user permissions while enforcing security policies."
-        },
-        {
-            "name": "TenantSign",
-            "description": "Processes secure tenant account termination with data cleanup and permission revocation."
-        },
-        {
-            "name": "MessageCenter",
-            "description": "Message center unified message dispatch. Enables centralized message distribution across multiple users from a single api."
-        },
-        {
-            "name": "AppFuncTag",
-            "description": "Provides tags management operation of application function (including application, menus, button and panel)."
-        },
-        {
-            "name": "Message",
-            "description": "Handles the lifecycle (send, delete, query) and targeted distribution of messages to diverse organizational entities."
-        },
-        {
-            "name": "AppFunc",
-            "description": "Organizes system function (menus, button, panel) and permission assignments."
-        },
-        {
-            "name": "AppTag",
-            "description": "Assigns and categorizes applications using metadata tags."
-        },
-        {
-            "name": "Sms",
-            "description": "Handles sms message delivery operations, and audit logging for tracking sent communications."
-        },
-        {
-            "name": "Dept",
-            "description": "Manages department organizational unit creation, modification, and hierarchical structure maintenance, etc."
-        },
-        {
-            "name": "MessageCenterOnline",
-            "description": "Monitors real-time user online statuses, such as querying online users or forced logouts."
-        },
-        {
-            "name": "SystemToken",
-            "description": "System access tokens are digital \"ID cards\" that temporarily grant users or apps specific permissions to access systems or data. They act like a secure, time-limited passcode—unlike traditional passwords, tokens verify identity AND control exactly what actions are allowed (e.g. \"read-only access for 1 hour\")."
-        },
-        {
-            "name": "CountryDistrict",
-            "description": "Query for supported district entrances."
-        },
-        {
-            "name": "SmsChannel",
-            "description": "Provides management for third-party SMS channel configuration. If the SMS cannot be sent, please confirm whether the corresponding plugin for the SMS channel is installed or if the SMS template is correct."
-        },
-        {
-            "name": "Group",
-            "description": "Manages group organizational unit creation, modification, and status maintenance, etc."
-        },
-        {
-            "name": "CombinedNotice",
-            "description": "Provides a unified entry for users to send messages, such as in-site message, SMS, and email."
-        },
-        {
-            "name": "GroupTag",
-            "description": "Assigns tags to group for resource categorization, or query access control grouping."
-        },
-        {
-            "name": "Api",
-            "description": "Controls API endpoint definitions and access policies."
-        },
-        {
-            "name": "TOUserRole",
-            "description": "Provides a unified entry for querying or authorizing the relationship between users and operational roles."
-        },
-        {
-            "name": "AuthPolicyUser",
-            "description": "Provides a unified entry for querying the relationship between users and authorization policies."
-        },
-        {
-            "name": "TOUser",
-            "description": "Provides an entry for managing operational users in the cloud service edition (SaaS)."
         }
     ],
     "paths": {
