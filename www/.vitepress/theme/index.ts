@@ -6,6 +6,7 @@ import './style.css'
 
 // import ConfirmModal from './components/confirmModel.vue';
 // const confirmVisible = ref(false); // confirm modal visible
+
 // plugin image-viewer
 import 'viewerjs/dist/viewer.min.css';
 import imageViewer from 'vitepress-plugin-image-viewer';
@@ -15,7 +16,7 @@ import vImageViewer from 'vitepress-plugin-image-viewer/lib/vImageViewer.vue';
 import 'virtual:group-icons.css'
 
 // plugin openapi client
-import { theme, useOpenapi } from 'vitepress-openapi/client'
+import { theme } from 'vitepress-openapi/client'
 import 'vitepress-openapi/dist/style.css'
 
 export default {
