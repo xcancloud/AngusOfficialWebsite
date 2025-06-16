@@ -5,7 +5,7 @@ title: vitepress-openapi
 ---
 
 <script setup>
-import spec from './AngusGM-Api.json';
+import {gmSpec} from './spec.mjs';
 </script>
 
-<OAIntroduction :spec="spec" />
+<OAIntroduction :spec="gmSpec" />

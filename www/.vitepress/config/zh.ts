@@ -971,11 +971,12 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
             collapsed: true,
             items: [
                 {
-                    text: '说明',
+                    text: '接口说明',
                     link: '/apis/introduction',
                 },
                 {
-                    text: '定义',
+                    text: '接口定义',
+                    collapsed: true,
                     items: apiSidebar.itemsByTags({linkPrefix: "/apis/"})
                 }
             ]
@@ -1653,11 +1654,12 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
             collapsed: true,
             items: [
                 {
-                    text: '说明',
+                    text: '接口说明',
                     link: '/apis/introduction',
                 },
                 {
-                    text: '定义',
+                    text: '接口定义',
+                    collapsed: true,
                     items: apiSidebar.itemsByTags({linkPrefix: "/apis/"})
                 }
             ]

@@ -5,7 +5,7 @@ title: vitepress-openapi
 ---
 
 <script setup>
-import spec from './AngusTester-Api.json';
+import {testerSpec} from './spec.mjs';
 </script>
 
-<OAIntroduction :spec="spec" />
+<OAIntroduction :spec="testerSpec" />

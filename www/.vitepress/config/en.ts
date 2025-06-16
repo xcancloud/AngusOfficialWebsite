@@ -943,11 +943,12 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
             collapsed: true,
             items: [
                 {
-                    text: 'Instruction',
+                    text: 'Api Instruction',
                     link: '/apis/introduction',
                 },
                 {
-                    text: 'Definition',
+                    text: 'Api Definition',
+                    collapsed: true,
                     items: apiSidebar.itemsByTags({linkPrefix: "/apis/"})
                 }
             ]
@@ -1626,11 +1627,12 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
             collapsed: true,
             items: [
                 {
-                    text: 'Instruction',
+                    text: 'Api Instruction',
                     link: '/apis/introduction',
                 },
                 {
-                    text: 'Definition',
+                    text: 'Api Definition',
+                    collapsed: true,
                     items: apiSidebar.itemsByTags({linkPrefix: "/apis/"})
                 }
             ]
