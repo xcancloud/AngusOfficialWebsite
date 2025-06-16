@@ -160,7 +160,18 @@ body {
   font-size: var(--vp-font-size-base);
 }
 
+html {
+  font-size: 14px;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
 .vp-doc div[class*='language-'] {
   font-size: var(--vp-code-font-size);
 }
 
+.vp-doc blockquote > p {
+  font-size: 14px;
+}

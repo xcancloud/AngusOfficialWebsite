@@ -46,7 +46,7 @@ content-length: 1325
     }
   },
   "uptime" : "434691",
-  "home" : "/data/XCanAngus/AngusAgent-Full-1.0.0/",
+  "home" : "/opt/AngusAgent-Full-1.0.0/",
   "principal" : {
     "angusmock.principal.deviceId" : "203883980884279296",
     "angusmock.principal.mockServiceId" : "203883811233071109",

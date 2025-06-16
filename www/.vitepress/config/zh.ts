@@ -160,7 +160,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
             base: '/zh/docs/gm/installation',
             items: [
                 {
-                    text: '前置准备',
+                    text: '安装须知',
                     link: '/prerequisites',
                 },
                 {
@@ -1037,7 +1037,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
             base: '/zh/docs/tester/installation',
             items: [
                 {
-                    text: '前置准备',
+                    text: '安装须知',
                     link: '/prerequisites',
                 },
                 {

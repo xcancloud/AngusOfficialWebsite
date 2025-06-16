@@ -1,221 +1,247 @@
-# 安装 AngusAgent
+# AngusAgent 安装与配置指南
 
-`AngusAgent(节点代理程序)`提供三方面作用：
+> AngusAgent 作为 AngusTester 分布式测试系统的核心组件，提供三大核心能力：
+> 1. **任务执行引擎**：启动并管理脚本执行任务。
+> 2. **服务模拟平台**：运行和管理 Mock 服务。
+> 3. **节点监控中心**：实时采集并上报节点资源指标。
 
-1. 通过启动"执行器(AngusRunner)"来执行脚本任务。
-2. 在代理节点上运行和管理Mock服务。
-3. 收集、监控和报告关于节点的各种指标和性能数据，该数据用于在稳定性测试中可分析节点资源使用率。
+## 前置要求
+- 确保目标端口 `6807` 可用。
+- 操作系统：支持 Linux / MacOS / Windows Server。
+- 安装包主键包含组件：
+  - plugins（测试插件）
+  - AngusRunner（执行器）
+  - MockService（接口模拟服务）
+  - AngusAgent（节点代理）
+  - AngusProxy（请求代理）
 
-## 通过脚本安装
+## 在线安装（推荐）
 
-以下提供`在线安装`、`自动安装`和`手动配置安装`三种方式安装，安装前需要确保代理应用`6807`端口未被使用。
+1. 登录 AngusTester 控制台。
+2. 进入：`配置 -> 节点 → 添加节点`。
+3. 填写节点信息（IP/账号/密码）。
+4. 点击 **"在线安装代理"** 按钮。
 
-注意：`以下安装包为节点代理完整安装包，安装后会包含测试插件、Mock数据插件、Mock服务(AngusMockService)和执行程序(AngusRunner)`。
+![在线安装示意图](./images/agent-online-install.png)
 
-### 在线安装
+> ⚠️ **安装要求**：
+> - 只允许系统管理员和AngusTester应用管理员配置安装。
+> - 节点 SSH 端口开放（默认 22）。
+> - 账户具备 sudo 权限。
+> - 网络互通无防火墙阻隔。
 
-登录云服务版或私有化版AngusTester应用后，在"节点"添加需要安装代理的节点，添加节点成功后点击下图中"
-在线安装代理"操作进行自动安装。
+> 🛠️ 安装失败处理：  
+> 若在线安装失败，请使用下方脚本安装方式。
 
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/G03-01.png?fid=203622539782521085&fpt=9mMoqrYs4vB2iSeHogBklaDMiyfJt8a6E2kfUW7a)
+## 脚本安装
 
-注意：`在线安装方式需要确保节点IP、账号、密码信息有效，以及SSH端口开放`。
-
-如果在线安装失败，请尝试使用下面手动运行脚本安装代理方式安装。
-
-### 手动运行脚本安装
-
-- Linux或MacOS
-
-第一步：先创建并进入到安装目录。
-
-```bash
-> mkdir /data && cd /data
-```
-
-第二步：点击已添加节点"手动安装代理"，复制如下图中自动安装代理命令。
-
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/G03-02.png?fid=203622614944448724&fpt=yGZLwaG4wrAixwwjbZADCUMoRIMB8bXsdt0LIgHV)
-
-第三步：运行自动安装代理命令。
+### Linux/MacOS 安装步骤
 
 ```bash
-> curl -s https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/install-agent.sh?fid=245588291569582089 | bash -s 1.0.0 103622614944448579 'https://bj-c1-prod-apis.xcan.cloud/tester/openapi2p/v1/ctrl/discovery' 2PT.uk3dciHZyVVt8zBdnxOgcz4BpGNuNl3u.d241ce59daa19ns51b2e6528a3dcf7ab5 1 205198142092607130
+# 创建安装目录
+mkdir -p /opt/AngusAgent && cd /opt/AngusAgent
+
+# 获取并执行安装脚本（复制控制台生成的命令）
+curl -s "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/install-agent.sh?fid=297761877096660998" | bash -s 1.0.0 299082246680215554 \ 
+  'https://bj-c1-prod-apis.xcan.cloud/tester/openapi2p/v1/ctrl' \ 
+  aWpbSRQ4OwXiOA1_8AJFVgQY8cDBkJUq4PSLwIb9D3lFoWJOR1hsFUG_EyhWUq5CNu-E7K1X29ZffzbhnVZylXTMFnFBMWKXX-EcMohOoMplWVbA78S0WayLuzsaPF6k \ 
+  1 203883811233071104
 ```
 
-### 手动配置安装
 
-第一步：点击下载 [AngusAgent](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AngusAgent-Full-1.0.0.zip?fid=248565189237014528) 安装包。
+> **参数获取位置**：  
+> ![参数获取示意图](./images/agent-manual-install.png)  
+> *在节点管理界面点击"手动安装代理"获取参数。*
 
-第二步：下载安装包后，将安装包移动到自定义安装目录并解压。
+## 手动配置安装
 
-第三步：配置代理所属租户、设备ID、设备访问令牌。
+1. [下载安装包](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AngusAgent-Full-1.0.0.zip?fid=299082246680215554)
+2. 解压至目标目录（如 `/opt/AngusAgent`）
+3. 配置核心参数：
+   ```properties
+   # agent.properties
+   angusagent.principal.tenantId=您的租户ID
+   angusagent.principal.deviceId=节点唯一ID
+   
+   # remoting.properties
+   remoting.ctrlAccessToken=您的节点授权访问令牌
+   ```
 
-在AngusTester"节点"添加节点后，点击已添加节点"手动安装代理"->"安装配置信息"，如下图：
+> **参数获取方式**：  
+> ![配置参数示意图](./images/agent-config-parameters.png)  
+> *在节点管理界面点击"安装配置信息"查看参数*。
 
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/G03-03.png?fid=203622614944448726&fpt=1kdKU5aTaUhlmEBDsWmrxmXd0QmbEsdAeqA0f0HV)
+## 容器化部署
 
-修改`conf/agent.properties`中配置如下：
+### Docker 快速启动
 
-```properties
-angusagent.principal.tenantId=1
-angusagent.principal.deviceId=205198142092607130
+```bash
+docker run -d \
+  --name angus-agent \
+  -p 6807:6807 \
+  -e TENANT_ID=您的租户ID \
+  -e DEVICE_ID=节点唯一ID \
+  -e ACCESS_TOKEN=您的访问令牌 \
+  anguscloud/angus-agent:1.0.0
 ```
 
-修改`conf/remoting.properties`中配置如下：
+### Docker Compose 配置启动
 
-```properties
-remoting.ctrlAccessToken=2PT.uk3dciHZyVVt8zBdnxOgcz4BpGNuNl3u.d241ce59daa19ns51b2e6528a3dcf7ab5
+```bash
+# 创建 Compose 文件
+cat > agent.yaml<< EOF
+version: '3'
+services:
+  AngusAgent:
+    image: anguscloud/angus-agent:1.0.0
+    ports:
+      - "6807:6807"
+    environment:
+      - TENANT_ID=您的租户ID
+      - DEVICE_ID=节点唯一ID
+      - ACCESS_TOKEN=您的访问令牌
+    volumes:
+      - ./config:/app/conf
+EOF
+
+# 启动 Agent
+docker compose -f agent.yaml up -d
 ```
 
-其他配置信息请查看下面"完整配置参数说明"说明。
+## 验证安装
 
-## 以容器方式安装
-
-### Docker安装
-
-
-
-### Docker Compose安装
-
-## 验证
-
-访问如下代理地址，如果返回health状态为`UP`表示代理已成功运行。
-
+### 健康检查
 ```bash
 curl -i http://localhost:6807
+
+# 预期响应：
 HTTP/1.1 200 OK
-XC-Agent: Angus
 Content-Type: application/json
-content-length: 318
 
-{"app":"AngusAgent","version":"1.0.0","health":{"status":{"status":"UP"}},"uptime":"583846816","home":"/data/XCanAngus/AngusAgent-Full-1.0.0/","principal":{"principal.deviceId":"205198142092607130","principal.tenantId":"1"},"server":{"port":6807,"ip":"0.0.0.0"},"diskSpace":{"total":"63278391296","used":"4842176512"}}
+{
+  "app": "AngusAgent",
+  "version": "1.0.0",
+  "health": {"status": "UP"},  # 关键状态指标
+  "principal": {
+    "tenantId": "1",
+    "deviceId": "205198142092607130"
+  }
+}
 ```
 
-此外，在AngusTester节点列表中查看节点"连接状态"，确保连接状态为`已连接`
-，只有连接状态是已连接时表示代理安装成功，注意：`连接状态有最大2分钟内延迟`。
+### 控制台验证
+1. 访问 AngusTester 控制台。
+2. 进入：`节点管理 → 节点列表`。
+3. 检查目标节点状态：
+    - ✅ **连接状态**：应为`已连接`。
+    - ⏱️ **最后心跳**：2分钟内更新。
 
-如果代理未成功运行，或状态连接不成功，需要您检查配置重启再试，或提交在线工单协助解决。
+> ⏳ 状态同步延迟约 2 分钟，若长时间未连接请检查网络和配置。
 
-## 启动
+## 服务管理
 
-- Linux或MacOS
-
-进入AngusAgent安装目录，运行`startup-agent.sh`启动脚本。
-
+### Linux/MacOS
 ```bash
-> ./startup-agent.sh
-Home Dir: /data/XCanAngus/AngusAgent-Full-1.0.0
-Agent service started, PID=12344
+# 启动服务
+./startup-agent.sh
+# 停止服务
+./shutdown-agent.sh
+# 查看日志
+tail -f logs/agent.log
 ```
 
-## 停止
+### Docker 
+```bash'
+# 启动服务
+docker start angus-agent
+# 停止服务
+docker stop angus-agent
+# 查看日志
+docker logs angus-agent
+```
 
-- Linux或MacOS
-
-进入AngusAgent安装目录，运行`shutdown-agent.sh`停止脚本。
-
+### Docker Compose
 ```bash
-> ./shutdown-agent.sh
-Home Dir: /data/XCanAngus/AngusAgent-Full-1.0.0
-Attempting to stop the process through OS signal.
-Agent service process is killed, PID=12344
+# 启动服务
+docker compose -f agent.yaml up -d
+# 停止服务
+docker compose -f agent.yaml stop
+# 查看日志
+docker compose -f agent.yaml logs
 ```
 
-## 完整配置参数说明
+## 参数参考
 
 - 代理服务配置(agent.properties)
 
 ```ini
 #-----------------------------------------------------------------------------------
-# Angus代理服务配置
+# AngusAgent 服务配置
 #-----------------------------------------------------------------------------------
-## 代理服务绑定的 IP，默认为 0.0.0.0。
+## 代理服务绑定的 IP 地址，默认 0.0.0.0 (监听所有网络接口)
 angusagent.serverIp=0.0.0.0
-## 代理服务绑定的端口，默认为 6807。
+## 代理服务绑定的端口号，默认 6807
 angusagent.serverPort=6807
-## 在Netty HTTP服务器上启用SSL选项，默认为false。
+## 在 netty HTTP 服务器上启用 SSL 选项，默认 false
 angusagent.useSsl=false
-## 启用Netty日志。建议仅在调试模式下打开，默认为false。
+## 启用 netty 日志记录。建议仅在调试模式下开启，默认 false
 angusagent.enableNettyLog=false
-## 配置将请求信息记录到日志文件的级别，包括两个选项：NONE、BASIC、HEADERS和FULL。
-### - NONE: 不记录日志。
-### - BASIC: 仅记录请求方法和URL，以及响应状态码和执行时间，默认值。
-### - HEADERS: 记录基本信息以及请求和响应头部。
-### - FULL: 记录请求和响应的头部、主体和元数据。
+## 配置请求日志信息级别，包含四个选项：NONE, BASIC, HEADERS 和 FULL
+### - NONE：不记录日志
+### - BASIC：仅记录请求方法、URL、响应状态码和执行时间（默认值）
+### - HEADERS：记录基本信息及请求/响应头信息
+### - FULL：记录请求和响应的头信息、正文及元数据
 angusagent.requestLogLevel=FULL
-## 代理服务处理请求的线程前缀，默认为AngusAgent-Threads。
+## 代理服务处理请求的线程名前缀，默认 AngusAgent-Thread
 angusagent.threadNamePrefix=AngusAgent-Thread
 #-----------------------------------------------------------------------------------
-# Angus代理管理配置
+# AngusAgent 服务管理配置
 #-----------------------------------------------------------------------------------
-## 代理服务管理端点的基本路径，固定为：/actuator。
+## 代理服务管理端点的基本路径，固定为 /actuator
 #angusagent.management.endpointsBasePath=/actuator
-## 代理服务管理端点允许跨域访问，默认为false。
+## 允许代理服务管理端点跨域访问，默认 false
 angusagent.management.endpointsAllowCors=false
 #-----------------------------------------------------------------------------------
-# Angus代理身份配置
+# 身份认证配置
 #-----------------------------------------------------------------------------------
-## 代理服务的租户ID，私有版本环境时需要手动配置，默认为空。
-angusagent.principal.tenantId=1
-## 代理服务设备(节点)ID，私有版本环境时需要手动配置，默认为空。
-angusagent.principal.deviceId=205198142092607130
+## 代理服务的租户ID，私有化部署环境需手动设置，默认为空
+angusagent.principal.tenantId=
+## 代理服务的设备(节点)ID，私有化部署环境需手动设置，默认为空
+angusagent.principal.deviceId=
 #-----------------------------------------------------------------------------------
-# Angus代理推送配置
+# 数据推送配置
 #-----------------------------------------------------------------------------------
-# 推送JVM指标的时间间隔，默认为15秒。
+# JVM 指标推送时间间隔，默认 15 秒
 angusagent.jvmMetrics.pushIntervalInSecond=15
-# 推送JVM指标的超时时间，不能超过remoting.pushTimeout，默认为10秒。
-angusagent.jvmMetrics.pushTimeoutInSecond=10
-# 推送代理节点信息到注册表的时间间隔，默认为300秒。
+# 代理主机信息注册推送时间间隔，默认 300 秒
 angusagent.nodeInfo.pushIntervalInSecond=300
-# 推送代理节点信息到注册表的超时时间，不能超过remoting.pushTimeout，默认为10秒
-angusagent.nodeInfo.pushTimeoutInSecond=10
-# 推送代理节点资源使用率到注册表的时间间隔，默认为15秒。
+# 代理主机使用情况注册推送时间间隔，默认 15 秒
 angusagent.nodeUsage.pushIntervalInSecond=15
-# 推送代理节点资源使用率到注册表的超时时间，不能超过remoting.pushTimeout，默认为10秒。
-angusagent.nodeUsage.pushTimeoutInSecond=10
 ```
 
 - 数据交换器配置(remoting.properties)
 
 ```ini
 #-----------------------------------------------------------------------------------
-# 推送客户端配置
+# 远程客户端配置
 #-----------------------------------------------------------------------------------
-# 交换服务器主机，在直接连接模式下仅用于测试环境，默认为127.0.0.1:5035。
-# remoting.serverHost=127.0.0.1:5035
-## 配置访问控制器(AngusCtrl)API所需的访问令牌，在私有版环境手动启动时需要，默认为空。
-remoting.ctrlAccessToken=2PT.uk3dciHZyVVt8zBdnxOgcz4BpGNuNl3u.d241ce59daa19ns51b2e6528a3dcf7ab5
-# 控制器服务发现URL前缀，如果未配置或连接异常，则使用serverHost的值作为控制器连接地址。
-remoting.ctrlUrlPrefix=https://bj-c1-prod-apis.xcan.cloud/tester/openapi2p/v1/ctrl/discovery
-# 同时进行客户端推送请求的数量，默认为1。
-remoting.clientNum=5
-## 客户端推送请求线程数，如果为零，则表示根据CPU核心数调整线程数2*cpu个线程池在客户端上运行，默认为1。
-remoting.clientWorkNum=5
-# 客户端连接的身份验证和绑定超时时间，默认为20秒。
-remoting.clientAuthTimeout=20000
+# 远程服务器主机地址，直接连接模式仅用于测试环境，默认为127.0.0.1:5035
+remoting.serverHost=
+# 控制器服务发现URL前缀。如果未配置或存在连接问题，将使用serverHost的值作为控制器连接地址
+remoting.ctrlUrlPrefix=
+## 配置访问AngusCtrl API所需的访问令牌，私有化部署环境需要手动启动此项配置，默认为空
+remoting.ctrlAccessToken=
+## 发送心跳消息的时间间隔（必须小于serverMaxAllowHeartbeat），默认10000毫秒
+remoting.heartbeatInterval=10000
+# 是否允许断开后重新连接，默认为true
+remoting.allowReconnect=true
+# 断开连接后的重连间隔
+remoting.reconnectInterval=5000
 #-----------------------------------------------------------------------------------
-# 推送客户端和服务端公共配置
+# 远程服务端与客户端通用配置
 #-----------------------------------------------------------------------------------
-# 处理请求的线程前缀，默认为Remoting。
-remoting.threadNamePrefix=Remoting
-# remoting.serverHosts=127.0.0.1:5035,127.0.0.1:5036
-# 允许的最大超时次数，超过该次数将停止发送，默认为5。
-remoting.allowMaxTimeoutTimes=5
-# 推送定时器线程的数量，默认为5。
-remoting.pushTimerThreadNum=5
-# 推送定时器线程的优先级，默认为Threads.NORM_PRIORITY + 2。
-remoting.pushTimerThreadPriority=7
-# 推送超时时间，PushContext的超时设置具有更高的优先级，默认为15000毫秒。
-remoting.pushTimeout=15000
-# 推送器ACK确认线程的数量，默认为1。
-remoting.ackThreadNum=1
-# 推送器ACK确认线程的优先级，默认为Threads.NORM_PRIORITY + 2。
-remoting.ackThreadPriority=7
+# 发送同步消息的超时时间。超过此时限后，系统将停止等待响应消息，默认为60000毫秒
+remoting.sendTimeout=60000
 #-----------------------------------------------------------------------------------
-# 推送安全配置
-#-----------------------------------------------------------------------------------
-remoting.securityPublicKey=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC4Y1ChYPYPDKuKbawHF4Go9Ewp54eB39czWY2h9XcTs24jXkvmR6dHg06Zj0intj/HLsTHa+FEy14yLE6JYH3dd9qHqCRiMXKktm7g3EceA5mehbbgqDs8jxet7chQz56v925pHsl1z82OIzpJXhXgChQd5HXY5OKYaWvFvbyYWwIDAQAB
 ```
 
