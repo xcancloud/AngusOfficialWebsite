@@ -23,7 +23,6 @@
     "@xcan-angus/tools": "^1.0.0",
     "ant-design-vue": "^4.2.6",
     "autoprefixer": "^10.4.21",
-    "autoprefixer": "^10.4.19",
     "axios": "^1.9.0",
     "dayjs": "^1.11.13",
     "element-plus": "^2.10.2",
@@ -36,9 +35,7 @@
     "vitepress-openapi": "^0.0.3-alpha.81",
     "vitepress-plugin-group-icons": "^1.6.0",
     "vitepress-plugin-image-viewer": "^1.1.6",
-    "vitepress-plugin-mermaid": "^2.0.17"
-  },
-  "dependencies": {
+    "vitepress-plugin-mermaid": "^2.0.17",
     "@theojs/lumen": "^5.7.3"
   }
 }
