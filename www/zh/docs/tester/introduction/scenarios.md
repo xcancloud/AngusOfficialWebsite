@@ -21,7 +21,7 @@ flowchart LR
 3. **任务管理**：追踪开发、测试、需求工作项
 4. **智能报告**：自动生成项目总结报告
 
-<Vid src="./images/scenarios/project.mp4" />
+<Vid src="/video/tester/introduction/project.mp4" />
 
 ## 任务协同
 
@@ -37,7 +37,7 @@ flowchart LR
 - 健康度实时分析
 - 逾期风险预警
 
-<Vid src="./images/scenarios/task.mp4" />
+<Vid src="/video/tester/introduction/task.mp4" />
 
 ## 功能测试管理
 
@@ -53,7 +53,7 @@ flowchart LR
 - 自动化缺陷分类（功能/稳定性/性能）
 - 测试用例版本管理和复用
 
-<Vid src="./images/scenarios/case.mp4" />
+<Vid src="/video/tester/introduction/case.mp4" />
 
 ## 接口测试管理
 
@@ -70,7 +70,7 @@ flowchart LR
 | 性能测试 | 高并发场景 | 分布式压力测试 |
 | 稳定性测试 | 长周期运行 | 故障注入测试 |
 
-<Vid src="./images/scenarios/test.mp4" />
+<Vid src="/video/tester/introduction/test.mp4" />
 
 ## 场景测试管理
 
@@ -86,7 +86,7 @@ flowchart LR
 3. 多系统集成测试
 4. 异步任务处理
 
-<Vid src="./images/scenarios/scenarios.mp4" />
+<Vid src="/video/tester/introduction/scenarios.mp4" />
 
 ## 服务模拟平台
 
@@ -107,7 +107,7 @@ pie
     “异步回调” ： 5
 ```
 
-<Vid src="./images/scenarios/mock.mp4" />
+<Vid src="/video/tester/introduction/mock.mp4" />
 
 ## 业务全景看板
 
@@ -124,7 +124,7 @@ pie
 | 效能分析 | 任务完成率/缺陷修复时效 |
 | 质量监控 | 缺陷密度/用例通过率 |
 
-<Vid src="./images/scenarios/kanban.mp4" />
+<Vid src="/video/tester/introduction/kanban.mp4" />
 
 ## 报告系统
 
@@ -142,4 +142,4 @@ pie
 - 可导出PDF格式
 - 合规审计支持
 
-<Vid src="./images/scenarios/report.mp4" />
+<Vid src="/video/tester/introduction/report.mp4" />

@@ -6,7 +6,7 @@
 2. 在代理节点上运行和管理Mock服务。
 3. 收集、监控和报告关于节点的各种指标和性能数据，该数据用于在稳定性测试中可分析节点资源使用率。
 
-## 安装
+## 通过脚本安装
 
 以下提供`在线安装`、`自动安装`和`手动配置安装`三种方式安装，安装前需要确保代理应用`6807`端口未被使用。
 
@@ -24,8 +24,6 @@
 如果在线安装失败，请尝试使用下面手动运行脚本安装代理方式安装。
 
 ### 手动运行脚本安装
-
-会检查安装环境是否已安装JDK，未安装时会自动下载安装。如果安装环境存在低版本JDK或者安装冲突，请查看：[安装说明](https://www.xcan.cloud/help/doc/205509853639082016?c=206089938364530730) 。
 
 - Linux或MacOS
 
@@ -70,13 +68,65 @@ angusagent.principal.deviceId=205198142092607130
 remoting.ctrlAccessToken=2PT.uk3dciHZyVVt8zBdnxOgcz4BpGNuNl3u.d241ce59daa19ns51b2e6528a3dcf7ab5
 ```
 
-其他配置信息请查看下面"配置"说明。
+其他配置信息请查看下面"完整配置参数说明"说明。
 
-## 配置
+## 以容器方式安装
+
+### Docker安装
+
+
+
+### Docker Compose安装
+
+## 验证
+
+访问如下代理地址，如果返回health状态为`UP`表示代理已成功运行。
+
+```bash
+curl -i http://localhost:6807
+HTTP/1.1 200 OK
+XC-Agent: Angus
+Content-Type: application/json
+content-length: 318
+
+{"app":"AngusAgent","version":"1.0.0","health":{"status":{"status":"UP"}},"uptime":"583846816","home":"/data/XCanAngus/AngusAgent-Full-1.0.0/","principal":{"principal.deviceId":"205198142092607130","principal.tenantId":"1"},"server":{"port":6807,"ip":"0.0.0.0"},"diskSpace":{"total":"63278391296","used":"4842176512"}}
+```
+
+此外，在AngusTester节点列表中查看节点"连接状态"，确保连接状态为`已连接`
+，只有连接状态是已连接时表示代理安装成功，注意：`连接状态有最大2分钟内延迟`。
+
+如果代理未成功运行，或状态连接不成功，需要您检查配置重启再试，或提交在线工单协助解决。
+
+## 启动
+
+- Linux或MacOS
+
+进入AngusAgent安装目录，运行`startup-agent.sh`启动脚本。
+
+```bash
+> ./startup-agent.sh
+Home Dir: /data/XCanAngus/AngusAgent-Full-1.0.0
+Agent service started, PID=12344
+```
+
+## 停止
+
+- Linux或MacOS
+
+进入AngusAgent安装目录，运行`shutdown-agent.sh`停止脚本。
+
+```bash
+> ./shutdown-agent.sh
+Home Dir: /data/XCanAngus/AngusAgent-Full-1.0.0
+Attempting to stop the process through OS signal.
+Agent service process is killed, PID=12344
+```
+
+## 完整配置参数说明
 
 - 代理服务配置(agent.properties)
 
-```
+```ini
 #-----------------------------------------------------------------------------------
 # Angus代理服务配置
 #-----------------------------------------------------------------------------------
@@ -129,7 +179,7 @@ angusagent.nodeUsage.pushTimeoutInSecond=10
 
 - 数据交换器配置(remoting.properties)
 
-```properties
+```ini
 #-----------------------------------------------------------------------------------
 # 推送客户端配置
 #-----------------------------------------------------------------------------------
@@ -167,49 +217,5 @@ remoting.ackThreadPriority=7
 # 推送安全配置
 #-----------------------------------------------------------------------------------
 remoting.securityPublicKey=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC4Y1ChYPYPDKuKbawHF4Go9Ewp54eB39czWY2h9XcTs24jXkvmR6dHg06Zj0intj/HLsTHa+FEy14yLE6JYH3dd9qHqCRiMXKktm7g3EceA5mehbbgqDs8jxet7chQz56v925pHsl1z82OIzpJXhXgChQd5HXY5OKYaWvFvbyYWwIDAQAB
-```
-
-## 验证
-
-访问如下代理地址，如果返回health状态为`UP`表示代理已成功运行。
-
-```bash
-curl -i http://localhost:6807
-HTTP/1.1 200 OK
-XC-Agent: Angus
-Content-Type: application/json
-content-length: 318
-
-{"app":"AngusAgent","version":"1.0.0","health":{"status":{"status":"UP"}},"uptime":"583846816","home":"/data/XCanAngus/AngusAgent-Full-1.0.0/","principal":{"principal.deviceId":"205198142092607130","principal.tenantId":"1"},"server":{"port":6807,"ip":"0.0.0.0"},"diskSpace":{"total":"63278391296","used":"4842176512"}}
-```
-
-此外，在AngusTester节点列表中查看节点"连接状态"，确保连接状态为`已连接`
-，只有连接状态是已连接时表示代理安装成功，注意：`连接状态有最大2分钟内延迟`。
-
-如果代理未成功运行，或状态连接不成功，需要您检查配置重启再试，或提交在线工单协助解决。
-
-## 启动
-
-- Linux或MacOS
-
-进入AngusAgent安装目录，运行`startup-agent.sh`启动脚本。
-
-```bash
-> ./startup-agent.sh
-Home Dir: /data/XCanAngus/AngusAgent-Full-1.0.0
-Agent service started, PID=12344
-```
-
-## 停止
-
-- Linux或MacOS
-
-进入AngusAgent安装目录，运行`shutdown-agent.sh`停止脚本。
-
-```bash
-> ./shutdown-agent.sh
-Home Dir: /data/XCanAngus/AngusAgent-Full-1.0.0
-Attempting to stop the process through OS signal.
-Agent service process is killed, PID=12344
 ```
 
