@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-const fs = require('fs')
-const path = require('path')
+import fs from 'fs'
+import path from 'path'
 
 // Get Environment Name from Command Line Arguments or Environment Variables
 const envName = process.env.ENV_NAME || process.argv[2] || 'dev'

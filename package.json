@@ -10,22 +10,35 @@
     "docs:dev": "vitepress dev www",
     "docs:preview": "vitepress preview www",
     "copy-config": "node scripts/copyConfigs.js",
-    "docs:build": "NODE_OPTIONS=--max-old-space-size=3600 vitepress build www && npm run copy-config",
+    "docs:build": "NODE_OPTIONS=--max-old-space-size=5200 vitepress build www && npm run copy-config",
     "docs:build:dev": "ENV_NAME=dev npm run docs:build",
     "docs:build:prod": "ENV_NAME=prod npm run docs:build",
     "check:links": "vitepress build --failOnDedLinks"
   },
   "devDependencies": {
+    "@egoist/tailwindcss-icons": "^1.7.1",
+    "@element-plus/icons-vue": "^2.3.1",
     "@fingerprintjs/fingerprintjs": "^4.6.2",
+    "@iconify-json/mdi": "^1.1.63",
     "@xcan-angus/tools": "^1.0.0",
     "ant-design-vue": "^4.2.6",
     "autoprefixer": "^10.4.21",
+    "autoprefixer": "^10.4.19",
     "axios": "^1.9.0",
     "dayjs": "^1.11.13",
+    "element-plus": "^2.10.2",
     "js-cookie": "^3.0.5",
-    "postcss": "^8.5.5",
+    "mermaid": "^11.6.0",
+    "postcss": "^8.4.38",
     "sitemap": "^8.0.0",
-    "tailwindcss": "^3.4.17",
-    "vitepress": "^1.6.3"
+    "tailwindcss": "^3.4.3",
+    "vitepress": "^1.6.3",
+    "vitepress-openapi": "^0.0.3-alpha.81",
+    "vitepress-plugin-group-icons": "^1.6.0",
+    "vitepress-plugin-image-viewer": "^1.1.6",
+    "vitepress-plugin-mermaid": "^2.0.17"
+  },
+  "dependencies": {
+    "@theojs/lumen": "^5.7.3"
   }
 }

@@ -1,14 +1,14 @@
-import {defineConfig} from 'vitepress'
+import {withMermaid} from "vitepress-plugin-mermaid";
+
 import server from './dev-server';
 import {enLocaleConfig} from './config/en'
 import {zhLocaleConfig} from './config/zh'
 
-export default defineConfig({
-    title: 'XCan Cloud',
+// plugin group-icons
+import {groupIconMdPlugin, groupIconVitePlugin} from 'vitepress-plugin-group-icons'
 
-    // rewrites: {
-    //     'en/:rest*': ':rest*'
-    // },
+export default withMermaid({
+    title: 'XCan Cloud',
 
     lastUpdated: true,
     cleanUrls: true,
@@ -41,14 +41,17 @@ export default defineConfig({
         ['meta', {name: 'author', content: 'XCan Teams'}],
         ['meta', {property: 'og:type', content: 'website'}],
         ['meta', {name: 'og:title', content: 'XCan Cloud - AngusTester'}],
-        ['meta', {name: 'og:description', content: "Enable small and medium-sized enterprises to build their own R&D platform · Standardize processes · Improve efficiency"}],
+        ['meta', {
+            name: 'og:description',
+            content: "Enable small and medium-sized enterprises to build their own R&D platform · Standardize processes · Improve efficiency"
+        }],
         ['meta', {property: 'og:site_name', content: 'XCan Cloud'}],
         ['meta', {property: 'og:image', content: 'https://www.xcan.cloud/angustester-og.jpeg'}],
         ['meta', {property: 'og:url', content: 'https://www.xcan.cloud'}],
     ],
 
     themeConfig: {
-        logo: {src: '/logo-mini.png', width: 28, height: 28},
+        logo: {src: '/logo-mini.png', width: 22, height: 22},
 
         search: {
             provider: 'local',
@@ -73,7 +76,21 @@ export default defineConfig({
         fa: {label: 'فارسی', lang: 'fa'}             // 波斯语
     },
 
+    markdown: {
+        config(md) {
+            md.use(groupIconMdPlugin)
+        },
+    },
+
     vite: {
+        plugins: [
+            groupIconVitePlugin()
+        ],
+
         server: server
-    }
-})
+    },
+
+    mermaid:{
+        //mermaidConfig !theme here works for light mode since dark theme is forced in dark mode
+    },
+});

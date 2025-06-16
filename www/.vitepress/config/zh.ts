@@ -1,7 +1,10 @@
 import type {DefaultTheme, LocaleSpecificConfig} from 'vitepress'
+import { useSidebar } from 'vitepress-openapi'
 
 const title = '晓蚕云';
 const description = 'AngusTester - 让中小企业搭建自己的研发中台 · 规范流程 · 提升效率'
+import gmZhSpec from '../../zh/docs/gm/apis/AngusGM-Api.json'
+import testerZhSpec from '../../zh/docs/tester/apis/AngusTester-Api.json'
 
 export const zhLocaleConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
     lang: 'zh-CN',
@@ -16,16 +19,22 @@ export const zhLocaleConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
         },
         footer: {
             message: '基于 GPL-3.0 许可发布',
-            copyright: `版权所有 © 2019-${new Date().getFullYear()} 晓蚕云`
+            copyright: `版权所有 © 2021-2025 晓蚕云`
+        },
+
+        outline: {
+            label: '导航',
+            level: "deep"
+        },
+
+        search: {
+            provider: 'local',
+            options: searchOptions()
         },
 
         docFooter: {
             prev: '上一页',
             next: '下一页'
-        },
-
-        outline: {
-            label: '页面导航'
         },
 
         lastUpdated: {
@@ -73,7 +82,7 @@ function nav(): DefaultTheme.NavItem[] {
                     link: '/zh/gettingStarted'
                 },
                 {
-                    text: '快速部署',
+                    text: '私有部署',
                     link: '/zh/deployment'
                 },
                 {
@@ -81,7 +90,7 @@ function nav(): DefaultTheme.NavItem[] {
                     link: '/zh/support'
                 },
                 {
-                    text: '常见问题',
+                    text: '常见问题(FAQ)',
                     link: '/zh/faq'
                 }
             ]
@@ -106,791 +115,882 @@ function nav(): DefaultTheme.NavItem[] {
 }
 
 function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
+
+    const spec = gmZhSpec;
+    const apiSidebar = useSidebar({
+        spec,
+        linkPrefix: '/apis/'
+    });
+
     return [
         {
             text: 'AngusGM',
             collapsed: true,
+            base: '/zh/docs/gm/introduction',
             items: [
                 {
                     text: '关于应用',
-                    link: '/zh/docs/gm/introduction/about',
+                    link: '/about',
                 },
                 {
                     text: '功能总览',
-                    link: '/zh/docs/gm/introduction/feature',
+                    link: '/function',
                 },
                 {
                     text: '基本概念',
-                    link: '/zh/docs/gm/introduction/concepts',
+                    link: '/concepts',
+                },
+                {
+                    text: '产品版本',
+                    link: '/edition',
+                },
+                {
+                    text: '部署方式',
+                    link: '/deployment',
                 },
                 {
                     text: '资源配额',
-                    link: '/zh/docs/gm/introduction/quotas',
+                    link: '/quotas',
                 }
             ]
         },
         {
-            text: '组织人员',
+            text: '部署应用',
+            collapsed: true,
+            base: '/zh/docs/gm/installation',
             items: [
                 {
-                    text: '用户',
-                    link: '/overview',
-                    collapsed: true,
-                    base: '/zh/docs/gm/organization/user',
-                    items: [
-                        {
-                            text: '添加用户',
-                            link: '/add',
-                        },
-                        {
-                            text: '编辑用户',
-                            link: '/edit',
-                        },
-                        {
-                            text: '删除用户',
-                            link: '/delete',
-                        },
-                        {
-                            text: '禁用用户',
-                            link: '/disable',
-                        },
-                        {
-                            text: '重置密码',
-                            link: '/resetPassword',
-                        },
-                        {
-                            text: '锁定用户',
-                            link: '/lock',
-                        },
-                        {
-                            text: '设置默认身份(角色)',
-                            link: '/defaultRole',
-                        },
-                        {
-                            text: '查看用户信息',
-                            link: '/detail',
-                        },
-                        {
-                            text: '查看用户统计',
-                            link: '/statistics',
-                        },
-                        {
-                            text: '授权用户策略',
-                            link: '/grantPolicy',
-                        },
-                        {
-                            text: '关联用户部门',
-                            link: '/assocDepartment',
-                        },
-                        {
-                            text: '关联用户组',
-                            link: '/assocGroup',
-                        },
-                        {
-                            text: '关联用户组',
-                            link: '/assocTag',
-                        }
-                    ],
+                    text: '前置准备',
+                    link: '/prerequisites',
                 },
                 {
-                    text: '部门',
-                    link: '/overview',
-                    collapsed: true,
-                    base: '/zh/docs/gm/organization/department',
-                    items: [
-                        {
-                            text: '添加部门',
-                            link: '/add',
-                        },
-                        {
-                            text: '添加子部门',
-                            link: '/addSub',
-                        },
-                        {
-                            text: '编辑部门',
-                            link: '/edit',
-                        },
-                        {
-                            text: '删除部门',
-                            link: '/delete',
-                        },
-                        {
-                            text: '移动部门',
-                            link: '/move',
-                        },
-                        {
-                            text: '查看部门信息',
-                            link: '/detail',
-                        },
-                        {
-                            text: '查看部门统计',
-                            link: '/statistics',
-                        },
-                        {
-                            text: '授权部门策略',
-                            link: '/grantPolicy',
-                        },
-                        {
-                            text: '关联部门用户',
-                            link: '/assocUser',
-                        },
-                        {
-                            text: '关联部门标签',
-                            link: '/assocTag',
-                        }
-                    ],
-                },
-                {
-                    text: '组',
-                    link: '/overview',
-                    collapsed: true,
-                    base: '/zh/docs/gm/organization/group',
-                    items: [
-                        {
-                            text: '添加组',
-                            link: '/add',
-                        },
-                        {
-                            text: '编辑组',
-                            link: '/edit',
-                        },
-                        {
-                            text: '删除组',
-                            link: '/delete',
-                        },
-                        {
-                            text: '禁用组',
-                            link: '/disable',
-                        },
-                        {
-                            text: '查看组信息',
-                            link: '/detail',
-                        },
-                        {
-                            text: '查看组统计',
-                            link: '/statistics',
-                        },
-                        {
-                            text: '授权组策略',
-                            link: '/grantPolicy',
-                        },
-                        {
-                            text: '关联组用户',
-                            link: '/assocUser',
-                        },
-                        {
-                            text: '关联组标签',
-                            link: '/assocTag',
-                        }
-                    ],
-                },
-                {
-                    text: '标签',
-                    link: '/overview',
-                    collapsed: true,
-                    base: '/zh/docs/gm/organization/tag',
-                    items: [
-                        {
-                            text: '添加标签',
-                            link: '/add',
-                        },
-                        {
-                            text: '编辑标签',
-                            link: '/edit',
-                        },
-                        {
-                            text: '删除标签',
-                            link: '/delete',
-                        },
-                        {
-                            text: '查看标签统计',
-                            link: '/statistics',
-                        },
-                        {
-                            text: '查看关联对象',
-                            link: '/assocOrg',
-                        }
-                    ]
+                    text: '安装AngusGM',
+                    link: '/AngusGM',
                 }
-            ],
+            ]
         },
         {
-            text: '全局权限',
+            text: "用户界面",
+            collapsed: true,
             items: [
                 {
-                    text: '权限策略',
-                    link: '/overview',
-                    collapsed: true,
-                    base: '/zh/docs/gm/permissions/policy',
-                    items: [
-                        {
-                            text: '添加权限策略',
-                            link: '/add',
-                        },
-                        {
-                            text: '设置应用默认授权',
-                            link: '/setAppDefault',
-                        },
-                        {
-                            text: '查看权限列表',
-                            link: '/list',
-                        },
-                        {
-                            text: '查看权限详细',
-                            link: '/detail',
-                        },
-                        {
-                            text: '禁用权限策略',
-                            link: '/disable',
-                        },
-                        {
-                            text: '删除权限策略',
-                            link: '/delete',
-                        },
-                        {
-                            text: '修改权限策略',
-                            link: '/edit',
-                        },
-                        {
-                            text: '授权权限策略',
-                            link: '/grant',
-                        }
-                    ]
-                },
-                {
-                    text: '查看授权',
-                    link: '/overview',
-                    collapsed: true,
-                    base: '/zh/docs/gm/permissions/view',
-                    items: [
-                        {
-                            text: '查看授权用户权限',
-                            link: '/viewUserPermissions',
-                        },
-                        {
-                            text: '取消授权用户权限',
-                            link: '/cancelUserPermissions',
-                        },
-                        {
-                            text: '查看授权部门权限',
-                            link: '/viewDepartmentPermissions',
-                        },
-                        {
-                            text: '取消授权部门权限',
-                            link: '/cancelDepartmentPermissions',
-                        },
-                        {
-                            text: '查看授权组权限',
-                            link: '/viewGroupPermissions',
-                        },
-                        {
-                            text: '取消授权组权限',
-                            link: '/cancelGroupPermissions',
-                        }
-                    ]
-                }
-            ],
-        },
-        {
-            text: '公告与消息',
-            items: [
-                {
-                    text: '公告',
-                    collapsed: true,
-                    base: '/zh/docs/gm/messages/notice',
-                    link: '/overview',
-                    items: [
-                        {
-                            text: '发布公告(通知)',
-                            link: '/publish',
-                        },
-                        {
-                            text: '删除公告',
-                            link: '/delete',
-                        },
-                        {
-                            text: '查看公告信息',
-                            link: '/detail',
-                        },
-                        {
-                            text: '查看公告统计',
-                            link: '/statistics',
-                        }
-                    ]
-                },
-                {
-                    text: '消息',
-                    collapsed: true,
-                    base: '/zh/docs/gm/messages/messages',
-                    link: '/overview',
-                    items: [
-                        {
-                            text: '发送消息',
-                            link: '/send',
-                        },
-                        {
-                            text: '查看消息内容',
-                            link: '/content',
-                        },
-                        {
-                            text: '查看消息统计',
-                            link: '/statistics',
-                        }
-                    ]
-                },
-            ],
-        },
-        {
-            text: '商店',
-            items: [
-                {
-                    text: '云商店',
-                    collapsed: true,
-                    base: '/zh/docs/gm/store/cloudStore',
-                    link: '/overview',
-                    items: [
-                        {
-                            text: '查看商品',
-                            link: '/view',
-                        },
-                        {
-                            text: '购买商品',
-                            link: '/buy',
-                        }
-                    ]
-                },
-                {
-                    text: '我的商品',
-                    collapsed: true,
-                    base: '/zh/docs/gm/store/myGoods',
-                    link: '/overview',
-                    items: [
-                        {
-                            text: '查看我的商品',
-                            link: '/view',
-                        },
-                        {
-                            text: '下载我的商品',
-                            link: '/download',
-                        }
-                    ]
-                },
-                {
-                    text: '我的许可',
-                    collapsed: true,
-                    base: '/zh/docs/gm/store/myLicense',
-                    link: '/overview',
-                    items: [
-                        {
-                            text: '查看我的许可',
-                            link: '/view',
-                        },
-                        {
-                            text: '下载我的许可',
-                            link: '/download',
-                        }
-                    ]
-                },
-            ],
-        },
-        {
-            text: '系统',
-            items: [
-                {
-                    text: '系统版本',
-                    link: '/zh/docs/gm/system/systemVersion/overview',
-                },
-                {
-                    text: '实名认证',
-                    collapsed: true,
-                    base: '/zh/docs/gm/system/realName',
-                    link: '/overview',
-                    items: [
-                        {
-                            text: '实名认证',
-                            link: '/auth',
-                        },
-                        {
-                            text: '查看认证',
-                            link: '/view',
-                        }
-                    ]
-                },
-                {
-                    text: '安全设置',
-                    collapsed: true,
-                    base: '/zh/docs/gm/system/securitySetting',
-                    link: '/overview',
-                    items: [
-                        {
-                            text: '登录限制',
-                            link: '/signinLimit',
-                        },
-                        {
-                            text: '允许注册',
-                            link: '/signupAllow',
-                        },
-                        {
-                            text: '修改密码策略',
-                            link: '/editPasswordPolicy',
-                        },
-                        {
-                            text: '注册账号',
-                            link: '/cancelSign',
-                        },
-                        {
-                            text: '安全告警',
-                            link: '/securityAlert',
-                        }
-                    ]
-                },
-                {
-                    text: '邮箱配置',
+                    text: '组织人员',
                     collapsed: true,
                     items: [
                         {
-                            text: '邮件服务器',
-                            collapsed: true,
-                            base: '/zh/docs/gm/system/email/server',
+                            text: '用户',
                             link: '/overview',
+                            collapsed: true,
+                            base: '/zh/docs/gm/organization/user',
                             items: [
                                 {
-                                    text: '添加邮件服务器',
+                                    text: '添加用户',
                                     link: '/add',
                                 },
                                 {
-                                    text: '编辑邮件服务器',
+                                    text: '编辑用户',
                                     link: '/edit',
                                 },
                                 {
-                                    text: '设置默认邮件服务器',
-                                    link: '/setDefault',
-                                },
-                                {
-                                    text: '删除邮件服务器',
+                                    text: '删除用户',
                                     link: '/delete',
                                 },
                                 {
-                                    text: '测试邮件服务器',
+                                    text: '禁用用户',
+                                    link: '/disable',
+                                },
+                                {
+                                    text: '重置密码',
+                                    link: '/resetPassword',
+                                },
+                                {
+                                    text: '锁定用户',
+                                    link: '/lock',
+                                },
+                                {
+                                    text: '设置默认身份(角色)',
+                                    link: '/defaultRole',
+                                },
+                                {
+                                    text: '查看用户信息',
+                                    link: '/detail',
+                                },
+                                {
+                                    text: '查看用户统计',
+                                    link: '/statistics',
+                                },
+                                {
+                                    text: '授权用户策略',
+                                    link: '/grantPolicy',
+                                },
+                                {
+                                    text: '关联用户部门',
+                                    link: '/assocDepartment',
+                                },
+                                {
+                                    text: '关联用户组',
+                                    link: '/assocGroup',
+                                },
+                                {
+                                    text: '关联用户组',
+                                    link: '/assocTag',
+                                }
+                            ],
+                        },
+                        {
+                            text: '部门',
+                            link: '/overview',
+                            collapsed: true,
+                            base: '/zh/docs/gm/organization/department',
+                            items: [
+                                {
+                                    text: '添加部门',
+                                    link: '/add',
+                                },
+                                {
+                                    text: '添加子部门',
+                                    link: '/addSub',
+                                },
+                                {
+                                    text: '编辑部门',
+                                    link: '/edit',
+                                },
+                                {
+                                    text: '删除部门',
+                                    link: '/delete',
+                                },
+                                {
+                                    text: '移动部门',
+                                    link: '/move',
+                                },
+                                {
+                                    text: '查看部门信息',
+                                    link: '/detail',
+                                },
+                                {
+                                    text: '查看部门统计',
+                                    link: '/statistics',
+                                },
+                                {
+                                    text: '授权部门策略',
+                                    link: '/grantPolicy',
+                                },
+                                {
+                                    text: '关联部门用户',
+                                    link: '/assocUser',
+                                },
+                                {
+                                    text: '关联部门标签',
+                                    link: '/assocTag',
+                                }
+                            ],
+                        },
+                        {
+                            text: '组',
+                            link: '/overview',
+                            collapsed: true,
+                            base: '/zh/docs/gm/organization/group',
+                            items: [
+                                {
+                                    text: '添加组',
+                                    link: '/add',
+                                },
+                                {
+                                    text: '编辑组',
+                                    link: '/edit',
+                                },
+                                {
+                                    text: '删除组',
+                                    link: '/delete',
+                                },
+                                {
+                                    text: '禁用组',
+                                    link: '/disable',
+                                },
+                                {
+                                    text: '查看组信息',
+                                    link: '/detail',
+                                },
+                                {
+                                    text: '查看组统计',
+                                    link: '/statistics',
+                                },
+                                {
+                                    text: '授权组策略',
+                                    link: '/grantPolicy',
+                                },
+                                {
+                                    text: '关联组用户',
+                                    link: '/assocUser',
+                                },
+                                {
+                                    text: '关联组标签',
+                                    link: '/assocTag',
+                                }
+                            ],
+                        },
+                        {
+                            text: '标签',
+                            link: '/overview',
+                            collapsed: true,
+                            base: '/zh/docs/gm/organization/tag',
+                            items: [
+                                {
+                                    text: '添加标签',
+                                    link: '/add',
+                                },
+                                {
+                                    text: '编辑标签',
+                                    link: '/edit',
+                                },
+                                {
+                                    text: '删除标签',
+                                    link: '/delete',
+                                },
+                                {
+                                    text: '查看标签统计',
+                                    link: '/statistics',
+                                },
+                                {
+                                    text: '查看关联对象',
+                                    link: '/assocOrg',
+                                }
+                            ]
+                        }
+                    ],
+                },
+                {
+                    text: '全局权限',
+                    collapsed: true,
+                    items: [
+                        {
+                            text: '权限策略',
+                            link: '/overview',
+                            collapsed: true,
+                            base: '/zh/docs/gm/permissions/policy',
+                            items: [
+                                {
+                                    text: '添加权限策略',
+                                    link: '/add',
+                                },
+                                {
+                                    text: '设置应用默认授权',
+                                    link: '/setAppDefault',
+                                },
+                                {
+                                    text: '查看权限列表',
+                                    link: '/list',
+                                },
+                                {
+                                    text: '查看权限详细',
+                                    link: '/detail',
+                                },
+                                {
+                                    text: '禁用权限策略',
+                                    link: '/disable',
+                                },
+                                {
+                                    text: '删除权限策略',
+                                    link: '/delete',
+                                },
+                                {
+                                    text: '修改权限策略',
+                                    link: '/edit',
+                                },
+                                {
+                                    text: '授权权限策略',
+                                    link: '/grant',
+                                }
+                            ]
+                        },
+                        {
+                            text: '查看授权',
+                            link: '/overview',
+                            collapsed: true,
+                            base: '/zh/docs/gm/permissions/view',
+                            items: [
+                                {
+                                    text: '查看授权用户权限',
+                                    link: '/viewUserPermissions',
+                                },
+                                {
+                                    text: '取消授权用户权限',
+                                    link: '/cancelUserPermissions',
+                                },
+                                {
+                                    text: '查看授权部门权限',
+                                    link: '/viewDepartmentPermissions',
+                                },
+                                {
+                                    text: '取消授权部门权限',
+                                    link: '/cancelDepartmentPermissions',
+                                },
+                                {
+                                    text: '查看授权组权限',
+                                    link: '/viewGroupPermissions',
+                                },
+                                {
+                                    text: '取消授权组权限',
+                                    link: '/cancelGroupPermissions',
+                                }
+                            ]
+                        }
+                    ],
+                },
+                {
+                    text: '公告与消息',
+                    collapsed: true,
+                    items: [
+                        {
+                            text: '公告',
+                            collapsed: true,
+                            base: '/zh/docs/gm/messages/notice',
+                            link: '/overview',
+                            items: [
+                                {
+                                    text: '发布公告(通知)',
+                                    link: '/publish',
+                                },
+                                {
+                                    text: '删除公告',
+                                    link: '/delete',
+                                },
+                                {
+                                    text: '查看公告信息',
+                                    link: '/detail',
+                                },
+                                {
+                                    text: '查看公告统计',
+                                    link: '/statistics',
+                                }
+                            ]
+                        },
+                        {
+                            text: '消息',
+                            collapsed: true,
+                            base: '/zh/docs/gm/messages/messages',
+                            link: '/overview',
+                            items: [
+                                {
+                                    text: '发送消息',
+                                    link: '/send',
+                                },
+                                {
+                                    text: '查看消息内容',
+                                    link: '/content',
+                                },
+                                {
+                                    text: '查看消息统计',
+                                    link: '/statistics',
+                                }
+                            ]
+                        },
+                    ],
+                },
+                {
+                    text: '商店',
+                    collapsed: true,
+                    items: [
+                        {
+                            text: '云商店',
+                            collapsed: true,
+                            base: '/zh/docs/gm/store/cloudStore',
+                            link: '/overview',
+                            items: [
+                                {
+                                    text: '查看商品',
+                                    link: '/view',
+                                },
+                                {
+                                    text: '购买商品',
+                                    link: '/buy',
+                                }
+                            ]
+                        },
+                        {
+                            text: '我的商品',
+                            collapsed: true,
+                            base: '/zh/docs/gm/store/myGoods',
+                            link: '/overview',
+                            items: [
+                                {
+                                    text: '查看我的商品',
+                                    link: '/view',
+                                },
+                                {
+                                    text: '下载我的商品',
+                                    link: '/download',
+                                }
+                            ]
+                        },
+                        {
+                            text: '我的许可',
+                            collapsed: true,
+                            base: '/zh/docs/gm/store/myLicense',
+                            link: '/overview',
+                            items: [
+                                {
+                                    text: '查看我的许可',
+                                    link: '/view',
+                                },
+                                {
+                                    text: '下载我的许可',
+                                    link: '/download',
+                                }
+                            ]
+                        },
+                    ],
+                },
+                {
+                    text: '系统',
+                    collapsed: true,
+                    base: '/zh/docs/gm/system',
+                    items: [
+                        {
+                            text: '系统版本',
+                            link: '/systemVersion/overview',
+                        },
+                        {
+                            text: '实名认证',
+                            collapsed: true,
+                            base: '/zh/docs/gm/system/realName',
+                            link: '/overview',
+                            items: [
+                                {
+                                    text: '实名认证',
+                                    link: '/auth',
+                                },
+                                {
+                                    text: '查看认证',
+                                    link: '/view',
+                                }
+                            ]
+                        },
+                        {
+                            text: '安全设置',
+                            collapsed: true,
+                            base: '/zh/docs/gm/system/securitySetting',
+                            link: '/overview',
+                            items: [
+                                {
+                                    text: '登录限制',
+                                    link: '/signinLimit',
+                                },
+                                {
+                                    text: '允许注册',
+                                    link: '/signupAllow',
+                                },
+                                {
+                                    text: '修改密码策略',
+                                    link: '/editPasswordPolicy',
+                                },
+                                {
+                                    text: '注册账号',
+                                    link: '/cancelSign',
+                                },
+                                {
+                                    text: '安全告警',
+                                    link: '/securityAlert',
+                                }
+                            ]
+                        },
+                        {
+                            text: '邮箱配置',
+                            collapsed: true,
+                            items: [
+                                {
+                                    text: '邮件服务器',
+                                    collapsed: true,
+                                    base: '/zh/docs/gm/system/email/server',
+                                    link: '/overview',
+                                    items: [
+                                        {
+                                            text: '添加邮件服务器',
+                                            link: '/add',
+                                        },
+                                        {
+                                            text: '编辑邮件服务器',
+                                            link: '/edit',
+                                        },
+                                        {
+                                            text: '设置默认邮件服务器',
+                                            link: '/setDefault',
+                                        },
+                                        {
+                                            text: '删除邮件服务器',
+                                            link: '/delete',
+                                        },
+                                        {
+                                            text: '测试邮件服务器',
+                                            link: '/test',
+                                        }
+                                    ]
+                                },
+                                {
+                                    text: '发送记录',
+                                    collapsed: true,
+                                    base: '/zh/docs/gm/system/email/record',
+                                    link: '/overview',
+                                    items: [
+                                        {
+                                            text: '查看发送记录',
+                                            link: '/view',
+                                        },
+                                        {
+                                            text: '查看发送记录统计',
+                                            link: '/statistics',
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            text: '短信配置',
+                            collapsed: true,
+                            items: [
+                                {
+                                    text: '短信通道',
+                                    collapsed: true,
+                                    base: '/zh/docs/gm/system/sms/channel',
+                                    link: '/overview',
+                                    items: [
+                                        {
+                                            text: '配置短信通道',
+                                            link: '/edit',
+                                        },
+                                        {
+                                            text: '测试短信通道',
+                                            link: '/test',
+                                        },
+                                        {
+                                            text: '启用或禁用短信通道',
+                                            link: '/enableOrDisable',
+                                        }
+                                    ]
+                                },
+                                {
+                                    text: '短信模版',
+                                    collapsed: true,
+                                    base: '/zh/docs/gm/system/sms/template',
+                                    link: '/overview',
+                                    items: [
+                                        {
+                                            text: '查看短信模版',
+                                            link: '/view',
+                                        },
+                                        {
+                                            text: '编辑短信模版',
+                                            link: '/edit',
+                                        }
+                                    ]
+                                },
+                                {
+                                    text: '发送记录',
+                                    collapsed: true,
+                                    base: '/zh/docs/gm/system/sms/record',
+                                    link: '/overview',
+                                    items: [
+                                        {
+                                            text: '查看发送记录',
+                                            link: '/view',
+                                        },
+                                        {
+                                            text: '查看发送记录统计',
+                                            link: '/statistics',
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            text: '事件配置',
+                            collapsed: true,
+                            items: [
+                                {
+                                    text: '接收通道',
+                                    collapsed: true,
+                                    base: '/zh/docs/gm/system/event/channel',
+                                    link: '/overview',
+                                    items: [
+                                        {
+                                            text: '配置WebHook',
+                                            link: '/editWebHook',
+                                        },
+                                        {
+                                            text: '配置邮件组',
+                                            link: '/editEmailGroup',
+                                        },
+                                        {
+                                            text: '配置钉钉机器人',
+                                            link: '/editDingRobot',
+                                        },
+                                        {
+                                            text: '配置企业微信机器人',
+                                            link: '/editWXRobot',
+                                        }
+                                    ]
+                                },
+                                {
+                                    text: '事件模版',
+                                    collapsed: true,
+                                    base: '/zh/docs/gm/system/event/template',
+                                    link: '/overview',
+                                    items: [
+                                        {
+                                            text: '查看事件模版',
+                                            link: '/view',
+                                        },
+                                        {
+                                            text: '编辑事件模版',
+                                            link: '/edit',
+                                        }
+                                    ]
+                                },
+                                {
+                                    text: '事件记录',
+                                    collapsed: true,
+                                    base: '/zh/docs/gm/system/event/record',
+                                    link: '/overview',
+                                    items: [
+                                        {
+                                            text: '查看事件记录',
+                                            link: '/view',
+                                        },
+                                        {
+                                            text: '查看事件记录统计',
+                                            link: '/statistics',
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            text: '审计日志',
+                            collapsed: true,
+                            items: [
+                                {
+                                    text: '操作日志',
+                                    collapsed: true,
+                                    base: '/zh/docs/gm/system/log/operation',
+                                    link: '/overview',
+                                    items: [
+                                        {
+                                            text: '查看操作日志',
+                                            link: '/view',
+                                        },
+                                        {
+                                            text: '查看操作日志统计',
+                                            link: '/statistics',
+                                        }
+                                    ]
+                                },
+                                // TODO 系统日志
+                                {
+                                    text: '请求日志',
+                                    collapsed: true,
+                                    base: '/zh/docs/gm/system/log/request',
+                                    link: '/overview',
+                                    items: [
+                                        {
+                                            text: '查看请求日志',
+                                            link: '/view',
+                                        },
+                                        {
+                                            text: '查看请求日志统计',
+                                            link: '/statistics',
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            text: 'LDAP',
+                            collapsed: true,
+                            base: '/zh/docs/gm/system/ldap',
+                            link: '/overview',
+                            items: [
+                                {
+                                    text: '添加目录',
+                                    link: '/add',
+                                },
+                                {
+                                    text: '修改目录',
+                                    link: '/edit',
+                                },
+                                {
+                                    text: '测试目录',
                                     link: '/test',
+                                },
+                                {
+                                    text: '同步目录',
+                                    link: '/sync',
+                                },
+                                {
+                                    text: '移动目录',
+                                    link: '/move',
+                                },
+                                {
+                                    text: '删除目录',
+                                    link: '/delete',
+                                },
+                                {
+                                    text: '删除目录和数据',
+                                    link: '/deleteAll',
+                                },
+                                {
+                                    text: '禁用目录',
+                                    link: '/disable',
                                 }
                             ]
                         },
                         {
-                            text: '发送记录',
+                            text: '资源配额',
                             collapsed: true,
-                            base: '/zh/docs/gm/system/email/record',
+                            base: '/zh/docs/gm/system/resourceQuota',
                             link: '/overview',
                             items: [
                                 {
-                                    text: '查看发送记录',
+                                    text: '查看资源配额',
                                     link: '/view',
                                 },
                                 {
-                                    text: '查看发送记录统计',
-                                    link: '/statistics',
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    text: '短信配置',
-                    collapsed: true,
-                    items: [
-                        {
-                            text: '短信通道',
-                            collapsed: true,
-                            base: '/zh/docs/gm/system/sms/channel',
-                            link: '/overview',
-                            items: [
-                                {
-                                    text: '配置短信通道',
+                                    text: '修改资源配额',
                                     link: '/edit',
                                 },
                                 {
-                                    text: '测试短信通道',
-                                    link: '/test',
-                                },
-                                {
-                                    text: '启用或禁用短信通道',
-                                    link: '/enableOrDisable',
+                                    text: '提交修改资源配额工单',
+                                    link: '/submitWorkOrder',
                                 }
                             ]
                         },
                         {
-                            text: '短信模版',
+                            text: '应用存储',
                             collapsed: true,
-                            base: '/zh/docs/gm/system/sms/template',
+                            base: '/zh/docs/gm/system/appStorage',
                             link: '/overview',
                             items: [
                                 {
-                                    text: '查看短信模版',
+                                    text: '查看应用数据存储',
+                                    link: '/viewAppStorage',
+                                },
+                                {
+                                    text: '查看业务数据存储',
+                                    link: '/viewBusinessStorage',
+                                },
+                                {
+                                    text: '修改业务数据存储类型',
+                                    link: '/editBusinessStorage',
+                                }
+                            ]
+                        },
+                        {
+                            text: '在线用户',
+                            collapsed: true,
+                            base: '/zh/docs/gm/system/onlineUser',
+                            link: '/overview',
+                            items: [
+                                {
+                                    text: '查看在线用户',
                                     link: '/view',
                                 },
                                 {
-                                    text: '编辑短信模版',
-                                    link: '/edit',
+                                    text: '强制退出用户',
+                                    link: '/quit',
                                 }
                             ]
                         },
                         {
-                            text: '发送记录',
+                            text: '外观',
                             collapsed: true,
-                            base: '/zh/docs/gm/system/sms/record',
+                            base: '/zh/docs/gm/system/appearance',
                             link: '/overview',
                             items: [
                                 {
-                                    text: '查看发送记录',
+                                    text: '查看站点应用',
+                                    link: '/viewSite',
+                                },
+                                {
+                                    text: '修改站点应用',
+                                    link: '/editSite',
+                                }
+                            ]
+                        },
+                        {
+                            text: '系统令牌',
+                            collapsed: true,
+                            base: '/zh/docs/gm/system/systemToken',
+                            link: '/overview',
+                            items: [
+                                {
+                                    text: '添加系统令牌',
+                                    link: '/add',
+                                },
+                                {
+                                    text: '查看系统令牌',
                                     link: '/view',
                                 },
                                 {
-                                    text: '查看发送记录统计',
-                                    link: '/statistics',
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    text: '事件配置',
-                    collapsed: true,
-                    items: [
-                        {
-                            text: '接收通道',
-                            collapsed: true,
-                            base: '/zh/docs/gm/system/event/channel',
-                            link: '/overview',
-                            items: [
-                                {
-                                    text: '配置WebHook',
-                                    link: '/editWebHook',
-                                },
-                                {
-                                    text: '配置邮件组',
-                                    link: '/editEmailGroup',
-                                },
-                                {
-                                    text: '配置钉钉机器人',
-                                    link: '/editDingRobot',
-                                },
-                                {
-                                    text: '配置企业微信机器人',
-                                    link: '/editWXRobot',
+                                    text: '删除系统令牌',
+                                    link: '/delete',
                                 }
                             ]
                         },
-                        {
-                            text: '事件模版',
-                            collapsed: true,
-                            base: '/zh/docs/gm/system/event/template',
-                            link: '/overview',
-                            items: [
-                                {
-                                    text: '查看事件模版',
-                                    link: '/view',
-                                },
-                                {
-                                    text: '编辑事件模版',
-                                    link: '/edit',
-                                }
-                            ]
-                        },
-                        {
-                            text: '事件记录',
-                            collapsed: true,
-                            base: '/zh/docs/gm/system/event/record',
-                            link: '/overview',
-                            items: [
-                                {
-                                    text: '查看事件记录',
-                                    link: '/view',
-                                },
-                                {
-                                    text: '查看事件记录统计',
-                                    link: '/statistics',
-                                }
-                            ]
-                        }
-                    ]
+                    ],
                 },
-                {
-                    text: '审计日志',
-                    collapsed: true,
-                    items: [
-                        {
-                            text: '操作日志',
-                            collapsed: true,
-                            base: '/zh/docs/gm/system/log/operation',
-                            link: '/overview',
-                            items: [
-                                {
-                                    text: '查看操作日志',
-                                    link: '/view',
-                                },
-                                {
-                                    text: '查看操作日志统计',
-                                    link: '/statistics',
-                                }
-                            ]
-                        },
-                        // TODO 系统日志
-                        {
-                            text: '请求日志',
-                            collapsed: true,
-                            base: '/zh/docs/gm/system/log/request',
-                            link: '/overview',
-                            items: [
-                                {
-                                    text: '查看请求日志',
-                                    link: '/view',
-                                },
-                                {
-                                    text: '查看请求日志统计',
-                                    link: '/statistics',
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    text: 'LDAP',
-                    collapsed: true,
-                    base: '/zh/docs/gm/system/ldap',
-                    link: '/overview',
-                    items: [
-                        {
-                            text: '添加目录',
-                            link: '/add',
-                        },
-                        {
-                            text: '修改目录',
-                            link: '/edit',
-                        },
-                        {
-                            text: '测试目录',
-                            link: '/test',
-                        },
-                        {
-                            text: '同步目录',
-                            link: '/sync',
-                        },
-                        {
-                            text: '移动目录',
-                            link: '/move',
-                        },
-                        {
-                            text: '删除目录',
-                            link: '/delete',
-                        },
-                        {
-                            text: '删除目录和数据',
-                            link: '/deleteAll',
-                        },
-                        {
-                            text: '禁用目录',
-                            link: '/disable',
-                        }
-                    ]
-                },
-                {
-                    text: '资源配额',
-                    collapsed: true,
-                    base: '/zh/docs/gm/system/resourceQuota',
-                    link: '/overview',
-                    items: [
-                        {
-                            text: '查看资源配额',
-                            link: '/view',
-                        },
-                        {
-                            text: '修改资源配额',
-                            link: '/edit',
-                        },
-                        {
-                            text: '提交修改资源配额工单',
-                            link: '/submitWorkOrder',
-                        }
-                    ]
-                },
-                {
-                    text: '应用存储',
-                    collapsed: true,
-                    base: '/zh/docs/gm/system/appStorage',
-                    link: '/overview',
-                    items: [
-                        {
-                            text: '查看应用数据存储',
-                            link: '/viewAppStorage',
-                        },
-                        {
-                            text: '查看业务数据存储',
-                            link: '/viewBusinessStorage',
-                        },
-                        {
-                            text: '修改业务数据存储类型',
-                            link: '/editBusinessStorage',
-                        }
-                    ]
-                },
-                {
-                    text: '在线用户',
-                    collapsed: true,
-                    base: '/zh/docs/gm/system/onlineUser',
-                    link: '/overview',
-                    items: [
-                        {
-                            text: '查看在线用户',
-                            link: '/view',
-                        },
-                        {
-                            text: '强制退出用户',
-                            link: '/quit',
-                        }
-                    ]
-                },
-                {
-                    text: '外观',
-                    collapsed: true,
-                    base: '/zh/docs/gm/system/appearance',
-                    link: '/overview',
-                    items: [
-                        {
-                            text: '查看站点应用',
-                            link: '/viewSite',
-                        },
-                        {
-                            text: '修改站点应用',
-                            link: '/editSite',
-                        }
-                    ]
-                },
-                {
-                    text: '系统令牌',
-                    collapsed: true,
-                    base: '/zh/docs/gm/system/systemToken',
-                    link: '/overview',
-                    items: [
-                        {
-                            text: '添加系统令牌',
-                            link: '/add',
-                        },
-                        {
-                            text: '查看系统令牌',
-                            link: '/view',
-                        },
-                        {
-                            text: '删除系统令牌',
-                            link: '/delete',
-                        }
-                    ]
-                },
-            ],
+            ]
         },
+        {
+            text: '常见问题 (FAQ)',
+            collapsed: true,
+            base: '/zh/docs/gm/faq',
+            items: [
+                {
+                    text: 'Backlog相关问题',
+                    link: '/backlog',
+                },
+                {
+                    text: '产品迭代相关问题',
+                    link: '/sprint',
+                },
+                {
+                    text: '安装部署相关问题',
+                    link: '/deployment',
+                },
+                {
+                    text: '执行相关问题',
+                    link: '/execution',
+                },
+                {
+                    text: '报告相关问题',
+                    link: '/report',
+                },
+            ]
+        },
+        {
+            text: "接口参考",
+            collapsed: true,
+            items: [
+                {
+                    text: '接口说明',
+                    link: '/apis/introduction',
+                },
+                {
+                    text: '接口定义',
+                    collapsed: true,
+                    items: apiSidebar.itemsByTags({linkPrefix: "/apis/"})
+                }
+            ]
+        }
     ]
 }
 
 function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
+    const spec = testerZhSpec;
+    const apiSidebar = useSidebar({
+        spec,
+        linkPrefix: '/apis/'
+    });
+
     return [
         {
             text: 'AngusTester',
@@ -900,6 +1000,10 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                 {
                     text: '关于应用',
                     link: '/about',
+                },
+                {
+                    text: '核心业务',
+                    link: '/business',
                 },
                 {
                     text: '产品特性',
@@ -928,7 +1032,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
             ]
         },
         {
-            text: '安装应用',
+            text: '部署应用',
             collapsed: true,
             base: '/zh/docs/tester/installation',
             items: [
@@ -1514,7 +1618,13 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
         },
         {
             text: '命令行 (CLI)',
-            link: '/zh/docs/tester/command/AngusRunner',
+            collapsed: true,
+            items: [
+                {
+                    text: 'AngusRunner CLI',
+                    link: '/command/AngusRunner'
+                }
+            ]
         },
         {
             text: '常见问题 (FAQ)',
@@ -1542,6 +1652,65 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                     link: '/report',
                 },
             ]
+        },
+        {
+            text: "接口参考",
+            collapsed: true,
+            items: [
+                {
+                    text: '接口说明',
+                    link: '/apis/introduction',
+                },
+                {
+                    text: '接口定义',
+                    collapsed: true,
+                    items: apiSidebar.itemsByTags({linkPrefix: "/apis/"})
+                }
+            ]
         }
     ]
+}
+
+function searchOptions(): Partial<DefaultTheme.AlgoliaSearchOptions> {
+    return {
+        placeholder: '搜索文档',
+        translations: {
+            button: {
+                buttonText: '搜索文档',
+                buttonAriaLabel: '搜索文档'
+            },
+            modal: {
+                searchBox: {
+                    resetButtonTitle: '清除查询条件',
+                    resetButtonAriaLabel: '清除查询条件',
+                    cancelButtonText: '取消',
+                    cancelButtonAriaLabel: '取消'
+                },
+                startScreen: {
+                    recentSearchesTitle: '搜索历史',
+                    noRecentSearchesText: '没有搜索历史',
+                    saveRecentSearchButtonTitle: '保存至搜索历史',
+                    removeRecentSearchButtonTitle: '从搜索历史中移除',
+                    favoriteSearchesTitle: '收藏',
+                    removeFavoriteSearchButtonTitle: '从收藏中移除'
+                },
+                errorScreen: {
+                    titleText: '无法获取结果',
+                    helpText: '你可能需要检查你的网络连接'
+                },
+                footer: {
+                    selectText: '选择',
+                    navigateText: '切换',
+                    closeText: '关闭',
+                    searchByText: '搜索提供者'
+                },
+                noResultsScreen: {
+                    noResultsText: '无法找到相关结果',
+                    suggestedQueryText: '你可以尝试查询',
+                    reportMissingResultsText: '你认为该查询应该有结果？',
+                    reportMissingResultsLinkText: '点击反馈'
+                }
+            }
+        }
+    }
 }
