@@ -37,5 +37,8 @@
     "vitepress-plugin-group-icons": "^1.6.0",
     "vitepress-plugin-image-viewer": "^1.1.6",
     "vitepress-plugin-mermaid": "^2.0.17"
+  },
+  "dependencies": {
+    "@theojs/lumen": "^5.7.3"
   }
 }

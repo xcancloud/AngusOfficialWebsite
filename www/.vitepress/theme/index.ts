@@ -18,11 +18,14 @@ import imageViewer from 'vitepress-plugin-image-viewer';
 import vImageViewer from 'vitepress-plugin-image-viewer/lib/vImageViewer.vue';
 
 // plugin group-icons
-import 'virtual:group-icons.css'
+import 'virtual:group-icons.css';
 
 // plugin openapi client
-import { theme } from 'vitepress-openapi/client'
-import 'vitepress-openapi/dist/style.css'
+import { theme } from 'vitepress-openapi/client';
+import 'vitepress-openapi/dist/style.css';
+
+// plugin lumen
+import { DocVideoLink } from '@theojs/lumen'
 
 export default {
     extends: DefaultTheme,
@@ -39,6 +42,9 @@ export default {
 
         // Register vImageViewer components
         app.component('vImageViewer', vImageViewer);
+
+        // Register DocVideoLink components
+        app.component('Vid', DocVideoLink)
 
         // Register openapi components
         theme.enhanceApp({app});

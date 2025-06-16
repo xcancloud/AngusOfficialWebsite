@@ -22,12 +22,16 @@ AngusTester 帮助研发团队实现：
 - 🛠️ 运维人员：环境管理与监控
 - 📊 管理者：质量数据与进度分析
 
+## 系统架构
+![AngusTester-Art.png](./images/AngusTester-Art.png)
+*图：系统应用和服务组件依赖关系*
+
 ## 工作流程
-![AngusTester-Flow.png](images/AngusTester-Flow.png)
+![AngusTester-Flow.png](./images/AngusTester-Flow.png)
 *图：从需求到交付的全流程协同机制*
 
 ## 功能模块
-![AngusTester-Function.png](images/AngusTester-Function.png)
+![AngusTester-Function.png](./images/AngusTester-Function.png)
 *图：功能模块关系与集成结构*
 
 ## 核心优势
