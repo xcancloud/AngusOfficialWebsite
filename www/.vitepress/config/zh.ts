@@ -1002,6 +1002,10 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                     link: '/about',
                 },
                 {
+                    text: '核心业务',
+                    link: '/business',
+                },
+                {
                     text: '产品特性',
                     link: '/feature',
                 },

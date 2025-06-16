@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.7.1",
+    "@element-plus/icons-vue": "^2.3.1",
     "@fingerprintjs/fingerprintjs": "^4.6.2",
     "@iconify-json/mdi": "^1.1.63",
     "@xcan-angus/tools": "^1.0.0",
@@ -25,6 +26,7 @@
     "autoprefixer": "^10.4.19",
     "axios": "^1.9.0",
     "dayjs": "^1.11.13",
+    "element-plus": "^2.10.2",
     "js-cookie": "^3.0.5",
     "mermaid": "^11.6.0",
     "postcss": "^8.4.38",

@@ -7,6 +7,11 @@ import './style.css'
 // import ConfirmModal from './components/confirmModel.vue';
 // const confirmVisible = ref(false); // confirm modal visible
 
+// ElementIcons
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+import * as ElementIcons from '@element-plus/icons-vue'
+
 // plugin image-viewer
 import 'viewerjs/dist/viewer.min.css';
 import imageViewer from 'vitepress-plugin-image-viewer';
@@ -25,6 +30,12 @@ export default {
     enhanceApp({app, router, siteData}) {
         // ...
         // app.provide('confirm', confirmVisible);
+
+        // Register Element Plus
+        app.use(ElementPlus)
+        for (const [name, comp] of Object.entries(ElementIcons)) {
+            app.component(name, comp)
+        }
 
         // Register vImageViewer components
         app.component('vImageViewer', vImageViewer);

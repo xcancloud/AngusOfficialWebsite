@@ -974,6 +974,10 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                     link: "/about"
                 },
                 {
+                    text: 'Core Business',
+                    link: '/business',
+                },
+                {
                     text: "Product Features",
                     link: "/feature"
                 },
