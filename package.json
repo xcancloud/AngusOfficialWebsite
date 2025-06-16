@@ -16,14 +16,16 @@
     "check:links": "vitepress build --failOnDedLinks"
   },
   "devDependencies": {
-    "sitemap": "^8.0.0",
-    "vitepress": "^1.6.3",
     "@fingerprintjs/fingerprintjs": "^4.6.2",
     "@xcan-angus/tools": "^1.0.0",
-    "@xcan-angus/vue-ui": "^1.0.0",
     "ant-design-vue": "^4.2.6",
+    "autoprefixer": "^10.4.21",
     "axios": "^1.9.0",
     "dayjs": "^1.11.13",
-    "js-cookie": "^3.0.5"
+    "js-cookie": "^3.0.5",
+    "postcss": "^8.5.5",
+    "sitemap": "^8.0.0",
+    "tailwindcss": "^3.4.17",
+    "vitepress": "^1.6.3"
   }
 }

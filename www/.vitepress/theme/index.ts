@@ -7,8 +7,7 @@ import ConfirmModal from './components/confirmModel.vue';
 
 import '/assets/styles/vant-reset.css';
 import '/assets/styles/normalize.css';
-import '/assets/styles/tailwind.css';
-import '@xcan-angus/vue-ui/style.css';
+// import '/assets/styles/tailwind.css';
 
 const confirmVisible = ref(false); // confirm modal visible
 

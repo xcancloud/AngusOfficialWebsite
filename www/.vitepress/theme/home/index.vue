@@ -3,7 +3,6 @@
   import { isSignin } from '../../../../utils/site/index';
   import http from '../../../../utils/http';
   import { getDeviceInfo, getSearchTerms, angusTools } from '../../../../utils';
-  import { Icon } from '@xcan-angus/vue-ui';
 
   const { PUB_ESS } = angusTools;
 
@@ -76,6 +75,8 @@
 </script>
 <template>
   <div class="home-page">
+
+    <!--核心优势-->
     <div class="mt-10 adjust-content-padding py-10">
       <div class="text-center font-semibold text-black-color text-8">
         {{ pageContent.productAdvantage?.name }}
@@ -93,6 +94,7 @@
       </div>
     </div>
 
+    <!--全流程支持-->
     <div class="mt-10 adjust-content-padding py-10 text-center ">
       <div class="font-semibold text-black-color text-8">
         {{ pageContent.productFlow?.name }}
@@ -103,6 +105,7 @@
       <img :src="pageContent.productFlow?.imageUrl" class="mt-10">
     </div>
 
+    <!--产品功能-->
     <div class="mt-10 adjust-content-padding py-10 text-center ">
       <div class="font-semibold text-black-color text-8">
         {{ pageContent.productFunction?.name }}
@@ -113,6 +116,7 @@
       <img :src="pageContent.productFunction?.imageUrl" class="mt-10">
     </div>
 
+    <!--产品特性-->
     <div class="adjust-content-padding py-10 mt-10" style="padding-bottom: 0;">
       <p class="text-8 font-semibold text-center text-black-color">
         {{ pageContent.productFeature?.name }}
@@ -154,6 +158,7 @@
       </div>
     </div>
     
+    <!--插件化实现-->
     <div class="adjust-content-padding bg-blue-link-bg py-10 mt-10">
       <div class="flex items-center justify-between">
         <div class="flex-col items-center justify-between mr-5">
@@ -182,10 +187,10 @@
                 <template v-if="![1,3,5].includes(index)">
                   <div
                     :class="[
-                      'w-25 h-25 mx-auto flex justify-center items-center rounded-full',
+                      'w-20 h-20 mx-auto flex justify-center items-center rounded-full',
                       pluginsTabActive === index
-                        ? 'bg-blue text-white-1'
-                        : 'bg-blue-main-10 text-blue',
+                        ? 'bg-blue-100'
+                        : 'bg-blue-main-10',
                     ]"
                   >
                     <Icon class="text-15" :icon="item.iconContent.icon" />
@@ -214,7 +219,7 @@
             </div>
           </div>
         </div>
-        <div class="flex-1">
+        <div class="flex-1 min-w-0">
           <div
             v-show="pluginsTabActive === 0"
             class="w-110 flex items-center flex-wrap mx-auto"
@@ -224,7 +229,7 @@
               :key="index"
               :class="
                 item.releaseFlag === true || item.releaseFlag === 'true'
-                  ? 'text-blue border-blue-main'
+                  ? 'tex-blue-1border-blue-main'
                   : 'text-gray-hot-code border-gray-hot-code'
               "
               class="font-semibold border bg-white-1 text-center text-3.5 flex items-center rounded mr-4 mb-4"
@@ -242,7 +247,7 @@
               :key="index"
               :class="
                 item.releaseFlag === true || item.releaseFlag === 'true'
-                  ? 'text-blue border-blue-main'
+                  ? 'tex-blue-1border-blue-main'
                   : 'text-gray-hot-code border-gray-hot-code'
               "
               class="font-semibold border bg-white-1 text-center text-3.5 flex items-center rounded mr-4 mb-4"
@@ -260,7 +265,7 @@
               :key="index"
               :class="
                 item.releaseFlag === true || item.releaseFlag === 'true'
-                  ? 'text-blue border-blue-main'
+                  ? 'tex-blue-1border-blue-main'
                   : 'text-gray-hot-code border-gray-hot-code'
               "
               class="font-semibold border bg-white-1 text-center text-3.5 flex items-center rounded mr-4 mb-4"
@@ -269,31 +274,23 @@
               {{ item.name }}
             </div>
           </div>
-          <div v-show="pluginsTabActive === 6" class="box-border pr-10 flex justify-center">
+          <div v-show="pluginsTabActive === 6" class="box-border flex justify-center">
             <div class="mt-2">
               <div
                 v-for="(item, index) in Object.values(pageContent.plugins?.middleware?.kind || {})"
                 :key="index"
-                class="whitespace-no-wrap font-medium text-3.5 text-black-header-color mb-7"
-              >
-                {{ item.name }}：
-              </div>
-            </div>
-            <div>
-              <div
-                v-for="(item, index) in Object.values(pageContent.plugins?.middleware?.kind || {})"
-                v-show="pluginsTabActive === 6"
-                :key="index"
-                class="flex flex-1"
-              >
-                <div
-                  v-for="(btn, ind) in item.kind"
-                  :key="ind"
-                  :class="btn.releaseFlag === true || btn.releaseFlag === 'true'? 'text-blue border-blue-main':'text-gray-hot-code border-gray-hot-code'"
-                  class="font-semibold border text-center flex items-center rounded text-3.5 mr-4 mb-4 mt-1"
-                  style="padding: 3px 12px;"
-                >
-                  {{ btn.name }}
+                class="flex">
+                <div  class="min-w-20 whitespace-no-wrap font-medium text-3.5 text-black-header-color mt-2">{{ item.name }}：</div>
+                <div class="inline-flex flex-1 flex-wrap">
+                  <div
+                    v-for="(btn, ind) in item.kind"
+                    :key="ind"
+                    :class="btn.releaseFlag === true || btn.releaseFlag === 'true'? 'tex-blue-1border-blue-main':'text-gray-hot-code border-gray-hot-code'"
+                    class="font-semibold border text-center flex items-center rounded text-3.5 mr-4 mb-4 mt-1"
+                    style="padding: 3px 12px;"
+                  >
+                    {{ btn.name }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -301,7 +298,7 @@
         </div>
       </div>
     </div>
-
+    <!--产品版本-->
     <div class="adjust-content-padding py-10 mt-10">
       <p class="text-8 font-semibold text-center">
         {{ pageContent.productEdition?.name }}
@@ -312,9 +309,7 @@
           v-for="(item, index) in pageContent.productEdition?.edition"
           :key="index"
           ref="card"
-          class="w-68 relative transform transition-all duration-300 ease-linear hover:-translate-y-5"
-          :style="{ height: heightPage }"
-        >
+          class="w-68 relative transform transition-all duration-300 ease-linear hover:-translate-y-5">
           <img style="height: 520px;" :src="item.backgroundImage.image" alt="">
           <div class="absolute top-0 left-0 w-full px-8 text-white-1">
             <div class="pb-5 border-b border-white-300 text-2xl font-semibold mt-10">
@@ -540,35 +535,35 @@
 }
 
 .adjust-content-padding {
-  padding-right: 5rem;
-  padding-left: 5rem;
+  /* padding-right: 5rem; */
+  /* padding-left: 5rem; */
 }
 
 @media (min-width: 1440px) {
   .adjust-content-padding {
-    padding-right: 7.5rem;
-    padding-left: 7.5rem;
+    /* padding-right: 7.5rem;
+    padding-left: 7.5rem; */
   }
 }
 
 @media (min-width: 1600px) {
   .adjust-content-padding {
-    padding-right: 10rem;
-    padding-left: 10rem;
+    /* padding-right: 10rem;
+    padding-left: 10rem; */
   }
 }
 
 @media (min-width: 1768px) {
   .adjust-content-padding {
-    padding-right: 18rem;
-    padding-left: 18rem;
+    /* padding-right: 18rem;
+    padding-left: 18rem; */
   }
 }
 
 @media (min-width: 1920px) {
   .adjust-content-padding {
-    padding-right: 22.5rem;
-    padding-left: 22.5rem;
+    /* padding-right: 22.5rem;
+    padding-left: 22.5rem; */
   }
 }
 
