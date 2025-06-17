@@ -1,4 +1,4 @@
-angustester 应用安装部署
+AngusTester 应用安装部署
 ====
 
 ::: warning 注意
@@ -301,7 +301,7 @@ curl http://localhost:8901/actuator/health
 
 ## 六、应用管理
 
-### Linux/MacOS
+- Linux/MacOS
 ```bash
 # 启动应用
 ./startup-tester.sh
@@ -311,7 +311,7 @@ curl http://localhost:8901/actuator/health
 tail -f logs/tester.log
 ```
 
-### Docker
+- Docker
 ```bash
 # 启动应用
 docker start tester
@@ -321,7 +321,7 @@ docker stop tester
 docker logs tester
 ```
 
-### Docker Compose
+- Docker Compose
 ```bash
 # 启动应用
 docker compose -f tester.yaml up -d

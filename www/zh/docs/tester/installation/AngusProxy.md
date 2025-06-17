@@ -109,7 +109,7 @@ docker compose -f proxy.yaml logs
 
 ## 六、服务管理
 
-### Linux/MacOS
+- Linux/MacOS
 ```bash
 # 启动服务
 ./startup-proxy.sh
@@ -119,7 +119,7 @@ docker compose -f proxy.yaml logs
 tail -f logs/proxy.log
 ```
 
-### Docker
+- Docker
 ```bash
 # 启动服务
 docker start angus-proxy
@@ -129,7 +129,7 @@ docker stop angus-proxy
 docker logs angus-proxy
 ```
 
-### Docker Compose
+- Docker Compose
 ```bash
 # 启动服务
 docker compose -f proxy.yaml up -d

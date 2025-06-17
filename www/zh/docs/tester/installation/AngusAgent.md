@@ -154,7 +154,7 @@ Content-Type: application/json
 
 ## 七、服务管理
 
-### Linux/MacOS
+- Linux/MacOS
 ```bash
 # 启动服务
 ./startup-agent.sh
@@ -164,7 +164,7 @@ Content-Type: application/json
 tail -f logs/agent.log
 ```
 
-### Docker 
+- Docker 
 ```bash
 # 启动服务
 docker start angus-agent
@@ -174,7 +174,7 @@ docker stop angus-agent
 docker logs angus-agent
 ```
 
-### Docker Compose
+- Docker Compose
 ```bash
 # 启动服务
 docker compose -f agent.yaml up -d
