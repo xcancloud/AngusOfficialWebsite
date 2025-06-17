@@ -1,18 +1,23 @@
 /** @type {import('tailwindcss').Config} */
+const { iconsPlugin, getIconCollections } = require('@egoist/tailwindcss-icons')
 module.exports = {
-  content: ["./www/**/*.{vue,md,js}", "./www/.vitepress/**/*.{vue,md,js}"],
+  content: [
+    "./www/**/*{.vue,.md,.js}",
+    "./www/.vitepress/**/*{.vue,.md,.js}",
+    'node_modules/vitepress-openapi/**/*.{js,jsx,ts,tsx}',
+  ],
   theme: {
     extend: {
       height: {
         
         25: '100px',
         185: '740px',
-        200: '800px'
+        200: '800px',
       },
       width: {
         25: '100px',
         185: '740px',
-        200: '800px'
+        200: '800px',
       },
       flex: {
         'freeze-auto': '0 0 auto',
@@ -26,7 +31,7 @@ module.exports = {
         10: '1 1 10%',
         12: '1 1 12%',
         25: '1 1 25%',
-        40: '1 1 40%'
+        40: '1 1 40%',
       },
       padding: {
         4: '16px',
@@ -37,7 +42,7 @@ module.exports = {
         18: '4.5rem',
         20: '5rem',
         30: '7.5rem',
-        31: '7.75rem'
+        31: '7.75rem',
       },
       margin: {
         1: '4px',
@@ -174,7 +179,7 @@ module.exports = {
         47.5: '11.875rem',
         51.75: '12.9375rem',
         59: '14.75rem',
-        73.75: '18.4375rem'
+        73.75: '18.4375rem',
       },
       fontSize: {
         3: '12px',
@@ -193,22 +198,22 @@ module.exports = {
         17.5: '70px',
         20: '80px',
         30: '120px',
-        40: '160px'
+        40: '160px',
       },
       maxWidth: {
         9.5: '2.375rem',
         40: '10rem',
-        75: '18.75rem'
+        75: '18.75rem',
       },
       minWidth: {
         65: '16.25rem',
         75: '18.75rem',
-        320: '80rem'
+        320: '80rem',
       },
       minHeight: {
         'full-vh': '100vh',
         10: '2.5rem',
-        17.5: '70px'
+        17.5: '70px',
       },
       colors: {
         white: {
@@ -220,7 +225,7 @@ module.exports = {
           300: 'rgba(255, 255, 255, 0.3)',
           500: 'rgba(255, 255, 255, 0.5)',
           600: 'rgba(255, 255, 255, 0.6)',
-          'help-to': 'rgba(202, 241, 255, 0)'
+          'help-to': 'rgba(202, 241, 255, 0)',
         },
         black: {
           1: 'rgba(0, 0, 0, 1)',
@@ -231,7 +236,7 @@ module.exports = {
           version: 'rgba(0, 11, 51, 1)',
           'video-theme': 'rgba(23, 23, 29, 1)',
           'video-select': 'rgba(45, 50, 62, 1)',
-          'pay-color': 'rgba(51, 51, 51, 1)'
+          'pay-color': 'rgba(51, 51, 51, 1)',
         },
         gray: {
           'menu-bg': 'rgba(239, 240, 241, 1)',
@@ -244,7 +249,7 @@ module.exports = {
           'tab-line': 'rgba(240, 240, 240, 1)',
           'blogs-me': 'rgba(174, 178, 188, 1)',
           'concat-line': 'rgba(229, 231, 240, 1)',
-          bg: 'rgba(239, 240, 241, 0.3)'
+          bg: 'rgba(239, 240, 241, 0.3)',
         },
         blue: {
           1: 'rgba(0, 63, 255, 1)',
@@ -259,22 +264,22 @@ module.exports = {
           icon1: 'rgba(79, 188, 255, 1)',
           icon2: 'rgba(7,163,241,1)',
           icon3: 'rgba(78, 145, 255, 1)',
-          icon4: 'rgba(179, 215, 255, 1)'
+          icon4: 'rgba(179, 215, 255, 1)',
         },
         ball: {
           1: 'rgba(255, 152, 91, 1)',
           2: 'rgba(52, 203, 169, 1)',
           3: 'rgba(255, 200, 62, 1)',
-          4: 'rgba(255, 227, 158, 1)'
+          4: 'rgba(255, 227, 158, 1)',
         },
         red: {
           error: 'rgba(245, 34, 45, 1) !important',
-          share: 'rgba(253, 76, 92, 1)'
+          share: 'rgba(253, 76, 92, 1)',
         },
         green: {
           success: 'rgba(0, 193, 119, 1)',
           'pay-btn': 'rgba(37, 202, 160, 1)',
-          finished: 'rgba(82, 196, 26, 1)'
+          finished: 'rgba(82, 196, 26, 1)',
         },
         orange: {
           star: 'rgba(255, 129, 0, 1)',
@@ -282,7 +287,7 @@ module.exports = {
           money: 'rgba(230, 174, 113, 1)',
           'pay-btn': 'rgba(255, 152, 40, 1)',
           'ip-link': 'rgba(255, 114, 0, 1)',
-          'second-title': 'rgba(251, 164, 46)'
+          'second-title': 'rgba(251, 164, 46)',
         }
       },
       borderRadius: {
@@ -293,13 +298,13 @@ module.exports = {
         3.75: '15px',
         5: '20px',
         6.25: '25px',
-        7.5: '30px'
+        7.5: '30px',
       },
       opacity: {
         10: '0.1',
         30: '0.3',
         60: '0.6',
-        80: '0.8'
+        80: '0.8',
       },
       lineHeight: {
         pagination: '2.4',
@@ -310,7 +315,7 @@ module.exports = {
         9: '2.25rem',
         12.5: '3.125rem',
         11.25: '2.8125rem',
-        42.5: '10.625rem'
+        42.5: '10.625rem',
       },
       boxShadow: {
         input: '0px 0px 30px 0px rgba(36, 115, 255, 0.08)',
@@ -319,25 +324,14 @@ module.exports = {
         'green-sh': '0px 15px 40px 0px rgba(29, 42, 100, 0.05), 0px 5px 10px 0px rgba(37, 202, 160, 0.2)',
         'blue-sh': '0px 5px 10px 0px rgba(32, 152, 255, 0.2)',
         'orange-sh': '0px 5px 10px 0px rgba(255, 152, 40, 0.2);',
-        'price-sh': '0px 15px 40px 0px rgba(29, 42, 100, 0.05);'
+        'price-sh': '0px 15px 40px 0px rgba(29, 42, 100, 0.05);',
       },
       letterSpacing: {
         0.25: '0.0625rem',
-        1.625: '0.40625rem'
+        1.625: '0.40625rem',
       }
     },
   },
-  plugins: [],
-}const { iconsPlugin, getIconCollections } = require('@egoist/tailwindcss-icons')
-
-module.exports = {
-  content: [
-    './www/.vitepress/theme/**/*.{js,vue,ts,json,md}',
-    './www/.vitepress/config.js',
-    './www/**/*.md',
-    'node_modules/vitepress-openapi/**/*.{js,jsx,ts,tsx}',
-  ],
-  darkMode: 'class',
   plugins: [
     iconsPlugin({
       // Select the icon collections you want to use
@@ -345,4 +339,4 @@ module.exports = {
       collections: getIconCollections(['mdi']),
     }),
   ],
-}
+};
