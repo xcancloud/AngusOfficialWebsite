@@ -1,128 +1,124 @@
 # 安装 AngusRunner
 
-`AngusRunner(执行器)`提供两个方面作用：
+> AngusRunner **作为AngusTester分布式测试系统的任务执行器**，提供两大核心能力：
+> 1. **执行远程任务**：执行控制器(AngusTester)下发给代理程序(AngusAgent)的运行测试和生成数据任务，并将测试结果发送到服务端。
+> 2. **执行本地任务**：提供[AngusRunner命令行](../command/AngusRunner.md)方式运行本地模式(LOCAL)测试和生成数据任务，执行结果输出到控制台。
 
-1. 执行控制器(AngusCtrl)下发给代理程序(AngusAgent)的运行测试和模拟数据任务，并将测试结果发送到服务端。
-2. 提供通过[AngusRunner命令行](https://www.xcan.cloud/help/doc/205509853639082016?c=205531805216931889)方式运行测试和模拟数据任务方式，如果是本地模式(LOCAL)，会生成测试结果并结果输出到控制台。
+::: warning 注意
+1. 默认安装 AngusAgent 时会自动包含 AngusRunner（执行器）
+2. 仅需在以下场景独立安装 AngusRunner：
+- 在独立环境执行测试任务
+- 生成数据任务
+:::
 
-## 安装
+## 一、前置要求
 
-注意：在已安装`节点代理完整包`节点上，无须重复进行安装，执行器已被安装到与节点代理程序相同目录，下面安装只适用用户想独立运行测试和模拟数据任务场景。
+- 操作系统：支持 Linux / MacOS / Windows Server。
+- Java环境：非容器方式安装时，确保已安装JDK17+以上版本。
 
-第一步：点击下载 [AngusRunner](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AngusRunner-1.0.0.zip?fid=248565111927603202) 安装包。
+## 二、手动配置安装
 
-第二步：下载安装包后，将安装包移动到自定义安装目录并解压。
+1. 运行下面命令或点击[下载安装包](https://nexus.xcan.cloud/repository/release/package/AngusRunner-1.0.0.zip)
+   ```bash
+    curl -LO https://nexus.xcan.cloud/repository/release/package/AngusRunner-1.0.0.zip
+   ```
+2. 下载安装包后，解压至目标目录（如 `/opt/AngusRunner`）
+   ```bash
+   # 解压安装包至目标目录
+   mkdir -p /opt/AngusRunner
+   unzip -qo AngusRunner-1.0.0.zip -d /opt/AngusRunner
 
-第三步：配置执行所属租户、用户访问令牌、设备ID、设备访问令牌，远程模式时(REMOTE)必须。
+   # 进入到安装目录
+   cd /opt/AngusRunner
+   ```
+3. 配置核心参数：
+   ```properties
+   # vi conf/runner.properties
+   angusrunner.principal.tenantId=您的租户ID
+   angusrunner.principal.deviceId=节点(设备)唯一ID
+   angusrunner.principal.accessToken=您的用户访问令牌
+   
+   # vi conf/remoting.properties
+   remoting.ctrlUrlPrefix=控制器地址
+   remoting.ctrlAccessToken=您的节点(设备)授权访问令牌
+   ```
+> **参数获取方式**：  
+> - 租户ID、节点唯一ID、节点授权访问令牌，在`配置->节点`界面点击节点"安装配置信息"查看参数。
+> ![配置参数示意图](./images/agent-config-parameters.png)
+> - 用户访问令牌，在AngusTester`个人中心->访问令牌`中查看或配置。
 
-在AngusTester"节点"添加当前执行器(AngusRunner)节点后，点击已添加节点"手动安装代理"->"安装配置信息"
-，如下图：
+::: tip 注意
+以上配置参数只有需要将测试结果上传到远程AngusTester服务器时需要配置，即运行AngusRunner命令行指定模式为`REMOTE`时。
+:::
 
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/G03-03.png?fid=203622614944448726&fpt=1kdKU5aTaUhlmEBDsWmrxmXd0QmbEsdAeqA0f0HV)
+其他配置信息请查看下面"参数参考"说明。
 
-用户访问令牌请在AngusTester"个人中心"->"访问令牌"中查看或配置。
+## 三、运行
 
-修改`conf/runner.properties`中配置如下：
+请查看：[AngusRunner命令行](../command/AngusRunner.md)。
 
-```properties
-angusrunner.principal.tenantId=1
-# 用户访问令牌
-angusrunner.principal.accessToken=0ST.4rocXHMRRMyYQHB4xbCDmVRTQGrwMWVU.9289d89f639544989a3d4beaa2e2ac57
-angusrunner.principal.deviceId=205198142092607130
-```
+## 四、参数参考
 
-修改`conf/remoting.properties`中配置如下：
+- 执行器配置(runner.properties)
 
-```properties
-# 设备访问令牌
-remoting.ctrlAccessToken=2PT.uk3dciHZyVVt8zBdnxOgcz4BpGNuNl3u.d241ce59daa19ns51b2e6528a3dcf7ab5
-```
-
-其他配置信息请查看下面"配置"说明。
-
-## 配置
-
-- 数据交换器配置(runner.properties)
-
-```properties
-## 执行线程前缀，默认为AngusRunner-Threads。
+```ini
+#-----------------------------------------------------------------------------------
+# AngusRunner 配置
+#-----------------------------------------------------------------------------------
+## 执行器线程前缀，默认值：AngusRunner-Thread。
 angusrunner.threadNamePrefix=AngusRunner-Thread
 #-----------------------------------------------------------------------------------
-# Angus执行器身份配置
+# 身份认证配置
 #-----------------------------------------------------------------------------------
-## 执行器的租户ID，私有版本环境时需要手动配置，默认为空。
-angusrunner.principal.tenantId=1
-## 当前用户访问令牌，手动启动运行器所需，默认为空。
-angusrunner.principal.accessToken=0ST.4rocXHMRRMyYQHB4xbCDmVRTQGrwMWVU.9289d89f639544989a3d4beaa2e2ac57
-## 执行器所在设备(节点)ID，私有版本环境时需要手动配置，默认为空。
-angusrunner.principal.deviceId=187166587336261669
+## 执行器所属租户ID，手动启动私有环境时必须提供，默认为空
+angusrunner.principal.tenantId=
+## 当前用户访问令牌，手动启动执行器时必须提供，默认为空
+angusrunner.principal.accessToken=
+## 设备（节点）ID，手动启动执行器时必须提供，默认为空
+angusrunner.principal.deviceId=
 #-----------------------------------------------------------------------------------
-# Angus执行器配置
+# 执行器运行配置
 #-----------------------------------------------------------------------------------
-## 执行器执行模式包括两个选项：LOCAL(本地)和REMOTE(远程)。注意：命令行中配置参数优先级高于配置文件。
-# 当处于本地模式时，它仅在本地运行，测试结果和报告仅保存在本地，执行器身份配置是非必须的。
-# 当处于远程模式时，测试结果和报告将保存到服务器，执行器身份配置是是必须的，默认为本地模式(LOCAL)。
+## 执行器运行模式，包含两种选项：LOCAL（本地）和 REMOTE（远程）
+### - LOCAL 模式：仅本地运行，测试结果与报告仅保存在本地
+### - REMOTE 模式：测试结果与报告将同步至服务器，默认值：LOCAL
 angusrunner.runner.runMode=LOCAL
 #-----------------------------------------------------------------------------------
-# Angus执行器采样配置
+# 采样配置
 #-----------------------------------------------------------------------------------
-# 启用后，采样ID将写入HTTP请求标头，默认情况下启用。
+## 启用后，采样ID将写入HTTP请求头，默认启用
 angusrunner.sampling.writeSampleIdToHeader=true
 #-----------------------------------------------------------------------------------
-# Angus执行器推送配置
+# 推送器配置
 #-----------------------------------------------------------------------------------
-# 执行器JVM指标的时间间隔，默认为15秒。
+## 推送执行器JVM指标的时间间隔（单位：秒），默认15秒
 angusrunner.jvmMetrics.pushIntervalInSecond=15
-# 执行器JVM指标的超时时间，默认为15秒。
-angusrunner.jvmMetrics.pushTimeoutInSecond=15
-# 执行器任务采样的时间间隔，默认为 5 秒。
+## 推送执行器任务注册信息的时间间隔（单位：秒），默认5秒
 angusrunner.taskMetrics.pushIntervalInSecond=5
-# 执行器任务采样的超时时间，默认为10秒。
-angusrunner.taskMetrics.pushTimeoutInSecond=10
 ```
 
 - 数据交换器配置(remoting.properties)
 
-```properties
+```ini
 #-----------------------------------------------------------------------------------
-# 推送客户端配置
+# 远程客户端配置
 #-----------------------------------------------------------------------------------
-# 交换服务器主机，在直接连接模式下仅用于测试环境，默认为127.0.0.1:5035。
-# remoting.serverHost=127.0.0.1:5035
-## 配置访问控制器(AngusCtrl)API所需的访问令牌，在私有版环境手动启动时需要，默认为空。
-remoting.ctrlAccessToken=2PT.uk3dciHZyVVt8zBdnxOgcz4BpGNuNl3u.d241ce59daa19ns51b2e6528a3dcf7ab5
-# 控制器服务发现URL前缀，如果未配置或连接异常，将使用serverHost的值作为控制器连接地址。
-remoting.ctrlUrlPrefix=https://bj-c1-prod-apis.xcan.cloud/tester/openapi2p/v1/ctrl/discovery
-# 同时进行客户端推送请求的数量，默认为1。
-remoting.clientNum=5
-## 客户端推送请求线程数，如果为零，则表示根据CPU核心数调整线程数2*cpu个线程池在客户端上运行，默认为1。
-remoting.clientWorkNum=5
-# 客户端连接的身份验证和绑定超时时间，默认为20秒。
-remoting.clientAuthTimeout=20000
+# 远程服务器主机地址，直接连接模式仅用于测试环境，默认为127.0.0.1:5035
+remoting.serverHost=
+# AngusTester控制器服务发现URL前缀。如果未配置或存在连接问题，将使用serverHost的值作为控制器连接地址
+remoting.ctrlUrlPrefix=
+## 配置访问AngusCtrl API所需的访问令牌，私有化部署环境需要手动启动此项配置，默认为空
+remoting.ctrlAccessToken=
+## 发送心跳消息的时间间隔（必须小于serverMaxAllowHeartbeat），默认10000毫秒
+remoting.heartbeatInterval=10000
+# 是否允许断开后重新连接，默认为true
+remoting.allowReconnect=true
+# 断开连接后的重连间隔
+remoting.reconnectInterval=5000
 #-----------------------------------------------------------------------------------
-# 推送客户端和服务端公共配置
+# 远程服务端与客户端通用配置
 #-----------------------------------------------------------------------------------
-# 处理请求的线程前缀，默认为Remoting。
-remoting.threadNamePrefix=Remoting
-# remoting.serverHosts=127.0.0.1:5035,127.0.0.1:5036
-# 允许的最大超时次数，超过该次数将停止发送，默认为5。
-remoting.allowMaxTimeoutTimes=5
-# 推送定时器线程的数量，默认为5。
-remoting.pushTimerThreadNum=5
-# 推送定时器线程的优先级，默认为Threads.NORM_PRIORITY + 2。
-remoting.pushTimerThreadPriority=7
-# 推送超时时间，PushContext的超时设置具有更高的优先级，默认为15000毫秒。
-remoting.pushTimeout=15000
-# 推送器ACK确认线程的数量，默认为1。
-remoting.ackThreadNum=1
-# 推送器ACK确认线程的优先级，默认为Threads.NORM_PRIORITY + 2。
-remoting.ackThreadPriority=7
+# 发送同步消息的超时时间。超过此时限后，系统将停止等待响应消息，默认为60000毫秒
+remoting.sendTimeout=60000
 #-----------------------------------------------------------------------------------
-# 推送安全配置
-#-----------------------------------------------------------------------------------
-remoting.securityPublicKey=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC4Y1ChYPYPDKuKbawHF4Go9Ewp54eB39czWY2h9XcTs24jXkvmR6dHg06Zj0intj/HLsTHa+FEy14yLE6JYH3dd9qHqCRiMXKktm7g3EceA5mehbbgqDs8jxet7chQz56v925pHsl1z82OIzpJXhXgChQd5HXY5OKYaWvFvbyYWwIDAQAB
 ```
-
-## 运行
-
-请查看：[AngusRunner命令行](https://www.xcan.cloud/help/doc/205509853639082016?c=205531805216931889)。

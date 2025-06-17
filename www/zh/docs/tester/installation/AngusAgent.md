@@ -1,21 +1,17 @@
 # AngusAgent 安装与配置指南
 
-> AngusAgent 作为 AngusTester 分布式测试系统的核心组件，提供三大核心能力：
+> AngusAgent **作为AngusTester分布式测试系统的核心组件**，提供三大核心能力：
 > 1. **任务执行引擎**：启动并管理脚本执行任务。
 > 2. **服务模拟平台**：运行和管理 Mock 服务。
 > 3. **节点监控中心**：实时采集并上报节点资源指标。
 
-## 前置要求
+## 一、前置要求
+
 - 确保目标端口 `6807` 可用。
 - 操作系统：支持 Linux / MacOS / Windows Server。
-- 安装包主键包含组件：
-  - plugins（测试插件）
-  - AngusRunner（执行器）
-  - MockService（接口模拟服务）
-  - AngusAgent（节点代理）
-  - AngusProxy（请求代理）
+- Java环境：非容器方式安装时，确保已安装JDK17+以上版本。
 
-## 在线安装（推荐）
+## 二、在线安装（推荐）
 
 1. 登录 AngusTester 控制台。
 2. 进入：`配置 -> 节点 → 添加节点`。
@@ -33,7 +29,7 @@
 > 🛠️ 安装失败处理：  
 > 若在线安装失败，请使用下方脚本安装方式。
 
-## 脚本安装
+## 三、脚本安装
 
 ### Linux/MacOS 安装步骤
 
@@ -48,30 +44,48 @@ curl -s "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/install-agen
   1 203883811233071104
 ```
 
+## 四、手动配置安装
 
-> **参数获取位置**：  
-> ![参数获取示意图](./images/agent-manual-install.png)  
-> *在节点管理界面点击"手动安装代理"获取参数。*
+1. 运行下面命令或点击[下载安装包](https://nexus.xcan.cloud/repository/release/package/AngusAgent-Full-1.0.0.zip)
+   ```bash
+    curl -LO https://nexus.xcan.cloud/repository/release/package/AngusAgent-Full-1.0.0.zip
+   ```
+2. 下载安装包后，解压至目标目录（如 `/opt/AngusAgent`）
+   ```bash
+   # 解压安装包至目标目录
+   mkdir -p /opt/AngusAgent
+   unzip -qo AngusAgent-Full-1.0.0.zip -d /opt/AngusAgent
 
-## 手动配置安装
-
-1. [下载安装包](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AngusAgent-Full-1.0.0.zip?fid=299082246680215554)
-2. 解压至目标目录（如 `/opt/AngusAgent`）
+   # 进入到安装目录
+   cd /opt/AngusAgent
+   ```
 3. 配置核心参数：
    ```properties
-   # agent.properties
+   # vi conf/agent.properties
    angusagent.principal.tenantId=您的租户ID
    angusagent.principal.deviceId=节点唯一ID
    
-   # remoting.properties
+   # vi conf/remoting.properties
+   remoting.ctrlUrlPrefix=控制器地址
    remoting.ctrlAccessToken=您的节点授权访问令牌
    ```
-
 > **参数获取方式**：  
-> ![配置参数示意图](./images/agent-config-parameters.png)  
-> *在节点管理界面点击"安装配置信息"查看参数*。
-
-## 容器化部署
+> 在`配置->节点`界面点击节点"安装配置信息"查看参数。
+> ![配置参数示意图](./images/agent-config-parameters.png)
+4. 运行代理
+   ```bash
+   ./startup-agent.sh
+   ```
+::: tip 注意
+默认提供的完整安装包中，包含下面组件：
+- plugins（测试插件）
+- AngusRunner（执行器）
+- MockService（接口模拟服务）
+- AngusAgent（节点代理）
+- AngusProxy（请求代理）
+:::
+   
+## 五、容器化部署
 
 ### Docker 快速启动
 
@@ -92,7 +106,7 @@ docker run -d \
 cat > agent.yaml<< EOF
 version: '3'
 services:
-  AngusAgent:
+  angus-agent:
     image: anguscloud/angus-agent:1.0.0
     ports:
       - "6807:6807"
@@ -108,7 +122,7 @@ EOF
 docker compose -f agent.yaml up -d
 ```
 
-## 验证安装
+## 六、验证安装
 
 ### 健康检查
 ```bash
@@ -138,7 +152,7 @@ Content-Type: application/json
 
 > ⏳ 状态同步延迟约 2 分钟，若长时间未连接请检查网络和配置。
 
-## 服务管理
+## 七、服务管理
 
 ### Linux/MacOS
 ```bash
@@ -151,7 +165,7 @@ tail -f logs/agent.log
 ```
 
 ### Docker 
-```bash'
+```bash
 # 启动服务
 docker start angus-agent
 # 停止服务
@@ -170,7 +184,7 @@ docker compose -f agent.yaml stop
 docker compose -f agent.yaml logs
 ```
 
-## 参数参考
+## 八、参数参考
 
 - 代理服务配置(agent.properties)
 
@@ -227,7 +241,7 @@ angusagent.nodeUsage.pushIntervalInSecond=15
 #-----------------------------------------------------------------------------------
 # 远程服务器主机地址，直接连接模式仅用于测试环境，默认为127.0.0.1:5035
 remoting.serverHost=
-# 控制器服务发现URL前缀。如果未配置或存在连接问题，将使用serverHost的值作为控制器连接地址
+# AngusTester控制器服务发现URL前缀。如果未配置或存在连接问题，将使用serverHost的值作为控制器连接地址
 remoting.ctrlUrlPrefix=
 ## 配置访问AngusCtrl API所需的访问令牌，私有化部署环境需要手动启动此项配置，默认为空
 remoting.ctrlAccessToken=

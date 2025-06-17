@@ -1,143 +1,506 @@
-# 安装 AngusTester
+angustester 应用安装部署
+====
 
-`AngusTester`使用基于浏览器和服务器（B/S）的应用程序架构，用户只需要一个支持标准 Web 浏览器的设备就可以访问应用，应用部署后其更新功能、备份数据等都只在服务器端进行。
+::: warning 注意
+1. 安装和运行AngusTester应用之前，需要先安装并运行AngusGM基础应用。  
+2. 以下是针对`Enterprise`安装过程说明，如果需要安装其他版本，将版本类型标志`Enterprise`替换成`Community`或`Datacenter`即可。
+:::
 
-除了通过手动配置的方式安装应用和服务外，还可以使用应用安装器（AngusInstaller）来按需选择和配置应用和服务进行安装，
-`应用安装器可以支持自定义安装选项，可以简化配置和安装过程，推荐使用`。
+## 一、前置要求
 
-以下是AngusTester应用和服务清单：
+- **系统要求**
+    - 操作系统：支持 Linux / MacOS / Windows Server。
+    - 操作系统：支持 Linux / MacOS / Windows Server。
+    - 计算资源：最小配置要求 `2核CPU、4GB内存`，推荐配置 `4核CPU、8GB内存`。
+    - 磁盘空间：最小 10GB 可用空间，推荐配置 `100GB`。
 
-| 应用/服务            | 安装包                                                                                                                                        | 默认端口      | 说明                                                                                                        |
-|------------------|--------------------------------------------------------------------------------------------------------------------------------------------|-----------|-----------------------------------------------------------------------------------------------------------|
-| AngusGM          | [AngusGM-Community-1.0.0.zip](https://xcan-angustester.oss-cn-beijing.aliyuncs.com/AngusPackage/AngusGM-Community-1.0.0.zip)               | 8802、8803 | 全局管理应用，为“系统管理员”提供的统一系统资源管理平台，它用于管理和控制整个系统、组织或应用等。                                                         |
-| AngusTester      | [AngusTester-Community-1.0.0.zip](https://xcan-angustester.oss-cn-beijing.aliyuncs.com/AngusPackage/AngusTester-Community-1.0.0.zip)       | 8901      | 敏捷开发、测试业务应用，主要功能包括任务协同、功能测试、API资产化、场景测试、服务模拟、数据模拟等。                                                       |
-| AngusAgent       | [AngusAgent-1.0.0.zip](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AngusAgent-Full-1.0.0.zip?fid=248565189237014528)        | 6807      | 节点代理服务，用于执行脚本任务，在代理节点上运行和管理 Mock 服务，收集、监控和报告关于节点的各种指标和性能数据。                                               |
-| AngusProxy       | [AngusProxy-1.0.0.zip](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AngusProxy-1.0.0.zip?fid=248565111927603200)             | 6806      | 请求代理服务，代理 Http 和 WebSocket 协议接口调试请求，解决浏览器跨域限制问题。                                                          |
-| AngusMockService | [AngusMockService-1.0.0.zip](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AngusMockService-1.0.0.zip?fid=248565111927603206) | 30010     | Mock 服务，可以提供一个虚拟环境，让您能够模拟不同的接口响应、状态码和数据，快速生成并模拟您所依赖的 API。                                                 |
-| AngusRunner      | [AngusRunner-1.0.0.zip](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AngusRunner-1.0.0.zip?fid=248565111927603202)           | /         | 命令行工具和执行器，执行AngusCtrl下发给代理程序(AngusAgent)的运行测试和模拟数据任务，并将测试结果发送到服务端。 `安装AngusTester和AngusAgent完整安装包时会自动安装`。 |
+- **运行环境**
+    - ZIP 包部署：需要配置 `OpenJDK 17+`。
+    - Docker 和 Compose 部署：需要安装 Docker，推荐版本 `V20.10+`。
 
-有关AngusTester应用详细介绍请查看产品文档：[AngusTester](https://www.xcan.cloud/help/doc/205509853639082016?c=205515800021303296)。
+- **中间件**
+    - 数据库：需要 MySQL 5.7+。
+    - Redis 缓存：需要 Redis 7.0+。
 
-## 安装
+- **应用版本**
+    - 社区版本（Community）：永久免费版本。
+    - 企业版本（Enterprise）：收费版本，需要获取许可。支持更多高级功能，支持更多用户。
+    - 数据中心版本（Datacenter）：收费版本，需要获取许可。支持更多高级功能，支持多租户和更多用户。
 
-AngusTester要求最低安装配置为：`2核CPU、4GB内存、50GB磁盘`，推荐配置为：`4核CPU、8GB内存、200GB磁盘`。
+## 二、手动配置安装
 
-安装应用和服务前，请确保已[安装配置JDK](https://www.xcan.cloud/help/doc/205509853639082016?c=206089938364530730) 。
-
-为了安装方便性和快速安装，我们提供了包含以上所有应用和服务的完整安装包：[AngusTester-Community-Full-1.0.0.zip](https://xcan-angustester.oss-cn-beijing.aliyuncs.com/AngusPackage/AngusTester-Community-Full-1.0.0.zip)
-，以下是基于完整安装包的安装过程。
-
-### 第一步、下载完整安装包
-
-```bash
-curl -s "https://xcan-angustester.oss-cn-beijing.aliyuncs.com/AngusPackage/AngusTester-Community-Full-1.0.0.zip" -o "AngusTester-Community-Full-1.0.0.zip" 
-```
-
-### 第二步、解压安装包
+**1. 下载并解压**
 
 ```bash
-unzip -q -d AngusTester-Community-Full-1.0.0 AngusTester-Community-Full-1.0.0.zip
+# 下载安装包
+curl -LO https://nexus.xcan.cloud/repository/release/package/AngusTester-Enterprise-1.0.0.zip
+
+# 解压安装包至目标目录
+mkdir -p /opt/AngusTester
+unzip -qo AngusTester-Enterprise-1.0.0.zip -d /opt/AngusTester
+
+# 进入到安装目录
+cd /opt/AngusTester
 ```
 
-### 第三步、启动安装器
+**2. 配置应用**
 
 ```bash
-cd AngusTester-Community-Full-1.0.0
-./startup-installer.sh
+# 复制配置模版文件
+cp conf/.priv-template.env conf/.priv.env
+
+# 编辑配置文件
+vi conf/.priv.env
 ```
 
-### 第四步、查看是否启动成功
+修改下面选项为自己对应的配置：
+
+```dotenv
+# 初次安装或重新安装时需要设置成`AngusTester`，安装后会自动清除
+INSTALL_APPS=AngusTester
+# 指定安装数据库类型、必须参数
+DATABASE_TYPE=MYSQL
+
+# 配置Web站点访问地址，格式为：`http(s)://域名或IP+端口`，不指定会时会自动设置成：`http://GM_HOST:GM_PORT`
+GM_WEBSITE=
+
+# 管理员名称、可选参数
+GM_ADMIN_FULL_NAME=
+# 管理员邮箱地址、可选参数
+GM_ADMIN_EMAIL=
+# 管理员用户名，不指定时会自动设置成`admin`
+GM_ADMIN_USERNAME=admin
+# 管理员密码，不指定时会自动设置成`admin@123`
+GM_ADMIN_PASSWORD=admin@123
+
+# 数据库IP或主机名、必须参数
+GM_DB_HOST=127.0.0.1
+# 数据库端口、必须参数
+GM_DB_PORT=3306
+# 数据库名称、必须参数
+GM_DB_NAME=Angus
+# 数据库用户名，该用户必须授权所有Angus数据库权限、必须参数
+GM_DB_USER=Angus
+# 数据库密码、必须参数
+GM_DB_PASSWORD=Angus123
+
+# Redis实例部署类型、必须参数
+REDIS_DEPLOYMENT=SINGLE
+# Redis实例IP或主机名、必须参数
+REDIS_HOST=127.0.0.1
+# Redis实例端口、必须参数
+REDIS_PORT=6379
+# Redis实例密码、必须参数
+REDIS_PASSWORD=Angus123
+
+# 配置angustester访问域名，可选参数
+TESTER_WEBSITE=
+# ------------------------
+```
+::: warning 注意
+1. 以上配置除了"INSTALL_APPS"和"TESTER_WEBSITE"，其他配置选项应该和配置AngusGM应用选项一致。
+2. 其他配置选项说明请查看下面"参数参考"。
+:::
+
+**3. 启动应用**
 
 ```bash
-tail -f -n 1000 logs/installer.log
+# 运行启动命令
+./startup-tester.sh
 ```
 
-启动后在日志中看到`Application started successfully`信息表示安装器启动成功：
+::: warning 注意
+1. 该脚本是以后台进程启用应用，自动安装和启动大约需要2分钟，具体执行信息请查看 `logs` 日志文件内容。
+2. 如果需要Nginx代理AngusTester应用，或通过Nginx虚拟服务器方式给应用配置域名，请查看："其他说明" -> "Nginx代理配置"。
+:::
 
-```log
-[xcan-angusinstaller.boot] :: 2024-04-20 19:49:26.329  INFO 13865 :: [main] INFO  starting server: Undertow - 2.1.3.Final
-[xcan-angusinstaller.boot] :: 2024-04-20 19:49:26.342  INFO 13865 :: [main] INFO  XNIO version 3.8.0.Final
-[xcan-angusinstaller.boot] :: 2024-04-20 19:49:26.353  INFO 13865 :: [main] INFO  XNIO NIO Implementation Version 3.8.0.Final
-[xcan-angusinstaller.boot] :: 2024-04-20 19:49:26.394  INFO 13865 :: [main] INFO  JBoss Threads version 3.1.0.Final
-[xcan-angusinstaller.boot] :: 2024-04-20 19:49:26.447  INFO 13865 :: [main] INFO  Undertow started on port(s) 8800 (http)
-[xcan-angusinstaller.boot] :: 2024-04-20 19:49:26.912  INFO 13865 :: [main] INFO  Started XCanAngusInstallerApplication in 5.69 seconds (JVM running for 6.428)
-[xcan-angusinstaller.boot] :: 2024-04-20 19:49:26.916  INFO 13865 :: [main] INFO  #############################################
-  __   __ _   ___  _  _  ____  __  __ _  ____  ____  __   __    __    ____  ____
- / _\ (  ( \ / __)/ )( \/ ___)(  )(  ( \/ ___)(_  _)/ _\ (  )  (  )  (  __)(  _ \
-/    \/    /( (_ \) \/ (\___ \ )( /    /\___ \  )( /    \/ (_/\/ (_/\ ) _)  )   /
-\_/\_/\_)__) \___/\____/(____/(__)\_)__)(____/ (__)\_/\_/\____/\____/(____)(__\_)
+## 三、使用 Docker 方式安装
 
-[xcan-angusinstaller.boot] :: 2024-04-20 19:49:26.917  INFO 13865 :: [main] INFO  #############################################
+**1. 准备安装目录**
 
-                Application        name : Angus :: Installer Application :: Boot
-                Application  artifactId : xcan-angusinstaller.boot
-                Application  instanceId : localhost:8800
-                Application versionType : COMMUNITY
-                Application     version : 1.0.0
-                Application description : Unified installation and configurator of applications and services.
-                Application profile env : default
-                Application runtime env : HOST
-                Application    timezone : Asia/Shanghai
-                Application    provider : XCan Company  @_@ http://www.xcan.cloud
-                Application     license : XCan Business License, Version 1.0  @_@ http://www.xcan.cloud/licenses/XCBL-1.0
-
-[xcan-angusinstaller.boot] :: 2024-04-20 19:49:26.918  INFO 13865 :: [main] INFO  #############################################
-
-                Application i18n resources configuration success
-                Application started successfully [PID=13865] and Http(s) port 8800 is ready
+```bash
+# 创建安装目录，挂载自定义目录时必须，推荐配置
+mkdir -p /opt/AngusTester
+# 进入安装目录
+cd /opt/AngusTester
+# 下载配置文件
+curl -LO https://nexus.xcan.cloud/repository/release/package/enterprise/conf/.priv.env
+# 编辑配置文件，配置内容和上面 `使用 ZIP 包方式安装` 中配置相同
+vi .priv.env
 ```
 
-### 第五步、配置并安装应用
+**2. 启动应用容器**
 
-#### 1)、选择安装应用和服务
+```bash
+# 拉去镜像
+docker pull angus/tester:1.0.0
 
-注意：社区版本只支持共享安装方式安装应用，即将所有应用和服务安装到同一台机器上；如果安装机器配置较低，或者代理和Mock请求量较大时，需要把
-`请求代理服务`
-和`Mock 服务`单独部署，防止测试请求量过大时，导致应用服务器负载过高、应用访问异常。
-
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI_SELECT_APP.png?fid=223372998432784402&fpt=bg5tKFOtjXsNa1hewPrvrYh2Y0AScFNzH2LJ29NG)
-
-#### 2)、配置安装路径与许可
-
-安装前需要先获取许可，获取许可请查看：[如何获取应用免费许可](https://www.xcan.cloud/help/doc/205509853639082016?c=209786779925031968)
-。注意：默认许可文件名为许可编号。
-
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI_PATH_LIC.png?fid=223372998432784398&fpt=jIPsjw9t7FwBhUFBB1GvSuVPETsYylnyr03LCoJT)
-
-#### 3)、数据库与缓存配置
-
-配置数据库和缓存前需要确认数据库和Redis服务是否已运行，并且数据库账号必须要授予数据库全部权限，如下：
-
-```sql
--- 1. Create and grant User（Execute via root account）
-CREATE
-USER 'xcan'@'%' IDENTIFIED BY 'xcan@123';
-grant all privileges on AngusTester.* to xcan@'%' identified by 'xcan@123';
-flush
-privileges;
-
--- 2. Create database（Execute via root account）
-CREATE
-DATABASE `AngusTester` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
+# 启动应用容器（以后台进程方式）
+docker run -d \
+  --env-file .priv.env
+  --name tester \
+  -p 8901:8901 \
+  -v /opt/angustester:/app \
+  angus/tester:1.0.0
 ```
 
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI_DB_REDIS.png?fid=223372998432784396&fpt=ZyWOEtqPcmkTBRBe80Fk7gsiHdnJlHlrUG3esdJa)
+参数说明：
 
-#### 4)、系统管理员配置
+| **参数**                         | **作用**                                                                                     |
+|--------------------------------|---------------------------------------------------------------------------------------------|
+| **`-d`**                       | 以后台模式（detached）运行容器                                                               |
+| **`--env-file .priv.env`**     | 从 `.priv.env` 文件加载环境变量（如数据库密码等）                                             |
+| **`--name tester`**       | 为容器指定名称 `tester`（不指定则默认随机生成）                                              |
+| **`-p 8901:8901`**             | 端口映射：将主机 `8901` 端口绑定到容器 `8901` 端口（格式：`主机端口:容器端口`）               |
+| **`-v /opt/AngusTester:/app`** | 数据卷挂载：将主机目录 `/opt/AngusTester` 挂载到容器目录 `/app`（格式：`主机路径:容器路径`）      |
+| **`angus/tester:1.0.0`** | 指定要运行的镜像名称及标签（格式：`仓库/镜像名:标签`）                                        |
 
-系统管理员为系统最高权限用户，为了防止忘记密码后可以找回密码，请确保填写邮箱信息是正确的。
+## 四、使用 Docker Compose 方式安装
 
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI_ADMIN.png?fid=223372998432784394&fpt=aFOx7JiGEVDyBIrM9D5Mtoutnx872vvEzeHlWYWU)
+**1. 准备安装目录**
 
-#### 5)、安装并启动
+```bash
+# 创建安装目录，挂载自定义目录时必须，推荐配置
+mkdir -p /opt/AngusTester
+# 进入安装目录
+cd /opt/AngusTester
+# 下载配置文件
+curl -LO https://nexus.xcan.cloud/repository/release/package/enterprise/conf/.priv.env
+# 编辑配置文件，配置内容和上面 `使用 ZIP 包方式安装` 中配置相同
+vi .priv.env
+```
 
-在完成以上配置后点击下一步会自动进入安装，安装预计需要3-5分钟，安装遇到问题，请[提交工单](https://www.xcan.cloud/workorders)
-发送错误信息给运营人员获取帮助。
+**2. 创建并配置 `compose.yml` 文件**
 
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI_PROCESS.png?fid=223372998432784400&fpt=7LVnxK5Z6AcRK19aJWimRqTVHLOBme2n9ezN0SAu)
+**场景1：不包含中间件，需提前部署 `MySQL/Redis/Nginx/AngusGM`**
 
-安装完成后如果进入如下页面表示安装成功，点击访问应用URL进入如下登录页面：
+```bash
+cat << EOF > compose.yml
+version: '3.8'
+    
+services:
+  tester:
+    restart: always
+    env_file: .priv.env
+    container_name: tester
+    image: angus/tester:1.0.0
+    ports:
+      - "8901:8901"
+    volumes:
+      - /opt/AngusTester:/app
+EOF
+```
 
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI_SUCCESS.png?fid=223372998432784404&fpt=bbAQ0Ww1xWgJNg1SHqlXHk8QkPu1IgWkrduGMUaf)
+**场景2：包含中间件 `MySQL/Redis/Nginx/AngusGM`**
 
-最后输入账号和密码登录系统，登录账号为您所配置的用户名或邮箱。
+```bash
+cat << EOF > compose.yml
+version: '3.8'
+
+networks:
+  backend:
+    driver: bridge
+    
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    env_file: .env.mysql
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - backend
+    ports:
+      - "3306:3306"
+      
+  redis:
+    image: redis:7.0
+    container_name: redis
+    restart: always
+    env_file: .env.mysql
+    networks:
+      - backend
+    ports:
+      - "6379:6379"
+      
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: always
+    depends_on:
+      - mysql
+      - redis
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl
+    networks:
+      - backend
+    ports:
+      - "80:80"
+      - "443:443"
+
+  gm:
+    restart: always
+    env_file: .priv.env
+    container_name: angusgm
+    image: angus/gm:1.0.0
+    depends_on:
+      - mysql
+      - redis
+      - nginx    
+    ports:
+      - "8802:8802"
+    volumes:
+      - /opt/AngusGM:/app
+      
+  tester:
+    restart: always
+    env_file: .priv.env
+    container_name: tester
+    image: angus/tester:1.0.0
+    depends_on:
+      - angusgm
+    ports:
+      - "8901:8901"
+    volumes:
+      - /opt/AngusTester:/app
+    networks:
+      - backend
+EOF
+```
+
+**3. 启动应用容器**
+
+```bash
+docker compse -f tester.yaml up -d
+```
+
+## 五、部署验证
+
+1. **查看运行日志**
+
+```bash
+tail -f /opt/AngusTester/logs/tester.log
+```
+
+预期输出：`Application started successfully [PID=21601] and Http(s) port 8901 is ready`，表示启动成功。
+
+2. **健康检查端点验证**
+
+```bash
+curl http://localhost:8901/actuator/health
+```
+
+预期输出：`{"status":"UP"}`，表示启动成功。
+
+3. **登录验证**
+
+- 访问地址：`http://<部署IP>:8901` 或 `http://<部署域名>`
+- 使用 AngusGM 中用户登录系统，在左侧顶部应用导航器中进入 angustester，表示安装部署成功。
+
+## 六、应用管理
+
+### Linux/MacOS
+```bash
+# 启动应用
+./startup-tester.sh
+# 停止应用
+./shutdown-tester.sh
+# 查看应用日志
+tail -f logs/tester.log
+```
+
+### Docker
+```bash
+# 启动应用
+docker start tester
+# 停止应用
+docker stop tester
+# 查看应用日志
+docker logs tester
+```
+
+### Docker Compose
+```bash
+# 启动应用
+docker compose -f tester.yaml up -d
+# 停止应用
+docker compose -f tester.yaml stop
+# 查看应用日志
+docker compose -f tester.yaml logs
+```
+
+## 七、故障排查
+
+**1. 常见问题**
+
+- **问题：端口冲突**
+    - 错误示例：`Error: Port 8901 already in use`
+    - 解决方案：修改 `GM_PORT` 参数或终止占用端口的进程。
+
+- **问题：数据库连接失败**
+    - 错误示例：`Connection refused to MySQL at 127.0.0.1:3306`
+    - 解决方案：检查网络连通性、防火墙规则及数据库凭证。
+
+**2. 日志分析**
+
+- **日志路径**
+    1. 查看运行日志文件：`/opt/AngusTester/logs/tester.log`
+    2. 查看错误日志文件：`/opt/AngusTester/logs/tester-error.log`
+- **关键检索词**：`ERROR`、`Connection refused`
+
+**3. 技术支持**
+
+- 联系邮箱：`technical_support@xcan.cloud`
+- 邮件要求：附错误日志截图及环境信息（如：部署方式、版本号等）。
+
+## 八、参数参考
+
+- 应用配置(.priv.env)
+
+```ini
+#-----------------------------------------------------------------------------------
+# 安装配置
+#-----------------------------------------------------------------------------------
+## 启用应用程序自动初始化安装选项，默认开启，成功安装后会自动关闭。
+## 重要：启用重安装会导致数据库数据丢失
+INSTALL_APPS=AngusTester
+## 安装部署类型，默认为 SHARED，支持选项：
+##   - SHARED: 共享安装，所有应用共用同一数据库
+##   - STANDALONE: 独立安装，每个应用使用独立数据库
+## 注意：共享安装时，其他应用将与全局管理应用共享数据库配置（即共用gm.env中的配置）；
+##       独立安装时，每个应用需单独配置独立数据库
+INSTALL_TYPE=SHARED
+## 数据库类型，默认 `MYSQL`，支持选项：MYSQL, POSTGRES
+DATABASE_TYPE=MYSQL
+## 应用部署运行环境，默认 `HOST`，支持选项：CONTAINER (Docker/Kubernetes), HOST(物理机/虚拟机)
+RUNTIME=HOST
+## 应用与数据库时区配置
+TIMEZONE=Asia/Shanghai
+## 最大上传文件大小，默认值 1000MB
+MAX_UPLOAD_FILE_SIZE=1000MB
+## 最大上传请求大小（限制批量上传多文件总大小），默认值 2000MB
+MAX_UPLOAD_REQUEST_SIZE=2000MB
+
+#-----------------------------------------------------------------------------------
+# AngusGM 应用配置
+#-----------------------------------------------------------------------------------
+## 应用IP(v4)或主机名。未配置时自动获取运行环境IPv4地址
+GM_HOST=
+## 应用端口，默认值 `8802`
+GM_PORT=8802
+## 关联网站域名URL。若为空则设置为 http://GM_HOST:GM_PORT，示例值：https://gm.xcan.cloud
+GM_WEBSITE=
+## SaaS云服务API接口地址，用于从云端获取数据
+GM_CLOUD_APIS_URL_PREFIX=https://bj-c1-prod-apis.xcan.cloud/gm
+## 自托管服务API接口地址，用于读取当前托管服务数据。若为空则设置为 http://GM_HOST:GM_PORT
+GM_APIS_URL_PREFIX=
+
+#-----------------------------------------------------------------------------------
+# AngusGM 数据库配置
+#-----------------------------------------------------------------------------------
+## 数据库IP或主机名，默认值 `127.0.0.1`
+GM_DB_HOST=127.0.0.1
+## 数据库端口，默认值 `3306`
+GM_DB_PORT=3306
+## 数据库名称，默认值 `Angus`
+GM_DB_NAME=Angus
+## 数据库认证用户名，默认值 `root`
+GM_DB_USER=root
+## 数据库认证用户密码，默认值 `Angus123`
+GM_DB_PASSWORD=Angus123
+
+#-----------------------------------------------------------------------------------
+# AngusTester 应用配置
+#-----------------------------------------------------------------------------------
+## 应用IP(v4)或主机名。未配置时自动获取运行环境IPv4地址
+TESTER_HOST=
+## 应用端口，默认值 `8901`
+TESTER_PORT=8901
+## 关联网站域名URL。若为空则设置为 http://TESTER_HOST:TESTER_PORT，示例值：https://tester.xcan.cloud
+TESTER_WEBSITE=
+## 应用Web静态资源目录，默认值 `classpath:/static/,file:./statics/`
+TESTER_WEB_STATICS=classpath:/static/,file:./statics/
+## 指定加载插件（配置时仅加载指定插件，未配置时加载所有插件）
+TESTER_PLUGIN_LOADED=import-openapi-plugin
+## 指定忽略插件（配置时忽略指定插件，未配置时加载所有插件，设为 * 时忽略所有插件）
+TESTER_PLUGIN_IGNORED=
+## 指定Mock服务连接AngusTester服务地址。若为空则设置为 http://TESTER_HOST:TESTER_PORT
+TESTER_APIS_SERVER_URL=
+
+#-----------------------------------------------------------------------------------
+# AngusTester 数据库配置
+#-----------------------------------------------------------------------------------
+## 注意：共享安装(INSTALL_TYPE=SHARED)时，AngusTester将使用AngusGM应用的数据库配置
+## 数据库IP或主机名，默认值 `127.0.0.1`
+TESTER_DB_HOST=127.0.0.1
+## 数据库端口，默认值 `3306`
+TESTER_DB_PORT=3306
+## 数据库名称，默认值 `Angus`
+TESTER_DB_NAME=Angus
+## 数据库认证用户名，默认值 `root`
+TESTER_DB_USER=root
+## 数据库认证用户密码，默认值 `Angus123`
+TESTER_DB_PASSWORD=Angus123
+
+#-----------------------------------------------------------------------------------
+# AngusTester 节点代理（AngusAgent）服务配置
+#-----------------------------------------------------------------------------------
+## Agent服务端口，默认值 `5036`
+AGENT_REMOTING_SERVER_PORT=5035
+## Agent向节点代理客户端发送消息超时时间，默认 `60s`
+AGENT_REMOTING_SEND_TIMEOUT=60000
+## Agent服务连接检查心跳间隔，默认 `30s`
+AGENT_REMOTING_ALLOW_MAX_HEARTBEAT_INTERVAL=30000
+
+#-----------------------------------------------------------------------------------
+# AngusTester 节点代理（AngusAgent）安装脚本配置
+#-----------------------------------------------------------------------------------
+## Agent包与安装脚本下载URL前缀，用于界面自动化安装
+AGENT_CLOUD_STORAGE_APIS_PREFIX=https://bj-c1-prod-files.xcan.cloud
+## 要安装的Agent版本
+AGENT_VERSION=1.0.0
+## Agent安装包文件ID
+AGENT_FILE_ID=297761877096661000
+## Linux Agent自动安装脚本ID
+AGENT_LINUX_INSTALL_SCRIPT_ID=297761877096660998
+## Windows Agent自动安装脚本ID
+AGENT_WINDOWS_INSTALL_SCRIPT_ID=245588291569582089
+
+#-----------------------------------------------------------------------------------
+# AngusTester 请求代理（AngusProxy）配置
+#-----------------------------------------------------------------------------------
+## 启动AngusTester时是否同时启动嵌入API请求代理服务
+## 默认开启，独立部署时应禁用
+PROXY_STARTUP_IN_TESTER=true
+
+#-----------------------------------------------------------------------------------
+# Redis 配置
+#-----------------------------------------------------------------------------------
+## Redis部署模式，默认为 SINGLE，支持选项：SINGLE (单实例), SENTINEL (哨兵模式), CLUSTER (集群模式)
+REDIS_DEPLOYMENT=SINGLE
+## 单实例模式Redis的IP或主机名，默认值 `127.0.0.1`
+REDIS_HOST=localhost
+## 单实例模式Redis端口，默认值 `6379`
+REDIS_PORT=6379
+## Redis认证密码，默认值 `Angus123`（启用Redis安全认证时必需）
+REDIS_PASSWORD=Angus123
+## 哨兵模式主节点名称，配置示例：mymaster
+REDIS_SENTINEL_MASTER=
+## 哨兵/集群模式Redis实例列表，配置示例：192.168.0.100:6379,192.168.0.101:6379,192.168.0.102:6379
+REDIS_NODES=
+
+#-----------------------------------------------------------------------------------
+# Eureka 配置
+#-----------------------------------------------------------------------------------
+## 配置Eureka服务器和仪表盘用户名密码，默认仪表盘地址 http://GM_HOST:GM_PORT/eureka-dashboard
+EUREKA_USER_NAME=eureka
+EUREKA_USER_PASSWORD=eureka
+
+#-----------------------------------------------------------------------------------
+# OAuth2.0 客户端内省配置
+#-----------------------------------------------------------------------------------
+OAUTH2_INTROSPECT_CLIENT_ID=client-credentials-introspect-client
+OAUTH2_INTROSPECT_CLIENT_SECRET=secret
+```

@@ -51,7 +51,7 @@ Angus 系列应用遵循统一标准命名和结构规范，便于部署和维�
 
 以 AngusTester 社区版为例：
 
-```tree
+```txt
 AngusTester-Community-1.0.0/
 ├── 📁 conf/          # 所有配置文件
 ├── 📁 data/          # 应用数据（含执行任务日志）
