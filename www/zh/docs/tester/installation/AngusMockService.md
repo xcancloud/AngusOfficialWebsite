@@ -87,9 +87,9 @@
 ## 三、配置服务
 
 1. 通过Web界面方式修改配置：进入AngusTester应用`mock`菜单，点击服务名进入`设置`页面，根据文案提示完成修改。
-2. 手动修改配置文件中默认配置：进入 AngusAgent 安装目录，在`conf`目录中找到`mockservice.properties`进行修改，配置参数查看下面`参数参考`说明。
+2. 手动修改配置文件中默认配置：进入 AngusAgent 安装目录，在`conf`目录中找到`mockservice.properties`进行修改，配置参数查看下面`配置参考`说明。
 
-## 四、参数参考
+## 四、配置参考
 
 ```properties
 ## Mock服务绑定的IP地址，默认0.0.0.0

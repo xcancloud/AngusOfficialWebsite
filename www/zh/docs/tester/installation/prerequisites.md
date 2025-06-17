@@ -47,7 +47,7 @@ Angus 系列应用遵循统一标准命名和结构规范，便于部署和维�
 
 > **完整示例**：`AngusTester-Community-1.0.0-full.zip`
 
-### 安装包结构解析
+### 安装包结构
 
 以 AngusTester 社区版为例：
 
@@ -67,10 +67,10 @@ AngusTester-Community-1.0.0/
 └── 🧩 AngusTester-Community-1.0.0.jar  # 主程序
 ```
 
-### 核心目录说明
+### 主要目录说明
 ```mermaid
 flowchart TB
-    A[核心目录] --> B[配置]
+    A[主要目录] --> B[配置]
     A --> C[数据存储]
     A --> D[程序运行]
     A --> E[扩展和运行时依赖]

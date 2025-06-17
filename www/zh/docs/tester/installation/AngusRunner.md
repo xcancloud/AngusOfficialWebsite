@@ -51,13 +51,13 @@
 以上配置参数只有需要将测试结果上传到远程AngusTester服务器时需要配置，即运行AngusRunner命令行指定模式为`REMOTE`时。
 :::
 
-其他配置信息请查看下面"参数参考"说明。
+其他配置信息请查看下面"配置参考"说明。
 
 ## 三、运行
 
 请查看：[AngusRunner命令行](../command/AngusRunner.md)。
 
-## 四、参数参考
+## 四、配置参考
 
 - 执行器配置(runner.properties)
 

@@ -184,7 +184,7 @@ docker compose -f agent.yaml stop
 docker compose -f agent.yaml logs
 ```
 
-## 八、参数参考
+## 八、配置参考
 
 - 代理服务配置(agent.properties)
 

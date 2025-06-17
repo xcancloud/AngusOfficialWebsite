@@ -10,12 +10,11 @@ AngusTester 应用安装部署
 
 - **系统要求**
     - 操作系统：支持 Linux / MacOS / Windows Server。
-    - 操作系统：支持 Linux / MacOS / Windows Server。
     - 计算资源：最小配置要求 `2核CPU、4GB内存`，推荐配置 `4核CPU、8GB内存`。
     - 磁盘空间：最小 10GB 可用空间，推荐配置 `100GB`。
 
 - **运行环境**
-    - ZIP 包部署：需要配置 `OpenJDK 17+`。
+    - 手动配置安装：需要配置 `OpenJDK 17+`，默认会自己安装。
     - Docker 和 Compose 部署：需要安装 Docker，推荐版本 `V20.10+`。
 
 - **中间件**
@@ -98,8 +97,8 @@ TESTER_WEBSITE=
 # ------------------------
 ```
 ::: warning 注意
-1. 以上配置除了"INSTALL_APPS"和"TESTER_WEBSITE"，其他配置选项应该和配置AngusGM应用选项一致。
-2. 其他配置选项说明请查看下面"参数参考"。
+1. 以上配置除了`INSTALL_APPS`和`TESTER_WEBSITE`，其他配置选项应该和配置AngusGM应用选项保持一致。
+2. 更多其他配置选项和说明请查看下面`配置参考->应用配置`。
 :::
 
 **3. 启动应用**
@@ -107,11 +106,14 @@ TESTER_WEBSITE=
 ```bash
 # 运行启动命令
 ./startup-tester.sh
+
+# 查看启动日志
+tail -f -n1000 logs/tester.log
 ```
 
 ::: warning 注意
 1. 该脚本是以后台进程启用应用，自动安装和启动大约需要2分钟，具体执行信息请查看 `logs` 日志文件内容。
-2. 如果需要Nginx代理AngusTester应用，或通过Nginx虚拟服务器方式给应用配置域名，请查看："其他说明" -> "Nginx代理配置"。
+2. 如果需要Nginx代理AngusTester应用，或通过Nginx虚拟服务器方式给应用配置域名，请查看下面`配置参考->Nginx代理配置`。
 :::
 
 ## 三、使用 Docker 方式安装
@@ -355,7 +357,7 @@ docker compose -f tester.yaml logs
 - 联系邮箱：`technical_support@xcan.cloud`
 - 邮件要求：附错误日志截图及环境信息（如：部署方式、版本号等）。
 
-## 八、参数参考
+## 八、配置参考
 
 - 应用配置(.priv.env)
 
@@ -503,4 +505,148 @@ EUREKA_USER_PASSWORD=eureka
 #-----------------------------------------------------------------------------------
 OAUTH2_INTROSPECT_CLIENT_ID=client-credentials-introspect-client
 OAUTH2_INTROSPECT_CLIENT_SECRET=secret
+```
+
+- Nginx代理配置(nginx.conf)
+
+```ini
+# Nginx 主配置文件
+user  nginx;                                      # 以 nginx 用户身份运行进程
+worker_processes  auto;                           # 自动设置工作进程数为 CPU 核心数
+
+error_log  /var/log/nginx/error.log notice;       # 错误日志路径，记录级别为 notice
+pid        /run/nginx.pid;                        # 存储主进程 PID 的文件路径
+
+events {
+    worker_connections  1024;                     # 每个工作进程的最大连接数
+}
+
+http {
+    default_type  application/octet-stream;       # 默认 MIME 类型（二进制流）
+
+    # 定义日志格式
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+    access_log  /var/log/nginx/access.log  main;  # 访问日志路径和使用 main 格式
+
+    # 性能优化
+    # 性能优化
+    tcp_nopush on;                          # 在完整数据包构建后发送
+    tcp_nodelay on;                         # 在保持连接时禁用Nagle算法
+    client_max_body_size 500M;              # 请求大小限制配置
+    sendfile        on;                     # 启用高效文件传输模式
+    keepalive_timeout  65;                  # 保持连接超时时间（秒）
+
+    # GM 应用服务器配置
+    server {
+        listen 80;                               # 监听 80 端口（HTTP）
+        server_name gm.your.com;                 # 服务器域名
+
+        # WebSocket 代理配置
+        location /ws/ {
+             proxy_pass http://127.0.0.1:8802;    # 后端服务地址
+
+             # WebSocket 支持配置
+             proxy_http_version 1.1;              # 使用 HTTP/1.1（支持 WebSocket）
+             proxy_set_header Upgrade $http_upgrade;  # 协议升级头
+             proxy_set_header Connection "upgrade";   # 连接升级头
+             
+             # 超时设置
+             proxy_connect_timeout 1d;             # 连接后端超时
+             proxy_read_timeout 1d;                # 读取响应超时
+             proxy_send_timeout 1d;                # 发送请求超时
+             
+             # 连接保持设置
+             proxy_socket_keepalive on;           # 开启 TCP keepalive
+             proxy_hide_header Vary;              # 隐藏响应头中的 Vary
+
+             # 传递客户端信息到后端
+             proxy_set_header Host $host;          # 原始主机头
+             proxy_set_header X-Real-IP $remote_addr;  # 客户端真实 IP
+             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  # 转发链IP
+             proxy_set_header X-Forwarded-Proto $scheme;  # 原始协议
+	      }
+
+	      # 普通请求代理配置
+        location / {
+            proxy_pass http://127.0.0.1:8802;     # 后端服务地址
+
+            # 合理超时设置
+            proxy_connect_timeout 10s;             # 连接后端超时
+            proxy_read_timeout 120s;               # 读取响应超时
+            proxy_send_timeout 120s;               # 发送请求超时
+
+            # 传递客户端信息到后端
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+    }
+
+    # Tester 应用服务器配置
+    server {
+        listen 80;                               # 监听 80 端口
+        server_name tester.your.com;              # 服务器域名
+
+        # AngusProxy 代理配置
+        location /angusProxy {
+            # CORS 跨域配置
+            add_header 'Access-Control-Allow-Origin' * always;                 # 允许所有来源
+            add_header 'Access-Control-Allow-Credentials' 'true' always;       # 允许携带凭证
+            add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, PUT, PATCH, DELETE' always;  # 允许方法
+            add_header 'Access-Control-Allow-Headers' * always;                # 允许所有头（应明确指定）
+
+            # OPTIONS 预检请求处理
+            if ($request_method = OPTIONS) {
+                add_header 'Access-Control-Max-Age' 1728000;  # 预检结果缓存时间（秒）
+                return 204;  # 返回204 No Content
+            }
+            
+            proxy_pass http://127.0.0.1:6806/angusProxy;  # 代理到AngusProxy服务
+            proxy_http_version 1.1;                       # 使用 HTTP/1.1
+
+            # WebSocket 支持配置
+            proxy_set_header Upgrade $http_upgrade;       
+            proxy_set_header Connection "upgrade";       
+
+            # 超时设置
+            proxy_connect_timeout 1d;                     # 连接超时
+            proxy_read_timeout 1d;                        # 读取超时
+            proxy_send_timeout 1d;                        # 发送超时
+
+            # 连接保持设置
+            proxy_socket_keepalive on;                   # 开启 TCP keepalive
+            proxy_hide_header Vary;                      # 隐藏响应头中的 Vary
+
+            # 传递客户端信息
+            proxy_set_header Referer $http_referer;       # 引用来源
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+        # 普通请求代理配置
+        location / {
+            proxy_pass http://127.0.0.1:8901;           # 后端服务地址
+
+            # 超时设置
+            proxy_connect_timeout 10s;                   # 连接超时
+            proxy_read_timeout 120s;                     # 读取超时
+            proxy_send_timeout 120s;                     # 发送超时
+            
+            proxy_set_header Priority "";	             # 清除浏览器端优化参数，防止和业务参数冲突   
+            
+            # 传递客户端信息 
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;   # 添加协议头
+        }
+    }
+
+    # 可选：包含其他配置文件
+    # include /etc/nginx/conf.d/*.conf;
+}
 ```
