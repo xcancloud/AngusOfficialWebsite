@@ -46,7 +46,7 @@ npm_build () {
   npm install
 
   if [ $? -ne 0 ]; then
-    echo "ERROR: 'npm install --no-optional --legacy-peer-deps' failed, exiting script"
+    echo "ERROR: 'npm install' failed, exiting script"
     exit 1
   fi
   echo "INFO: npm install end"
