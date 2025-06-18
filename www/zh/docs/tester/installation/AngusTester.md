@@ -116,7 +116,7 @@ tail -f -n1000 logs/tester.log
 2. 如果需要Nginx代理AngusTester应用，或通过Nginx虚拟服务器方式给应用配置域名，请查看下面`配置参考->Nginx代理配置`。
 :::
 
-## 三、使用 Docker 方式安装
+## 三、Docker方式安装
 
 **1. 准备安装目录**
 
@@ -157,7 +157,7 @@ docker run -d \
 | **`-v /opt/AngusTester:/app`** | 数据卷挂载：将主机目录 `/opt/AngusTester` 挂载到容器目录 `/app`（格式：`主机路径:容器路径`）      |
 | **`angus/tester:1.0.0`** | 指定要运行的镜像名称及标签（格式：`仓库/镜像名:标签`）                                        |
 
-## 四、使用 Docker Compose 方式安装
+## 四、Docker Compose方式安装
 
 **1. 准备安装目录**
 
@@ -245,7 +245,7 @@ services:
   gm:
     restart: always
     env_file: .priv.env
-    container_name: angusgm
+    container_name: gm
     image: angus/gm:1.0.0
     depends_on:
       - mysql
@@ -262,7 +262,7 @@ services:
     container_name: tester
     image: angus/tester:1.0.0
     depends_on:
-      - angusgm
+      - gm
     ports:
       - "8901:8901"
     volumes:

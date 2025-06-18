@@ -5,6 +5,14 @@
 > 2. **服务模拟平台**：运行和管理 Mock 服务。
 > 3. **节点监控中心**：实时采集并上报节点资源指标。
 
+::: warning AngusAgent默认提供的完整安装包中，包含下面组件：
+- **plugins**：测试插件集
+- **AngusRunner**：测试任务和生成数据任务执行器
+- **MockService**：接口模拟服务
+- **AngusAgent**：节点代理服务
+- **AngusProxy**：请求代理服务
+:::
+
 ## 一、前置要求
 
 - 确保目标端口 `6807` 可用。
@@ -30,8 +38,6 @@
 > 若在线安装失败，请使用下方脚本安装方式。
 
 ## 三、脚本安装
-
-### Linux/MacOS 安装步骤
 
 ```bash
 # 创建安装目录
@@ -69,25 +75,15 @@ curl -s "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/install-agen
    remoting.ctrlUrlPrefix=控制器地址
    remoting.ctrlAccessToken=您的节点授权访问令牌
    ```
-> **参数获取方式**：  
-> 在`配置->节点`界面点击节点"安装配置信息"查看参数。
-> ![配置参数示意图](./images/agent-config-parameters.png)
+   > **参数获取方式**：  
+   > 在`配置->节点->安装配置信息`查看参数。
+   > ![配置参数示意图](./images/agent-config-parameters.png)
 4. 运行代理
    ```bash
    ./startup-agent.sh
    ```
-::: tip 注意
-默认提供的完整安装包中，包含下面组件：
-- plugins（测试插件）
-- AngusRunner（执行器）
-- MockService（接口模拟服务）
-- AngusAgent（节点代理）
-- AngusProxy（请求代理）
-:::
    
-## 五、容器化部署
-
-### Docker 快速启动
+## 五、Docker快速启动
 
 ```bash
 docker run -d \
@@ -99,7 +95,7 @@ docker run -d \
   anguscloud/angus-agent:1.0.0
 ```
 
-### Docker Compose 配置启动
+## 六、Docker Compose配置启动
 
 ```bash
 # 创建 Compose 文件
@@ -122,37 +118,35 @@ EOF
 docker compose -f agent.yaml up -d
 ```
 
-## 六、验证安装
+## 七、验证安装
 
-### 健康检查
-```bash
-curl -i http://localhost:6807
+- 健康检查
+   ```bash
+   curl -i http://localhost:6807
+   
+   # 预期响应：
+   HTTP/1.1 200 OK
+   Content-Type: application/json
+   
+   {
+     "app": "AngusAgent",
+     "version": "1.0.0",
+     "health": {"status": "UP"},  # 关键状态指标
+     "principal": {
+       "tenantId": "1",
+       "deviceId": "205198142092607130"
+     }
+   }
+   ```
+- 控制台验证
+  1. 访问 AngusTester 控制台。
+  2. 进入：`节点管理 → 节点列表`。
+  3. 检查目标节点状态：
+      - ✅ **连接状态**：应为`已连接`。
+      - ⏱️ **最后心跳**：2分钟内更新。
+   > ⏳ 状态同步延迟约 2 分钟，若长时间未连接请检查网络和配置。
 
-# 预期响应：
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "app": "AngusAgent",
-  "version": "1.0.0",
-  "health": {"status": "UP"},  # 关键状态指标
-  "principal": {
-    "tenantId": "1",
-    "deviceId": "205198142092607130"
-  }
-}
-```
-
-### 控制台验证
-1. 访问 AngusTester 控制台。
-2. 进入：`节点管理 → 节点列表`。
-3. 检查目标节点状态：
-    - ✅ **连接状态**：应为`已连接`。
-    - ⏱️ **最后心跳**：2分钟内更新。
-
-> ⏳ 状态同步延迟约 2 分钟，若长时间未连接请检查网络和配置。
-
-## 七、服务管理
+## 八、服务管理
 
 - Linux/MacOS
 ```bash
@@ -184,7 +178,7 @@ docker compose -f agent.yaml stop
 docker compose -f agent.yaml logs
 ```
 
-## 八、配置参考
+## 九、配置参考
 
 - 代理服务配置(agent.properties)
 
