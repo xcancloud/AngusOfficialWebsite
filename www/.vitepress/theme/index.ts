@@ -31,6 +31,8 @@ import { DocVideoLink } from '@theojs/lumen';
 import HomePage from './home/index.vue';
 import Icon from './components/Icon/index.vue';
 import OpenBanner from './components/OpenBanner/index.vue';
+import Business from './scenario/business.vue';
+import Ai from './scenario/ai.vue';
 
 export default {
     extends: DefaultTheme,
@@ -44,6 +46,8 @@ export default {
         app.component('HomePage', HomePage);
         app.component('Icon', Icon);
         app.component('OpenBanner', OpenBanner);
+        app.component('Business', Business);
+        app.component('Ai', Ai);
         for (const [name, comp] of Object.entries(ElementIcons)) {
             app.component(name, comp)
         }
@@ -52,7 +56,7 @@ export default {
         app.component('vImageViewer', vImageViewer);
 
         // Register DocVideoLink components
-        app.component('Vid', DocVideoLink)
+        app.component('Vid', DocVideoLink);
 
         // Register openapi components
         theme.enhanceApp({app});
