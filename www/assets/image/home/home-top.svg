@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1920px" height="940px" viewBox="0 0 1920 940" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>蒙版</title>
+    <g id="首页" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="0.01-1920" fill="#003FFF">
+            <path d="M1689.8877,425.239856 C1464.6,597.880344 1276.8,490.417509 858.6,754.083951 C526.8,963.276983 103.670416,959.273028 0,916.701738 L0,0 L1920,0 C1918.60175,84.0388779 1870.6218,286.741281 1689.8877,425.239856 Z" id="蒙版"></path>
+        </g>
+    </g>
+</svg>

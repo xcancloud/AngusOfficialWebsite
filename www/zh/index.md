@@ -20,6 +20,7 @@ hero:
       link: /zh/docs/tester/installation/AngusTester
 ---
 
+<HomePage />
 <style>
 @media (min-width: 960px) {
     [data-v-72cc4481] .image-src {

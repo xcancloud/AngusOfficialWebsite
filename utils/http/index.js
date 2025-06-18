@@ -253,4 +253,12 @@ async function patch(url, data, config) {
 
 http.create();
 
-export default http;
+// export default http;
+
+export default {
+  del,
+  get,
+  post,
+  put,
+  patch
+}

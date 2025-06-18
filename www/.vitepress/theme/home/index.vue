@@ -121,7 +121,7 @@
       <p class="text-8 font-semibold text-center text-black-color">
         {{ pageContent.productFeature?.name }}
       </p>
-      <div class="mt-15 flex justify-between flex-wrap">
+      <div class="mt-15 flex flex-wrap">
         <div
           v-for="(item, index) in pageContent.productFeature?.features"
           :key="index"
@@ -143,18 +143,12 @@
             </div>
           </div>
           <div
-            class="mt-4 text-black-header-color leading-6.5 font-normal"
+            class="mt-4 text-black-header-color leading-6.5 font-normal max-w-75"
             style="font-size: 14px;"
           >
             {{ item.detail }}
           </div>
         </div>
-        <!-- <div
-          v-for="item in 3 - (pageContent.productFeature?.features?.length % 3)"
-          v-show="pageContent.productFeature?.features && pageContent.productFeature?.features?.length % 3 !== 0"
-          :key="item + 100"
-          class="w-78.25 mb-22.5"
-        /> -->
       </div>
     </div>
     
@@ -189,17 +183,17 @@
                     :class="[
                       'w-20 h-20 mx-auto flex justify-center items-center rounded-full',
                       pluginsTabActive === index
-                        ? 'bg-blue-100'
+                        ? 'bg-blue-600 text-white-500'
                         : 'bg-blue-main-10',
                     ]"
                   >
-                    <Icon class="text-15" :icon="item.iconContent.icon" />
+                    <Icon class="text-10" :icon="item.iconContent.icon" />
                   </div>
                   <p
                     :class="[
                       'text-5 pt-4 pb-2 m-0',
                       pluginsTabActive === index
-                        ? 'text-black-color font-semibold'
+                        ? 'font-semibold'
                         : 'text-gray-hot-code font-normal',
                     ]"
                   >
@@ -357,6 +351,8 @@
         </div>
       </div>
     </div>
+    
+    <OpenBanner />
   </div>
 </template>
 <style scoped>
@@ -585,8 +581,9 @@
 }
 
 .product-features-item {
-  width: calc((100% - 260px) / 3);
+  /* width: calc((100% - 260px) / 3); */
   margin-bottom: 60px;
+  flex: 0 1 33.33%;
 }
 
 .home-page .quick-links .quick-links-content > div {

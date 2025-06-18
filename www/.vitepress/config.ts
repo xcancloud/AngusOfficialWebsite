@@ -36,7 +36,7 @@ export default withMermaid({
     },
 
     head: [
-        // ['script', {src: '/assets/iconfont/iconfont.js'}],
+        ['script', {src: '/assets/iconfont/iconfont.js'}],
         ['link', {rel: 'icon', type: 'image/png', href: '/favicon.png'}],
         ['meta', {name: 'author', content: 'XCan Teams'}],
         ['meta', {property: 'og:type', content: 'website'}],

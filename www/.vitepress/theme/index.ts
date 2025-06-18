@@ -17,6 +17,7 @@ import 'viewerjs/dist/viewer.min.css';
 import imageViewer from 'vitepress-plugin-image-viewer';
 import vImageViewer from 'vitepress-plugin-image-viewer/lib/vImageViewer.vue';
 
+
 // plugin group-icons
 import 'virtual:group-icons.css';
 
@@ -25,7 +26,11 @@ import { theme } from 'vitepress-openapi/client';
 import 'vitepress-openapi/dist/style.css';
 
 // plugin lumen
-import { DocVideoLink } from '@theojs/lumen'
+import { DocVideoLink } from '@theojs/lumen';
+
+import HomePage from './home/index.vue';
+import Icon from './components/Icon/index.vue';
+import OpenBanner from './components/OpenBanner/index.vue';
 
 export default {
     extends: DefaultTheme,
@@ -36,6 +41,9 @@ export default {
 
         // Register Element Plus
         app.use(ElementPlus)
+        app.component('HomePage', HomePage);
+        app.component('Icon', Icon);
+        app.component('OpenBanner', OpenBanner);
         for (const [name, comp] of Object.entries(ElementIcons)) {
             app.component(name, comp)
         }
