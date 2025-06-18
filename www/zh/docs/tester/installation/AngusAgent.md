@@ -6,11 +6,11 @@
 > 3. **节点监控中心**：实时采集并上报节点资源指标。
 
 ::: warning AngusAgent默认提供的完整安装包中，包含下面组件：
-- **plugins**：测试插件集
 - **AngusRunner**：测试任务和生成数据任务执行器
 - **MockService**：接口模拟服务
 - **AngusAgent**：节点代理服务
 - **AngusProxy**：请求代理服务
+- **plugins**：测试插件集
 :::
 
 ## 一、前置要求
