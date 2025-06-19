@@ -81,7 +81,7 @@
       <div class="text-center font-semibold text-black-color text-8">
         {{ pageContent.productAdvantage?.name }}
       </div>
-      <div class="flex justify-between text-3.5 mt-10">
+      <div class="editions-grid text-3.5 mt-10">
         <div v-for="(item, idx) in pageContent.productAdvantage?.advantages" class="text-center">
           <img :src="item.iconUrl" class="inline-block w-20">
           <div class="font-semibold text-5 mt-5">
@@ -102,7 +102,7 @@
       <div class=" mt-5">
         {{ pageContent.productFlow?.description }}
       </div>
-      <img :src="pageContent.productFlow?.imageUrl" class="mt-10">
+      <img src="/assets/image/home/tester-flow.png" class="mt-10">
     </div>
 
     <!--产品功能-->
@@ -113,7 +113,7 @@
       <div class=" mt-5">
         {{ pageContent.productFunction?.description }}
       </div>
-      <img :src="pageContent.productFunction?.imageUrl" class="mt-10">
+      <img src="/assets/image/home/tester-function.png" class="mt-10">
     </div>
 
     <!--产品特性-->
@@ -121,12 +121,14 @@
       <p class="text-8 font-semibold text-center text-black-color">
         {{ pageContent.productFeature?.name }}
       </p>
-      <div class="mt-15 flex flex-wrap">
+      <div class="mt-15 editions-grid">
         <div
           v-for="(item, index) in pageContent.productFeature?.features"
           :key="index"
           class="product-features-item"
         >
+        <div class=" max-w-75 mx-auto">
+          
           <div class="flex items-center">
             <div
               class="w-12 h-12 flex justify-center items-center rounded-full"
@@ -143,73 +145,72 @@
             </div>
           </div>
           <div
-            class="mt-4 text-black-header-color leading-6.5 font-normal max-w-75"
+            class="mt-4 text-black-header-color leading-6.5 font-normal "
             style="font-size: 14px;"
           >
             {{ item.detail }}
           </div>
+        </div>
         </div>
       </div>
     </div>
     
     <!--插件化实现-->
     <div class="adjust-content-padding bg-blue-link-bg py-10 mt-10">
-      <div class="flex items-center justify-between">
-        <div class="flex-col items-center justify-between mr-5">
-          <div>
-            <p class="text-8 font-semibold text-center">
-              {{ pageContent.plugins?.name }}
-            </p>
+      <div class="plugin-editions-grid">
+        <div>
+          <p class="text-8 font-semibold text-center">
+            {{ pageContent.plugins?.name }}
+          </p>
+          <div
+            v-if="pageContent.plugins"
+            class="mt-10 flex justify-around box-border px-5"
+          >
             <div
-              v-if="pageContent.plugins"
-              class="mt-10 flex justify-between box-border px-5 space-x-8"
+              v-for="(item, index) in [
+                pageContent.plugins.protocol,
+                {},
+                pageContent.plugins.mockdata,
+                {},
+                pageContent.plugins.function,
+                {},
+                pageContent.plugins.middleware,
+              ]"
+              :key="index"
+              class="text-center cursor-pointer"
+              @click="selectPlugins(index)"
             >
-              <div
-                v-for="(item, index) in [
-                  pageContent.plugins.protocol,
-                  {},
-                  pageContent.plugins.mockdata,
-                  {},
-                  pageContent.plugins.function,
-                  {},
-                  pageContent.plugins.middleware,
-                ]"
-                :key="index"
-                class="text-center cursor-pointer"
-                @click="selectPlugins(index)"
-              >
-                <template v-if="![1,3,5].includes(index)">
-                  <div
-                    :class="[
-                      'w-20 h-20 mx-auto flex justify-center items-center rounded-full',
-                      pluginsTabActive === index
-                        ? 'bg-vp-indigo_soft'
-                        : 'bg-bg-soft',
-                    ]"
-                  >
-                    <Icon class="text-10" :icon="item.iconContent.icon" />
-                  </div>
-                  <p
-                    :class="[
-                      'text-5 pt-4 pb-2 m-0',
-                      pluginsTabActive === index
-                        ? 'font-semibold'
-                        : 'text-gray-hot-code font-normal',
-                    ]"
-                  >
-                    {{ item.name }}
-                  </p>
-                  <Icon
-                    icon="icon-hengjiantou"
-                    :class="['text-base', pluginsTabActive !== index && 'opacity-0']"
-                  />
-                </template>
+              <template v-if="![1,3,5].includes(index)">
                 <div
-                  v-else
-                  class="w-px h-15 opacity-30 bg-black-1 transform rotate-12 -translate-y-2 mt-2"
-                  style="pointer-events: none;"
+                  :class="[
+                    'w-20 h-20 mx-auto flex justify-center items-center rounded-full',
+                    pluginsTabActive === index
+                      ? 'bg-vp-indigo_soft'
+                      : 'bg-bg-soft',
+                  ]"
+                >
+                  <Icon class="text-10" :icon="item.iconContent.icon" />
+                </div>
+                <p
+                  :class="[
+                    'text-5 pt-4 pb-2 m-0',
+                    pluginsTabActive === index
+                      ? 'font-semibold'
+                      : 'text-text-1 font-normal',
+                  ]"
+                >
+                  {{ item.name }}
+                </p>
+                <Icon
+                  icon="icon-hengjiantou"
+                  :class="['text-base', pluginsTabActive !== index && 'opacity-0']"
                 />
-              </div>
+              </template>
+              <div
+                v-else
+                class="w-px h-15 opacity-30 bg-vp-black transform rotate-12 -translate-y-2 mt-2"
+                style="pointer-events: none;"
+              />
             </div>
           </div>
         </div>
@@ -297,12 +298,12 @@
         {{ pageContent.productEdition?.name }}
       </p>
 
-      <div class="mt-15 flex items-center justify-between">
+      <div class="mt-15 flex version-editions-grid">
         <div
           v-for="(item, index) in pageContent.productEdition?.edition"
           :key="index"
           ref="card"
-          class="w-68 relative transform transition-all duration-300 ease-linear hover:-translate-y-5">
+          class="mx-auto w-68 relative transform transition-all duration-300 ease-linear hover:-translate-y-5">
           <img style="height: 520px;" :src="item.backgroundImage.image" alt="">
           <div class="absolute top-0 left-0 w-full px-8 text-white-1">
             <div class="pb-5 border-b border-white-300 text-2xl font-semibold mt-10">
@@ -351,7 +352,6 @@
       </div>
     </div>
     
-    <OpenBanner />
   </div>
 </template>
 <style scoped>
@@ -529,6 +529,24 @@
   line-height: 48px;
 }
 
+.editions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.plugin-editions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(410px, 1fr));
+  gap: 2rem;
+}
+
+.version-editions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
 .adjust-content-padding {
   /* padding-right: 5rem; */
   /* padding-left: 5rem; */
@@ -581,8 +599,9 @@
 
 .product-features-item {
   /* width: calc((100% - 260px) / 3); */
-  margin-bottom: 60px;
-  flex: 0 1 33.33%;
+  /* margin-bottom: 60px;
+  flex: 0 1 33.33%; */
+  
 }
 
 .home-page .quick-links .quick-links-content > div {
