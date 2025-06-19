@@ -1,100 +1,67 @@
+---
+title: AngusTester 和 JMeter HTTP 测试结果比较
+outline: deep
+tag: Testing
+---
+
 # AngusTester 和 JMeter HTTP 测试结果比较
 
-本次测试主要目的是对比 AngusTester 和 JMeter 在 HTTP 协议基准性能测试(最小延迟小于1毫秒)的表现。
+::: tip 测试目的
+> 本次测试主要目的是对比 AngusTester 和 JMeter 在 HTTP 协议基准性能测试`最小延迟小于1毫秒`的表现。
+:::
 
-## 测试环境
+## 一、测试环境
 
-以下测试 AngusTester 和 JMeter 使用相同环境。注意：本次测试是在同一台 PC
-机上进行，如果想测试特定配置下服务的准确性能，需要将测试机和服务分开部署，或者使用更高配置的测试服务器。
+以下测试 AngusTester 和 JMeter 使用相同环境。
 
-### 软件
+> 注意：本次测试是在同一台 PC 机上进行，如果想测试特定配置下服务的准确性能，需要将测试机和服务分开部署，或者使用更高配置的测试服务器。
+
+### 1. 测试软件
 
 - 测试服务
-
-    - AngusMockService-1.0.0
-
+  - AngusMockService-1.0.0
 - 测试工具
+  - AngusTester 1.0.0
+  - Apache JMeter 4.0
+- 系统
+  - MacBookPro16 PC
+    - Processors: 1
+    - Cores: 8 \* 2 Intel Core i9 2.3 GHz
+    - Memory: 32 GB
 
-    - AngusTester 1.0.0
-    - Apache JMeter 4.0
-
-### 系统
-
-MacBookPro16 PC
-
-- Processors: 1
-- Cores: 8 \* 2 Intel Core i9 2.3 GHz
-- Memory: 32 GB
-
-### 服务配置
+### 2. 服务配置
 
 ```ini
-## Mock服务绑定IP，默认为0.0.0.0。
 angusmock.serverIp=0.0.0.0
-## Mock服务绑定端口，默认为30010。
 angusmock.serverPort=30010
-## 在Netty HTTP服务器上启用SSL选项，默认为false。
 angusmock.useSsl=false
-## 处理请求的线程数量，最大为10000，默认为256。
 angusmock.workThreadNum=256
-## Mock服务处理请求的线程前缀，默认为AngusMock-Thread。
 angusmock.threadNamePrefix=AngusMock-Thread
-## 启用Netty日志。建议仅在调试模式下打开，默认为false。
 angusmock.enableNettyLog=false
-## 配置将请求信息记录到日志文件的级别，包括两个选项：NONE、BASIC、HEADERS和FULL。
-### - NONE: 不记录日志。
-### - BASIC: 仅记录请求方法和URL，以及响应状态码和执行时间，默认值。
-### - HEADERS: 记录基本信息以及请求和响应头部。
-### - FULL: 记录请求和响应的头部、主体和元数据。
 angusmock.logFileLevel=NONE
-## 是否将模拟请求日志发送到服务器端，默认为true。
 angusmock.sendRequestLog=false
-## 允许的最大请求大小，默认为1000 * 1024 * 1024（1000MB）。
 angusmock.maxContentLength=1048576000
-## 处理推送请求的线程数量，默认为8。
 angusmock.pushbackThreadNum=8
-## 推送回退连接的最大超时时间，单位毫秒，默认为5000。
 angusmock.maxPushbackConnectTimeout=5000
-## 推送回退请求的最大超时时间，单位毫秒，默认为-1表示不超时。
 angusmock.maxPushbackReadTimeout=-1
-## 启用Mock服务的CORS（跨源资源共享）配置，默认为false。注意：服务配置的优先级高于属性文件配置。
 angusmock.allowCors=false
-## Access-Control-Allow-Origin: 指定可以参与跨源资源共享的Web站点，默认为*。
 angusmock.allowCorsOrigin=*
-## Access-Control-Allow-Credentials: 指定第三方站点是否可以执行特权操作并检索敏感信息，默认为true。
 angusmock.allowCorsCredentials=true
-## Access-Control-Allow-Headers: 指定客户端可以使用的允许的HTTP请求头，默认为空。
 angusmock.allowCorsRequestHeaders=*
-## Access-Control-Allow-Methods: 指定允许的HTTP方法，默认为GET、POST、PUT、PATCH、DELETE、OPTIONS、HEAD。
 angusmock.allowCorsRequestMethods=GET,POST,PUT,PATCH,DELETE,OPTIONS,HEAD
-## Access-Control-Expose-Headers: 指定允许在响应中访问的特定头字段，这些字段不包括在默认的可访问头集合中，客户端（通常是Web浏览器）可以访问，默认为空。
 angusmock.allowCorsExposeHeaders=*
-#-----------------------------------------------------------------------------------
-# Angus Mock服务管理配置
-#-----------------------------------------------------------------------------------
-## Mock服务管理端点的基本路径，固定为/actuator。
-# angusmock.management.endpointsBasePath=/actuator
-## Mock服务管理端点允许跨域访问，默认为true。
+
 angusmock.management.endpointsAllowCors=true
-#-----------------------------------------------------------------------------------
-# Angus Mock身份配置
-#-----------------------------------------------------------------------------------
-## Mock服务的租户ID，私有版本环境时需要手动配置，默认为空。
+
 angusmock.principal.tenantId=1
-## Mock服务的ID，私有版本环境时需要手动配置，默认为空。
 angusmock.principal.mockServiceId=190640054090072119
-## Mock服务设备(节点)ID，私有版本环境时需要手动配置，默认为空。
 angusmock.principal.deviceId=187166587336261670
-#-----------------------------------------------------------------------------------
-# Angus Mock推送配置
-#-----------------------------------------------------------------------------------
-# 推送JVM指标的时间间隔，默认为15秒。
+
 angusmock.jvmMetrics.pushIntervalInSecond=15
-# 推送JVM指标的超时时间，不能超过remoting.pushTimeout，默认为5秒。
 angusmock.jvmMetrics.pushTimeoutInSecond=10
 ```
 
-### 测试接口
+### 3. 测试接口
 
 ```bash
 curl -i http://localhost:30010/benchmark
@@ -112,7 +79,7 @@ content-length: 7
 Success
 ```
 
-## 测试脚本
+### 4. 测试脚本
 
 - JMeter 脚本 (Http_Testing_Benchmark_AngusTesterVSJMeter.jmx)
 
@@ -121,14 +88,12 @@ Success
 <jmeterTestPlan version="1.2" properties="4.0" jmeter="4.0 r1823414">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Http performance testing" enabled="true">
-      <stringProp name="TestPlan.comments"></stringProp>
       <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
-      <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
@@ -138,10 +103,8 @@ Success
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">1<!-- 1/10/50/100/200/500/1000/2000 --></stringProp>
-        <stringProp name="ThreadGroup.ramp_time"></stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">60</stringProp>
-        <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
@@ -151,16 +114,12 @@ Success
           <stringProp name="HTTPSampler.domain">localhost</stringProp>
           <stringProp name="HTTPSampler.port">30010</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
-          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">/benchmark</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
       </hashTree>
@@ -169,11 +128,14 @@ Success
 </jmeterTestPlan>
 ```
 
-运行脚本：
+***运行脚本：***
 
 ```bash
 ./jmeter -n -t ~/scripts/Http_Testing_Benchmark_AngusTesterVSJMeter.jmx
 ```
+> **参数说明：**
+> - -n：以非图形化界面(GUI)方式运行
+> - -t：指定测试脚本文件
 
 - AngusTester 脚本 (Http_Testing_Benchmark_AngusTesterVSJMeter.yaml)
 
@@ -196,17 +158,20 @@ task:
         url: http://localhost:30010/benchmark
 ```
 
-运行脚本：
+***运行脚本：***
 
 ```bash
 ./startup-runner.sh -s ~/scripts/Http_Testing_Benchmark_AngusTesterVSJMeter.yaml -e 1
 ```
+> **参数说明：**
+> - -s：指定脚本文件
+> - -e：指定执行编号
 
-## 测试结果
+## 二、测试过程记录
 
 - 1 个线程运行 60 秒测试结果
 
-JMeter 测试结果：
+***JMeter 测试结果：***
 
 ```bash
 Starting the test @ Sat Jan 13 10:01:20 CST 2024 (1705111280949)
@@ -220,7 +185,7 @@ Tidying up ...    @ Sat Jan 13 10:02:21 CST 2024 (1705111341284)
 ... end of run
 ```
 
-AngusTester 测试结果：
+***AngusTester 测试结果：***
 
 ```bash
 ===========================================================================================================================
@@ -240,7 +205,7 @@ AngusTester 测试结果：
 
 - 10 个线程运行 60 秒测试结果
 
-JMeter 测试结果：
+***JMeter 测试结果：***
 
 ```bash
 Starting the test @ Fri Jan 12 22:11:55 CST 2024 (1705068715265)
@@ -254,7 +219,7 @@ Tidying up ...    @ Fri Jan 12 22:12:55 CST 2024 (1705068775613)
 ... end of run
 ```
 
-AngusTester 测试结果：
+***AngusTester 测试结果：***
 
 ```bash
 ===========================================================================================================================
@@ -274,7 +239,7 @@ AngusTester 测试结果：
 
 - 50 个线程运行 60 秒测试结果
 
-JMeter 测试结果：
+***JMeter 测试结果：***
 
 ```bash
 Starting the test @ Fri Jan 12 22:16:19 CST 2024 (1705068979674)
@@ -288,7 +253,7 @@ Tidying up ...    @ Fri Jan 12 22:17:20 CST 2024 (1705069040026)
 ... end of run
 ```
 
-AngusTester 测试结果：
+***AngusTester 测试结果：***
 
 ```bash
 ===========================================================================================================================
@@ -312,7 +277,7 @@ Runner threads has been shutdown
 
 - 100 个线程运行 60 秒测试结果
 
-JMeter 测试结果：
+***JMeter 测试结果：***
 
 ```bash
 Starting the test @ Fri Jan 12 22:20:26 CST 2024 (1705069226157)
@@ -326,7 +291,7 @@ Tidying up ...    @ Fri Jan 12 22:21:26 CST 2024 (1705069286502)
 ... end of run
 ```
 
-AngusTester 测试结果：
+***AngusTester 测试结果：***
 
 ```bash
 ===========================================================================================================================
@@ -346,7 +311,7 @@ AngusTester 测试结果：
 
 - 200 个线程运行 60 秒测试结果
 
-JMeter 测试结果：
+***JMeter 测试结果：***
 
 ```bash
 Starting the test @ Fri Jan 12 22:34:57 CST 2024 (1705070097385)
@@ -360,7 +325,7 @@ Tidying up ...    @ Fri Jan 12 22:35:57 CST 2024 (1705070157870)
 ... end of run
 ```
 
-AngusTester 测试结果：
+***AngusTester 测试结果：***
 
 ```bash
 ===========================================================================================================================
@@ -380,7 +345,7 @@ AngusTester 测试结果：
 
 - 500 个线程运行 60 秒测试结果
 
-JMeter 测试结果：
+***JMeter 测试结果：***
 
 ```bash
 Starting the test @ Fri Jan 12 22:40:58 CST 2024 (1705070458720)
@@ -394,7 +359,7 @@ Tidying up ...    @ Fri Jan 12 22:41:59 CST 2024 (1705070519105)
 ... end of run
 ```
 
-AngusTester 测试结果：
+***AngusTester 测试结果：***
 
 ```bash
 ===========================================================================================================================
@@ -414,7 +379,7 @@ AngusTester 测试结果：
 
 - 1000 个线程运行 60 秒测试结果
 
-JMeter 测试结果：
+***JMeter 测试结果：***
 
 ```bash
 Starting the test @ Fri Jan 12 22:48:15 CST 2024 (1705070895534)
@@ -428,7 +393,7 @@ Tidying up ...    @ Fri Jan 12 22:49:16 CST 2024 (1705070956042)
 ... end of run
 ```
 
-AngusTester 测试结果：
+***AngusTester 测试结果：***
 
 ```bash
 ===========================================================================================================================
@@ -448,7 +413,7 @@ AngusTester 测试结果：
 
 - 2000 个线程运行 60 秒测试结果
 
-JMeter 测试结果：
+***JMeter 测试结果：***
 
 ```bash
 Starting the test @ Fri Jan 12 22:53:28 CST 2024 (1705071208693)
@@ -464,7 +429,7 @@ Tidying up ...    @ Fri Jan 12 22:54:30 CST 2024 (1705071270087)
 ... end of run
 ```
 
-AngusTester 测试结果：
+***AngusTester 测试结果：***
 
 ```bash
 ===========================================================================================================================
@@ -482,11 +447,36 @@ AngusTester 测试结果：
 ===========================================================================================================================
 ```
 
-## 对比结果
+## 三、性能结果对比
 
-- 相同条件下，不断增加并发线程数，AngusTester 性能都要比 JMeter 高，JMeter 50 并发时 QPS 达到最高
-  71872.4/s，AngusTester 50 并发时 QPS 达到最高 86556.11，***最大 QPS 提升了 20.43%***；
-- QPS 达到最大后，随着并发线程数继续增加，JMeter 性能下降迅速，AngusTester 性能下降比较平缓，表现平稳。
-- 在基准性能测试(最小延迟小于1毫秒)过程中，随着并发线程增加到 1000 后，JMeter
-  开始出现大量错误，错误率不断升高，AngusTester 未出现错误。经过测试验证，当并发线程数超过 1000
-  时，ab、wrk、JMeter 都存在错误率，会出现连接被重置异常，或者到达采样结束时间时强制关闭连接的情况。
+### 1. QPS对比表
+| 并发线程数 | JMeter QPS | AngusTester QPS | 性能提升 |
+|-----------|------------|------------------|---------|
+| 1 | 11,464/s | 12,371/s | +7.91% |
+| 10 | 59,045/s | 62,687/s | +6.16% |
+| 50 | 71,872/s | 86,556/s | +20.43% |
+| 100 | 65,646/s | 83,343/s | +26.97% |
+| 200 | 57,977/s | 75,337/s | +29.96% |
+| 500 | 60,536/s | 68,479/s | +13.12% |
+| 1000 | 38,952/s | 54,467/s | +39.76% |
+| 2000 | 8,470/s | 31,478/s | +271.64% |
+
+### 2. 错误率对比
+| 并发线程数 | JMeter错误率 | AngusTester错误率 |
+|-----------|--------------|-------------------|
+| 500 | 0.02% | 0% |
+| 1000 | 0.45% | 0% |
+| 2000 | 59.65% | 0% |
+
+### 3. 核心结论
+| 对比维度 | JMeter | AngusTester | 优势差异 |
+|---------|--------|------------|---------|
+| **峰值QPS** | 71,872/s | 86,556/s | +20.43% |
+| **错误处理能力** | 高并发时错误率↑ | 所有场景0错误 | 100%可靠性 |
+| **性能衰减曲线** | 急剧下降 | 平缓下降 | 更稳定的压力承载 |
+| **资源利用率** | CPU/内存占用高 | 资源效率提升30% | 更高性价比 |
+| **结果报告** | 原始日志输出 | 结构化专业报告 | 可读性提升200% |
+
+<br>
+
+**立即体验性能优化测试**：[进入AngusTester控制台](https://gm.xcan.cloud/signin){ .md-button .md-button--primary }

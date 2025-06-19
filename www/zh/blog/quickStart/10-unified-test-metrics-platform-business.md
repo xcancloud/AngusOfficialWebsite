@@ -1,7 +1,7 @@
 ---
 title: AngusTester如何为平台业务定义统一的测试指标
 outline: deep
-tag: Testing
+tag: Testing,Quick Start
 ---
 
 # AngusTester如何为平台业务定义统一的测试指标

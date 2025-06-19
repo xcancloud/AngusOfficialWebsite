@@ -1,7 +1,7 @@
 ---
 title: 注册AngusTester云服务版本账号后，如何免费体验测试
 outline: deep
-tag: Testing
+tag: Testing,Quick Start
 ---
 
 # 注册AngusTester云服务版本账号后，如何免费体验测试

@@ -1,7 +1,7 @@
 ---
 title: 快速了解AngusTester测试类型定义
 outline: deep
-tag: Testing
+tag: Testing,Quick Start
 ---
 
 # AngusTester测试类型定义

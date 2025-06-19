@@ -1,7 +1,7 @@
 ---
 title: 在AngusTester云服务版本中，如何通过客户内网节点发起测试
 outline: deep
-tag: Testing
+tag: Testing,Quick Start
 ---
 
 # 在AngusTester云服务版本中，如何通过客户内网节点发起测试

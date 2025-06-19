@@ -56,7 +56,7 @@ outline: deep
 > **无缝衔接已有资产**  
 > 支持导入：
 > ```mermaid
-> graph LR
+> graph TD
 >     A[Swagger] --> AngusTester
 >     B[Postman] --> AngusTester
 >     C[OpenAPI] --> AngusTester

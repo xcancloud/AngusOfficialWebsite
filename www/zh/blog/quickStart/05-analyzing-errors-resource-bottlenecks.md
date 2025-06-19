@@ -1,7 +1,7 @@
 ---
 title: 在AngusTester中如何分析采样错误和资源瓶颈
 outline: deep
-tag: Testing
+tag: Testing,Quick Start
 ---
 
 # AngusTester错误诊断与资源瓶颈定位指南

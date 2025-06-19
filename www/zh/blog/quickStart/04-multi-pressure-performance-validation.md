@@ -1,7 +1,7 @@
 ---
 title: 如何在AngusTester中通过一次执行验证出不同压力下性能表现
 outline: deep
-tag: Testing
+tag: Testing,Quick Start
 ---
 
 # 如何在AngusTester中通过一次执行验证出不同压力下性能表现

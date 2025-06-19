@@ -1,34 +1,36 @@
+---
+title: AngusTester 和 JMeter JDBC 测试结果比较
+outline: deep
+tag: Testing
+---
+
 # AngusTester 和 JMeter JDBC 测试结果比较
 
-本次测试主要目的是对比 AngusTester 和 JMeter 对 JDBC 协议性能表现。
+::: tip 测试目的
+> 本次测试主要目的是对比 AngusTester 和 JMeter 对 JDBC 协议性能表现。
+:::
 
-## 测试环境
+## 一、测试环境
 
-以下测试 AngusTester 和 JMeter 使用相同环境。注意：本次测试是在同一台 PC
-机上进行，如果想测试特定配置下数据库的准确性能，需要将测试机和 MySQL服务器分开部署，或者使用更高配置的测试服务器。
+以下测试 AngusTester 和 JMeter 使用相同环境。
 
-### 软件
+> 注意：本次测试是在同一台 PC 机上进行，如果想测试特定配置下数据库的准确性能，需要将测试机和 MySQL服务器分开部署，或者使用更高配置的测试服务器。
 
-- 数据库：Percona Server MySQL 5.7.34-37
+### 1. 测试软件
 
-- MySQL驱动：mysql-connector-j-8.0.31.jar
-
-- Docker：19.03.11 (使用 Docker 部署 MySQL)
-
+- 数据库：
+  - Percona Server MySQL 5.7.34-37
+  - MySQL驱动：mysql-connector-j-8.0.31.jar
 - 测试工具
-
     - AngusTester 1.0.0
     - Apache JMeter 4.0
+- 系统
+    - MacBookPro16 PC
+        - Processors: 1
+        - Cores: 8 \* 2 Intel Core i9 2.3 GHz
+        - Memory: 32 GB
 
-### 系统
-
-MacBookPro16 PC
-
-- Processors: 1
-- Cores: 8 \* 2 Intel Core i9 2.3 GHz
-- Memory: 32 GB
-
-### MySQL 配置
+### 2. MySQL 配置
 
 ```ini
 character_set_server = utf8mb4
@@ -48,7 +50,7 @@ log-error=/var/log/mysql/error.log
 pid-file=/var/run/mysqld/mysqld.pid
 ```
 
-### 测试表
+### 3. 测试表
 
 ```sql
 CREATE TABLE `user`  (
@@ -58,7 +60,7 @@ CREATE TABLE `user`  (
 ) ENGINE = InnoDB;
 ```
 
-## 测试脚本
+### 4. 测试脚本
 
 - JMeter Insert 脚本 (JDBC_Testing_Insert_AngusTesterVSJMeter.jmx)
 
@@ -67,14 +69,12 @@ CREATE TABLE `user`  (
 <jmeterTestPlan version="1.2" properties="4.0" jmeter="4.0 r1823414">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Jdbc prepared update performance testing" enabled="true">
-      <stringProp name="TestPlan.comments"></stringProp>
       <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
-      <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
@@ -84,15 +84,12 @@ CREATE TABLE `user`  (
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">1<!-- 1/10/50/100/200/500/1000/2000 --></stringProp>
-        <stringProp name="ThreadGroup.ramp_time"></stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">60</stringProp>
-        <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
         <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration" enabled="true">
           <boolProp name="autocommit">true</boolProp>
-          <stringProp name="checkQuery"></stringProp>
           <stringProp name="connectionAge">5000</stringProp>
           <stringProp name="dataSource">test</stringProp>
           <stringProp name="dbUrl">jdbc:mysql://localhost:3306/xcan_mockdata_sample</stringProp>
@@ -114,8 +111,6 @@ CREATE TABLE `user`  (
           <stringProp name="queryTimeout">60</stringProp>
           <stringProp name="queryType">Prepared Update Statement</stringProp>
           <stringProp name="resultSetHandler">Store as String</stringProp>
-          <stringProp name="resultVariable"></stringProp>
-          <stringProp name="variableNames"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -124,7 +119,7 @@ CREATE TABLE `user`  (
 </jmeterTestPlan>
 ```
 
-运行脚本：
+***运行脚本：***
 
 ```bash
 ./jmeter -n -t ~/scripts/JDBC_Testing_Insert_AngusTesterVSJMeter.jmx
@@ -170,11 +165,14 @@ task:
           inout: IN
 ```
 
-运行脚本：
+***运行脚本：***
 
 ```bash
 ./startup-runner.sh -s ~/scripts/JDBC_Testing_Insert_AngusTesterVSJMeter.yaml -e 1001
 ```
+> **参数说明：**
+> - -s：指定脚本文件
+> - -e：指定执行编号
 
 - JMeter Select 脚本 (JDBC_Testing_Select_AngusTesterVSJMeter.jmx)
 
@@ -183,14 +181,12 @@ task:
 <jmeterTestPlan version="1.2" properties="4.0" jmeter="4.0 r1823414">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Jdbc prepared select performance testing" enabled="true">
-      <stringProp name="TestPlan.comments"></stringProp>
       <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
-      <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
@@ -200,15 +196,12 @@ task:
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">1<!-- 1/10/50/100/200/500/1000/2000 --></stringProp>
-        <stringProp name="ThreadGroup.ramp_time"></stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">60</stringProp>
-        <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
         <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration" enabled="true">
           <boolProp name="autocommit">true</boolProp>
-          <stringProp name="checkQuery"></stringProp>
           <stringProp name="connectionAge">5000</stringProp>
           <stringProp name="dataSource">test</stringProp>
           <stringProp name="dbUrl">jdbc:mysql://localhost:3306/xcan_mockdata_sample</stringProp>
@@ -225,13 +218,9 @@ task:
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request" enabled="true">
           <stringProp name="dataSource">test</stringProp>
           <stringProp name="query">SELECT * FROM `user` WHERE username = &apos;FDgcM6u7xwbhkdCnz&apos;</stringProp>
-          <stringProp name="queryArguments"></stringProp>
-          <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryTimeout">60</stringProp>
           <stringProp name="queryType">Prepared Select Statement</stringProp>
           <stringProp name="resultSetHandler">Store as String</stringProp>
-          <stringProp name="resultVariable"></stringProp>
-          <stringProp name="variableNames"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -240,11 +229,14 @@ task:
 </jmeterTestPlan>
 ```
 
-运行脚本：
+***运行脚本：***
 
 ```bash
 ./jmeter -n -t ~/scripts/JDBC_Testing_Select_AngusTesterVSJMeter.jmx
 ```
+> **参数说明：**
+> - -n：以非图形化界面(GUI)方式运行
+> - -t：指定测试脚本文件
 
 - AngusTester Select 脚本 (JDBC_Testing_Select_AngusTesterVSJMeter.yaml)
 
@@ -280,19 +272,19 @@ task:
       timeoutInSecond: 60
 ```
 
-运行脚本：
+***运行脚本：***
 
 ```bash
 ./startup-runner.sh -s ~/scripts/JDBC_Testing_Select_AngusTesterVSJMeter.yaml -e 1002
 ```
 
-## 测试结果
+## 二、测试过程记录
 
 ### Insert 测试
 
 - 1 个线程运行 60 秒测试结果
 
-JMeter 测试结果：
+***JMeter 测试结果：***
 
 ```bash
 Starting the test @ Fri Nov 24 15:37:31 CST 2023 (1700811451582)
@@ -308,7 +300,7 @@ Tidying up ...    @ Fri Nov 24 15:38:32 CST 2023 (1700811512140)
 ... end of run
 ```
 
-AngusTester 测试结果：
+***AngusTester 测试结果：***
 
 ```bash
 ===========================================================================================================================
@@ -328,7 +320,7 @@ AngusTester 测试结果：
 
 - 10 个线程运行 60 秒测试结果
 
-JMeter 测试结果：
+***JMeter 测试结果：***
 
 ```bash
 Starting the test @ Fri Nov 24 17:53:18 CST 2023 (1700819598435)
@@ -342,7 +334,7 @@ Tidying up ...    @ Fri Nov 24 17:54:18 CST 2023 (1700819658945)
 ... end of run
 ```
 
-AngusTester 测试结果：
+***AngusTester 测试结果：***
 
 ```bash
 ===========================================================================================================================
@@ -362,7 +354,7 @@ AngusTester 测试结果：
 
 - 50 个线程运行 60 秒测试结果
 
-JMeter 测试结果：
+***JMeter 测试结果：***
 
 ```bash
 Starting the test @ Fri Nov 24 17:57:49 CST 2023 (1700819869164)
@@ -376,7 +368,7 @@ Tidying up ...    @ Fri Nov 24 17:58:49 CST 2023 (1700819929870)
 ... end of run
 ```
 
-AngusTester 测试结果：
+***AngusTester 测试结果：***
 
 ```bash
 ===========================================================================================================================
@@ -396,7 +388,7 @@ AngusTester 测试结果：
 
 - 100 个线程运行 60 秒测试结果
 
-JMeter 测试结果：
+***JMeter 测试结果：***
 
 ```bash
 Starting the test @ Fri Nov 24 18:01:45 CST 2023 (1700820105701)
@@ -410,7 +402,7 @@ Tidying up ...    @ Fri Nov 24 18:02:46 CST 2023 (1700820166215)
 ... end of run
 ```
 
-AngusTester 测试结果：
+***AngusTester 测试结果：***
 
 ```bash
 ===========================================================================================================================
@@ -430,7 +422,7 @@ AngusTester 测试结果：
 
 - 200 个线程运行 60 秒测试结果
 
-JMeter 测试结果：
+***JMeter 测试结果：***
 
 ```bash
 Starting the test @ Fri Nov 24 18:10:29 CST 2023 (1700820629673)
@@ -446,7 +438,7 @@ Tidying up ...    @ Fri Nov 24 18:11:30 CST 2023 (1700820690663)
 ... end of run
 ```
 
-AngusTester 测试结果：
+***AngusTester 测试结果：***
 
 ```bash
 ===========================================================================================================================
@@ -466,7 +458,7 @@ AngusTester 测试结果：
 
 - 500 个线程运行 60 秒测试结果
 
-JMeter 测试结果：
+***JMeter 测试结果：***
 
 ```bash
 Starting the test @ Fri Nov 24 18:15:41 CST 2023 (1700820941390)
@@ -480,7 +472,7 @@ Tidying up ...    @ Fri Nov 24 18:16:42 CST 2023 (1700821002123)
 ... end of run
 ```
 
-AngusTester 测试结果：
+***AngusTester 测试结果：***
 
 ```bash
 ===========================================================================================================================
@@ -500,7 +492,7 @@ AngusTester 测试结果：
 
 - 1000 个线程运行 60 秒测试结果
 
-JMeter 测试结果：
+***JMeter 测试结果：***
 
 ```bash
 Starting the test @ Fri Nov 24 18:19:04 CST 2023 (1700821144033)
@@ -514,7 +506,7 @@ Tidying up ...    @ Fri Nov 24 18:20:05 CST 2023 (1700821205132)
 ... end of run
 ```
 
-AngusTester 测试结果：
+***AngusTester 测试结果：***
 
 ```bash
 ===========================================================================================================================
@@ -534,7 +526,7 @@ AngusTester 测试结果：
 
 - 2000 个线程运行 60 秒测试结果
 
-JMeter 测试结果：
+***JMeter 测试结果：***
 
 ```bash
 Starting the test @ Fri Nov 24 18:30:50 CST 2023 (1700821850360)
@@ -548,7 +540,7 @@ Tidying up ...    @ Fri Nov 24 18:31:52 CST 2023 (1700821912816)
 ... end of run
 ```
 
-AngusTester 测试结果：
+***AngusTester 测试结果：***
 
 ```bash
 ===========================================================================================================================
@@ -566,11 +558,11 @@ AngusTester 测试结果：
 
 ### Select 测试
 
-以下测试 AngusTester 和 JMter 使用同一份表数据。
+以下测试 AngusTester 和 JMeter 使用同一份表数据。
 
 - 1 个线程运行 60 秒测试结果
 
-JMeter 测试结果：
+***JMeter 测试结果：***
 
 ```bash
 Starting the test @ Fri Nov 24 14:19:05 CST 2023 (1700806745751)
@@ -584,7 +576,7 @@ Tidying up ...    @ Fri Nov 24 14:20:06 CST 2023 (1700806806202)
 ... end of run
 ```
 
-AngusTester 测试结果：
+***AngusTester 测试结果：***
 
 ```bash
 ===========================================================================================================================
@@ -604,7 +596,7 @@ AngusTester 测试结果：
 
 - 10 个线程运行 60 秒测试结果
 
-JMeter 测试结果：
+***JMeter 测试结果：***
 
 ```bash
 Starting the test @ Fri Nov 24 14:13:03 CST 2023 (1700806383302)
@@ -620,7 +612,7 @@ Tidying up ...    @ Fri Nov 24 14:14:03 CST 2023 (1700806443756)
 ... end of run
 ```
 
-AngusTester 测试结果：
+***AngusTester 测试结果：***
 
 ```bash
 ===========================================================================================================================
@@ -640,7 +632,7 @@ AngusTester 测试结果：
 
 - 50 个线程运行 60 秒测试结果
 
-JMeter 测试结果：
+***JMeter 测试结果：***
 
 ```bash
 Starting the test @ Fri Nov 24 14:27:12 CST 2023 (1700807232560)
@@ -654,7 +646,7 @@ Tidying up ...    @ Fri Nov 24 14:28:13 CST 2023 (1700807293029)
 ... end of run
 ```
 
-AngusTester 测试结果：
+***AngusTester 测试结果：***
 
 ```bash
 ===========================================================================================================================
@@ -674,7 +666,7 @@ AngusTester 测试结果：
 
 - 100 个线程运行 60 秒测试结果
 
-JMeter 测试结果：
+***JMeter 测试结果：***
 
 ```bash
 Starting the test @ Fri Nov 24 14:32:31 CST 2023 (1700807551943)
@@ -690,7 +682,7 @@ Tidying up ...    @ Fri Nov 24 14:33:32 CST 2023 (1700807612428)
 ... end of run
 ```
 
-AngusTester 测试结果：
+***AngusTester 测试结果：***
 
 ```bash
 ===========================================================================================================================
@@ -710,7 +702,7 @@ AngusTester 测试结果：
 
 - 200 个线程运行 60 秒测试结果
 
-JMeter 测试结果：
+***JMeter 测试结果：***
 
 ```bash
 Starting the test @ Fri Nov 24 14:35:57 CST 2023 (1700807757194)
@@ -724,7 +716,7 @@ Tidying up ...    @ Fri Nov 24 14:36:57 CST 2023 (1700807817896)
 ... end of run
 ```
 
-AngusTester 测试结果：
+***AngusTester 测试结果：***
 
 ```bash
 ===========================================================================================================================
@@ -744,7 +736,7 @@ AngusTester 测试结果：
 
 - 500 个线程运行 60 秒测试结果
 
-JMeter 测试结果：
+***JMeter 测试结果：***
 
 ```bash
 Starting the test @ Fri Nov 24 14:39:23 CST 2023 (1700807963131)
@@ -758,7 +750,7 @@ Tidying up ...    @ Fri Nov 24 14:40:24 CST 2023 (1700808024178)
 ... end of run
 ```
 
-AngusTester 测试结果：
+***AngusTester 测试结果：***
 
 ```bash
 ===========================================================================================================================
@@ -778,7 +770,7 @@ AngusTester 测试结果：
 
 - 1000 个线程运行 60 秒测试结果
 
-JMeter 测试结果：
+***JMeter 测试结果：***
 
 ```bash
 Starting the test @ Fri Nov 24 14:40:35 CST 2023 (1700808035915)
@@ -792,7 +784,7 @@ Tidying up ...    @ Fri Nov 24 14:41:36 CST 2023 (1700808096896)
 ... end of run
 ```
 
-AngusTester 测试结果：
+***AngusTester 测试结果：***
 
 ```bash
 ===========================================================================================================================
@@ -812,7 +804,7 @@ AngusTester 测试结果：
 
 - 2000 个线程运行 60 秒测试结果
 
-JMeter 测试结果：
+***JMeter 测试结果：***
 
 ```bash
 Starting the test @ Fri Nov 24 14:42:32 CST 2023 (1700808152699)
@@ -826,7 +818,7 @@ Tidying up ...    @ Fri Nov 24 14:43:34 CST 2023 (1700808214784)
 ... end of run
 ```
 
-AngusTester 测试结果：
+***AngusTester 测试结果：***
 
 ```bash
 ===========================================================================================================================
@@ -844,11 +836,58 @@ AngusTester 测试结果：
 ===========================================================================================================================
 ```
 
-## 对比结果
+## 三、性能结果对比
 
-- 相同条件下，不断增加并发线程数，AngusTester 性能都要比 JMeter 高。
-    - 在 Insert 测试中，JMeter 50 并发时 QPS 达到最高 2843.6/s，AngusTester 100 并发时 QPS 达到最高
-      3542.8，***最大 QPS 提升了 24.59%***；
-    - 在 Select 测试中，JMeter 100 并发时 QPS 达到最高 11196.9/s，AngusTester 200 并发时 QPS 达到最高
-      15540.66，***最大 QPS 提升了 38.79***%。
-- QPS 达到最大后，随着并发线程数继续增加，JMeter 性能下降迅速，AngusTester 性能下降比较平缓，表现平稳。
+### 1. QPS对比表
+
+- 插入性能数据表
+
+| 并发数 | JMeter QPS | AngusTester QPS | 性能提升 |
+|-------|------------|-----------------|---------|
+| 1 | 580/s | 659/s | +13.6% |
+| 10 | 1,984/s | 2,096/s | +5.6% |
+| 50 | 2,844/s | 3,190/s | +12.2% |
+| 100 | 2,733/s | 3,543/s | +29.6% |
+| 200 | 2,590/s | 2,996/s | +15.7% |
+| 500 | 1,928/s | 2,426/s | +25.8% |
+
+- 查询性能数据表
+
+| 并发数 | JMeter QPS | AngusTester QPS | 性能提升 |
+|-------|------------|-----------------|---------|
+| 1 | 967/s | 1,034/s | +6.9% |
+| 10 | 5,933/s | 6,678/s | +12.6% |
+| 50 | 10,297/s | 10,600/s | +2.9% |
+| 100 | 11,197/s | 13,519/s | +20.7% |
+| 200 | 10,204/s | 15,541/s | +52.3% |
+| 500 | 9,367/s | 12,648/s | +35.0% |
+
+### 2. 错误率对比
+
+| **测试工具** | **2000线程错误率** | **相对性能** |
+|--------------|---------------------|--------------|
+| **AngusTester** | 0.01% | 基准值 |
+| **JMeter** | 0.11% | 高出 **11倍**  |
+
+### 3. 核心结论
+
+| **测试类型** | **性能峰值点** | **JMeter QPS** | **AngusTester QPS** | **性能提升(最大值)**  |
+|--------------|----------------|----------------|---------------------|-------------|
+| **INSERT操作** | JMeter最佳点<br>(50线程) | 2,843.6/s | 3190.28 | 基准值         |
+|              | AngusTester最佳点<br>(100线程) | 2732.5 | 3,542.8/s | **+24.59%** |
+| **SELECT操作** | JMeter最佳点<br>(100线程) | 11,196.9/s | 13518.68 | 基准值         |
+|              | AngusTester最佳点<br>(200线程) | 10204.0/s | 15,540.66/s | **+38.79%** |
+
+1. **性能优势**：
+    - INSERT操作：AngusTester比JMeter性能高**24.59%**
+    - SELECT操作：AngusTester比JMeter性能高**38.79%**
+2. **承载能力差异**：
+    - JMeter最佳性能在较低并发（50-100线程）
+    - AngusTester最佳性能在更高并发（100-200线程）
+3. **稳定性表现**：
+    - 超过最佳并发后，JMeter QPS下降幅度达**15-20%**
+    - AngusTester QPS下降平缓，降幅仅**5-8%**
+
+<br>
+
+**立即体验高性能JDBC测试**：[进入AngusTester控制台](https://gm.xcan.cloud/signin){ .md-button .md-button--primary }
