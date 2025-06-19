@@ -1,5 +1,4 @@
-AngusTester 应用安装部署
-====
+# AngusTester 应用安装部署
 
 ::: warning 注意
 1. 安装和运行AngusTester应用之前，需要先安装并运行AngusGM基础应用。  
@@ -52,7 +51,7 @@ cp conf/.priv-template.env conf/.priv.env
 vi conf/.priv.env
 ```
 
-修改下面选项为自己对应的配置：
+**修改下面选项为自己对应的配置：**
 
 ```dotenv
 # 初次安装或重新安装时需要设置成`AngusTester`，安装后会自动清除
@@ -146,7 +145,7 @@ docker run -d \
   angus/tester:1.0.0
 ```
 
-参数说明：
+**参数说明：**
 
 | **参数**                         | **作用**                                                                                     |
 |--------------------------------|---------------------------------------------------------------------------------------------|
@@ -177,7 +176,7 @@ vi .priv.env
 **场景1：不包含中间件，需提前部署 `MySQL/Redis/Nginx/AngusGM`**
 
 ```bash
-cat << EOF > compose.yml
+cat << EOF > tester.yml
 version: '3.8'
     
 services:
@@ -196,7 +195,7 @@ EOF
 **场景2：包含中间件 `MySQL/Redis/Nginx/AngusGM`**
 
 ```bash
-cat << EOF > compose.yml
+cat << EOF > tester.yml
 version: '3.8'
 
 networks:
@@ -275,7 +274,7 @@ EOF
 **3. 启动应用容器**
 
 ```bash
-docker compse -f tester.yaml up -d
+docker compse -f tester.yml up -d
 ```
 
 ## 五、部署验证
@@ -326,11 +325,11 @@ docker logs tester
 - Docker Compose
 ```bash
 # 启动应用
-docker compose -f tester.yaml up -d
+docker compose -f tester.yml up -d
 # 停止应用
-docker compose -f tester.yaml stop
+docker compose -f tester.yml stop
 # 查看应用日志
-docker compose -f tester.yaml logs
+docker compose -f tester.yml logs
 ```
 
 ## 七、故障排查
@@ -531,14 +530,13 @@ http {
     access_log  /var/log/nginx/access.log  main;  # 访问日志路径和使用 main 格式
 
     # 性能优化
-    # 性能优化
     tcp_nopush on;                          # 在完整数据包构建后发送
     tcp_nodelay on;                         # 在保持连接时禁用Nagle算法
     client_max_body_size 500M;              # 请求大小限制配置
     sendfile        on;                     # 启用高效文件传输模式
     keepalive_timeout  65;                  # 保持连接超时时间（秒）
 
-    # GM 应用服务器配置
+    # GM 应用虚拟服务器配置（如果GM应用不在同一台机器部署，删除当前server配置）
     server {
         listen 80;                               # 监听 80 端口（HTTP）
         server_name gm.your.com;                 # 服务器域名
@@ -585,7 +583,7 @@ http {
         }
     }
 
-    # Tester 应用服务器配置
+    # Tester 应用虚拟服务器配置
     server {
         listen 80;                               # 监听 80 端口
         server_name tester.your.com;              # 服务器域名
