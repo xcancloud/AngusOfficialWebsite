@@ -1,3 +1,8 @@
+---
+title: AngusTester 版本选择指南
+outline: deep
+---
+
 # AngusTester 版本选择指南
 
 根据您的团队规模和使用需求，AngusTester 提供不同版本选择：

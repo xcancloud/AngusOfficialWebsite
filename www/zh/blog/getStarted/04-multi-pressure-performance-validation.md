@@ -1,5 +1,10 @@
-如何通过一次执行验证出不同压力下性能表现
-=====
+---
+title: 如何在AngusTester中通过一次执行验证出不同压力下性能表现
+outline: deep
+tag: Testing
+---
+
+# 如何在AngusTester中通过一次执行验证出不同压力下性能表现
 
 相比JMeter、AB、wrk等测试软件，AngusTester可以通过一次执行测试出不同压力下性能表现。
 

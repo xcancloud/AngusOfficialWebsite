@@ -81,7 +81,7 @@ function nav(): DefaultTheme.NavItem[] {
                 }
             ]
         },
-        {text: 'Blog', link: '/en/blog'},
+        {text: 'Blog', link: '/en/blog/index'},
         {text: 'Video', link: '/en/video'},
         {text: 'Pricing', link: '/en/pricing'}
     ]

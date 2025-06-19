@@ -1,3 +1,8 @@
+---
+title: AngusRunner 安装与配置指南
+outline: deep
+---
+
 # 安装 AngusRunner
 
 > AngusRunner **作为AngusTester分布式测试系统的任务执行器**，提供两大核心能力：

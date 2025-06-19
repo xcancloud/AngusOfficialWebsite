@@ -1,3 +1,8 @@
+---
+title: AngusProxy 安装与配置指南
+outline: deep
+---
+
 # 安装 AngusProxy
 
 > AngusProxy **作为AngusTester请求代理程序**，提供两大核心能力：
