@@ -6,48 +6,106 @@ tag: Testing
 
 # 注册AngusTester云服务版本账号后，如何免费体验测试
 
-为了更好地促使用户参与，AngusTester云服务版本(SAAS)针对已注册完晓蚕云账号的用户提供了免费体验测试的功能。
+## 为什么选择免费体验？
 
-## 免费体验好处
+1. **零风险决策**  
+   实际体验系统功能与性能表现，降低采购决策风险
 
-- 降低用户风险：您可以在免费体验测试期间了解云服务的功能、性能和易用性，从而在决定是否购买之前降低投资风险。
+2. **真实性能洞察**  
+   亲测产品核心能力，突破宣传材料的认知局限
 
-- 产品实际表现：用户能够亲身体验云服务的实际表现，而不是仅仅依赖于宣传材料或说明书，这有助于用户更全面地了解服务的特点和优势。
+3. **精准需求匹配**  
+   验证产品是否真正满足您的业务场景需求
 
-- 决策参考：免费体验测试提供了一个决策参考的机会，用户可以根据实际体验来判断云服务是否满足其需求，从而更有信心地做出购买决策。
+4. **提升使用信心**  
+   通过亲身实践建立对平台的信任和熟悉度
 
-- 用户满意度提升：通过提供免费体验，我们希望有机会展示云服务的价值，增加用户使用前的产品体验，从而提升满意度。
+5. **专业方案验证**  
+   实测性能指标为您的技术选型提供可靠依据
 
-<!--
-- 市场推广：我们期望免费体验测试是一种市场推广手段，能够吸引更多潜在用户尝试并了解云服务。口碑传播和用户反馈也有助于扩大服务的知名度。
+## 获得专家级测试技能
 
-- 促使用户参与： 用户更有可能参与免费体验测试，通过实际使用和测试服务，从而更深入地了解服务的优势和潜在问题。
+完成本次体验后，您将掌握：
+1. 测试脚本编写过程。
+2. 性能指标解读能力。
+3. 系统瓶颈诊断方法。
+4. 自动化测试执行流程。
 
-- 竞争优势： 在竞争激烈的云服务市场，提供免费体验测试可以成为一种竞争优势，吸引更多用户选择并留在该平台上。
--->
+**立即行动：** [开启免费性能测试体验](https://gm.xcan.cloud/signup)
 
-## 免费体验步骤
+## 开启免费体验之旅
 
-AngusTester云服务版本提供了共享免费的执行节点和测试服务示例，执行节点在执行时会自动选择，测试服务实例请查看：[服务实例](https://www.xcan.cloud/help/doc/205509853639082016?c=205531805216931886) 。
+### 第一步：注册晓蚕云账号
+1. 立即开通：[注册链接](https://gm.xcan.cloud/signup)。  
+2. 注册后登录AngusTester应用控制台。
 
-**第一步：注册晓蚕云账号，[点击注册地址](https://gm.xcan.cloud/signup) 。**
+### 第二步：创建测试脚本
+进入`脚本 → 添加脚本`，粘贴以下配置：
 
-**第二步：点击"脚本"->"导入示例"导入示例脚本。**
+```yaml
+specification: angus/1.0.0
+type: TEST_CUSTOMIZATION
+plugin: Http
+configuration:
+  duration: 1min
+  thread:
+    threads: 100
+  priority: 1000
+task:
+  arguments:
+    ignoreAssertions: true
+    updateTestResult: false
+    httpSetting:
+      connectTimeout: 6s
+      readTimeout: 60s
+      retryNum: 0
+      maxRedirects: 1
+  pipelines:
+  - target: HTTP
+    name: 性能基准测试示例
+    enabled: true
+    apisId: 258213326461337681
+    request:
+      method: GET
+      server:
+        url: "http://{env}-sample.angusmock.cloud:30010"
+        variables:
+          env:
+            allowableValues:
+            - serv01
+            - serv02
+            defaultValue: serv01
+        x-xc-id: 258213493965062194
+        x-xc-serverSource: PARENT_SERVERS
+      endpoint: /benchmark
+    actionOnEOF: RECYCLE
+    sharingMode: ALL_THREAD
+```
 
-![导入示例脚本](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/GS02-01.png?fid=203622539782521165&fpt=CiC5XlnwCYBba1EocRA4X2h6uuw6RvDiE8aLQCmK)
+### 第三步：启动体验测试
+导航至`执行 → 体验执行`创建新任务。  
+![体验执行入口](./images/02-trial-exec.png)
 
-**第三步：点击"执行"->"体验执行"打开执行配置。**
+### 第四步：配置测试任务
+1. 选择刚创建的脚本。
+![执行配置界面](./images/02-config-exec.png)
+2. 确认参数配置并保存配置。
 
-![体验执行](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/GS02-02-01.png?fid=203622539782521167&fpt=kIoN0M7ib3N6dX67scfrBY8txpmwjr4CzeSfLwNE)
+### 第五步：监控测试进程
+系统自动生成测试任务，实时查看：
+- 执行状态仪表盘
+- TPS/响应时间变化曲线
+- 节点资源消耗图等
 
-**第四步：在执行配置中选择导入的示例脚本并保存执行。**
+![任务监控视图](./images/02-save-auto-exec.png)
 
-![导入的示例脚本并保存执行](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/GS02-02.png?fid=203622539782521169&fpt=hzmv50uKmUYwp7itarL3FzL6z5Wd2s8U0rZbVDTb)
+### 第六步：分析测试报告
+进入执行详情查看完整报告：
+- 性能指标汇总
+- 错误率分析
+- 百分位延迟分布
+- 资源使用率图表
+- 其他分析图标 ...
 
-**第五步：保存后会自动生成测试执行任务。**
+![报告详情页面](./images/02-view-exec.png)
 
-![生成测试执行任务](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/GS02-04.png?fid=203622539782521175&fpt=xc9iXMpALEsC7RP2tbiMcjRVZcBRqzVRF4FQkjIb)
-
-**第六步：点击进入执行详情，查看测试结果。**
-
-![查看测试结果](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/GS02-03.png?fid=203622539782521173&fpt=qYX0SikOJq3zso3TyyA0uJlr1NNyYnLSCHWzFh5v)

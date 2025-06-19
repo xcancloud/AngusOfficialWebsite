@@ -5,7 +5,7 @@ outline: deep
 
 # AngusTester 版本选择指南
 
-根据您的团队规模和使用需求，AngusTester 提供不同版本选择：
+根据您的团队规模和使用需求，AngusTester 提供不同版本选择。
 
 ## 版本对比总览
 

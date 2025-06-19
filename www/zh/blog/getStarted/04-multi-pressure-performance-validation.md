@@ -6,39 +6,37 @@ tag: Testing
 
 # 如何在AngusTester中通过一次执行验证出不同压力下性能表现
 
-相比JMeter、AB、wrk等测试软件，AngusTester可以通过一次执行测试出不同压力下性能表现。
+::: tip 传统工具的痛点
+<el-icon><BottomRight /></el-icon> 测试5000个用户的性能表现需要50次配置修改、50次数据记录、累计50分钟等待时间。
+:::
 
-通常对于一个使用JMeter测试工程师，想要测试出不同压力下接口性能表现，需要每增加一次线程数，在执行一段时间后记录聚合报告结果。
+## 传统压测工具的局限
 
-例如想测试一个接口每增加100个线程运行1分钟、最大5000个线程时性能表现，测试人员就必须修改50(5000/100)
-次配置，记录50(5000/100)次聚合结果，等待50(5000/100)*
-1分钟。`而对于AngusTester来说是完全自动化且无须值守的。`
+| 对比维度 | JMeter/AB/wrk等工具 | AngusTester |
+|---------|-------------------|------------|
+| **测试策略** | 手动递增线程数 | 全自动梯度增压 |
+| **配置复杂度** | 多次重复配置 | 单次配置永久生效 |
+| **时间成本** | 高（多轮次×执行时间） | 低（单次综合执行） |
+| **数据整合** | 需人工汇总报告 | 自动生成对比报告 |
+| **监控粒度** | 分段式数据采集 | 全周期持续监控 |
 
-以下是AngusTester通过一次执行验证出不同压力下性能表现的步骤：
+## 一键全梯度压力分析
 
-**第一步：准备测试脚本。**
+### 第一步：创建智能测试脚本
 
-您可以在注册完账号后，点击"脚本"列表中"导入示例"导入测试脚本，也可以复制下面内容创建一个名称为"
-性能测试示例"脚本。
-
-```yaml
+```yaml:no-line-numbers
 specification: angus/1.0.0
 info:
-  name: Http performance testing
-  description: This is an example of http performance testing orchestration
+  name: 全梯度压力分析示例
+  description: 自动化验证不同压力下系统性能表现
 type: TEST_PERFORMANCE
 plugin: Http
 configuration:
-  duration: 50min
+  duration: 50min              # 总测试时长
   thread:
-    threads: 5000
-    rampUpInterval: 1min
-    rampUpThreads: 100
-  onError:
-    action: CONTINUE
-    sampleError: true
-    sampleErrorNum: 20
-  priority: 1000
+    threads: 5000               # 目标最大并发数
+    rampUpInterval: 1min        # 压力梯度间隔
+    rampUpThreads: 100          # 每梯度新增并发数
 task:
   pipelines:
     - target: HTTP
@@ -47,23 +45,83 @@ task:
         url: http://serv01-sample.angusmock.cloud:30010/business?delay=10
 ```
 
-***主要参数说明：***
+- 核心参数说明
 
-- threads: 最大线程数，多个节点时会平均分配到每个节点。
-- rampUpInterval: 调整线程启动间隔，值大小不能超过 `duration`。
-- rampUpThreads: 调整线程逐渐增加的数量，值大小不能超过 `threads`。
+| 参数 | 作用 | 配置技巧 |
+|------|------|----------|
+| `threads` | 最大并发数 | 设为预期峰值120% |
+| `rampUpInterval` | 压力增加间隔 | 根据业务波动特征设置 |
+| `rampUpThreads` | 每次新增并发数 | 推荐系统承载量的5-10% |
+| `delay=10` | 接口模拟延迟 | 设置为典型业务响应时间 |
 
-***压力和时间示意图：***
+- 工作原理示意图
 
-<img src="https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/GS04-01.png?fid=203622539782521143&fpt=OFUIMkC2XrFw1F2Y3XGwn4K59GRFC9C38dUGp3TP"/>
+![压力梯度模型](images/04-stress-testing-model.png)
 
-以上business接口中delay参数用于指定延迟响应时间，这里设置成10表示模拟一个10毫秒延迟的接口请求。
+::: tip 技术优势
+**自动增压机制**：系统每分钟自动增加100并发用户，在50分钟内完成0→5000并发的全梯度覆盖。
+:::
 
-**第二步：创建完脚本后，点击"执行"->"体验执行"，在执行配置选择第一步中脚本并保存执行。**
+### 第二步：配置执行任务
 
-<img style="width: 532px" src="https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/GS04-03.png?fid=203622539782521147&fpt=tFlyGBAAuFvVPqHvyYCLIzU14Xt9mNRlmkRI34GF"/>
+1. 导航至`执行 → 添加执行`。
+2. 选择创建好的智能脚本，确认参数配置后保存。
 
-**第三步：进入执行详情"叠加分析"，勾选"每秒查询数"、"线程数"和响应时间"P90"，可以很直观的看到不同压力下性能表现。
-**
+![创建测试任务](images/04-create-testing-exec.png)
 
-<img style="width: 85%" src="https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/GS04-02.png?fid=203622539782521145&fpt=U0HfEjIXLQvScXpfp9dX0xL5rJH3WA23j7WPINhF"/>
+### 第三步：多维度性能分析
+
+进入执行详情的"叠加分析"面板，实现：
+
+- 关键指标关联观测
+  1. **并发变化曲线**：实时跟踪线程数增长
+  2. **TPS波动趋势**：观测系统吞吐量变化
+  3. **P90响应时间**：高保障性能水位监控
+- 压力拐点识别
+  - 发现性能瓶颈点
+  - 定位资源饱和阈值
+  - 识别错误率突变区间
+
+![多压力区分析视图](images/04-stress-testing-result.png)
+
+## 核心优势解析
+
+### 对比测试方案价值
+
+| 评估维度 | 传统方式 | AngusTester方案 |
+|---------|---------|----------------|
+| 时间成本 | 50分钟×配置次数 | 单次50分钟 |
+| 人力资源 | 全程值守 | 自动执行 |
+| 数据连续性 | 分段独立 | 连续关联 |
+| 分析深度 | 单点数据 | 趋势对比 |
+
+### 技术实现价值
+
+1. **自动增压引擎**：  
+   精确控制压力增长速率，模拟真实业务波动
+
+2. **智能采样机制**：  
+   毫秒级指标采集，捕捉瞬时性能波动
+
+3. **关联分析模型**：  
+   将TPS、响应时间、并发数动态关联分析
+
+4. **自动拐点识别**：  
+   通过算法自动标记性能拐点
+
+## 典型应用场景
+
+### <el-icon><CollectionTag /></el-icon> 系统扩容规划
+- 精确识别系统承载极限
+- 确定最佳性能水位线
+- 制定科学扩容策略
+
+### <el-icon><CollectionTag /></el-icon> 版本性能验证
+- 发布前后性能对比
+- 验证性能优化效果
+- 防止性能回归
+
+### <el-icon><CollectionTag /></el-icon> 瓶颈定位分析
+- 快速识别性能拐点
+- 关联资源使用率分析
+- 精确定位瓶颈组件
