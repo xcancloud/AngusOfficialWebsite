@@ -17,7 +17,7 @@
       <RouterLink to="/purchase/angustester">
         <div class="child-btn flex items-center justify-center">
           立即开通
-          <Icon type="icon-hengjiantou" class="icon ml-2" />
+          <Icon icon="icon-hengjiantou" class="text-vp-white ml-2" />
         </div>
       </RouterLink>
     </div>
@@ -31,9 +31,9 @@
 .child {
   position: absolute;
   z-index: 9;
-  top: 40%;
-  left: 200px;
-  transform: translate(0, -40%);
+  top: 30%;
+  width: 100%;
+  justify-content: space-around;
 }
 
 .child .child-text1 {
@@ -47,6 +47,8 @@
   line-height: 36px;
 }
 
+
+
 .child .child-text2 {
   color: #fff;
   /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
@@ -58,9 +60,8 @@
 }
 
 .child .child-btn {
-  width: 170px;
   height: 46px;
-  margin-left: 222px;
+  padding: 0 20px;
   border: 2px solid #fff;
   border-radius: 8px;
   color: #fff;
