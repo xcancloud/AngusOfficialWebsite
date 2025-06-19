@@ -176,39 +176,3 @@ Success
 :::
 
 **立即创建您的基准测试接口**：[进入AngusTester控制台](https://gm.xcan.cloud/signin){ .md-button .md-button--primary }
-
-<style>
-.step-card {
-  background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-  border: 1px solid var(--vp-c-divider-light);
-}
-
-.step-card img {
-  border-radius: 6px;
-  margin: 1rem 0;
-  box-shadow: var(--vp-shadow-1);
-}
-
-.scenario-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
-}
-
-.scenario {
-  background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  padding: 1.5rem;
-  border: 1px solid var(--vp-c-divider-light);
-}
-
-.scenario h4 {
-  color: var(--vp-c-brand);
-  margin-bottom: 0.8rem;
-}
-</style>
-

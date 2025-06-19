@@ -18,9 +18,9 @@ tag: Testing
 
 ## 诊断与分析流程
 
-<div class="analysis-container">
-  <div class="analysis-pane">
-    <h4>错误分析工作流</h4>
+<div class="scenario-grid">
+  <div class="scenario">
+    <h4>⚡ 错误分析工作流</h4>
     <ol>
       <li>定位高频错误发生时段</li>
       <li>分析错误类型分布</li>
@@ -29,13 +29,12 @@ tag: Testing
     </ol>
   </div>
 
-  <div class="analysis-pane">
-    <h4>资源诊断工作流</h4>
+  <div class="scenario">
+    <h4>⚡ 性能基准线建立</h4>
     <ol>
-      <li>识别超标资源指标</li>
-      <li>定位问题时间窗口</li>
-      <li>分析关联指标变化</li>
-      <li>制定优化方案</li>
+      <li>创建零延迟基准测试接口</li>
+      <li>获取网络层纯性能数据</li>
+      <li>排除业务逻辑干扰</li>
     </ol>
   </div>
 </div>
@@ -154,22 +153,3 @@ tag: Testing
     - 错误率连续5分钟>0.1%触发警告
     - CPU持续10分钟>80%触发扩容警报
     - 内存使用>85%触发内存泄露检测
-
-<style>
-.analysis-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin: 2rem 0;
-  padding: 1.5rem;
-  background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  border: 1px solid var(--vp-c-divider-light);
-}
-
-.analysis-pane {
-  padding: 1.5rem;
-  background: var(--vp-c-bg);
-  border-radius: 6px;
-}
-</style>
