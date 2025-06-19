@@ -83,5 +83,6 @@ onMounted(() => {
           </div>
         </div>
       </div>
+      <OpenBanner />
   </div>
 </template>

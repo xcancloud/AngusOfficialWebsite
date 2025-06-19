@@ -183,8 +183,8 @@
                     :class="[
                       'w-20 h-20 mx-auto flex justify-center items-center rounded-full',
                       pluginsTabActive === index
-                        ? 'bg-blue-600 text-white-500'
-                        : 'bg-blue-main-10',
+                        ? 'bg-vp-indigo_soft'
+                        : 'bg-bg-soft',
                     ]"
                   >
                     <Icon class="text-10" :icon="item.iconContent.icon" />
@@ -274,15 +274,14 @@
                 v-for="(item, index) in Object.values(pageContent.plugins?.middleware?.kind || {})"
                 :key="index"
                 class="flex">
-                <div  class="min-w-20 whitespace-no-wrap font-medium text-3.5 text-black-header-color mt-2">{{ item.name }}：</div>
+                <div  class="min-w-20 whitespace-no-wrap font-medium text-3.5 mt-2">{{ item.name }}：</div>
                 <div class="inline-flex flex-1 flex-wrap">
                   <div
                     v-for="(btn, ind) in item.kind"
                     :key="ind"
-                    :class="btn.releaseFlag === true || btn.releaseFlag === 'true'? 'tex-blue-1border-blue-main':'text-gray-hot-code border-gray-hot-code'"
+                    :class="btn.releaseFlag === true || btn.releaseFlag === 'true' ? 'text-vp-indigo1 !border-vp-indigo1':'text-vp-gray1 !border-vp-gray1'"
                     class="font-semibold border text-center flex items-center rounded text-3.5 mr-4 mb-4 mt-1"
-                    style="padding: 3px 12px;"
-                  >
+                    style="padding: 3px 12px;" >
                     {{ btn.name }}
                   </div>
                 </div>
