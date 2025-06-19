@@ -1,3 +1,8 @@
+---
+title: 关于AngusTester
+outline: deep
+---
+
 # AngusTester
 
 **AngusTester** 是一个智能化软件研发管理与软件测试平台，可以帮助软件研发团队高效且可持续地开展软件开发与测试活动，同时可满足敏捷开发和敏捷测试的要求。

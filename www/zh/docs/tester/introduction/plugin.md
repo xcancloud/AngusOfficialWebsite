@@ -1,3 +1,8 @@
+---
+title: AngusTester 插件化架构
+outline: deep
+---
+
 # AngusTester 插件化架构
 
 ## 核心价值

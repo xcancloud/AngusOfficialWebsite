@@ -1,3 +1,8 @@
+---
+title: AngusGM 应用安装须知
+outline: deep
+---
+
 # 安装须知
 
 ## 环境要求

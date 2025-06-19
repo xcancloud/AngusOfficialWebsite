@@ -1,3 +1,8 @@
+---
+title: AngusGM 部署方案指南
+outline: deep
+---
+
 # AngusGM 部署方案指南
 
 AngusGM 提供多种部署方式，满足不同规模和使用场景的需求。

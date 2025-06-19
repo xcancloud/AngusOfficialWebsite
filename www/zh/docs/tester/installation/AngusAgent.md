@@ -1,3 +1,8 @@
+---
+title: AngusAgent 安装与配置指南
+outline: deep
+---
+
 # AngusAgent 安装与配置指南
 
 > AngusAgent **作为AngusTester分布式测试系统的核心组件**，提供三大核心能力：

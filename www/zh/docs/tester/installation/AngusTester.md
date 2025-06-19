@@ -1,3 +1,8 @@
+---
+title: AngusTester 安装与配置指南
+outline: deep
+---
+
 # AngusTester 应用安装部署
 
 ::: warning 注意

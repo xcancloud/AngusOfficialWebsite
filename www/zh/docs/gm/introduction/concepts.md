@@ -1,3 +1,8 @@
+---
+title: AngusGM 核心概念
+outline: deep
+---
+
 # AngusGM 核心概念
 
 掌握这些基础概念，将帮助您更好地理解和使用 AngusGM 系统。

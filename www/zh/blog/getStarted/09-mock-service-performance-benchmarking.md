@@ -1,5 +1,10 @@
-如何使用Mock服务生成一个性能基准测试接口
-====
+---
+title: AngusTester如何使用Mock服务生成一个性能基准测试接口
+outline: deep
+tag: Mock
+---
+
+# AngusTester如何使用Mock服务生成一个性能基准测试接口
 
 ### 一、基准测试的作用
 

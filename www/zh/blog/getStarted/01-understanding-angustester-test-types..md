@@ -1,5 +1,10 @@
-快速了解AngusTester测试类型定义
-=====
+---
+title: 快速了解AngusTester测试类型定义
+outline: deep
+tag: Testing
+---
+
+# 快速了解AngusTester测试类型定义
 
 AngusTester 测试以业务为中心，可以让研发团队轻松高效地开展测试活动，确保交付一个可靠和满足性能要求的系统。
 

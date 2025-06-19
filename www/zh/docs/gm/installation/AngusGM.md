@@ -1,3 +1,8 @@
+---
+title: AngusGM 应用安装部署
+outline: deep
+---
+
 # AngusGM 应用安装部署
 
 ::: warning 注意

@@ -1,3 +1,8 @@
+---
+title: AngusTester 资源配额管理
+outline: deep
+---
+
 # AngusTester 资源配额管理
 
 AngusTester 的资源配额系统为租户提供了完善的资源管理机制，保障系统稳定运行。以下是各类资源配额的详细说明：

@@ -1,3 +1,8 @@
+---
+title: AngusGM 资源配额
+outline: deep
+---
+
 # AngusGM 资源配额
 
 AngusGM 的资源配额系统用于合理分配系统资源，保障平台稳定运行。以下是各类资源配额的详细说明。
