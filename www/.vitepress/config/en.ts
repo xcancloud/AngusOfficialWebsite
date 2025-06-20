@@ -756,7 +756,18 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                                         }
                                     ]
                                 },
-                                // TODO System Logs
+                                {
+                                    text: 'System Logs',
+                                    collapsed: true,
+                                    base: '/en/docs/gm/system/log/system',
+                                    link: '/overview',
+                                    items: [
+                                        {
+                                            text: "View System Logs",
+                                            link: '/view',
+                                        }
+                                    ]
+                                },
                                 {
                                     text: "Request Logs",
                                     collapsed: true,

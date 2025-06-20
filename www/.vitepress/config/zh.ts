@@ -784,7 +784,18 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                                         }
                                     ]
                                 },
-                                // TODO 系统日志
+                                {
+                                    text: '系统日志',
+                                    collapsed: true,
+                                    base: '/zh/docs/gm/system/log/system',
+                                    link: '/overview',
+                                    items: [
+                                        {
+                                            text: '查看系统日志',
+                                            link: '/view',
+                                        }
+                                    ]
+                                },
                                 {
                                     text: '请求日志',
                                     collapsed: true,
