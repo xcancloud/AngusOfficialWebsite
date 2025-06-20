@@ -175,4 +175,4 @@ Success
 2. 延迟设置原则：基准延迟 = 生产环境P99延迟 × 0.8
 :::
 
-**立即创建您的基准测试接口**：[进入AngusTester控制台](https://gm.xcan.cloud/signin){ .md-button .md-button--primary }
+**立即创建您的基准测试接口**：[🔗 进入AngusTester控制台 🔗](https://gm.xcan.cloud/signin){ .md-button .md-button--primary }

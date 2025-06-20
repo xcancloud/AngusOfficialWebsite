@@ -136,3 +136,6 @@ AngusTester提供四类专业测试类型，覆盖不同质量验证需求：
    ▸ 启用实时错误日志流分析  
 :::
 
+<br>
+
+**立即开始AngusTester测试之旅**：[🔗 进入AngusTester控制台 🔗](https://gm.xcan.cloud/signin){ .md-button .md-button--primary }

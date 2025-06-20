@@ -86,3 +86,7 @@ graph LR
 - **网络延迟对比**：内网延迟应稳定在1-5ms区间
 - **性能基准建立**：相同压力下比外网测试TPS提升20%-50%
 - **资源消耗分析**：重点关注CPU/内存/线程池指标
+
+<br>
+
+**立即开始开始云服务版压测**：[🔗 进入AngusTester控制台 🔗](https://gm.xcan.cloud/signin){ .md-button .md-button--primary }

@@ -109,3 +109,6 @@ task:
 
 ![报告详情页面](./images/02-view-exec.png)
 
+<br>
+
+**立即开始试用**：[🔗 进入AngusTester控制台 🔗](https://gm.xcan.cloud/signin){ .md-button .md-button--primary }
