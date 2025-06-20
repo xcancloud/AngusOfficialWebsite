@@ -51,7 +51,7 @@ export default withMermaid({
     ],
 
     themeConfig: {
-        logo: {src: '/logo-mini.png', width: 22, height: 22},
+        logo: {src: '/logo-mini.svg'},
 
         search: {
             provider: 'local',
