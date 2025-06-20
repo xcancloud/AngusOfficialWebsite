@@ -204,6 +204,7 @@ module.exports = {
         9.5: '2.375rem',
         40: '10rem',
         75: '18.75rem',
+        120: '30rem'
       },
       minWidth: {
         65: '16.25rem',
@@ -296,6 +297,9 @@ module.exports = {
       letterSpacing: {
         0.25: '0.0625rem',
         1.625: '0.40625rem',
+      },
+      zIndex: {
+        9: '9'
       }
     },
   },

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
   import { onMounted, ref, onBeforeUnmount, inject, defineAsyncComponent } from 'vue';
-  import { isSignin } from '../../../../utils/site/index';
-  import http from '../../../../utils/http';
-  import { getDeviceInfo, getSearchTerms, angusTools } from '../../../../utils';
+  import { isSignin } from '@/utils/site/index';
+  import http from '@/utils/http';
+  import { getDeviceInfo, getSearchTerms, angusTools } from '@/utils';
 
   const { PUB_ESS } = angusTools;
 

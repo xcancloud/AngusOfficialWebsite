@@ -1,5 +1,5 @@
 import {withMermaid} from "vitepress-plugin-mermaid";
-
+import {resolve} from 'path';
 import server from './dev-server';
 import {enLocaleConfig} from './config/en'
 import {zhLocaleConfig} from './config/zh'
@@ -86,6 +86,11 @@ export default withMermaid({
         plugins: [
             groupIconVitePlugin()
         ],
+        resolve: {
+            alias: {
+                '@': resolve(__dirname, '../../'),
+            },
+        },
 
         server: server
     },

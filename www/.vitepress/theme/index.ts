@@ -33,6 +33,7 @@ import Icon from './components/Icon/index.vue';
 import OpenBanner from './components/OpenBanner/index.vue';
 import Business from './scenario/business.vue';
 import Ai from './scenario/ai.vue';
+import Deployment from './deployment/index.vue';
 
 export default {
     extends: DefaultTheme,
@@ -48,6 +49,7 @@ export default {
         app.component('OpenBanner', OpenBanner);
         app.component('Business', Business);
         app.component('Ai', Ai);
+        app.component('Deployment', Deployment);
         for (const [name, comp] of Object.entries(ElementIcons)) {
             app.component(name, comp)
         }
