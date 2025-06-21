@@ -5,6 +5,5 @@
 
 ## 操作方式
 
-进入"全局管理"应用后，在"全局权限"->"权限策略"，鼠标滑动底部"权限策略"，在列表中找到对应权限策略，点击右侧"禁用"操作，如下图：
+进入"全局管理"应用后，在"全局权限"->"权限策略"，鼠标滑动底部"权限策略"，在列表中找到对应权限策略，点击右侧"禁用"操作
 
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/policy-disable.png?fid=207887511026925769&fpt=XBbWeOkwGg6rwDPeku8iCBl30wpkOrH8Osw5gLRa)
