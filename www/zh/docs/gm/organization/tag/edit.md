@@ -1,19 +1,19 @@
-编辑标签
-===
+# 编辑标签
 
-`编辑标签`用于对已存在的标签信息进行修改或更新。这一功能允许管理员或有相应权限的用户对现有标签进行调整，以适应变化的需求或确保准确性。
+> **编辑标签** 用于修改标签的定义和属性，确保标签体系与业务需求同步。编辑操作将实时更新所有关联对象的标签信息。
 
 ## 操作步骤
 
-**第一步：登录应用后进入"AngusGM"->"组织人员"->"标签"，在标签列表中选择需要编辑的标签，如下图：**
+### 1. 进入编辑界面
+1. 登录系统控制台
+2. 导航至 `AngusGM → 组织人员 → 标签`
+3. 在标签列表中找到目标标签
 
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/tag-edit.png?fid=207887511026925747&fpt=FT8lozRvV9tXdCR3DF9wZaShjJAf9zBBgGwgNjdq)
+### 2. 执行编辑
+双击标签 **名称** 单元格，直接修改名称
 
-**第二步：连续双击名称进入编辑，编辑标签信息并保存，如下图：**
-
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/tag-editinfo.png?fid=207887511026925749&fpt=4TEHCdmYKJGko4MZ3dF5rcweioCP5lyZxVM7G4if)
-
-**第三步：查看已经编辑标签，如下图：**
-
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/tag-editlist.png?fid=207887511026925751&fpt=GAvSBzeHeOue4elFK6lTOjaJwxVHfcgTvk5TdV55)
+### 3. 保存变更
+1. 鼠标移开点击非编辑区提交修改
+2. 系统提示：**"标签修改成功"**
+3. 所有关联对象即时同步更新
 

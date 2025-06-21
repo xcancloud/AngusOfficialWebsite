@@ -232,7 +232,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                                     link: '/assocGroup',
                                 },
                                 {
-                                    text: '关联用户组',
+                                    text: '关联用户标签',
                                     link: '/assocTag',
                                 }
                             ],

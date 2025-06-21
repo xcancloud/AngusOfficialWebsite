@@ -1,18 +1,26 @@
-编辑组
-===
+# 编辑组
 
-`编辑组`用于对已存在的组信息进行修改或更新。这一功能允许管理员或有相应权限的用户对现有组进行调整，以适应变化的需求或确保准确性。
+> **编辑组** 用于修改用户组的基础配置与属性，确保组设置与当前业务需求同步。编辑操作将实时更新组权限与成员关系。
 
-## 操作步骤
+## 操作指南
 
-**第一步：登录应用后进入"AngusGM"->"组织人员"->"组"，在组列表中选择需要编辑的组，右键点击"编辑"，如下图：**
+### 1. 进入编辑界面
+1. 登录系统控制台
+2. 导航至 `AngusGM → 组织人员 → 组`
+3. 在组列表中：
+    - 右键点击目标组
+    - 选择 **「编辑组」**
 
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/group-edit.png?fid=207887590483820728&fpt=8ysv0uPyCdFQ3fNW1uLE4TwfgQQ0OHIttd9b0uW2)
+### 2. 修改组信息
+可调整以下字段：
+- **必填项**：名称
+- **可选项**：描述、组标签
 
-**第二步：编辑组信息并保存，如下图：**
+> ⚠️ **命名规范**：
+> - 组名称全局唯一
+> - 建议不输入特殊字符：`/ \ : * ? " < > |`
 
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/group-editinfo.png?fid=207887590483820730&fpt=i06ygimAvUTv9x5XMcwglyBrmmgkQavzE54kmtjM)
-
-**第三步：查看已经编辑组，如下图：**
-
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/group-editlist.png?fid=207887590483820732&fpt=0Uc03EN1ALSX9w2jh90QtAmCxZqxaJPzoKdhi9on)
+### 3. 保存变更
+1. 点击 **「保存」** 提交修改
+2. 系统提示：**"组信息修改成功"**
+3. 自动刷新组详情页
