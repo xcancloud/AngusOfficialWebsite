@@ -956,25 +956,13 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
             base: '/zh/docs/gm/faq',
             items: [
                 {
-                    text: 'Backlog相关问题',
-                    link: '/backlog',
+                    text: '配额相关问题',
+                    link: '/quota',
                 },
                 {
-                    text: '产品迭代相关问题',
-                    link: '/sprint',
-                },
-                {
-                    text: '安装部署相关问题',
-                    link: '/deployment',
-                },
-                {
-                    text: '执行相关问题',
-                    link: '/execution',
-                },
-                {
-                    text: '报告相关问题',
-                    link: '/report',
-                },
+                    text: '权限相关问题',
+                    link: '/permission',
+                }
             ]
         },
         {

@@ -928,24 +928,12 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
             base: "/en/docs/tester/faq",
             items: [
                 {
-                    text: "Backlog Related Questions",
-                    link: "/backlog"
+                    text: 'Quota Related Questions',
+                    link: '/quota',
                 },
                 {
-                    text: "Product Iteration Related Questions",
-                    link: "/sprint"
-                },
-                {
-                    text: "Installation and Deployment Related Questions",
-                    link: "/deployment"
-                },
-                {
-                    text: "Execution Related Questions",
-                    link: "/execution"
-                },
-                {
-                    text: "Report Related Questions",
-                    link: "/report"
+                    text: 'Permission Related Questions',
+                    link: '/permission',
                 }
             ]
         },
