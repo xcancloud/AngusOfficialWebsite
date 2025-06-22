@@ -1,3 +1,8 @@
+---
+title: AngusGM部门管理
+outline: deep
+---
+
 # 部门管理
 
 ::: tip 重要提示

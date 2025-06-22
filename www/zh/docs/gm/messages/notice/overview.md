@@ -1,3 +1,8 @@
+---
+title: AngusGM公告管理
+outline: deep
+---
+
 # 公告管理
 
 ::: tip 重要提示

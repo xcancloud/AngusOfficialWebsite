@@ -1,3 +1,8 @@
+---
+title: AngusGM消息管理
+outline: deep
+---
+
 # 消息管理
 
 ::: tip 重要提示

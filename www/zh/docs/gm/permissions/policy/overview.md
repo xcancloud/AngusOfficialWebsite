@@ -1,3 +1,8 @@
+---
+title: AngusGM权限策略
+outline: deep
+---
+
 # 权限策略
 
 ::: tip 重要提示
