@@ -1441,7 +1441,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
             items: [
                 {
                     text: '研发管理指标',
-                    link: '/RD',
+                    link: '/development',
                 },
                 {
                     text: '测试管理指标',

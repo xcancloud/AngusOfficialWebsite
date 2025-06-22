@@ -1413,7 +1413,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
             items: [
                 {
                     text: "R&D Management Metrics",
-                    link: "/RD"
+                    link: "/development"
                 },
                 {
                     text: "Test Management Metrics",
