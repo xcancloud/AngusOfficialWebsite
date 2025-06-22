@@ -1,39 +1,61 @@
 # 如何快速生成接口测试脚本
 
-演示在AngusTester中如何快速基于服务和接口生成功能、性能以及稳定性测试脚本。注意生成前需要确保接口调试通过，避免测试结果不通过。
+> 一键生成功能/性能/稳定性测试脚本，提升测试效率
 
-## 基于"服务"生成测试脚本
+```mermaid  
+graph LR  
+    A[选择生成范围] --> B{服务或接口}  
+    B -->|服务| C[批量生成]  
+    B -->|接口| D[精准生成]  
+    C --> E[批量测试]  
+    D --> F[针对性测试]  
+```
 
-用于快速生成服务下所有接口的功能、性能以及稳定性测试脚本。
+## 生成前准备
+✅ 确保接口已完成调试并通过验证  
+✅ 确认服务或接口已正确配置
 
-**第一步、进入AngusTester"接口"->“服务”，选中左侧"服务"后右键点击"生成测试脚本"。**
+## 基于服务的批量生成
+> **适用场景**：需要对整个服务的所有接口进行全面测试
 
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/service-script-gen-step1.png?fid=251751417168003331&fpt=vwbs2N9tHSCTV5Zmq6fpWxMXCXhUqJxpYLXKnNv9)   
+1. **进入服务列表**
+    - 导航至 **「接口」→「服务」**
+    - 右键点击目标服务  
+      ![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/service-script-gen-step1.png?fid=251751417168003331&fpt=vwbs2N9tHSCTV5Zmq6fpWxMXCXhUqJxpYLXKnNv9)
 
-**第二步、点击"生成测试脚本"后，在"生成测试脚本"配置页面选择对应测试类型并配置执行参数。**
+2. **配置测试参数**
+    - 选择测试类型（功能/性能/稳定性）
+    - 设置关键参数：
+   ![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/service-script-gen-step2.png?fid=251751417168003333&fpt=JeoiafTOQdGRCGQLxrNXHEJoxx3SxY8lVvykuqMU)
 
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/service-script-gen-step2.png?fid=251751417168003333&fpt=JeoiafTOQdGRCGQLxrNXHEJoxx3SxY8lVvykuqMU)  
+3. **确认生成**
+    - 点击确认按钮执行生成
+    - 系统自动为服务下所有接口创建脚本  
+      ![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/service-script-gen-step3.png?fid=251751417168003335&fpt=C8NijtOQIIY9LzbcNl5k27Vzbb5f79DASVBuq2R9)
 
-注意：`基于项目和服务生成测试脚本，会自动生成对应项目和服务下所有接口的测试脚本`。
+> ⚠️ 注意：此操作会生成该服务下所有接口的测试脚本
 
-**第三步、点击“确认”按钮，系统会自动生成对应的测试脚本，可以在脚本列表查看生成的测试脚本。**
+## 基于接口的精准生成
+> **适用场景**：针对特定关键接口进行针对性测试
 
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/service-script-gen-step3.png?fid=251751417168003335&fpt=C8NijtOQIIY9LzbcNl5k27Vzbb5f79DASVBuq2R9)  
+1. **定位目标接口**
+    - 在服务详情页右侧接口列表中选中目标接口  
+      ![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/apis-script-gen-step1.png?fid=251751417168003325&fpt=GbBt8F8mWCdq1yIEr5WvKrCj8zWlAnklCiYH4Fq6)
 
-</br>
+2. **定制测试参数**
+    - 选择测试类型
+    - 按需配置参数（同服务生成配置）  
+      ![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/apis-script-gen-step2.png?fid=251751417168003327&fpt=ryprTgI6rJEgo1jf3Yte9e8OcDnZgMjzING0AngF)
 
-## 基于"接口"生成测试脚本
+3. **生成专属脚本**
+    - 系统仅为选中的接口生成脚本  
+      ![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/apis-script-gen-step3.png?fid=251751417168003329&fpt=VpGOOPzRXsQpTi6nSIEixmlxy9VXNt1rSoArhBMe)
 
-用于快速生成指定接口的功能、性能以及稳定性测试脚本。
+## 关键参数说明
 
-**第一步、进入AngusTester"接口"->“服务”，点击"服务"在右侧打开接口列表，选中目标接口后点击"生成测试脚本"。**
-
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/apis-script-gen-step1.png?fid=251751417168003325&fpt=GbBt8F8mWCdq1yIEr5WvKrCj8zWlAnklCiYH4Fq6)  
-
-**第二步、点击"生成测试脚本"后，在"生成测试脚本"配置页面选择对应测试类型并配置执行参数。**
-
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/apis-script-gen-step2.png?fid=251751417168003327&fpt=ryprTgI6rJEgo1jf3Yte9e8OcDnZgMjzING0AngF)  
-
-**第三步、点击“确认”按钮，系统会自动生成对应的测试脚本，可以在脚本列表看到生成的测试脚本。**
-
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/apis-script-gen-step3.png?fid=251751417168003329&fpt=VpGOOPzRXsQpTi6nSIEixmlxy9VXNt1rSoArhBMe)  
+| 参数 | 功能 | 推荐值 |  
+|------|------|--------|  
+| 测试类型 | 功能/性能/稳定性测试 | 按需选择 |  
+| 并发线程数 | 模拟用户并发量 | 5-50 |  
+| 测试时长 | 持续测试时间 | 1-10min |  
+| 循环次数 | 单接口重复测试次数 | 10-100 |  

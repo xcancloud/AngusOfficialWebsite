@@ -1067,7 +1067,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
             base: '/zh/docs/tester/quickStarted',
             items: [
                 {
-                    text: '如何调试接口',
+                    text: '如何快速调试接口',
                     link: '/debugApi',
                 },
                 {
@@ -1075,7 +1075,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                     link: '/creatScript',
                 },
                 {
-                    text: '如何运行测试脚本',
+                    text: '如何快速运行测试脚本',
                     link: '/runScript',
                 },
                 {
@@ -1087,7 +1087,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                     link: '/generateTaskByApi',
                 },
                 {
-                    text: '如何导入外部接口',
+                    text: '如何快速导入外部接口',
                     link: '/importOuterApis',
                 },
                 {
