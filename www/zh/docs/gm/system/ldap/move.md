@@ -1,10 +1,30 @@
-移动目录
-===
+# 移动目录
 
-`移动目录`用于调整LDAP目录服务在列表中顺序，通过调整顺序来控制LDAP服务在自动同步时的优先级，靠前的会优先被同步。
+> `移动目录` 用于调整LDAP目录服务在列表中的顺序，以控制其在自动同步时的优先级。顺序靠前的目录服务将优先进行同步。
 
-## 操作方式
+## 操作步骤
 
-登录应用后进入"AngusGM"->"系统"->"LDAP"，选择列表中需要移动的目录服务，点击"上移/下移"操作，如下图：
+### 第一步：登录到应用
 
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/ldap-move.png?fid=207887590483820816&fpt=wY0gH4ubvTrhu9ENx4qyWa2cyroQgNdaMhJVk70U)
+1. 使用您的账号登录到应用。
+
+### 第二步：进入LDAP管理界面
+
+1. 点击“AngusGM”。
+2. 选择“系统”。
+3. 点击“LDAP”选项。
+
+### 第三步：选择要移动的目录
+
+1. 在目录列表中找到您希望调整顺序的LDAP目录服务。
+
+### 第四步：移动目录
+
+1. 点击“上移”或“下移”按钮，调整所选目录的顺序。
+
+   ![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/ldap-move.png?fid=207887590483820816&fpt=wY0gH4ubvTrhu9ENx4qyWa2cyroQgNdaMhJVk70U)
+
+## 注意事项
+
+- 移动目录后，确保检查同步顺序是否符合您的需求。
+- 调整顺序可能影响自动同步的结果，请谨慎操作。

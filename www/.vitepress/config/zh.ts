@@ -869,7 +869,7 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                                     link: '/edit',
                                 },
                                 {
-                                    text: '提交修改资源配额工单',
+                                    text: '提交修改配额工单',
                                     link: '/submitWorkOrder',
                                 }
                             ]

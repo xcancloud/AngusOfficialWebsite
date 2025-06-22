@@ -1,10 +1,24 @@
-安全告警
-===
+# 安全告警
 
-`安全告警`是指在应用系统中，配置系统跟踪到潜在安全问题时如何触发告警。确保用户的警觉性，时刻关注账户和数据的安全。
+> `安全告警` 用于配置系统在检测到潜在安全问题时的告警设置，帮助用户保持对账户和数据安全的警觉。
 
-## 操作方式
+## 操作步骤
 
-登录应用后进入"AngusGM"->"系统"->"安全设置"，在"安全告警"面板中配置告警方式和告警接收用户，如下图：
+### 1. 登录应用
 
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/securitysetting-alarm.png?fid=207887511026925821&fpt=CgVqJCSfgoFERGAJBLLsvfolE8MebOpaQeNNOrTP)
+- 使用您的账号登录到应用。
+
+### 2. 进入安全设置
+
+- 点击“AngusGM”。
+- 选择“系统”，然后点击“安全设置”。
+
+### 3. 配置安全告警
+
+- 在“安全告警”面板中，设置告警方式和告警接收用户。
+
+  ![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/securitysetting-alarm.png?fid=207887511026925821&fpt=CgVqJCSfgoFERGAJBLLsvfolE8MebOpaQeNNOrTP)
+
+## 提示
+
+- 确保选择的告警方式能及时通知您，让您能够快速响应潜在的安全威胁。
