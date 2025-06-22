@@ -18,15 +18,13 @@ graph LR
    ![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/debug-apis-step1.png?fid=251751339858592090&fpt=SmGgD5sG3P5Fn4R1b9Ke0yVdwuAc1RwgeoW5DhHz)
 
 ### 2. 启动调试
-在接口列表中：
-1. 选中需要调试的接口
+1. 在接口列表中，选中需要调试的接口
 2. 双击打开接口详情  
    ![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/debug-apis-step2.png?fid=251751339858592092&fpt=J13jfBHJfxdXmLrixDXtDM4TUTzvC8TS7tRHjCtp)
 
 ### 3. 发送调试请求
-在接口调试面板：
-1. 确认请求参数
-2. 点击 **「发送」** 按钮  
+1. 在接口调试面板确认请求参数
+2. 点击 **「发送请求」** 按钮  
    ![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/QS06-03.png?fid=203622614944448706&fpt=YLBOgbT6Uq8tgKfsYksToMzLeQtOADeYlV6POTG2)
 
 ### 4. 分析调试结果

@@ -1463,7 +1463,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
             base: '/zh/docs/tester/testing',
             items: [
                 {
-                    text: '测试定义',
+                    text: '测试类型',
                     link: '/definition',
                 },
                 {

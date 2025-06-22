@@ -1435,15 +1435,15 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
             base: "/en/docs/tester/testing",
             items: [
                 {
-                    text: "Test Definition",
+                    text: "Test Type Definition",
                     link: "/definition"
                 },
                 {
-                    text: "Test Examples",
+                    text: "Test Script Examples",
                     link: "/demo"
                 },
                 {
-                    text: "Test Services",
+                    text: "Test Service Instances",
                     link: "/service"
                 }
             ]
