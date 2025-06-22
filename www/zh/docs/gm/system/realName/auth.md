@@ -1,23 +1,38 @@
-实名认证
-===
+# 实名认证
 
-`实名认证`是指应用系统中，对用户提供具有法定效力的身份证明文件，如身份证、营业执照等，提交给相关的机构或服务提供商进行验证的过程。实名认证后，将确保每个用户都能被唯一地标识，并降低虚假身份和欺诈的风险。
+> `实名认证` 是用户提交法定身份证明文件（如身份证、营业执照等）以供验证的过程，确保每个用户唯一标识，并降低虚假身份和欺诈风险。
 
 ## 操作步骤
 
-**第一步：登录应用后进入"AngusGM"->"系统"->"实名认证"，选择对应类型进行认证，如下图：**
+### 1. 进入实名认证页面
 
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/realname-auth.png?fid=207887590483820776&fpt=6lb3cCuUQBbGkhlPv0rBa5MzTvpQ8mZXDm3xZp78)
+- **登录应用**：
+    - 使用您的账号登录到应用。
 
-**第二步：编辑完对应认证信息后提交认证，如下图：**
+- **导航到实名认证**：
+    - 点击“AngusGM”。
+    - 选择“系统”，然后点击“实名认证”。
 
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/realname-authinfo.png?fid=207887590483820780&fpt=lEDUb1HgUNUU3i9v7PhJ5FQP7fndnjmZjeCV7GjB)
+  ![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/realname-auth.png?fid=207887590483820776&fpt=6lb3cCuUQBbGkhlPv0rBa5MzTvpQ8mZXDm3xZp78)
 
-**第三步：认证提交后，会显示认证资料正在审核中，如下图：**
+### 2. 提交认证信息
 
-![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/realname-authpending.png?fid=207887590483820782&fpt=qRNIhsWUQKMXlbyaxl8rUvzkKysS2gm6AFbpA5bx)
+- **填写认证信息**：
+    - 根据提示输入所需的认证信息。
+
+- **提交认证**：
+    - 编辑完信息后，点击提交按钮。
+
+  ![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/realname-authinfo.png?fid=207887590483820780&fpt=lEDUb1HgUNUU3i9v7PhJ5FQP7fndnjmZjeCV7GjB)
+
+### 3. 审核状态查询
+
+- **查看审核进度**：
+    - 提交后，您会看到认证资料正在审核中的提示。
+
+  ![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/realname-authpending.png?fid=207887590483820782&fpt=qRNIhsWUQKMXlbyaxl8rUvzkKysS2gm6AFbpA5bx)
 
 ## 注意事项
 
-- 运营人员会在1-3个工作日完成实名认证审核，紧急业务您可以提交"工单"加急处理。
-- 如果认证失败，您需要根据失败信息重新提交资料进行认证。
+- 认证审核通常在1-3个工作日内完成。如需加急处理，可提交“工单”。
+- 若认证失败，请根据提示信息重新提交资料。
