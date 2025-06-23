@@ -1449,7 +1449,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
             ]
         },
         {
-            text: "Test Specifications",
+            text: "Script Specifications",
             collapsed: true,
             items: [
                 {
@@ -1487,7 +1487,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                         },
                         {
                             text: "Execution Configuration",
-                            link: "/executionConfiguration"
+                            link: "/configuration"
                         },
                         {
                             text: "Tasks",

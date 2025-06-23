@@ -1477,12 +1477,12 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
             ]
         },
         {
-            text: '测试规范',
+            text: '脚本规范',
             collapsed: true,
             items: [
                 {
                     text: '规范介绍',
-                    link: '/zh/docs/tester/specification/introduction',
+                    link: '/specification/introduction',
                 },
                 {
                     text: '规范内容',
@@ -1515,7 +1515,7 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                         },
                         {
                             text: '执行配置',
-                            link: '/executionConfiguration',
+                            link: '/configuration',
                         },
                         {
                             text: '任务',

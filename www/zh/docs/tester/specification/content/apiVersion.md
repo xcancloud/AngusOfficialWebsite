@@ -1,20 +1,24 @@
-# Api版本
+# API 版本
 
-对应 AngusTester RESTFul 资源接口版本，定义了 AngusTester API 中用于创建、管理和操作资源的特定版本。   
+> `API版本(apiVersion)` 用于定义AngusTester脚本资源接口与后端服务的兼容关系，确保脚本在不同系统版本间的稳定运行和资源访问。
 
-可选字段，不指定时默认为：`api/v1`。   
+## 版本格式
+```yaml
+apiVersion: api/v1
+```  
+- **api/pubapi**：接口类型标识
+- **v1**：具体API版本号
 
-语法格式如下：   
+##  接口类型
+
+| 类型 | 标识 | 认证要求 | 适用场景 |  
+|------|------|----------|----------|  
+| **认证接口** | `api` | ✅ 需要认证 | 资源管理、脚本执行等安全操作 |  
+| **公开接口** | `pubapi` | ❌ 无需认证 | 公共信息获取、状态查询等 |  
+
+## 当前版本说明
 
 ```yaml
-specification: api/version
-```   
-
-- api：表示接口类型，支持常量值：`api` 和 `pubapi`，其中 api 为需要认证接口，pubapi 为不需要认证接口。
-- version：表示 API 版本。随着时间的推移，AngusTester API 会不断演进，而不同的版本可能引入新的特性或变更。指定 API 版本确保你的脚本对象与 AngusTester 运行的 API 保持兼容。
-
-一个 API 版本的示例：   
-
-```yaml
+## 如不显式指定API版本，系统自动应用默认值
 apiVersion: api/v1
 ```

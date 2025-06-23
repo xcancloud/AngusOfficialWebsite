@@ -1,47 +1,47 @@
-# 插件
+# 插件配置
 
-表明执行脚本的插件名称，当存在多个同名插件时，自动使用版本号最高的插件。
+> `插件(plugin)` 用于指定脚本执行所需的运行时环境，系统会自动选择同名插件中的**最高版本**执行。
 
-一个插件名的示例：
+## 插件选择规则
+1. **版本优先级**：存在多个同名插件时自动选择最高版本
+2. **名称匹配**：严格区分大小写（`Http` ≠ `HTTP`）
+3. **强依赖**：未安装对应插件将导致脚本执行失败
+
+## 支持插件清单
+
+### 测试协议插件
+| 插件名称     | 功能说明               |
+|--------------|------------------------|
+| `Http`       | HTTP协议测试           |
+| `WebSocket`  | WebSocket协议测试      |
+| `Jdbc`       | 数据库连接测试         |
+| `Ftp`        | FTP文件传输测试        |
+| `Ldap`       | LDAP目录服务测试       |
+| `Mail`       | 邮件协议测试           |
+| `Smtp`       | SMTP邮件发送测试       |
+| `Tcp`        | TCP网络通信测试        |
+
+### 模拟数据插件
+| 插件名称     | 说明                           |
+| ------------ | ------------------------------ |
+| `MockCsv`    | 生成 CSV 格式数据插件。        |
+| `MockCustom` | 生成自定义格式数据插件。       |
+| `MockExcel`  | 生成 Excel 格式数据插件。      |
+| `MockJson`   | 生成 JSON 格式数据插件。       |
+| `MockSql`    | 生成 Insert SQL 格式数据插件。 |
+| `MockTab`    | 生成基于 Tab 分割数据插件。    |
+| `MockXml`    | 生成 XML 格式数据插件。        |
+
+## 配置示例
 
 ```yaml
+# 指定HTTP协议测试插件
 plugin: Http
 ```
 
-## 已支持测试插件
-  
-| 插件名称      | 安装包(版本)                                   | 说明                     |
-|-----------|-------------------------------------------| ------------------------ |
-| Http      | http-test-plugin-1.0.0.zip                | Http 协议测试插件。      |
-| WebSocket | xcan-websocket.http-test-plugin-1.0.0.zip | WebSocket 协议测试插件。 |
-| Jdbc      | jdbc-test-plugin-1.0.0.zip                | Jdbc 协议测试插件。      |
-| Ftp       | ftp-test-plugin-1.0.0.zip                 | Ftp 协议测试插件。      |
-| Ldap      | ldap-test-plugin-1.0.0.zip                | Ldap 协议测试插件。      |
-| Mail      | mail-test-plugin-1.0.0.zip                | Mail 协议测试插件。      |
-| Smtp      | smtp-test-plugin-1.0.0.zip                | Smtp 协议测试插件。      |
-| Tcp       | tcp-test-plugin-1.0.0.zip                 | Tcp 协议测试插件。      |
+## 运维说明
+1. **安装路径**：插件位于Agent的`${AGENT_HOME}/plugins/`目录
+2. **命名规范**：`xcan-angus.[名称]-[类型]-plugin-[版本].zip`
+3. **版本更新**：替换目录中的插件文件即可升级
 
-## 已支持模拟数据插件
-
-| 插件名称   | 支持数据存储位置                         | 安装包(版本)                            | 说明                                                                  |
-| ---------- | ---------------------------------------- | --------------------------------------- | --------------------------------------------------------------------- |
-| MockCsv    | DATASPACE、LOCAL、PUSH_THIRD             | csv-mock-plugin-1.0.0.zip    | 生成 CSV 格式数据插件。                                               |
-| MockCustom | DATASPACE、LOCAL、PUSH_THIRD             | custom-mock-plugin-1.0.0.zip | 生成自定义格式数据插件。                                              |
-| MockExcel  | DATASPACE、LOCAL、PUSH_THIRD             | excel-mock-plugin-1.0.0.zip  | 生成 Excel 格式数据插件。 |
-| MockJson   | DATASPACE、LOCAL、PUSH_THIRD             | json-mock-plugin-1.0.0.zip   | 生成 JSON 格式数据插件。                                              |
-| MockSql    | DATASPACE、DATASOURCE、LOCAL、PUSH_THIRD | sql-mock-plugin-1.0.0.zip    | 生成 Insert SQL 格式数据插件。                                        |
-| MockTab    | DATASPACE、LOCAL、PUSH_THIRD             | tab-mock-plugin-1.0.0.zip    | 生成基于 Tab 分割数据插件。                                           |
-| MockXml    | DATASPACE、LOCAL、PUSH_THIRD             | xml-mock-plugin-1.0.0.zip    | 生成 XML 格式数据插件。                                               |
-
-
-## 注意事项
-
-- 测试插件名称完整格式为：xcan-angus.[协议/中间件名称]-test-plugin-[版本号].zip，当存在多个版本时，自动加载最新版本。
-- 节点安装代理服务后，插件会自动安装到代理`${AGENT_HOME}/plugins/`目录，可以在代理目录查看已安装测试插件数据插件。   
-
-以下是测试和模拟数据插件规范的定义和示例详细说明，具体请点击链接查看：
-
-- [测试定义](https://www.xcan.cloud/help/doc/205509853639082016?c=205531805216931885) 
-- [测试示例](https://www.xcan.cloud/help/doc/205509853639082016?c=205531730055004214) 
-- [模拟数据](https://www.xcan.cloud/help/doc/205509853639082016?c=205531730055004216) 
-- [生成模拟数据示例](https://www.xcan.cloud/help/doc/205509853639082016?c=205531805216931887)
+> 💡 提示：执行前请通过Agent控制台确认目标插件已安装且版本符合要求。
