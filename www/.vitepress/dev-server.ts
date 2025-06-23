@@ -1,21 +1,21 @@
 const proxy = {
   '/gm/': {
-    target: 'https://dev-apis.xcan.cloud',
+    target: 'http://dev-apis.xcan.cloud',
     changeOrigin: true,
     rewrite: (path) => path.replace(/^\/gm\//i, '/gm/')
   },
   '/ess/': {
-    target: 'https://dev-apis.xcan.cloud',
+    target: 'http://dev-apis.xcan.cloud',
     changeOrigin: true,
     rewrite: (path) => path.replace(/^\/ess\//i, '/ess/')
   },
   '/tester/': {
-    target: 'https://dev-apis.xcan.cloud',
+    target: 'http://dev-apis.xcan.cloud',
     changeOrigin: true,
     rewrite: (path) => path.replace(/^\/tester\//i, '/tester/')
   },
   '/storage/': {
-    target: 'https://dev-files.xcan.cloud',
+    target: 'http://dev-files.xcan.cloud',
     changeOrigin: true,
     rewrite: (path) => path.replace(/^\/storage\//i, '/storage/')
   }

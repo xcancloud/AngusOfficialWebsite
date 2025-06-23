@@ -92,6 +92,7 @@ export default withMermaid({
             },
         },
 
+        envDir: resolve(__dirname, '../../conf'),
         server: server
     },
 
