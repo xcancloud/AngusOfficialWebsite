@@ -34,15 +34,15 @@ graph TD
     格式支持 --> CUSTOM[自定义格式]  
 ```
 
-| 格式 | 插件名 | 存储支持 | 安装包 |  
+| 格式   | 插件名 | 存储支持 | 安装包 |  
 |------|--------|----------|--------|  
-| CSV | MockCsv | 数据空间/本地/第三方 | csv-mock-plugin-1.0.0.zip |  
-| JSON | MockJson | 数据空间/本地/第三方 | json-mock-plugin-1.0.0.zip |  
-| Excel | MockExcel | 数据空间/本地/第三方 | excel-mock-plugin-1.0.0.zip |  
-| SQL | MockSql | 数据空间/数据源/本地/第三方 | sql-mock-plugin-1.0.0.zip |  
-| XML | MockXml | 数据空间/本地/第三方 | xml-mock-plugin-1.0.0.zip |  
-| TAB分隔 | MockTab | 数据空间/本地/第三方 | tab-mock-plugin-1.0.0.zip |  
-| 自定义 | MockCustom | 数据空间/本地/第三方 | custom-mock-plugin-1.0.0.zip |  
+| CSV  | `MockCsv` | 数据空间/本地/第三方 | csv-mock-plugin-1.0.0.zip |  
+| JSON | `MockJson` | 数据空间/本地/第三方 | json-mock-plugin-1.0.0.zip |  
+| Excel | `MockExcel` | 数据空间/本地/第三方 | excel-mock-plugin-1.0.0.zip |  
+| SQL  | `MockSql` | 数据空间/数据源/本地/第三方 | sql-mock-plugin-1.0.0.zip |  
+| XML  | `MockXml` | 数据空间/本地/第三方 | xml-mock-plugin-1.0.0.zip |  
+| TAB分隔 | `MockTab` | 数据空间/本地/第三方 | tab-mock-plugin-1.0.0.zip |  
+| 自定义  | `MockCustom` | 数据空间/本地/第三方 | custom-mock-plugin-1.0.0.zip |  
 
 > 💡 插件自动部署在代理节点的 `${AGENT_HOME}/plugins/` 目录
 
@@ -100,8 +100,17 @@ task:
       location: DATASPACE  
       storeRequest:  
         url: https://api.example.com/upload  
-        headers:  
-          Authorization: "Bearer {token}"  
+        parameters:
+          - name: Content-Type
+            in: header
+            enabled: true
+            type: string
+            value: multipart/form-data
+          - name: Authorization
+            in: header
+            enabled: true
+            type: string
+            value: "Bearer {token}"
 ```
 
 ### 场景5：Excel数据生成注意事项

@@ -1502,43 +1502,44 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                                 {
                                     text: "Test Task Orchestration",
                                     collapsed: true,
-                                    base: "/en/docs/tester/specification/content/task/elements",
+                                    link: "/pipeline",
+                                    base: "/en/docs/tester/specification/content/task",
                                     items: [
                                         {
                                             text: "Controller Elements",
-                                            link: "/controller"
+                                            link: "/elements/controller"
                                         },
                                         {
                                             text: "HTTP Test Tasks",
-                                            link: "/http"
+                                            link: "/elements/http"
                                         },
                                         {
                                             text: "WebSocket Test Tasks",
-                                            link: "/websocket"
+                                            link: "/elements/websocket"
                                         },
                                         {
                                             text: "JDBC Test Tasks",
-                                            link: "/jdbc"
+                                            link: "/elements/jdbc"
                                         },
                                         {
                                             text: "FTP Test Tasks",
-                                            link: "/ftp"
+                                            link: "/elements/ftp"
                                         },
                                         {
                                             text: "LDAP Test Tasks",
-                                            link: "/ldap"
+                                            link: "/elements/ldap"
                                         },
                                         {
                                             text: "Mail Test Tasks",
-                                            link: "/mail"
+                                            link: "/elements/mail"
                                         },
                                         {
                                             text: "SMTP Test Tasks",
-                                            link: "/smtp"
+                                            link: "/elements/smtp"
                                         },
                                         {
                                             text: "TCP Test Tasks",
-                                            link: "/tcp"
+                                            link: "/elements/tcp"
                                         }
                                     ]
                                 },
@@ -1549,12 +1550,12 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                                 {
                                     text: "Mock API Tasks",
                                     link: "/task/mockApisTask"
-                                },
-                                {
-                                    text: "Parameterization",
-                                    link: "/task/parameterization"
                                 }
                             ]
+                        },
+                        {
+                            text: "Parameterization",
+                            link: "/parameterization"
                         },
                         {
                             text: "Extension Fields",

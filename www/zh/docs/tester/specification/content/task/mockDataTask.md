@@ -1,24 +1,28 @@
 # 模拟数据任务
 
-除了手动编写模拟数据脚本，用户也可以通过 AngusTester 应用中"数据"->"生成数据"编辑生成脚本，其生成的数据脚本与以下规范是一致的。
+> `AngusTester` 高效生成多种格式测试数据，满足各类测试场景需求。  
+> **模拟数据功能支持 7 种主流数据格式，帮助您：**
+>
+> - **批量生成**海量测试数据
+> - **灵活配置**数据结构与存储方式
+> - **无缝集成**数据库与文件系统
+> - **参数化支持**在测试中直接引用生成数据
 
-支持数据格式包括：CSV、CUSTOM、EXCEL、JSON、SQL、TAB、XML。
+## 主参数清单
 
-| 字段名称    | 类型   | 是否必须 | 数量/长度限制 | 描述                                                                                   |
-| ----------- | ------ | -------- | ------------- | -------------------------------------------------------------------------------------- |
-| name        | string | 否       | 200           | 模拟数据名称，未设置脚本名称时，该名称会被设置到脚本名称。                             |
-| description | string | 否       | 800           | 模拟数据描述，未设置脚本描述时，该名称会被设置到脚本描述。                             |
-| fields      | object | 否       | 1 ～ 200      | 定义组成数据字段，具体请查看下面模拟数据“字段”说明。                                   |
-| settings    | object | 否       | /             | 模拟数据插件配置参数，用于指定生成数据格式和存储位置，具体查看下面模拟数据“设置”说明。 |
+| 参数          | 类型          | 必填 | 限制       | 说明                         |
+| ------------- | ------------- | ---- | ---------- | ---------------------------- |
+| `name`        | string        | 否   | <=200 字符 | 数据名称（自动设为脚本名）   |
+| `description` | string        | 否   | <=800 字符 | 详细描述（自动设为脚本描述） |
+| `fields`      | array[object] | 否   | 1-200 个   | 数据字段定义（见下方详情）   |
+| `settings`    | object        | 否   | -          | 数据生成设置（见下方详情）   |
 
-当前信息可以通过脚本规范"扩展字段"进行扩展。
-
-一个模拟 CSV 格式数据示例：
+一个完整的配置示例：
 
 ```yaml
 mockData:
-  name: User
-  description: This is an example of generating CSV format data
+  name: 用户数据
+  description: CSV格式的用户账号密码数据
   fields:
     - name: username
       type: string
@@ -35,199 +39,210 @@ mockData:
     includeHeader: true
 ```
 
-## 主要字段说明(fields)
+## 字段定义(fields)
 
-| 字段名称 | 类型   | 是否必须 | 长度限制 | 描述                                                                                                                             |
-| -------- | ------ | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| name     | string | 是       | 200      | 字段名称。                                                                                                                       |
-| type     | enum   | 是       | /        | 字段类型，支持值 string、integer、boolean、number、object、array，默认：string。注意：`object、array 类型只在 JSON 格式中支持`。 |
-| value    | string | 否       | 8192     | 字段值，可以是常量值和 Mock 函数。                                                                                         |
+| 参数    | 类型   | 必填 | 限制        | 说明                                                                                                 |
+| ------- | ------ | ---- | ----------- |----------------------------------------------------------------------------------------------------|
+| `name`  | string | 是   | <=200 字符  | 字段名称                                                                                               |
+| `type`  | enum   | 是   | -           | 字段类型：`string`,`integer`,`boolean`,<br/>`number`,`object`,`array`。<br/>注意：`object`和`array`仅JSON格式支持 |
+| `value` | string | 否   | <=8192 字符 | 字段值（常量或 Mock 函数）                                                                                   |
 
-当前信息可以通过脚本规范"扩展字段"进行扩展。
-
-一个字段的示例：
+**示例配置：**
 
 ```yaml
 fields:
   - name: username
     type: string
     value: "@String(3,20)"
-  - name: password
-    type: string
-    value: "@String(6,32)"
+  - name: age
+    type: integer
+    value: "@Number(18,60)"
 ```
 
-## 设置(setting)
+## 生成设置(settings)
 
-| 字段名称                | 类型    | 是否必须 | 数量/长度限制        | 描述                                                                                                                      |
-| ----------------------- | ------- | -------- | -------------------- | --------------------------------------------------------------------------------------------------------------------|
-| format                  | string  | 是       | 40                   | 生成数据格式，需要插件数据格式相对应，具体请查看“支持插件”中格式。                                                                      |
-| rows                    | integer | 是       | 1 ～ 100,000,000,000 | 生成数据总行数。                                                                                                            |
-| batchRows               | integer | 否       | 1 ～ 10000           | 每次批量生成、存储或发送行数，默认 1。                                                                                              |
-| location                | enum    | 是       | /                    | 生成数据的存储位置。支持位置：DATASPACE、DATASOURCE、LOCAL、PUSH_THIRD，具体请查看"存储位置"。                                          |
-| storeRequest            | object  | 否       | /                    | Http 请求配置，当存储数据到`空间`或`推送到三方接口`时是必须的。注意：`只支持 POST 请求方法`。具体参数请查看“脚本规范”中 Http 请求配置。 |
-| **_Plugin Parameters_** | object  | 否       | /                    | 模拟数据插件独有配置参数，具体请查看下面“插件参数”。                                                                                    |
+| 参数                    | 类型    | 必填 | 限制      | 说明                                                                                       |
+| ----------------------- | ------- | ---- | --------- |------------------------------------------------------------------------------------------|
+| `format`                | string  | 是   | <=40 字符 | 数据格式：`CSV`,`CUSTOM`,`EXCEL`,<br>`JSON`,`SQL`,`TAB`,`XML`                                  |
+| `rows`                  | integer | 是   | 1-1000 亿 | 生成总行数                                                                                    |
+| `batchRows`             | integer | 否   | 1-10000   | 批量生成行数                                                                                   |
+| `location`              | enum    | 是   | -         | 存储位置：`DATASPACE`,`DATASOURCE`,<br>`LOCAL`,`PUSH_THIRD`                                       |
+| `storeRequest`          | object  | 否   | /         | Http 请求配置，当存储数据到`空间`<br>或`推送到三方接口`时是必须的。<br><br>注意：`只支持 POST 请求方法`。<br>具体参数请查看“脚本规范”中 Http 请求配置。 |
+| **_Plugin Parameters_** | object  | 否   | /         | 模拟数据插件独有配置参数，<br>具体请查看下面“插件参数”。                                                          |
 
-当前信息可以通过脚本规范"扩展字段"进行扩展。
+### 存储位置(location)
 
-一个设置的示例：
+```mermaid  
+graph TD  
+    L[存储位置] --> D1[数据空间存储]  
+    L --> D2[数据库存储]  
+    L --> D3[本地文件存储]  
+    L --> D4[HTTP接口推送]  
+```
+
+- **DATASPACE · 数据空间存储**
+  - **存储位置**：AngusTester应用空间：`数据` → `文件数据` → `空间`
+  - **适用场景**：  
+    - 团队协作共享数据  
+    - 长期保存测试数据集  
+    - 跨测试复用数据
+  - **访问方式**：通过AngusTester应用在线管理
+
+- **DATASOURCE · 数据源存储**
+  - **存储位置**：AngusTester内置数据源：`数据` → `数据源数据` → `数据源`
+  - **适用场景**：  
+    - 数据库压测初始化  
+    - 生产环境数据预填充  
+    - 数据驱动测试支持
+  - **访问方式**：数据库客户端直连或通过应用查看
+
+- **LOCAL · 本地文件存储**
+  - **存储位置**：执行节点文件系统
+  - **默认路径**：`${AGENT_HOME}/data/exec/[执行ID]/data.[格式]`
+  - **适用场景**：  
+    - 临时测试数据生成  
+    - 快速获取原始数据文件  
+    - 大文件处理场景
+  - **访问方式**：执行完成页直接下载
+
+- **PUSH_THIRD · HTTP接口推送**
+  - **传输模式**：
+    ```mermaid  
+    graph LR  
+        P[数据生成] --> C{上传类型}  
+        C -->|文件上传| F[生成完整文件后传输]  
+        C -->|文本流| S[实时分块推送]  
+    ```
+  - **智能判断依据**：
+    - ContentType=application/octet-stream
+    - FormData包含文件类型
+  - **性能优化建议**：文本流传输时设置`batchRows=1000`
+  - **适用场景**：  
+    - 数据集成流水线  
+    - 第三方系统对接  
+    - 实时数据管道
+
+### 格式插件专属参数(_Plugin Parameters_)
+
+各数据格式的特殊配置参数：
+
+#### CSV 格式参数
+
+| 参数            | 类型    | 必填 | 说明                             |
+| --------------- | ------- | ---- | -------------------------------- |
+| `lineEnding`    | enum    | 是   | 换行符：`UNIT_LF`/`WINDOWS_CRLF` |
+| `includeHeader` | boolean | 是   | 是否包含表头                     |
+
+#### 自定义格式参数
+
+| 参数            | 类型 | 必填 | 说明                 |
+| --------------- | ---- | ---- | -------------------- |
+| `escapeChar`    | char | 否   | 转义符（默认\u0000） |
+| `quoteChar`     | char | 否   | 引用符（默认\u0000） |
+| `separatorChar` | char | 否   | 分隔符（默认,）      |
+
+#### Excel 格式参数
+
+| 参数            | 类型    | 必填 | 说明         |
+| --------------- | ------- | ---- | ------------ |
+| `includeHeader` | boolean | 是   | 是否包含表头 |
+
+#### JSON 格式参数
+
+| 参数          | 类型    | 必填 | 说明             |
+| ------------- | ------- | ---- | ---------------- |
+| `includeNull` | boolean | 否   | 是否包含空值字段 |
+| `rowsToArray` | boolean | 否   | 是否转换为数组   |
+
+#### SQL 格式参数
+
+| 参数              | 类型    | 必填 | 说明                 |
+| ----------------- | ------- | ---- | -------------------- |
+| `tableName`       | string  | 是   | 数据库表名           |
+| `batchInsert`     | boolean | 否   | 是否批量插入         |
+| `storeDatasource` | object  | 是   | 数据库配置（见下方） |
+
+**数据库连接配置：**
+
+```yaml
+storeDatasource:
+  type: MYSQL
+  driverClassName: com.mysql.cj.jdbc.Driver
+  jdbcUrl: jdbc:mysql://localhost:3306/db
+  username: user
+  password: pass
+```
+
+#### TAB 格式参数
+
+| 参数            | 类型    | 必填 | 说明         |
+| --------------- | ------- | ---- | ------------ |
+| `includeHeader` | boolean | 是   | 是否包含表头 |
+
+#### XML 格式参数
+
+| 参数            | 类型   | 必填 | 说明         |
+| --------------- | ------ | ---- | ------------ |
+| `rootElement`   | string | 是   | 根元素名称   |
+| `recordElement` | string | 是   | 记录元素名称 |
+
+## 最佳实践场景
+
+### 场景 1：CSV 用户数据生成
 
 ```yaml
 settings:
   format: CSV
-  rows: 100000
-  batchRows: 200
+  rows: 50000
   location: LOCAL
-  lineEnding: UNIT_LF # CSV插件参数
-  includeHeader: true # CSV插件参数 
+  lineEnding: WINDOWS_CRLF
+  includeHeader: true
 ```
 
-### 存储位置(location)
-
-- DATASPACE：数据空间存储，将数据存储到 AngusTester 应用"数据"->"文件数据"->"空间"。
-- DATASOURCE：数据源存储，将生成数据写入到客户数据库或 AngusTester 应用"数据"->"数据源数据"->"数据源"。
-- LOCAL：本地存储，生成数据会以文件形式存储在执行节点，您可以进入执行详情页面点击下载数据文件。默认存储路径：${AGENT_HOME}/data/exec/[执行ID]/data.[数据格式]。
-- PUSH_THIRD：推送三方接口，支持将生成数据以文本或文件形式发送到一个 Http 接口。
-
-注意：当存储位置为三方接口（PUSH_THIRD）时，如果配置的是一个 HTTP 上传请求（ContentType 是 binary 或者 FormData 中有文件类型），会先生成完整数据文件，再上传文件到三方接口；如果配置的不是 Http 上传请求，会将生成数据以文本形式发送到三方接口，为了加快发送效率，建议将参数 batchRows 设置成 1000。
-
-### 插件参数 **_[Plugin Parameters]_**
-
-- MockCsv
-
-| 字段名称      | 类型    | 是否必须 | 长度限制 | 说明                                       |
-| ------------- | ------- | -------- | -------- | ------------------------------------------ |
-| lineEnding    | enum    | 是       | /        | 换行符，支持 `UNIT_LF` 和 `WINDOWS_CRLF`。 |
-| includeHeader | boolean | 是       | /        | 生成数据中是否包含字段名称的表头。         |
-
-一个 CSV 配置示例：
+### 场景 2：JSON 测试数据
 
 ```yaml
-lineEnding: UNIT_LF
-includeHeader: true
+settings:
+  format: JSON
+  rows: 20000
+  location: DATASPACE
+  includeNull: false
+  rowsToArray: true
 ```
 
-- MockCustom
-
-| 字段名称      | 类型    | 是否必须 | 长度限制 | 说明                                                        |
-| ------------- | ------- | -------- | -------- | ----------------------------------------------------------- |
-| lineEnding    | enum    | 是       | /        | 换行符，支持 `UNIT_LF` 和 `WINDOWS_CRLF`。                  |
-| includeHeader | boolean | 是       | /        | 生成数据中是否包含字段名称的表头。                          |
-| escapeChar    | char    | 否       | 1        | 转义符，用于转义引号字符或转义字符的字符，默认值 `\u0000`。 |
-| quoteChar     | char    | 否       | 1        | 引用符，用于引用字段值的字符，默认值 `\u0000`。             |
-| separatorChar | char    | 否       | 1        | 分隔符，用于分隔条目值，默认值 `,`。                        |
-
-一个 CUSTOM 配置示例：
+### 场景 3：数据库直连写入
 
 ```yaml
-lineEnding: UNIT_LF
-includeHeader: true
-escapeChar: "'"
-quoteChar: '"'
-separatorChar: "|"
+settings:
+  format: SQL
+  location: DATASOURCE
+  batchInsert: true
+  storeDatasource:
+    type: POSTGRES
+    jdbcUrl: jdbc:postgresql://dbserver:5432/testdb
+    username: admin
+    password: securePass123
 ```
 
-- MockExcel
-
-| 字段名称      | 类型    | 是否必须 | 长度限制 | 说明                               |
-| ------------- | ------- | -------- | -------- | ---------------------------------- |
-| includeHeader | boolean | 是       | /        | 生成数据中是否包含字段名称的表头。 |
-
-一个 EXCEL 配置示例：
+### 场景 4：推送到第三方系统
 
 ```yaml
-includeHeader: true
+settings:
+  format: XML
+  location: PUSH_THIRD
+  rootElement: Users
+  recordElement: User
+  storeRequest:
+    url: https://api.example.com/upload
+    parameters:
+      - name: Content-Type
+        in: header
+        enabled: true
+        type: string
+        value: multipart/form-data
+      - name: Authorization
+        in: header
+        enabled: true
+        type: string
+        value: "Bearer {token}"
 ```
-
-- MockJson
-
-| 字段名称    | 类型    | 是否必须 | 长度限制 | 说明                                       |
-| ----------- | ------- | -------- | -------- | ------------------------------------------ |
-| lineEnding  | enum    | 是       | /        | 换行符，支持 `UNIT_LF` 和 `WINDOWS_CRLF`。 |
-| includeNull | boolean | 否       | /        | 在 JSON 序列化过程中是否包含空值字段。     |
-| rowsToArray | boolean | 否       | /        | 是否将多个 JSON 对象（行）转换为数组。     |
-
-一个 JSON 配置示例：
-
-```yaml
-lineEnding: UNIT_LF
-includeNull: true
-rowsToArray: false
-```
-
-- MockSql
-
-| 字段名称        | 类型    | 是否必须 | 长度限制 | 说明                                                                                           |
-| --------------- | ------- | -------- | -------- | ------------------------------------------------------------------------------------- |
-| lineEnding      | enum    | 是       | /        | 换行符，支持 `UNIT_LF` 和 `WINDOWS_CRLF`。                                                     |
-| tableName       | string  | 是       | 200      | 存储数据表名称，生成 INSERT 语句的组成部分。                                                   |
-| batchInsert     | boolean | 否       | /        | 是否批量插入，设置成 true 时会将 `batchRows` 条数据合并成一条 INSERT 语句，默认 false。           |
-| storeDatasource | object  | 是       | /        | 存储数据源配置，完整参数请查看“数据源配置参数”。                                               |
-
-一个 SQL 配置示例：
-
-```yaml
-lineEnding: UNIT_LF
-tableName: '`user`'
-batchInsert: true
-storeDatasource:
-  name: Store user datasource
-  type: MYSQL
-  driverClassName: com.mysql.cj.jdbc.Driver
-  username: sample
-  password: 123456
-  jdbcUrl: jdbc:mysql://mysql01-sample.angusmock.cloud:3306/xcan_mockdata_sample
-```
-
-数据源配置参数(storeDatasource)：
-
-| 字段名称        | 类型   | 是否必须 | 长度限制     | 说明                                                                                                                                                                  |
-| --------------- | ------ | -------- | ------------ | ---------------------------------------------------------------------------------------------------------- |
-| name            | string | 否       | 100          | 数据源名称。                                                                                              |
-| type            | enum   | 是       | /            | 数据库类型，支持数据库类型：H2、HSQLDB、SQLITE、POSTGRES、MARIADB、MYSQL、ORACLE、SQLSERVER、DB2。              |
-| driverClassName | string | 否       | 1s ～ 86400s | 数据库驱动类名，如：com.mysql.cj.jdbc.Driver。                                                              |
-| jdbcUrl         | string | 否       | 1 ～ 6       | 数据库连接 URL，如：jdbc:mysql://localhost:3306/mydatabase。                                               |
-| username        | string | 否       | 1 ～ 10      | 用户名。                                                                                                  |
-| password        | string | 否       | 1 ～ 10      | 密码。                                               
-
-一个数据源配置示例：
-
-```yaml
-name: Store user datasource
-type: MYSQL
-driverClassName: com.mysql.cj.jdbc.Driver
-username: sample
-password: 123456
-jdbcUrl: jdbc:mysql://mysql01-sample.angusmock.cloud:3306/xcan_mockdata_sample
-```
-
-- MockTab
-
-| 字段名称      | 类型    | 是否必须 | 长度限制 | 说明                                       |
-| ------------- | ------- | -------- | -------- | ------------------------------------------ |
-| lineEnding    | enum    | 是       | /        | 换行符，支持 `UNIT_LF` 和 `WINDOWS_CRLF`。 |
-| includeHeader | boolean | 是       | /        | 生成数据中是否包含字段名称的表头。         |
-
-一个模拟 TAB 配置示例：
-
-```yaml
-lineEnding: UNIT_LF
-includeHeader: true
-```
-
-- MockXml
-
-| 字段名称      | 类型   | 是否必须 | 长度限制 | 说明                                       |
-| ------------- | ------ | -------- | -------- | ------------------------------------------ |
-| lineEnding    | enum   | 是       | /        | 换行符，支持 `UNIT_LF` 和 `WINDOWS_CRLF`。 |
-| rootElement   | string | 是       | 200      | XML 数据的根元素名称。                     |
-| recordElement | string | 是       | 200      | XML 数据的记录元素名称。                   |
-
-一个模拟 XML 配置示例：
-
-```yaml
-lineEnding: UNIT_LF
-rootElement: root
-recordElement: row
-```
-

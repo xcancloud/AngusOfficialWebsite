@@ -1530,43 +1530,44 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                                 {
                                     text: '测试任务编排',
                                     collapsed: true,
-                                    base: '/zh/docs/tester/specification/content/task/elements',
+                                    link: "/pipeline",
+                                    base: '/zh/docs/tester/specification/content/task',
                                     items: [
                                         {
                                             text: '控制器元素',
-                                            link: '/controller',
+                                            link: '/elements/controller',
                                         },
                                         {
                                             text: 'Http测试任务',
-                                            link: '/http',
+                                            link: '/elements/http',
                                         },
                                         {
                                             text: 'WebSocket测试任务',
-                                            link: '/websocket',
+                                            link: '/elements/websocket',
                                         },
                                         {
                                             text: 'Jdbc测试任务',
-                                            link: '/jdbc',
+                                            link: '/elements/jdbc',
                                         },
                                         {
                                             text: 'Ftp测试任务',
-                                            link: '/ftp',
+                                            link: '/elements/ftp',
                                         },
                                         {
                                             text: 'Ldap测试任务',
-                                            link: '/ldap',
+                                            link: '/elements/ldap',
                                         },
                                         {
                                             text: 'Mail测试任务',
-                                            link: '/mail',
+                                            link: '/elements/mail',
                                         },
                                         {
                                             text: 'Smtp测试任务',
-                                            link: '/smtp',
+                                            link: '/elements/smtp',
                                         },
                                         {
                                             text: 'Tcp测试任务',
-                                            link: '/tcp',
+                                            link: '/elements/tcp',
                                         },
                                     ]
                                 },
@@ -1577,12 +1578,12 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                                 {
                                     text: '模拟接口任务',
                                     link: '/task/mockApisTask',
-                                },
-                                {
-                                    text: '参数化',
-                                    link: '/task/parameterization',
-                                },
+                                }
                             ]
+                        },
+                        {
+                            text: '参数化',
+                            link: '/parameterization',
                         },
                         {
                             text: '扩展字段',
