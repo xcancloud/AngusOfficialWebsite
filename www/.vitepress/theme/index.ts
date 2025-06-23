@@ -28,12 +28,15 @@ import 'vitepress-openapi/dist/style.css';
 // plugin lumen
 import { DocVideoLink } from '@theojs/lumen';
 
+import AuthConfirmModal from './components/authConfirmModel.vue';
+import LoginConfirmModal from './components/loginConfirmModel.vue';
 import HomePage from './home/index.vue';
 import Icon from './components/Icon/index.vue';
 import OpenBanner from './components/OpenBanner/index.vue';
 import Business from './scenario/business.vue';
 import Ai from './scenario/ai.vue';
 import Deployment from './deployment/index.vue';
+
 
 export default {
     extends: DefaultTheme,
@@ -43,7 +46,9 @@ export default {
         // app.provide('confirm', confirmVisible);
 
         // Register Element Plus
-        app.use(ElementPlus)
+        app.use(ElementPlus);
+        app.component('LoginConfirmModal', LoginConfirmModal);
+        app.component('AuthConfirmModal', AuthConfirmModal);
         app.component('HomePage', HomePage);
         app.component('Icon', Icon);
         app.component('OpenBanner', OpenBanner);

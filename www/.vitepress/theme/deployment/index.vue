@@ -3,11 +3,16 @@ import { onMounted, ref } from 'vue';
 import axios from 'axios';
 import http from '@/utils/http';
 import { isSignin } from '@/utils/site/index';
-import { PUB_ESS, GM, ESS } from '@xcan-angus/tools';
+import { PUB_ESS, GM, ESS, site } from '@xcan-angus/tools';
 import { Button, Select } from 'ant-design-vue';
-// import { useRouter } from 'vue-router';
+import { useRouter } from 'vitepress';
 
-// const router = useRouter();
+import License from './license.vue';
+const router = useRouter();
+
+const toAuthVisible = ref(false);
+const toLoginVisible = ref(false);
+const dowloadName = ref();
 const banner = ref([]);
 const deploymentMethod = ref({});
 const privateDeployment = ref({});
@@ -90,13 +95,14 @@ const getIconColor = (color, flag) => {
 
 const payButton = async (editionTypeValue) => {
       // 判断用户是否登录
-      const signinFlag = await isSignin(true);
+      const signinFlag = await isSignin();
       if (!signinFlag) {
+        toLoginVisible.value = true;
         return;
       }
       // 判断用户是否实名认证
       if (userInfo.value?.tenantRealNameStatus?.value !== 'AUDITED' && editionTypeValue !== 'COMMUNITY') {
-        // this.confirmVisible = true;
+        toAuthVisible.value = true
         return;
       }
 
@@ -109,16 +115,24 @@ const payButton = async (editionTypeValue) => {
           // 下载
           if (button.value[editionTypeValue].urlType === 'downLoad') {
             doloadApp(editionTypeValue);
-            // window.open(getVideo(this.downList[index].url));
           } else {
-            // this.$router.push(button.value[editionTypeValue].url);
+            // /zh/pricing
+            const currentPath = router.route.path;
+            const currentLanguage = currentPath.split('/')[1];
+            // debugger;
+            router.go(`/${currentLanguage}/pricing`);
+            // router.go(button.value[editionTypeValue].url)
           }
           break;
         case 'DATACENTER':
           if (button.value[editionTypeValue].urlType === 'downLoad') {
             doloadApp(editionTypeValue);
           } else {
-            // this.$router.push(button.value[editionTypeValue].url);
+            // /zh/pricing
+            const currentPath = router.route.path;
+            const currentLanguage = currentPath.split('/')[1];
+            // debugger;
+            router.go(`/${currentLanguage}/pricing`);
           }
           break;
       }
@@ -193,7 +207,7 @@ const setDefaultButtonName = (installEditions) =>  {
 
 // 获取已登录用户选择的商品是否已购买
 const isEnterprisePurchased = async  (goodsCode, goodsVersion, editionType, dowloadUrl) =>{
-      const [error, { data }] = await http.get(`${ESS}/order?goodsCode=${goodsCode}&goodsVersion=${goodsVersion}&editionType=${editionType}&expired=false&status=FINISHED`, {}, { headers: { 'XC-Opt-Tenant-Id': this.userInfo.tenantId } });
+      const [error, { data }] = await http.get(`${ESS}/order?goodsCode=${goodsCode}&goodsVersion=${goodsVersion}&editionType=${editionType}&expired=false&status=FINISHED`, {}, { headers: { 'XC-Opt-Tenant-Id': userInfo.value.tenantId } });
       if (error) {
         return;
       }
@@ -226,36 +240,41 @@ const selectChange = (goodsId, edtion) => {
     button.value.COMMUNITY.url = checkGoods.onlineInstallerDownloadUrl;
     const lastIndex = checkGoods.onlineInstallerDownloadUrl.lastIndexOf('/');
     const result = checkGoods.onlineInstallerDownloadUrl.substring(lastIndex + 1);
-    // this.dowloadName = result;
+    dowloadName.value = result;
     return;
   }
   isEnterprisePurchased(checkGoods.goodsCode, checkGoods.goodsVersion, edtion.code);
-}
+};
 
+
+
+const confirmContent = ref();
+const licenseProps = ref({});
+const showLicense = ref(false);
 // 获取许可
 const getGoodsLcs = async  (editionType) => {
-  const signinFlag = await isSignin(true);
+  const signinFlag = await isSignin();
   if (!signinFlag) {
+    toLoginVisible.value = true;
+    confirmContent.value = '系统检测到您的账号还未登录，请您登录后再进行操作。';
     return;
   }
 
-  const pubQuery = {
+  licenseProps.value = {
     eCode: editionType,
     eName: button.value[editionType].editionName,
     gVersion: button.value[editionType].goodsVersion,
     gId: button.value[editionType].goodsId,
     gCode: button.value[editionType].goodsCode,
-    gName: button.value[editionType].goodsName
+    gName: button.value[editionType].goodsName,
+    orderNo: button.value[editionType].orderNo,
+    tenantId: userInfo.value.tenantId
   };
-  // router.push({
-  //   path: '/deployment/licence',
-  //   query: editionType === 'COMMUNITY' ? pubQuery : { ...pubQuery, orderNo: button.value[editionType].orderNo }
-  // });
+  showLicense.value = true;
 }
 
-// 跳转实名认证
-const immediateAuthentication = () => {
-  // window.location.href = this.gmUrl + '/system/auth';
+const cancelLicense = () => {
+  showLicense.value = false;
 }
 
 onMounted(async () => {
@@ -265,173 +284,184 @@ onMounted(async () => {
 </script>
 <template>
   <div class="w-full overflow-hidden">
+    <License 
+      v-if="showLicense"
+      v-bind="licenseProps"
+      @cancel="cancelLicense"
+      @ok="cancelLicense" />
 
-    <!-- banner -->
-    <div class="bg-img">
-      <div v-if="banner.length" class="mx-auto banner-wrap" style="padding-top: 60px;">
-        <div class="relative z-9 banner-info">
-          <p class="mb-7.5 text-8 leading-10 font-semibold">
-            {{ banner[0].title }}
-          </p>
-          <p class="text-5">
-            {{ banner[0].secondTitle }}
-          </p>
-          <div class="flex items-center mt-10 mb-4 btns" style="z-index: 999;">
-            <Button size="large" class="w-25 select-none mr-5 bg-vp-white text-vp-green1">
-              {{ banner[0].buttons[0].name }}
-            </Button>
-            <RouterLink
-              class="w-25 block border cursor-pointer text-3.5 border-blue-main rounded text-center font-medium text-blue-main select-none"
-              :to="{ path: '/consult' }"
-              style="padding: 8px 8px;"
-            >
-              {{ banner[0].buttons[1].name }}
-            </RouterLink>
+    <template v-else>
+
+      <!-- banner -->
+      <div class="bg-img">
+        <div v-if="banner.length" class="mx-auto banner-wrap" style="padding-top: 60px;">
+          <div class="relative z-9 banner-info">
+            <p class="mb-7.5 text-8 leading-10 font-semibold">
+              {{ banner[0].title }}
+            </p>
+            <p class="text-5">
+              {{ banner[0].secondTitle }}
+            </p>
+            <div class="flex items-center mt-10 mb-4 btns" style="z-index: 999;">
+              <Button size="large" class="w-25 select-none mr-5 bg-vp-white text-vp-green1">
+                {{ banner[0].buttons[0].name }}
+              </Button>
+              <a
+                class="w-25 block border cursor-pointer text-3.5 border-blue-main rounded text-center font-medium text-blue-main select-none"
+                href="/consult"
+                style="padding: 8px 8px;">
+                {{ banner[0].buttons[1].name }}
+            </a>
+            </div>
+          </div>
+          <div class="banner-img" :style="`background-image: url(${banner[0].imageContent.image});`">
+            <!-- <img :src="banner[0].imageContent.image" class="w-full " alt=""> -->
           </div>
         </div>
-        <div class="banner-img" :style="`background-image: url(${banner[0].imageContent.image});`">
-          <!-- <img :src="banner[0].imageContent.image" class="w-full " alt=""> -->
+      </div>
+  
+      <!-- 私有部署 -->
+      <div class="mx-auto text-center py-15">
+        
+        <div class="text-2xl font-semibold section-title px-2">
+          <Icon icon="icon-wenjianshuju" />
+          {{ privateDeployment.name }}
+        </div>
+        <div class="text-4 mt-3 mb-10 ">
+          {{ privateDeployment.description }}
+        </div>
+        <div class="editions-grid">
+          <div
+            v-for="(item, index) in privateDeployment.edition"
+            :key="index"
+            class="w-93.5 py-5 border !border-t-8 rounded-5 overflow-hidden box-border px-5 mx-auto"
+            :class="versionsListColor[index].border"
+          >
+            <div class="flex items-center space-x-5">
+              <div
+                class="w-20 h-20 rounded-full inline-flex items-center justify-center"
+                :style="{ background: versionsListColor[index].backgroundColor }"
+              >
+                <Icon :icon="item.iconContent.icon" class="text-4xl" />
+              </div>
+              <p class="text-4 font-semibold text-black-version">
+                {{ item.name }}
+              </p>
+            </div>
+            
+            <div class="text-3.5 mt-4 text-left">
+              {{ item.detail }}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-
-    <!-- 私有部署 -->
-    <div class="mx-auto text-center py-15">
-      
-      <div class="text-2xl font-semibold section-title px-2">
-        <Icon icon="icon-wenjianshuju" />
-        {{ privateDeployment.name }}
-      </div>
-      <div class="text-4 mt-3 mb-10 ">
-        {{ privateDeployment.description }}
-      </div>
-      <div class="editions-grid">
-        <div
-          v-for="(item, index) in privateDeployment.edition"
-          :key="index"
-          class="w-93.5 py-5 border !border-t-8 rounded-5 overflow-hidden box-border px-5 mx-auto"
-          :class="versionsListColor[index].border"
-        >
-          <div class="flex items-center space-x-5">
-            <div
-              class="w-20 h-20 rounded-full inline-flex items-center justify-center"
-              :style="{ background: versionsListColor[index].backgroundColor }"
-            >
-              <Icon :icon="item.iconContent.icon" class="text-4xl" />
+  
+      <!--部署方式-->
+      <div class="w-full py-15 bg-blue-link-bg relative">
+        <p class="text-2xl font-semibold section-title px-2">
+          <Icon icon="icon-fuwuqi" />
+          {{ deploymentMethod.name }}
+        </p>
+        <div class="flex mx-auto mt-20 deploy-methods items-center">
+          <img
+            :src="deploymentMethod?.imageContent?.image"
+            alt=""
+            style="width: 400px; margin-top: -60px;"
+          >
+          <div class="flex-1 flex items-center justify-center">
+            <div class="deploy-support-edition">
+              <div
+                v-for="(item, index) in deploymentMethod.methods"
+                :key="index"
+                class="flex items-center leading-5 mb-6"
+              >
+                <div class="text-4 mr-2.5 method-item-icon">
+                  <Icon
+                    :icon="deploymentMethod?.iconContent.icon"
+                    :class="{'text-vp-green2': item?.support, 'text-vp-gray1': !item?.support}"
+                  />
+                </div>
+                <div class="text-4 leading-5 table-cell text-black-header-color font-medium">
+                  {{ item?.name }}
+                </div>
+              </div>
             </div>
-            <p class="text-4 font-semibold text-black-version">
-              {{ item.name }}
-            </p>
           </div>
           
-          <div class="text-3.5 mt-4 text-left">
-            {{ item.detail }}
-          </div>
         </div>
+        <div id="downLoadAnchor" class="opacity-0 absolute" style="bottom: 140px;" />
       </div>
-    </div>
-
-    <!--部署方式-->
-    <div class="w-full py-15 bg-blue-link-bg relative">
-      <p class="text-2xl font-semibold section-title px-2">
-        <Icon icon="icon-fuwuqi" />
-        {{ deploymentMethod.name }}
-      </p>
-      <div class="flex mx-auto mt-20 deploy-methods items-center">
-        <img
-          :src="deploymentMethod?.imageContent?.image"
-          alt=""
-          style="width: 400px; margin-top: -60px;"
-        >
-        <div class="flex-1 flex items-center justify-center">
-          <div class="deploy-support-edition">
-            <div
-              v-for="(item, index) in deploymentMethod.methods"
-              :key="index"
-              class="flex items-center leading-5 mb-6"
-            >
-              <div class="text-4 mr-2.5 method-item-icon">
-                <Icon
-                  :icon="deploymentMethod?.iconContent.icon"
-                  :class="{'text-vp-green2': item?.support, 'text-vp-gray1': !item?.support}"
-                />
-              </div>
-              <div class="text-4 leading-5 table-cell text-black-header-color font-medium">
-                {{ item?.name }}
+  
+      <!--下载与安装-->
+      <div ref="download" class="mx-auto py-15">
+        <p class="text-2xl font-semibold section-title px-2">
+          <Icon icon="icon-fuwuqi" />
+          {{ downloadAndInstall.name }}
+        </p>
+        <!-- <div class="text-2xl font-semibold text-black-color text-center">
+          {{ downloadAndInstall.name }}
+        </div> -->
+        <div class="text-4  text-black-header-color mt-3 mb-10 text-center">
+          {{ downloadAndInstall.introduction }}
+        </div>
+        <div class="editions-grid">
+          <div
+            v-for="(item, index) in downloadAndInstall.installEditions"
+            :key="index"
+            class="w-93.5 p-10 bg-vp-gray_soft rounded-xl mx-auto"
+          >
+            <p class="text-5 font-semibold text-vp-green1 text-left mb-3">
+              {{ item.name }}
+            </p>
+            <div class="text-3.5 text-gray-hot-code font-medium mt-6 flex items-center mb-5">
+              <Icon icon="icon-duihaolv" class="text-green-success mr-1.25" />
+              <span>{{ item.detail }}</span>
+            </div>
+            <Select
+              :bordered="false"
+              :default-value="item.appAndVersion[0].goodsId"
+              :options="item.appAndVersion.map(i => ({ value: i.goodsId, label: i.goodsName + ' ' + i.goodsVersion }))"
+              class="w-73.5"
+              @change="(value)=>selectChange(value,item)" />
+            <div class="text-3.5 text-gray-hot-code  mt-6">
+              查看<a class="cursor-pointer" :href="`help/doc/205509853639082016?c=209786779925032562`">
+                《 部署文档 》
+              </a>
+            </div>
+            <div class="flex mt-10 items-end">
+              <template v-if="!!item.onlineInstallerDownloadUrl">
+                <Button type="primary" class="mr-2 bg-vp-green1" style="padding: 0;">
+                  <a class="block h-full w-full leading-7.5" style="padding: 0 15px;" :download="dowloadName" :href="item.onlineInstallerDownloadUrl">
+                    <span class="mr-2">{{ button[item.code].name }}</span>
+                    <Icon icon="icon-hengjiantou" />
+                  </a>
+                </Button>
+              </template>
+              <template v-else>
+                <Button type="primary" class="px-4 py-2 mr-3 bg-vp-green1" @click="payButton(item.code)">
+                  <div class=" text-3 leading-3.5 flex items-center  ">
+                    <span class="mr-2">{{ button[item.code].name }}</span>
+                    <Icon icon="icon-hengjiantou" />
+                  </div>
+                </Button>
+              </template>
+  
+              <div
+                v-show="button[item.code].urlType === 'downLoad'"
+                class="flex items-center text-3 font-medium cursor-pointer text-blue-main detail-btn-hover"
+                @click="getGoodsLcs(item.code)"
+              >
+                <Icon icon="icon-huoquxuke" class="mr-1.25 -mt-0.5" />
+                获取许可
               </div>
             </div>
           </div>
         </div>
-        
       </div>
-      <div id="downLoadAnchor" class="opacity-0 absolute" style="bottom: 140px;" />
-    </div>
+    </template>
 
-    <!--下载与安装-->
-    <div ref="download" class="mx-auto py-15">
-      <p class="text-2xl font-semibold section-title px-2">
-        <Icon icon="icon-fuwuqi" />
-        {{ downloadAndInstall.name }}
-      </p>
-      <!-- <div class="text-2xl font-semibold text-black-color text-center">
-        {{ downloadAndInstall.name }}
-      </div> -->
-      <div class="text-4  text-black-header-color mt-3 mb-10 text-center">
-        {{ downloadAndInstall.introduction }}
-      </div>
-      <div class="editions-grid">
-        <div
-          v-for="(item, index) in downloadAndInstall.installEditions"
-          :key="index"
-          class="w-93.5 p-10 bg-vp-gray_soft rounded-xl mx-auto"
-        >
-          <p class="text-5 font-semibold text-vp-green1 text-left mb-5">
-            {{ item.name }}
-          </p>
-          <Select
-            :default-value="item.appAndVersion[0].goodsId"
-            :options="item.appAndVersion.map(i => ({ value: i.goodsId, label: i.goodsName + ' ' + i.goodsVersion }))"
-            class="w-73.5"
-            @change="(value)=>selectChange(value,item)" />
-          <div class="text-3.5 text-gray-hot-code  mt-6">
-            查看<a class="cursor-pointer" :href="`help/doc/205509853639082016?c=209786779925032562`">
-              《 部署文档 》
-            </a>
-          </div>
-          <div class="flex mt-10 items-end">
-            <template v-if="!!item.onlineInstallerDownloadUrl">
-              <Button type="primary" class="mr-2 bg-vp-green1" style="padding: 0;">
-                <a class="block h-full w-full leading-7.5" style="padding: 0 15px;" :download="'dowloadName'" :href="item.onlineInstallerDownloadUrl">
-                  <span class="mr-2">{{ button[item.code].name }}</span>
-                  <Icon icon="icon-hengjiantou" />
-                </a>
-              </Button>
-            </template>
-            <template v-else>
-              <Button type="primary" class="px-4 py-2 mr-3 bg-vp-green1" @click="payButton(item.code)">
-                <div class=" text-3 leading-3.5 flex items-center  ">
-                  <span class="mr-2">{{ button[item.code].name }}</span>
-                  <Icon icon="icon-hengjiantou" />
-                </div>
-              </Button>
-            </template>
-
-            <div
-              v-show="button[item.code].urlType === 'downLoad'"
-              class="flex items-center text-3 font-medium cursor-pointer text-blue-main detail-btn-hover"
-              @click="getGoodsLcs(item.code)"
-            >
-              <Icon icon="icon-huoquxuke" class="mr-1.25 -mt-0.5" />
-              获取许可
-            </div>
-          </div>
-          <div class="text-3.5 text-gray-hot-code font-medium mt-6 flex items-center">
-            <Icon icon="icon-duihaolv" class="text-green-success mr-1.25" />
-            <span>{{ item.detail }}</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <LoginConfirmModal v-model:visible="toLoginVisible" />
+    <AuthConfirmModal v-model:visible="toAuthVisible" />
 
   </div>
 </template>
