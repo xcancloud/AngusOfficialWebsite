@@ -1,146 +1,123 @@
 # 控制器元素
 
-## 开始事务(TRANS_START)
+> `控制器元素` 提供了在测试脚本中控制执行流程、模拟真实用户行为、构造并发场景和流量控制的能力。
 
-用于标记一个事务开始，和结束事务必须成对出现。
-
-| 字段名称    | 类型    | 是否必须 | 长度限制 | 描述                                                                                                                  |
-| ----------- | ------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------------- |
-| target      | enum    | 是       | /        | 编排元素类型，固定值：TRANS_START。                                                                                   |
-| name        | string  | 是       | 400      | 开始事务名称。                                                                                                        |
-| description | string  | 否       | 800      | 开始事务描述。                                                                                                        |
-| enabled     | boolean | 是       | /        | 是否启用开始事务，默认开启。                                                                                          |
-| beforeName  | string  | 否       | 400      | 开始事务之前元素名称(用于控制 Pipeline 中元素顺序)，Pipeline 中第一个元素时为空，非第一个元素为空时取上一个元素名称。 |
-
-当前信息可以通过脚本规范"扩展字段"进行扩展。
-
-一个开始事务的示例：
-
-```yaml
-target: TRANS_START
-name: BusinessTransaction
-description: Business processing start transaction
-enabled: true
-beforeName: Previous pipeline element name
+```mermaid  
+graph TD  
+    C[控制器元素] --> T[事务控制]  
+    C --> W[等待时间]  
+    C --> R[集合点]  
+    C --> L[吞吐量限制]  
+    
+    T --> S(开始事务)  
+    T --> E(结束事务)  
 ```
-    
-## 结束事务(TRANS_END)
 
-用于标记一个事务结束，和开始事务必须成对出现。
-    
-| 字段名称        | 类型   | 是否必须 | 长度限制 | 描述                                                                         |
-| --------------- | ------ | -------- | -------- | ---------------------------------------------------------------------------- |
-| target          | enum   | 是       | /        | 编排元素类型，固定值：TRANS_END。                                            |
-| name            | string | 是       | 400      | 结束事务名称。                                                               |
-| description     | string | 否       | 800      | 结束事务描述。                                                               |
-| beforeName      | string | 否       | 400      | 结束事务之前元素名称(用于控制 Pipeline 中元素顺序)，为空时取上一个元素名称。 |
-| transactionName | string | 是       | 400      | 结束事务对应开始事务名称。                                                   |
+## 公共参数
 
-当前信息可以通过脚本规范"扩展字段"进行扩展。
+| 字段 | 类型 | 必填 | 长度限制 | 说明 |  
+|------|------|------|------|------|  
+| `target` | enum | 是 | - | 控制器类型标识 |  
+| `name` | string | 是 | ≤400字符 | 元素唯一标识名 |  
+| `description` | string | 否 | ≤800字符 | 详细描述说明 |  
+| `enabled` | boolean | 是 | - | 是否启用（默认true） |  
+| `beforeName` | string | 否 | ≤400字符 | 前序元素位置控制 |  
+| `transactionName` | string | 条件 | ≤400字符 | 所属事务名称（事务内元素必填） |  
 
-一个结束事务的示例：
+## 事务控制
 
-```yaml
-target: TRANS_END
-name: BusinessTransaction
-description: Business processing end transaction
-beforeName: Previous pipeline element name
-transactionName: BusinessTransaction
-enabled: true
+### 开始事务(TRANS_START)
+**功能**：标记业务事务起点
+
+| 专用字段 | 类型 | 必填 | 说明 |  
+|----------|------|------|------|  
+| `target` | enum | 是 | 固定值 `TRANS_START` |  
+
+**配置示例**：
+```yaml  
+- target: TRANS_START  
+  name: PaymentProcess  
+  description: Payment transaction start  
+  enabled: true  
+  beforeName: LoginStep  
+```
+
+### 结束事务(TRANS_END)
+**功能**：标记业务事务终点
+
+| 专用字段 | 类型 | 必填 | 说明 |  
+|----------|------|------|------|  
+| `target` | enum | 是 | 固定值 `TRANS_END` |  
+
+**配置示例**：
+```yaml  
+- target: TRANS_END  
+  name: EndPayment  
+  transactionName: PaymentProcess  
+  enabled: true  
+  beforeName: ConfirmStep  
 ```
 
 ## 等待时间(WAITING_TIME)
+**功能**：模拟用户操作思考时间
 
-用于模拟用户在两个连续请求之间的停留时间，模拟真实用户的操作间隔，使测试更接近实际情况。AngusTester 支持添加固定等待时间或随机等待时间两种方式。
+| 专用字段 | 类型 | 必填 | 范围 | 说明 |  
+|----------|------|------|------|------|  
+| `target` | enum | 是 | - | 固定值 `WAITING_TIME` |  
+| `minWaitTimeInMs` | integer | 否 | 1-7,200,000ms | 最小等待时间(ms) |  
+| `maxWaitTimeInMs` | integer | 是 | 1-7,200,000ms | 最大等待时间(ms) |  
 
-| 字段名称        | 类型    | 是否必须 | 大小/长度限制 | 描述                                                                                                                    |
-| --------------- | ------- | -------- | ------------- | ---------------------------------------------------------------------------------------------------------------- |
-| target          | enum    | 是       | /             | 编排元素类型，固定值：WAITING_TIME。                                                                                  |
-| name            | string  | 是       | 400           | 等待时间名称。                                                                                                      |
-| description     | string  | 否       | 800           | 等待时间描述。                                                                                                      |
-| enabled         | boolean | 是       | /             | 是否启用等待时间，默认开启。                                                                                           |
-| beforeName      | string  | 否       | 400           | 等待时间之前元素名称(用于控制 Pipeline 中元素顺序)，Pipeline 中第一个元素时为空，非第一个元素为空时取上一个元素名称。               |
-| transactionName | string  | 否       | 400           | 等待时间所在事务名称(对应开始事务名称)，事务中元素时是必须的。                                                               |
-| minWaitTimeInMs | integer | 否       | 1 ～ 7200000  | 最小等待时间。单位毫秒，必须小于等于 maxWaitTimeInMs，最大 2 x 60 x 60 x 1000(2 小时)。                                    |
-| maxWaitTimeInMs | integer | 是       | 1 ～ 7200000  | 最大等待时间。单位毫秒，最大 2 x 60 x 60 x 1000(2 小时)。                                                                |
+**使用规则**：
+- 仅设置`max`：固定等待时间
+- 同时设置`min+max`：随机等待区间
 
-当前信息可以通过脚本规范"扩展字段"进行扩展。
-
-注意：minWaitTimeInMs 为空时等待固定 maxWaitTimeInMs 时长；minWaitTimeInMs 不为空时，随机生成一个 minWaitTimeInMs 到 maxWaitTimeInMs 之间的值作为等待时长，
-
-一个等待时间的示例：
-
-```yaml
-target: WAITING_TIME
-name: WaitingForEnter
-description: Wait for 10 seconds for the user to enter account and password
-enabled: true
-beforeName: Previous pipeline element name
-transactionName: BusinessTransaction
-minWaitTimeInMs: 1000
-maxWaitTimeInMs: 10000
+**配置示例**：
+```yaml  
+- target: WAITING_TIME  
+  name: FormFillDelay  
+  minWaitTimeInMs: 2000  
+  maxWaitTimeInMs: 5000  
+  transactionName: OrderProcess  
+  beforeName: AddToCart  
 ```
-    
+
 ## 集合点(RENDEZVOUS)
+**功能**：模拟突发高并发场景
 
-用于在发送请求前同时聚集等待请求用户数，以验证同一时刻突增流量或大量用户同时请求时处理效率，如：秒杀场景。
+| 专用字段 | 类型 | 必填 | 范围 | 说明 |  
+|----------|------|------|------|------|  
+| `target` | enum | 是 | - | 固定值 `RENDEZVOUS` |  
+| `threads` | integer | 是 | 1-10000 | 触发所需用户数 |  
+| `timeoutInMs` | integer | 否 | 1-7,200,000ms | 最大等待时间(ms) |  
 
-| 字段名称        | 类型    | 是否必须 | 大小/长度限制 | 描述                                                                                                                                              |
-| --------------- | ------- | -------- | ------------- | ------------------------------------------------------------------------------------------------------------------ |
-| target          | enum    | 是       | /             | 编排元素类型，固定值：RENDEZVOUS。                                                                                                               |
-| name            | string  | 是       | 400           | 集合点名称。                                                                                                                                   |
-| description     | string  | 否       | 800           | 集合点描述。                                                                                                                                   |
-| enabled         | boolean | 是       | /             | 是否启用集合点，默认开启。                                                                                                                        |
-| beforeName      | string  | 否       | 400           | 集合点之前元素名称(用于控制 Pipeline 中元素顺序)，Pipeline 中第一个元素时为空，非第一个元素为空时取上一个元素名称。。                                          |
-| transactionName | string  | 否       | 400           | 集合点所在事务名称(对应开始事务名称)，事务中元素时是必须的。                                                                                           |
-| threads         | integer | 是       | 1 ～ 10000    | 集合线程数。                                                                                                                                   |
-| timeoutInMs     | integer | 否       | 1 ～ 7200000  | 集合 threads 个线程最大等待时间，如果等待 timeoutInMs 时间还没聚集 threads 个线程，则取消当前聚集。单位毫秒，最大 2 x 60 x 60 x 1000(2 小时)。               |
+**注意事项**：  
+⚠️ 线程数需≤测试计划总线程数
 
-当前信息可以通过脚本规范"扩展字段"进行扩展。
-
-注意：集合线程数不应超过执行线程数。
-
-一个集合点的示例：
-
-```yaml
-target: RENDEZVOUS
-name: BusinessRendezvous
-description: "Ensure a minimum of 50 user accesses to the business each time, allow\
-  \ the current visiting user to proceed if 50 users cannot be gathered within a timeout\
-  \ period of 100 milliseconds"
-enabled: true
-beforeName: Previous pipeline element name
-transactionName: BusinessTransaction
-threads: 100
-timeoutInMs: 100
+**配置示例**：
+```yaml  
+- target: RENDEZVOUS  
+  name: FlashSaleSync  
+  threads: 500  
+  timeoutInMs: 300  
+  transactionName: PurchaseFlow  
+  beforeName: CheckInventory  
 ```
 
-## 吞吐量限制器(THROUGHPUT)：
+## 吞吐量限制器(THROUGHPUT)
+**功能**：精确控制请求速率
 
-用于限制每台测试节点1秒内能够同时执行的请求数量，以控制系统的负载和吞吐量。
-    
-| 字段名称         | 类型    | 是否必须 | 大小/长度限制 | 描述                                                                                                                      |
-| ---------------- | ------- | -------- | ------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| target           | enum    | 是       | /             | 编排元素类型，固定值：THROUGHPUT。                                                                                        |
-| name             | string  | 是       | 400           | 吞吐量限制器名称。                                                                                                        |
-| description      | string  | 否       | 800           | 吞吐量限制器描述。                                                                                                        |
-| enabled          | boolean | 是       | /             | 是否启用吞吐量限制器，默认开启。                                                                                          |
-| beforeName       | string  | 否       | 400           | 吞吐量限制器之前元素名称(用于控制 Pipeline 中元素顺序)，Pipeline 中第一个元素时为空，非第一个元素为空时取上一个元素名称。             |
-| transactionName  | string  | 否       | 400           | 吞吐量限制器所在事务名称(对应开始事务名称)，事务中元素时是必须的。                                                              |
-| permitsPerSecond | integer | 是       | 1 ～ 20000000 | 每秒限制最大令牌数(请求数)。                                                                                              |
-| timeoutInMs      | integer | 否       | 1 ～ 7200000  | 获取令牌最大等待时间，为空时将一直等待，直到获取新的令牌。单位毫秒，最大 2 x 60 x 60 x 1000(2 小时)。                              |
+| 专用字段 | 类型 | 必填 | 范围 | 说明 |  
+|----------|------|------|------|------|  
+| `target` | enum | 是 | - | 固定值 `THROUGHPUT` |  
+| `permitsPerSecond` | integer | 是 | 1-20,000,000 | 每秒最大请求数 |  
+| `timeoutInMs` | integer | 否 | 1-7,200,000ms | 获取令牌超时时间(ms) |  
 
-当前信息可以通过脚本规范"扩展字段"进行扩展。
-
-一个吞吐量限制器的示例：
-
-```yaml
-target: THROUGHPUT
-name: BusinessRateLimiter
-description: Limit the maximum number of accesses to Business 2 per second
-enabled: true
-beforeName: Previous pipeline element name
-transactionName: BusinessTransaction
-permitsPerSecond: 50
-timeoutInMs: 100
+**配置示例**：
+```yaml  
+- target: THROUGHPUT  
+  name: APIRateLimit  
+  permitsPerSecond: 800  
+  timeoutInMs: 100  
+  transactionName: APICallSequence  
+  beforeName: GetAuthToken  
 ```
