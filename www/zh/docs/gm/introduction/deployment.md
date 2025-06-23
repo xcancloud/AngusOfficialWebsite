@@ -5,7 +5,7 @@ outline: deep
 
 # AngusGM 部署方案指南
 
-AngusGM 提供多种部署方式，满足不同规模和使用场景的需求。
+> AngusGM 提供多种部署方式，满足不同规模和使用场景的需求。
 
 [点击查看AngusGM部署](../installation/AngusGM){ .md-button .md-button--primary }
 
