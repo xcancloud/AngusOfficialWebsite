@@ -110,7 +110,24 @@ function nav(): DefaultTheme.NavItem[] {
         },
         {text: '专题博客', link: '/zh/blog/index'},
         {text: '视频教学', link: '/zh/video'},
-        {text: '购买&定价', link: '/zh/pricing'}
+        {text: '购买&定价', items: [
+            {
+                text: '定价',
+                link: '/zh/pricing'
+            },
+            {
+                text: 'AngusTester 云服务版',
+                link: '/zh/purchase/angusCloud'
+            },
+            {
+                text: 'AngusTester 私有化版',
+                link: '/zh/purchase/angusPriv'
+            },
+            {
+                text: '节点购买',
+                link: '/zh/purchase/node'
+            },
+        ]}
     ]
 }
 

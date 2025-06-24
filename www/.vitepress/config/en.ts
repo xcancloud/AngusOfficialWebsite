@@ -83,7 +83,24 @@ function nav(): DefaultTheme.NavItem[] {
         },
         {text: 'Blog', link: '/en/blog/index'},
         {text: 'Video', link: '/en/video'},
-        {text: 'Pricing', link: '/en/pricing'}
+        {text: 'Pricing', items: [
+            {
+                text: '定价',
+                link: '/en/pricing'
+            },
+            {
+                text: 'AngusTester 云服务版',
+                link: '/en/purchase/angusCloud'
+            },
+            {
+                text: 'AngusTester 私有化版',
+                link: '/en/purchase/angusPriv'
+            },
+            {
+                text: '节点购买',
+                link: '/en/purchase/node'
+            },
+        ]}
     ]
 }
 
