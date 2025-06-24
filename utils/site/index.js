@@ -105,7 +105,6 @@ const checkSigninStatus = () => {
     setExpireDate(res.data.tokenAttributes.exp);
     return { status: '1', message: '已登录' };
   }).catch(async (e) => {
-    debugger;
     if (e?.response?.status === 401) {
       const refreshToken = cookie.get('refresh_token');
       if (!refreshToken) {
@@ -125,13 +124,13 @@ const checkSigninStatus = () => {
         const { data } = res.data;
         cookie.set('access_token', data.access_token);
         cookie.set('refresh_token', data.refresh_token);
-        debugger;
         // const exp = +dayjs(res.data.datetime).add(res.data.principal.expiresAt, 'millisecond');
         const exp = dayjs(res.data.principal.expiresAt);
         setExpireDate(exp);
         return { status: '1', message: '已登录' };
       }).catch((err) => {
-        debugger;
+        cookie.remove('access_token');
+        return { status: '2', message: messageMap[localeCookie].expire };
       });
     }
     cookie.remove('access_token');

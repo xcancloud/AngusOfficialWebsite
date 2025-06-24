@@ -36,6 +36,7 @@ import OpenBanner from './components/OpenBanner/index.vue';
 import Business from './scenario/business.vue';
 import Ai from './scenario/ai.vue';
 import Deployment from './deployment/index.vue';
+import Pricing from './pricing/index.vue';
 
 
 export default {
@@ -55,6 +56,7 @@ export default {
         app.component('Business', Business);
         app.component('Ai', Ai);
         app.component('Deployment', Deployment);
+        app.component('Pricing', Pricing);
         for (const [name, comp] of Object.entries(ElementIcons)) {
             app.component(name, comp)
         }
