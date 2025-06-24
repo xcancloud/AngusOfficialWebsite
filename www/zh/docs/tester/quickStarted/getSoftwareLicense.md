@@ -43,7 +43,7 @@ graph LR
 ![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/GL_DOWNLOAD.png?fid=223372998432784388&fpt=jIWM6XPM9tOZOYpZnhNxqafuwX96rjl1cN60TPjr)
 
 ## 安装说明
-👉 [AngusTester安装指南](../installation/AngusTester.md)
+👉 [AngusTester安装指南](../installation/AngusTester)
 
 ## 常见问题
 

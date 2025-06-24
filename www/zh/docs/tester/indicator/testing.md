@@ -11,7 +11,7 @@ graph TD
     A --> E[风险管理]  
 ```
 
-点击查看 [测试指标功能介绍](../ui/function/analysisManagement.md)
+点击查看 [测试指标功能介绍](../ui/function/analysisManagement)
 
 ## 核心价值
 - **质量可视化**：实时掌握缺陷分布与修复进度

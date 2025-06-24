@@ -12,11 +12,11 @@
 
 | 任务类型 | 插件标识 | 说明 | 文档链接 |  
 |----------|----------|------|----------|  
-| **HTTP** | Http | HTTP协议接口测试 | [查看详情](elements/http.md)|  
-| **WebSocket** | WebSocket | 实时通信协议测试 | [查看详情](elements/websocket.md) |  
-| **JDBC** | Jdbc | 数据库操作测试 | [查看详情](elements/jdbc.md)|
-| **FTP** | Ftp | 文件传输协议测试 | [查看详情](elements/ftp.md) |  
-| **LDAP** | Ldap | 目录服务协议测试 | [查看详情](elements/ldap.md)|  
-| **Mail** | Mail | 邮件协议测试 | [查看详情](elements/mail.md)|  
-| **SMTP** | Smtp | 邮件发送协议测试 | [查看详情](elements/smtp.md) |  
-| **TCP** | Tcp | TCP协议测试 | [查看详情](elements/tcp.md)|  
+| **HTTP** | Http | HTTP协议接口测试 | [查看详情](elements/http)|  
+| **WebSocket** | WebSocket | 实时通信协议测试 | [查看详情](elements/websocket) |  
+| **JDBC** | Jdbc | 数据库操作测试 | [查看详情](elements/jdbc)|
+| **FTP** | Ftp | 文件传输协议测试 | [查看详情](elements/ftp) |  
+| **LDAP** | Ldap | 目录服务协议测试 | [查看详情](elements/ldap)|  
+| **Mail** | Mail | 邮件协议测试 | [查看详情](elements/mail)|  
+| **SMTP** | Smtp | 邮件发送协议测试 | [查看详情](elements/smtp) |  
+| **TCP** | Tcp | TCP协议测试 | [查看详情](elements/tcp)|  

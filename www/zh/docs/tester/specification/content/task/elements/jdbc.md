@@ -1,29 +1,29 @@
 # Jdbc测试任务
 
-定义一个 Jdbc 协议测试任务，用于 Jdbc 功能、性能、稳定性和自定义测试。
+> `Jdbc测试任务` 定义一个 Jdbc 协议测试任务，用于 Jdbc 功能、性能、稳定性和自定义测试。
 
-| 字段名称        | 类型          | 是否必须 | 长度限制  | 描述                                                                                     |
-| --------------- | ------------- | -------- | --------- |----------------------------------------------------------------------------------------|
-| target          | enum          | 是       | /         | 编排元素类型，固定值：JDBC。                                                                       |
-| name            | string        | 是       | 400       | Jdbc 名称。                                                                               |
-| description     | string        | 否       | 800       | Jdbc 描述。                                                                               |
-| enabled         | boolean       | 是       | /         | 是否启用Jdbc任务，默认开启。                                                                       |
-| beforeName      | string        | 否       | 400       | Jdbc 之前元素名称(用于控制 Pipeline 中元素顺序)，为空时取上一个元素名称。                                          |
-| transactionName | string        | 否       | 400       | Jdbc 所在事务名称(对应开始事务名称)，事务中元素时是必须的。                                                      |
-| type            | enum          | 是       | /         | Sql 类型，支持类型值：SELECT、UPDATE、CALLABLE、PREPARED_SELECT、PREPARED_UPDATE，参数说明请查看下面“查询参数类型”。 |
-| sql             | string        | 是       | 8192      | Sql 语句，支持 Mock 函数和变量。注意：`只支持单个 Sql`。                                                   |
-| maxResultRows   | integer       | 否       | 1 ~ 10000 | 处理查询结果的行数，任何超过的行都将被忽略，默认为 1000 行。                                                      |
-| timeoutInSecond | integer       | 否       | 1 ~ 7200  | Sql 语句执行超时时间，单位秒，不设置时不超时。                                                              |
-| arguments       | array[object] | 否       | /         | Jdbc 输入参数参数，具体请查看下面 Jdbc “输入输出参数”配置说明。                                                 |
-| assertions      | array[object] | 否       | /         | Jdbc 断言配置参数，仅支持 BODY、SIZE 和 DURATION 类型，具体请查看上面 Http “断言”配置说明。                         |
-| variables       | array[object]  | 否       | /        | Jdbc 采样提取变量配置参数，具体请查看“参数化”-“采样提取变量”说明。                                     |
-| datasets        | array[object]  | 否       | /        | Jdbc 数据集参数配置，具体请查看“参数化”-“数据集”说明。                                           |
-| actionOnEOF     | enum           | 否       | /        | 当数据集读取结束时处理方法，支持值：`RECYCLE`-循环读取、默认, `STOP_THREAD`-停止线程。                   |
-| sharingMode     | enum           | 否       | /        | 数据集数据线程共享模式，支持值：`ALL_THREAD`-所有线程共享一份数据、默认, `CURRENT_THREAD`-每个线程各自复制一份数据。 |
+## 主参数清单
 
-当前信息可以通过脚本规范"扩展字段"进行扩展。
+| 字段名称          | 类型          | 是否必须 | 长度/范围  | 描述                                                                                                                  |
+| ----------------- | ------------- | -------- | ---------- |---------------------------------------------------------------------------------------------------------------------|
+| `target`          | enum          | 是       | -          | **任务类型标识**<br>固定值：`JDBC`                                                                                            |
+| `name`            | string        | 是       | ≤400 字符  | **任务唯一标识**<br>示例：`用户数据查询`                                                                                           |
+| `description`     | string        | 否       | ≤800 字符  | **任务详细说明**<br>描述任务目的和执行内容                                                                                           |
+| `enabled`         | boolean       | 是       | -          | **启用状态**<br>`true`：执行任务（默认）<br>`false`：跳过任务                                                                         |
+| `beforeName`      | string        | 否       | ≤400 字符  | **前序任务名称**<br>控制任务执行顺序<br>为空时使用流水线上一个任务                                                                             |
+| `transactionName` | string        | 否       | ≤400 字符  | **事务名称**<br>关联的事务控制器名称<br>事务中元素必填                                                                                   |
+| `type`            | enum          | 是       | -          | **SQL 操作类型**<br>`SELECT`：查询<br>`UPDATE`：更新<br>`CALLABLE`：存储过程<br>`PREPARED_SELECT`：预编译查询<br>`PREPARED_UPDATE`：预编译更新 |
+| `sql`             | string        | 是       | ≤8192 字符 | **SQL 语句**<br>支持变量和 Mock 函数<br>注意：仅支持单个 SQL 语句<br>示例：`SELECT * FROM users WHERE id = {userId}`                      |
+| `maxResultRows`   | integer       | 否       | 1-10000    | **最大结果行数**<br>限制返回行数（默认：1000）<br>超过的行将被忽略                                                                           |
+| `timeoutInSecond` | integer       | 否       | 1-7200     | **执行超时(秒)**<br>默认无超时限制<br>生产环境建议 ≤30 秒                                                                              |
+| `arguments`       | array[object] | 否       | -          | **预编译参数**<br>`PREPARED_*`类型必填<br>格式：`{name, type, value}`                                                           |
+| `assertions`      | array[object] | 否       | -          | **结果断言**<br>支持：`BODY`内容匹配、`SIZE`行数验证、`DURATION`执行耗时<br>配置参考[Http断言说明](http#响应断言(assertions))                        |
+| `variables`       | array[object] | 否       | -          | **结果变量提取**<br>从查询结果提取变量<br>配置参考"参数化-采样提取变量"<br>[查看采样变量定义](../../parameterization)                                   |
+| `datasets`        | array[object] | 否       | -          | **测试数据集**<br>驱动参数化测试<br>支持 CSV/JSON 格式<br>配置参考"参数化-数据集"<br>[查看数据集定义](../../parameterization)                        |
+| `actionOnEOF`     | enum          | 否       | -          | **数据集结束策略**<br>`RECYCLE`：循环使用（默认）<br>`STOP_THREAD`：停止线程                                                             |
+| `sharingMode`     | enum          | 否       | -          | **数据共享模式**<br>`ALL_THREAD`：线程共享（默认）<br>`CURRENT_THREAD`：线程独立副本                                                      |
 
-Jdbc 完整参数配置示例：
+*Http完整结构示例：*
 
 ```yaml
 - target: JDBC
@@ -34,60 +34,116 @@ Jdbc 完整参数配置示例：
   transactionName: BusinessTransaction
   sql: SELECT * FROM {table} WHERE username = ?;
   arguments:
-    - type: varchar
-      value: {username}
-      inout: IN
+    # 预编译参数 ...
   assertions:
-    - name: Assert that the query result includes JohnDoe.
-      enabled: true
-      type: BODY
-      parameterName: username
-      expected: JohnDoe
-      assertionCondition: EQUAL
-    - name: Assert that the query SQL response time does not exceed 100 milliseconds.
-      enabled: true
-      type: DURATION
-      expected: 100
-      assertionCondition: LESS_THAN
+    # 断言参数配置 ...
   variables:
-    - name: table
-      value: user
+    # 变量参数配置 ...
   datasets:
-    - name: MockDataset
-      parameters:
-        - name: username
-          value: '@Name()'
+    # 数据集参数配置 ...
   actionOnEOF: RECYCLE
   sharingMode: ALL_THREAD
 ```
 
-## 查询参数类型(type)
+### 查询参数类型(type)
 
-- SELECT：查询语句，对应 SQL “Select Statement”。
-- UPDATE：修改语句，对应 SQL “Update Statement”。
-- CALLABLE：函数或存储过程，对应 SQL “Callable Statement”。
-- PREPARED_SELECT：预编译查询语句，对应 SQL “Prepared Select Statement”。
-- PREPARED_UPDATE：预编译修改语句，对应 SQL “Prepared Update Statement”。
+| 类型                | SQL 语句类型 | 使用场景                         | 特点                               |
+| ------------------- | ------------ | -------------------------------- | ---------------------------------- |
+| **SELECT**          | 标准查询语句 | 简单数据检索<br>不需要参数化     | 直连执行<br>结果集处理             |
+| **UPDATE**          | 数据修改语句 | 数据插入/更新/删除<br>表结构修改 | 返回影响行数<br>自动事务提交       |
+| **CALLABLE**        | 存储过程调用 | 执行业务逻辑<br>处理复杂操作     | 支持 IN/OUT 参数<br>返回多个结果集 |
+| **PREPARED_SELECT** | 预编译查询   | 重复查询优化<br>安全参数化       | 防 SQL 注入<br>执行计划复用        |
+| **PREPARED_UPDATE** | 预编译修改   | 批量数据操作<br>安全更新         | 高效执行<br>参数类型安全           |
 
-## 输入输出参数(arguments)
+### 输入输出参数(arguments)
 
-配置在预编译 SQL、存储过程或函数中参数信息。预编译语句，存储过程或函数中的参数类型在数量和顺序上必须一致。如果类型未指定，它们将作为 VARCHAR 进行处理。
+**`输入输出参数`用于配置在预编译 SQL、存储过程或函数中参数信息。**  
 
-| 字段名称 | 类型   | 是否必须 | 长度限制 | 描述                                                                                 |
-| -------- | ------ | -------- | -------- | ------------------------------------------------------------------------------------ |
-| type     | string | 否       | 80       | Jdbc 参数类型，如：INTEGER、DECIMAL、DOUBLE、CHAR、VARCHAR、DATE 等。                |
-| inout    | enum   | 是       | /        | 输入输出类型，支持值：IN、OUT、INOUT，具体参数请查看下面“输入输出参数类型”配置说明。 |
-| value    | string | 是       | /        | 输入输出参数值。                                                                     |
+::: warning 注意事项
+> 预编译语句，存储过程或函数中的参数类型在数量和顺序上必须一致。  
+> 如果类型未指定，它们将作为 VARCHAR 进行处理。  
+:::
+
+| 字段名称 | 类型 | 必填 | 长度限制 | 描述 |
+|----------|------|------|----------|------|
+| `type` | string | 否 | ≤80字符 | **参数数据类型**<br>支持：`INTEGER`, `DECIMAL`, `DOUBLE`, `CHAR`, `VARCHAR`, `DATE`, `TIMESTAMP`<br>默认：`VARCHAR` |
+| `inout` | enum | 是 | - | **参数传递方向**<br>`IN`：输入参数<br>`OUT`：输出参数<br>`INOUT`：输入输出参数 |
+| `value` | string | 是 | - | **参数值**<br>支持常量、变量表达式<br>示例：`123`, `{userId}`, `NOW()` |
 
 输入输出参数类型(inout)：
 
-- IN 参数：用于向存储过程或函数传递输入值。这是传递给存储过程或函数的常规输入参数。存储过程或函数可以使用这些参数执行操作，但不能修改其值。
-- OUT 参数：用于从存储过程或函数返回输出值。这些参数允许存储过程或函数将计算的结果传递给调用者。调用者在调用存储过程或函数之前不需要为 OUT 参数分配任何值，但在调用后可以检索其值。
-- INOUT 参数：既用作输入参数又用作输出参数。允许传递输入值，并且存储过程或函数可以修改该值，并在调用结束时将其返回给调用者。
+#### 1. IN 参数（输入）
+```mermaid
+sequenceDiagram
+    应用->>数据库: 传递参数值
+    数据库->>应用: 返回执行结果
+```
+- **作用**：向SQL传递输入值
+- **特点**：
+    - 仅用于输入
+    - 值在调用前确定
+    - 存储过程不能修改其值
+- **示例**：
+  ```sql
+  -- SQL
+  SELECT * FROM users WHERE id = ?
+  ```
+  ```yaml
+  arguments:
+    - type: "INTEGER"
+      inout: "IN"
+      value: "1001"
+  ```
+
+#### 2. OUT 参数（输出）
+```mermaid
+sequenceDiagram
+    应用->>数据库: 调用存储过程
+    数据库->>应用: 返回输出参数值
+```
+- **作用**：从SQL返回结果值
+- **特点**：
+    - 仅用于输出
+    - 调用前无需赋值
+    - 存储过程设置其值
+- **示例**：
+  ```sql
+  -- 存储过程
+  CREATE PROCEDURE get_count(OUT user_count INT)
+  ```
+  ```yaml
+  arguments:
+    - type: "INTEGER"
+      inout: "OUT"
+      value: ""  # 输出结果接收变量
+  ```
+
+#### 3. INOUT 参数（输入输出）
+```mermaid
+sequenceDiagram
+    应用->>数据库: 传递初始值
+    数据库->>应用: 返回修改后的值
+```
+- **作用**：双向传递数据
+- **特点**：
+    - 输入输出双功能
+    - 调用前需赋初始值
+    - 存储过程可修改其值
+- **示例**：
+  ```sql
+  -- 存储过程
+  CREATE PROCEDURE update_balance(INOUT balance DECIMAL(10,2))
+  ```
+  ```yaml
+  arguments:
+    - type: "DECIMAL"
+      inout: "INOUT"
+      value: "1000.00"
+  ```
 
 ## 脚本示例(target)
 
-查询语句示例：
+### 查询语句示例
 
 ```yaml
 - target: JDBC
@@ -100,7 +156,7 @@ Jdbc 完整参数配置示例：
   timeoutInSecond: 60
 ```
 
-修改语句示例：
+### 修改语句示例
 
 ```yaml
 - target: JDBC
@@ -112,7 +168,7 @@ Jdbc 完整参数配置示例：
   timeoutInSecond: 60
 ```
 
-调用函数示例：
+### 调用函数示例
 
 ```yaml
 - target: JDBC
@@ -130,7 +186,7 @@ Jdbc 完整参数配置示例：
     inout: IN
 ```
 
-调用存储过程示例：
+### 调用存储过程示例
 
 ```yaml
 - target: JDBC
@@ -148,7 +204,7 @@ Jdbc 完整参数配置示例：
     inout: OUT
 ```
 
-预编译查询语句示例：
+### 预编译查询语句示例
 
 ```yaml
 - target: JDBC
@@ -166,7 +222,7 @@ Jdbc 完整参数配置示例：
     inout: IN
 ```
 
-预编译修改语句示例：
+### 预编译修改语句示例
 
 ```yaml
 - target: JDBC

@@ -43,7 +43,7 @@ task:                   # 执行任务配置
         url: http://serv01-sample.angusmock.cloud:30010/benchmark     # 请求接口路径
 ```
 
-> 💡 完整参数说明请查看：[AngusTester脚本规范](../specification/introduction.md)
+> 💡 完整参数说明请查看：[AngusTester脚本规范](../specification/introduction)
 
 ### 3. 保存并使用
 1. 点击 **「保存脚本」** 按钮完成创建

@@ -19,10 +19,10 @@ AngusTester提供以下三种核心任务类型，满足不同测试需求：
 
 | 字段名称 | 类型 | 必填 | 描述                                               |  
 |----------|------|------|--------------------------------------------------|  
-| `arguments` | object | 否 | **插件专用配置**<br>不同协议的扩展参数 [查看详情](task/pluginConfiguration.md) |  
-| `pipelines` | object | 否 | **测试流程编排**<br>构建多步骤测试场景（详见测试编排说明）[查看详情](task/pipeline.md) |  
-| `mockData` | object | 否 | **数据生成配置**<br>定制化测试数据生成（详见模拟数据说明）[查看详情](task/mockDataTask.md) |  
-| `mockApis` | object | 否 | **接口模拟配置**<br>虚拟API服务设置（详见模拟接口说明）[查看详情](task/mockApisTask.md) |  
+| `arguments` | object | 否 | **插件专用配置**<br>不同协议的扩展参数 [查看详情](task/pluginConfiguration) |  
+| `pipelines` | object | 否 | **测试流程编排**<br>构建多步骤测试场景（详见测试编排说明）[查看详情](task/pipeline) |  
+| `mockData` | object | 否 | **数据生成配置**<br>定制化测试数据生成（详见模拟数据说明）[查看详情](task/mockDataTask) |  
+| `mockApis` | object | 否 | **接口模拟配置**<br>虚拟API服务设置（详见模拟接口说明）[查看详情](task/mockApisTask) |  
 
 ## 配置测试任务示例
 

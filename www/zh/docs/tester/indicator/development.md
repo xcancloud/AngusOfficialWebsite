@@ -11,7 +11,7 @@ graph TD
     A --> E[风险管理]  
 ```
 
-点击查看 [研发指标功能介绍](../ui/task/analysisManagement.md)
+点击查看 [研发指标功能介绍](../ui/task/analysisManagement)
 
 ## 核心价值
 - **实时项目洞察**：精准掌握进度与风险

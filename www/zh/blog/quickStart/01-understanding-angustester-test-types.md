@@ -19,7 +19,7 @@ AngusTester提供四类专业测试类型，覆盖不同质量验证需求：
 | **稳定性测试** | 保障系统长期运行可靠性       | 恒定负载、持续监控     | 内存泄漏检测 · 资源监控 · 生产稳定性验证 · SLA符合性检验                 |
 | **自定义测试** | 满足特定场景验证需求         | 全参数灵活配置         | 混合场景测试 · 临时验证 · 预生产检查 · 特殊业务模型                      |
 
-[查看完整文档](../../docs/tester/specification/content/type.md)
+[查看完整文档](../../docs/tester/specification/content/type)
 
 ## 参数配置模型
 
@@ -54,7 +54,7 @@ AngusTester提供四类专业测试类型，覆盖不同质量验证需求：
 | **测试时长(Duration)** | 测试执行总时间 (max=24h)      | 稳定性验证核心参数           |
 | **增压梯度(RampUp)** | 压力递增步长                  | 系统弹性能力观测             |
 
-[查看完整文档](../../docs/tester/specification/content/configuration.md)
+[查看完整文档](../../docs/tester/specification/content/configuration)
 
 ### 系统性能指标
 
@@ -65,7 +65,7 @@ AngusTester提供四类专业测试类型，覆盖不同质量验证需求：
 | **错误率(ErrorRate)**  | 失败请求占比                  | 系统可靠性关键指标           |
 | **百分位延迟(P99)**    | 99%请求的响应时间             | 高保障SLA验证依据           |
 
-[查看完整文档](../../docs/tester/indicator/performance.md)
+[查看完整文档](../../docs/tester/indicator/performance)
 
 ### 资源监控指标
 
@@ -76,7 +76,7 @@ AngusTester提供四类专业测试类型，覆盖不同质量验证需求：
 | **磁盘使用率** | 存储I/O资源使用率 |
 | **网络使用率** | 网络带宽占用情况  |
 
-[查看完整文档](../../docs/tester/indicator/development.md)
+[查看完整文档](../../docs/tester/indicator/development)
 
 ## 类型-指标映射模型
 
@@ -109,7 +109,7 @@ AngusTester提供四类专业测试类型，覆盖不同质量验证需求：
 | **集合点(RENDEZVOUS)**  | 模拟流量洪峰场景             | 聚集用户数/超时阈值          |
 | **吞吐量控制器(THROUGHPUT)** | 流量整形控制               | TPS限制/平滑因子             |
 
-[查看完整文档](../../docs/tester/specification/content/task/elements/controller.md)
+[查看完整文档](../../docs/tester/specification/content/task/elements/controller)
 
 ### 编排规范
 

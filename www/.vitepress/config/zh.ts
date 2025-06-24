@@ -960,6 +960,10 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                     link: '/quota',
                 },
                 {
+                    text: '安装部署相关问题',
+                    link: '/deployment',
+                },
+                {
                     text: '权限相关问题',
                     link: '/permission',
                 }

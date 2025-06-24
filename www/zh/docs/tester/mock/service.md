@@ -4,7 +4,7 @@
 > - 可在`8核CPU`上实现**每秒20万+ HTTP请求**的处理能力。  
 > - 它解决了传统模拟工具的局限，通过深度行为模拟和实时监控，提供真实API场景的完整模拟方案。
 
-点击查看：[安装AngusMockService](../installation/AngusMockService.md)
+点击查看：[安装AngusMockService](../installation/AngusMockService)
 
 ## 核心优势
 

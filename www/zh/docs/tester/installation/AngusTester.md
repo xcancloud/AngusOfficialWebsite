@@ -509,6 +509,11 @@ EUREKA_USER_PASSWORD=eureka
 #-----------------------------------------------------------------------------------
 OAUTH2_INTROSPECT_CLIENT_ID=client-credentials-introspect-client
 OAUTH2_INTROSPECT_CLIENT_SECRET=secret
+
+#-----------------------------------------------------------------------------------
+# 关闭不受信自签SSL证书验证
+#-----------------------------------------------------------------------------------
+DISABLE_SSL_VERIFICATION=false
 ```
 
 - Nginx代理配置(nginx.conf)

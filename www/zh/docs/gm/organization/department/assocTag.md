@@ -38,4 +38,4 @@ outline: deep
 | 云服务版   | `10个` | 提交[工单申请](https://wo.xcan.cloud/workorders/create) |
 | 私有部署版 | `10个` | 系统管理员可以直接按需求修改配额                                 |
 
-> 提示：实时配额可在[资源配额页面](../../introduction/quotas.md)查看`组织关联标签数`。
+> 提示：实时配额可在[资源配额页面](../../introduction/quotas)查看`组织关联标签数`。

@@ -7,7 +7,7 @@ outline: deep
 
 > AngusRunner **作为AngusTester分布式测试系统的任务执行器**，提供两大核心能力：
 > 1. **执行远程任务**：执行控制器(AngusTester)下发给代理程序(AngusAgent)的运行测试和生成数据任务，并将测试结果发送到服务端。
-> 2. **执行本地任务**：提供[AngusRunner命令行](../command/AngusRunner.md)方式运行本地模式(LOCAL)测试和生成数据任务，执行结果输出到控制台。
+> 2. **执行本地任务**：提供[AngusRunner命令行](../command/AngusRunner)方式运行本地模式(LOCAL)测试和生成数据任务，执行结果输出到控制台。
 
 ::: warning 注意
 1. 默认安装 AngusAgent 时会自动包含 AngusRunner（执行器）
@@ -60,7 +60,7 @@ outline: deep
 
 ## 三、运行
 
-请查看：[AngusRunner命令行](../command/AngusRunner.md)。
+请查看：[AngusRunner命令行](../command/AngusRunner)。
 
 ## 四、配置参考
 

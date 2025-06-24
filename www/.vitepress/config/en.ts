@@ -932,6 +932,10 @@ function gmDocsSidebar(): DefaultTheme.SidebarItem[] {
                     link: '/quota',
                 },
                 {
+                    text: 'Deployment ',
+                    link: '/deployment',
+                },
+                {
                     text: 'Permission Related Questions',
                     link: '/permission',
                 }

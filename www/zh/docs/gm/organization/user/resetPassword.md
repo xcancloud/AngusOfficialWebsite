@@ -20,7 +20,7 @@ outline: deep
 1. 在登录页面点击 **「忘记密码？」**
 2. 输入账户绑定的 **邮箱或手机号**
 3. 完成安全验证（短信/邮件验证码）
-4. 设置新密码（需符合[密码策略](../../system/securitySetting/editPasswordPolicy.md)）
+4. 设置新密码（需符合[密码策略](../../system/securitySetting/editPasswordPolicy)）
 5. 使用新密码重新登录
 
 ### 场景二：主动修改密码（登录状态）

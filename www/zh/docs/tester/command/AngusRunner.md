@@ -3,7 +3,7 @@
 > `AngusRunner` 是 AngusTester 提供的命令行工具，支持在本地环境执行测试脚本、生成模拟数据，并可将测试结果同步至服务端，适用于自动化集成和持续测试场景。
 
 ## 安装准备
-使用前请先安装执行程序： 👉 [安装AngusRunner执行程序](../installation/AngusRunner.md)
+使用前请先安装执行程序： 👉 [安装AngusRunner执行程序](../installation/AngusRunner)
 
 ## 基本命令格式
 ```bash

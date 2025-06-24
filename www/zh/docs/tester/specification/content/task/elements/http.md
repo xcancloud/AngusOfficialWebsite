@@ -1,6 +1,6 @@
-# HTTP测试任务
+# Http测试任务
 
-> `HTTP测试任务` 定义一个 Http 协议测试任务，用于 Http 功能、性能、稳定性和自定义测试。
+> `Http测试任务` 定义一个 Http 协议测试任务，用于 Http 功能、性能、稳定性和自定义测试。
 
 ```mermaid  
 graph TD  
@@ -24,22 +24,22 @@ graph TD
 
 ## 主参数清单
 
-| 参数 | 类型 | 必填 | 长度限制 | 说明                                                                    |  
-|------|------|------|------|-----------------------------------------------------------------------|  
-| `target` | enum | 是 | - | **任务类型标识**<br>固定值 `HTTP`                                              |  
-| `name` | string | 是 | ≤400字符 | **接口标识名称**<br>测试场景中的唯一标识                                              |  
-| `description` | string | 否 | ≤800字符 | **详细功能描述**<br>说明接口业务用途                                                |  
-| `enabled` | boolean | 是 | - | **启用状态**<br>`true`：执行该接口（默认）<br>`false`：跳过该接口                         |  
-| `beforeName` | string | 否 | ≤400字符 | **执行顺序控制**<br>指定前序任务名称，确保执行顺序                                         |  
-| `transactionName` | string | 否 | ≤400字符 | **事务归属标识**<br>关联事务控制器的开始事务名称                                          |  
-| `apisId` | integer | 否 | - | **接口资源关联**<br>关联API仓库ID（测试结果自动回写）                                     |  
-| `caseId` | integer | 否 | - | **测试用例关联**<br>关联测试用例ID（测试结果自动回写）                                      |  
-| `request` | object | 是 | - | **请求配置**<br>定义请求方法/URL/参数/认证等                                         |  
-| `assertions` | array[object] | 否 | - | **结果验证规则**<br>设置响应校验条件                                                |  
-| `variables` | array[object] | 否 | - | **动态采样变量提取**<br>从响应中提取值供后续使用<br>[查看采样变量定义](../../parameterization.md) |  
-| `datasets` | array[object] | 否 | - | **测试数据集**<br>驱动多场景数据测试<br>[查看数据集定义](../../parameterization.md)        |  
-| `actionOnEOF` | enum | 否 | - | **数据集结束策略**<br>`RECYCLE`：循环使用（默认）<br>`STOP_THREAD`：停止线程               |  
-| `sharingMode` | enum | 否 | - | **数据共享模式**<br>`ALL_THREAD`：线程共享（默认）<br>`CURRENT_THREAD`：线程独立          |  
+| 参数              | 类型          | 必填 | 长度限制  | 说明                                                                                              |
+| ----------------- | ------------- | ---- | --------- | ------------------------------------------------------------------------------------------------- |
+| `target`          | enum          | 是   | -         | **任务类型标识**<br>固定值 `HTTP`                                                                 |
+| `name`            | string        | 是   | ≤400 字符 | **接口标识名称**<br>测试场景中的唯一标识                                                          |
+| `description`     | string        | 否   | ≤800 字符 | **详细功能描述**<br>说明接口业务用途                                                              |
+| `enabled`         | boolean       | 是   | -         | **启用状态**<br>`true`：执行该接口（默认）<br>`false`：跳过该接口                                 |
+| `beforeName`      | string        | 否   | ≤400 字符 | **执行顺序控制**<br>指定前序任务名称，确保执行顺序                                                |
+| `transactionName` | string        | 否   | ≤400 字符 | **事务归属标识**<br>关联事务控制器的开始事务名称                                                  |
+| `apisId`          | integer       | 否   | -         | **接口资源关联**<br>关联 API 仓库 ID（测试结果自动回写）                                          |
+| `caseId`          | integer       | 否   | -         | **测试用例关联**<br>关联测试用例 ID（测试结果自动回写）                                           |
+| `request`         | object        | 是   | -         | **请求配置**<br>定义请求方法/URL/参数/认证等                                                      |
+| `assertions`      | array[object] | 否   | -         | **结果验证规则**<br>设置响应校验条件                                                              |
+| `variables`       | array[object] | 否   | -         | **动态采样变量提取**<br>从响应中提取值供后续使用<br>[查看采样变量定义](../../parameterization) |
+| `datasets`        | array[object] | 否   | -         | **测试数据集**<br>驱动多场景数据测试<br>[查看数据集定义](../../parameterization)               |
+| `actionOnEOF`     | enum          | 否   | -         | **数据集结束策略**<br>`RECYCLE`：循环使用（默认）<br>`STOP_THREAD`：停止线程                      |
+| `sharingMode`     | enum          | 否   | -         | **数据共享模式**<br>`ALL_THREAD`：线程共享（默认）<br>`CURRENT_THREAD`：线程独立                  |
 
 **关键参数说明：**
   1. **事务控制** (`transactionName`)
@@ -55,7 +55,7 @@ graph TD
       - 实现测试结果自动同步到API仓库/测试用例
       - 支持持续集成报告自动生成
 
-*Http完整示例结构：*
+*Http完整结构示例：*
 
 ```yaml
 - target: HTTP
@@ -78,7 +78,7 @@ graph TD
   sharingMode: ALL_THREAD
 ```
 
-## 请求构建(request)
+### 请求构建(request)
 
 | 参数 | 类型 | 必填 | 限制 | 说明 |  
 |------|------|------|------|------|  
@@ -100,6 +100,7 @@ https://api.example.com/v1/users?role=admin&status=active
 ```
 
 *请求完整示例结构：*
+
 ```yaml
 request:
   method: PUT
@@ -132,6 +133,7 @@ request:
 | `description` | string | 否 | ≤800字符 | **变量描述**<br>说明变量用途 |  
 
 *服务器配置示例*：
+
 ```yaml  
 server:
   url: "http://{env}-sample.angusmock.cloud:660"

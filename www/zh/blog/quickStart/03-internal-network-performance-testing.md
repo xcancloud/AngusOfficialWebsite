@@ -51,7 +51,7 @@ graph LR
 
 ### 步骤2：安装节点代理
 
-安装节点代理服务，安装过程请参考：[AngusAgent 安装](../../docs/tester/installation/AngusAgent.md)，推荐以"在线安装"方式安装。
+安装节点代理服务，安装过程请参考：[AngusAgent 安装](../../docs/tester/installation/AngusAgent)，推荐以"在线安装"方式安装。
 
 ### 步骤3：节点状态验证
 

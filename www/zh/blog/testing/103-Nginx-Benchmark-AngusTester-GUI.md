@@ -8,7 +8,7 @@ tag: Testing
 
 ::: tip 测试目的
 > 1. 验证 AngusTester 在 HTTP 协议基准测试(最小延迟小于1毫秒)时的性能表现。
-> 2. 演示 AngusTester 图形化界面(GUI)测试的一般步骤。命令行(CLI)方式测试过程和结果请查看：[AngusTester和JMeter HTTP基准测试结果比较](104-Nginx-Benchmark-AngusTester-vs-Jmeter.md)
+> 2. 演示 AngusTester 图形化界面(GUI)测试的一般步骤。命令行(CLI)方式测试过程和结果请查看：[AngusTester和JMeter HTTP基准测试结果比较](104-Nginx-Benchmark-AngusTester-vs-Jmeter)
 :::
 
 ## 一、测试环境

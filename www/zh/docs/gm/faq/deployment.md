@@ -17,9 +17,9 @@
 
 #### **Q3：如何验证安装成功？**
 > 1. 访问健康检查接口：  
-     >    `http://服务器IP:8901/health`
+>    `http://服务器IP:8901/health`
 > 2. 查看控制台日志，下面启动成功字样：
-     >    ```log  
+>    ```log  
 >    [INFO] Application started successfully 
 >    ```  
 
@@ -33,10 +33,10 @@
 > 🆓 **免费政策**：
 > ```mermaid  
 > graph LR
->   AngusTester --> 社区版
->   AngusTester --> 云服务版
->   AngusTester --> 企业版本版
->   AngusTester --> 数据中心版
+>   AngusGM --> 社区版
+>   AngusGM --> 云服务版
+>   AngusGM --> 企业版本版
+>   AngusGM --> 数据中心版
 >   
 >   社区版 --> 完全免费
 >   云服务版 --> 按用量计费

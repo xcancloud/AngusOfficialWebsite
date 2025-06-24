@@ -53,4 +53,4 @@ graph TD
 | 云服务版   | `200个` | 提交[工单申请](https://wo.xcan.cloud/workorders/create) |
 | 私有部署版 | `200个` | 系统管理员可以直接按需求修改配额                                 |
 
-> 提示：实时配额可在[资源配额页面](../../introduction/quotas.md)查看`用户关联组数`。
+> 提示：实时配额可在[资源配额页面](../../introduction/quotas)查看`用户关联组数`。

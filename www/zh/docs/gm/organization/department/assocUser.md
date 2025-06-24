@@ -52,4 +52,4 @@ outline: deep
 | 云服务版   | `200个` | 提交[工单申请](https://wo.xcan.cloud/workorders/create) |
 | 私有部署版 | `200个` | 联系客户经理升级许可证                                 |
 
-> 提示：实时配额可在[资源配额页面](../../introduction/quotas.md)查看`部门用户数`。
+> 提示：实时配额可在[资源配额页面](../../introduction/quotas)查看`部门用户数`。
