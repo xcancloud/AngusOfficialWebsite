@@ -39,7 +39,7 @@ import Deployment from './deployment/index.vue';
 import Pricing from './pricing/index.vue';
 import AngusCloud from './purchase/angusCloud.vue';
 import Pay from './pay/index.vue';
-
+import OrderDone from './order/index.vue';
 
 
 export default {
@@ -62,6 +62,7 @@ export default {
         app.component('Pricing', Pricing);
         app.component('AngusCloud', AngusCloud);
         app.component('Pay', Pay);
+        app.component('OrderDone', OrderDone);
         for (const [name, comp] of Object.entries(ElementIcons)) {
             app.component(name, comp)
         }

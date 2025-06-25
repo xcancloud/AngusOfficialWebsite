@@ -2,8 +2,9 @@ import axios from 'axios';
 import cookie from 'js-cookie';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
 import { angusTools } from '../index';
+import { getUrl } from '../site/index';
 
-const { http, PUB_ESS } = angusTools;
+const { http, PUB_ESS,  } = angusTools;
 
 
 import { toSign } from '../site';
@@ -39,11 +40,11 @@ httpClient.interceptors.request.use(async (config) => {
       config.headers.Authorization = `Bearer ${cookie.get('access_token')}`;
     }
 
-    if (process.env.NODE_ENV === 'production') {
+    if (import.meta.env.NODE_ENV === 'production') {
       if (config.url.includes('/filepxy/')) {
-        config.url = process.env.VUE_APP_FILES + config.url;
+        config.url = getUrl('files') + config.url;
       } else {
-        config.url = process.env.VUE_APP_APIS + config.url;
+        config.url = getUrl('apis') + config.url;
       }
     }
 
@@ -102,16 +103,16 @@ httpClient.interceptors.response.use((response) => {
         }
         const params = {
           refreshToken,
-          clientId: process.env.VUE_APP_CLIENTID,
-          clientSecret: process.env.VUE_APP_CLIENTSECRET,
+          clientId: import.meta.env.VITE_APP_CLIENTID,
+          clientSecret: import.meta.env.VITE_APP_CLIENTSECRET,
           scope: 'sign'
         };
         isRefreshing = true;
         let renewurl = `${PUB_ESS}/auth/user/renew?` + getURLSearchParams(params, true);
-        if (process.env.NODE_ENV === 'production') {
-          renewurl = process.env.VUE_APP_APIS + renewurl;
+        if (import.meta.env.NODE_ENV === 'production') {
+          renewurl = import.meta.env.VITE_APP_APIS + renewurl;
         }
-        const [error, res] = await to(axios.post(renewurl));
+        const [error, res] = await to(axios.post(renewurl, params));
         isRefreshing = false;
         if (error) {
           toSign(true);
