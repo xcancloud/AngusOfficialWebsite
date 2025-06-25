@@ -1,21 +1,22 @@
 <script lang="ts" setup>
 import { ref, watch, computed, onMounted } from 'vue';
-import { Alert, Button, Checkbox, Select, Radio, Popover, InputNumber, RadioGroup } from 'ant-design-vue';
+import { Alert, Button, Checkbox, Select, SelectOption, Radio, Popover, InputNumber, RadioGroup } from 'ant-design-vue';
 import { GM, ESS, PUB_ESS } from '@xcan-angus/tools';
-import { useRoute } from 'vitepress';
+import { useRoute, useRouter } from 'vitepress';
 
-
+import { isSignin } from '@/utils/site/index';
 import { getSpecInfo } from './pricing';
 import http from '@/utils/http';
 import { round } from '@/utils/math';
 import { maxVersion } from '@/utils/version';
-// import InputNumber from '@/components/InputNumber/index.vue';
 import { getUrl } from '@/utils/site';
-import AuthConfirmModel from '../components/authConfirmModel.vue';
+import { getCurrentLanguage } from '@/utils/index';
 
 const route = useRoute();
+const router = useRouter();
 const goodsCode = 'AngusTester';
 const loginVisible = ref(false);
+const authVisible = ref(false);
 
 const taskInputError = ref(false);
 const nodeInputError = ref(false);
@@ -610,6 +611,15 @@ const transformNumber = (num) => {
 };
 
 const createOrder = async () => {
+  const signinFlag = await isSignin()
+  if (!signinFlag) {
+    loginVisible.value = true;
+    return;
+  }
+  if (!audited) {
+    authVisible.value = true;
+    return;
+  }
   if (!goodsInfo.value) {
     return;
   }
@@ -754,21 +764,34 @@ const createOrder = async () => {
     return;
   }
 
+  const languagePath = getCurrentLanguage();
   if (+params.payAmount === 0) {
-    // this.$router.push(`/order-done/${data.id}`);
+    router.go(`${languagePath}/order-done?orderId=${data.id}`);
     return;
   }
-
-  // this.$router.push(`/pay/${data.id}`);
+  router.go(`${languagePath}/pay?orderId=${data.id}`);
 }
 
 
-
+const userInfo = ref();
+const audited = ref(false); // 是否实名认证
 onMounted(async () => {
   await getCoupon();
   await loadQuota();
   await setLatestApp();
   initializeData();
+  const signinFlag = await isSignin();
+  if (!signinFlag) {
+    loginVisible.value = true;
+  } else {
+    const [error, { data }] = await http.get(`${GM}/user/current`);
+    if (error) {
+      return;
+    }
+    userInfo.value = data;
+    audited.value = data.tenantRealNameStatus?.value === 'AUDITED'
+  }
+
 
   watch(() => pureAmount.value, () => {
     if (hadSetCouponId.value) {
@@ -1112,9 +1135,7 @@ onMounted(async () => {
             v-model:value="couponId"
             allow-clear
             style="width: 318px;"
-            :placeholder="couponPlaceholder"
-            :get-popup-container="getPopupContainer"
-          >
+            :placeholder="couponPlaceholder">
             <template #notFoundContent>
               <div class="flex justify-center">
                 无可用优惠券
@@ -1298,7 +1319,7 @@ onMounted(async () => {
             </div>
           </div>
           <div class="inner-footer-col">
-            <Checkbox v-model:value="agreeFlag" class="col-label">
+            <Checkbox v-model:checked="agreeFlag" class="col-label">
               <span>我已同意</span>
               <span class="link">《晓蚕云产品服务协议》</span>
             </Checkbox>
@@ -1313,6 +1334,7 @@ onMounted(async () => {
     </div>
 
     <LoginConfirmModal v-model:visible="loginVisible" />
+    <AuthConfirmModal v-model:visible="authVisible" />
   </div>
 </template>
 <style scoped>
