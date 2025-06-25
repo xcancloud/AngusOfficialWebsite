@@ -56,26 +56,27 @@ D --> D1[并发执行回归测试]
 
 ## 服务信息
 
-| 参数      | 字段名               | 类型       | 是否必须 | 长度限制  | 说明                                                                                                                                                 |
-| -------- | -------------------- | ---------- | -------- |-------| ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **ID**  | `id`                 | `bigint`   | 否       | /     | 服务 ID，系统唯一标识                                                                                                                                |
-| **项目ID** | `projectId`          | `bigint`   | 是       | /     | 关联项目 ID，创建服务时必填                                                                                                                          |
-| **服务名称** | `name`               | `string`   | 是       | <=100   | 服务名称，如：用户中心                                                                                                                               |
-| 授权控制    | `auth`               | `boolean`  | 否       | /     | 是否启用授权控制，默认禁用                                                                                                                           |
-| 服务来源    | `source`             | `enum`     | 否       | /     | **服务来源枚举值**:<br>• `CREATED` - 创建<br>• `EDITOR` - 编辑器<br>• `IMPORT` - 导入<br>• `SYNC` - 同步                                            |
-| 导入来源    | `importSource`       | `enum`     | 否       | /     | **当 source=导入时有效**:<br>• `OPENAPI` - OpenAPI<br>• `POSTMAN` - Postman<br>• `ANGUS` - Angus                                                    |
-| 服务状态    | `status`             | `enum`     | 否       | /     | **当前状态枚举值**:<br>• `UNKNOWN` - 未知<br>• `IN_DESIGN` - 设计中<br>• `IN_DEV` - 开发中<br>• `DEV_COMPLETED` - 开发完成<br>• `RELEASED` - 已发布 |
-| 包含接口    | `hasApis`            | `boolean`  | 否       | /     | 是否已创建接口                                                                                                                                       |
-| Mock服务ID | `mockServiceId`      | `bigint`   | 否       | /     | 关联 Mock 服务 ID                                                                                                                                    |
-| 接口数量    | `apisNum`            | `bigint`   | 否       | /     | 服务下接口总数                                                                                                                                       |
-| 接口用例数   | `apisCaseNum`        | `bigint`   | 否       | /     | 服务下用例总数                                                                                                                                       |
-| OpenAPI规范 | `schema`             | `object`   | 否       | /     | OpenAPI 规范详情                                                                                                                                     |
-| 创建人ID   | `createdBy`          | `bigint`   | 否       | /     | 创建人 ID                                                                                                                                            |
-| 创建人     | `createdByName`      | `string`   | 否       | <=100 | 创建人姓名                                                                                                                                           |
-| 创建时间    | `createdDate`        | `datetime` | 否       | /     | 服务创建时间                                                                                                                                         |
-| 最后修改人ID | `lastModifiedBy`     | `bigint`   | 否       | /     | 最后修改人 ID                                                                                                                                        |
-| 最后修改人   | `lastModifiedByName` | `string`   | 否       | <=100 | 最后修改人姓名                                                                                                                                       |
-| 最后修改时间  | `lastModifiedDate`   | `datetime` | 否       | /     | 最后修改时间                                                                                                                                         |
+| 参数      | 字段名                    | 类型       | 是否必须 | 长度限制  | 说明                                                                                                                                                 |
+| -------- |------------------------| ---------- | -------- |-------| ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **ID**  | **id**                   | `bigint`   | **条件**       | /     | 服务 ID，系统唯一标识，修改时必须                                                                                                                                |
+| **项目ID** | **projectId**            | `bigint`   | **是**       | /     | 关联项目 ID，创建服务时必填                                                                                                                          |
+| **服务名称** | **name**                 | `string`   | **是**       | <=100   | 服务名称，如：用户中心                                                                                                                               |
+| 授权控制    | **auth**                 | `boolean`  | 否       | /     | 是否启用授权控制，默认禁用                                                                                                                           |
+| 服务来源    | **source**               | `enum`     | 否       | /     | **服务来源枚举值**:<br>• `CREATED` - 创建<br>• `EDITOR` - 编辑器<br>• `IMPORT` - 导入<br>• `SYNC` - 同步                                            |
+| 导入来源    | **importSource**         | `enum`     | 否       | /     | **当 source=导入时有效**:<br>• `OPENAPI` - OpenAPI<br>• `POSTMAN` - Postman<br>• `ANGUS` - Angus                                                    |
+| 服务状态    | **status**               | `enum`     | 否       | /     | **当前状态枚举值**:<br>• `UNKNOWN` - 未知<br>• `IN_DESIGN` - 设计中<br>• `IN_DEV` - 开发中<br>• `DEV_COMPLETED` - 开发完成<br>• `RELEASED` - 已发布 |
+| 包含接口    | **hasApis**              | `boolean`  | 否       | /     | 是否已创建接口                                                                                                                                       |
+| Mock服务ID | **mockServiceId**        | `bigint`   | 否       | /     | 关联 Mock 服务 ID                                                                                                                                    |
+| 接口数量    | **apisNum**              | `bigint`   | 否       | /     | 服务下接口总数                                                                                                                                       |
+| 接口用例数   | **apisCaseNum**          | `bigint`   | 否       | /     | 服务下用例总数                                                                                                                                       |
+| OpenAPI规范 | **schema**               | `object`   | 否       | /     | OpenAPI 规范详情                                                                                                                                     |
+| 租户 ID      | **tenantId**            | `long`               | 否       | /        | 所属租户 ID                                                                                                 |
+| 创建人ID   | **createdBy**            | `bigint`   | 否       | /     | 创建人 ID                                                                                                                                            |
+| 创建人     | **createdBy<br/>Name**        | `string`   | 否       | <=100 | 创建人姓名                                                                                                                                           |
+| 创建时间    | **createdDate**          | `datetime` | 否       | /     | 服务创建时间                                                                                                                                         |
+| 最后修改人ID | **lastModified<br/>By**       | `bigint`   | 否       | /     | 最后修改人 ID                                                                                                                                        |
+| 最后修改人   | **lastModified<br/>ByName** | `string`   | 否       | <=100 | 最后修改人姓名                                                                                                                                       |
+| 最后修改时间  | **lastModified<br/>Date**     | `datetime` | 否       | /     | 最后修改时间                                                                                                                                         |
 
 ### 状态流转图
 

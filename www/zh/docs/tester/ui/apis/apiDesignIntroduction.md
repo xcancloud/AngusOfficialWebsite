@@ -97,21 +97,22 @@ sequenceDiagram
 
 ## 设计信息
 
-| 参数              | 字段名               | 类型     | 是否必须 | 长度限制 | 说明                                                                                                               |
-| ----------------- | -------------------- | -------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------------ |
-| **设计 ID**       | `id`                 | long     | 否       | /        | 接口设计唯一标识                                                                                                   |
-| **项目 ID**       | `projectId`          | long     | 是       | /        | 关联项目 ID                                                                                                        |
-| **设计名称**      | `name`               | string   | 是       | ≤100     | 接口设计名称                                                                                                       |
-| **发布状态**      | `released`           | boolean  | 否       | /        | 是否已发布                                                                                                         |
-| **OpenAPI 版本**  | `openapiSpecVersion` | string   | 是       | /        | **支持版本**:<br>• 3.0.0<br>• 3.0.1<br>• 3.0.2<br>• 3.0.3<br>• 3.1.0                                               |
-| **OpenAPI 规范**  | `openapi`            | string   | 否       | /        | OpenAPI 规范内容                                                                                                   |
-| **设计来源**      | `designSource`       | enum     | 否       | /        | **来源枚举**:<br>• `SYNCHRONOUS_SERVICE` - 同步服务<br>• `FILE_IMPORT` - 文件导入<br>• `MANUAL_CREATED` - 手动创建 |
-| **来源 ID**       | `designSourceId`     | long     | 否       | /        | 设计来源对象 ID                                                                                                    |
-| **来源名称**      | `designSourceName`   | string   | 否       | /        | 设计来源名称                                                                                                       |
-| **租户 ID**       | `tenantId`           | long     | 否       | /        | 所属租户 ID                                                                                                        |
-| **创建人 ID**     | `createdBy`          | long     | 否       | /        | 创建人 ID                                                                                                          |
-| **创建人**        | `createdByName`      | string   | 否       | /        | 创建人姓名                                                                                                         |
-| **创建时间**      | `createdDate`        | datetime | 否       | /        | 创建时间                                                                                                           |
-| **最后修改人 ID** | `lastModifiedBy`     | long     | 否       | /        | 最后修改人 ID                                                                                                      |
-| **最后修改人**    | `lastModifiedByName` | string   | 否       | /        | 最后修改人姓名                                                                                                     |
-| **最后修改时间**  | `lastModifiedDate`   | datetime | 否       | /        | 最后修改时间                                                                                                       |
+
+| 参数                | 字段名                   | 类型         | 是否必须 | 长度限制 | 说明                                                                                                               |
+| ------------------- | ------------------------ | ------------ | -------- | -------- | ------------------------------------------------------------------------------------------------------------------ |
+| **设计 ID**         | **id**                   | `long`       | **条件**       | /        | 接口设计唯一标识，修改时必须                                                                                                     |
+| **项目 ID**         | **projectId**            | `long`       | **是**   | /        | 关联项目 ID                                                                                                        |
+| **设计名称**        | **name**                 | `string`     | **是**   | ≤100     | 接口设计名称                                                                                                       |
+| 发布状态        | **released**             | `boolean`    | 否       | /        | 是否已发布                                                                                                         |
+| **OpenAPI 版本**    | **openapiSpec<br/>Version**   | `string`     | **是**   | /        | **支持版本**:<br>• 3.0.0<br>• 3.0.1<br>• 3.0.2<br>• 3.0.3<br>• 3.1.0                                               |
+| OpenAPI 规范    | **openapi**              | `string`     | 否       | /        | OpenAPI 规范内容                                                                                                   |
+| 设计来源        | **designSource**         | `enum`       | 否       | /        | **来源枚举**:<br>• `SYNCHRONOUS_SERVICE` - 同步服务<br>• `FILE_IMPORT` - 文件导入<br>• `MANUAL_CREATED` - 手动创建 |
+| 来源 ID         | **designSource<br/>Id**       | `long`       | 否       | /        | 设计来源对象 ID                                               |
+| 来源名称        | **designSource<br/>Name**     | `string`     | 否       | /        | 设计来源名称                                                                                                       |
+| 租户 ID         | **tenantId**             | `long`       | 否       | /        | 所属租户 ID                                                                                                        |
+| 创建人 ID       | **createdBy**            | `long`       | 否       | /        | 创建人 ID                                                                                                          |
+| 创建人          | **createdBy<br/>Name**        | `string`     | 否       | /        | 创建人姓名                                                                                                         |
+| 创建时间        | **createdDate**          | `datetime`   | 否       | /        | 创建时间                                                                                                           |
+| 最后修改人 ID   | **lastModified<br/>By**       | `long`       | 否       | /        | 最后修改人 ID                                                                                                      |
+| 最后修改人      | **lastModified<br/>ByName**   | `string`     | 否       | /        | 最后修改人姓名                                                                                                     |
+| 最后修改时间   | **lastModified<br/>Date**     | `datetime`   | 否       | /        | 最后修改时间                                                                                                       |
