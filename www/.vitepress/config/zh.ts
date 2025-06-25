@@ -1314,20 +1314,20 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                             link: '/apisManagement',
                         },
                         {
-                            text: '设计介绍',
-                            link: '/designIntroduction',
+                            text: '接口设计介绍',
+                            link: '/apiDesignIntroduction',
                         },
                         {
-                            text: '设计管理',
-                            link: '/designManagement',
+                            text: '接口设计管理',
+                            link: '/apiDesignManagement',
                         },
                         {
-                            text: '分享介绍',
-                            link: '/shareIntroduction',
+                            text: '接口分享介绍',
+                            link: '/apiShareIntroduction',
                         },
                         {
-                            text: '分享管理',
-                            link: '/shareManagement',
+                            text: '接口分享管理',
+                            link: '/apiShareManagement',
                         },
                         {
                             text: '服务器介绍',

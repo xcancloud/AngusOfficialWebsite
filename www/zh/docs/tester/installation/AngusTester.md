@@ -505,7 +505,7 @@ EUREKA_USER_NAME=eureka
 EUREKA_USER_PASSWORD=eureka
 
 #-----------------------------------------------------------------------------------
-# OAuth2.0 客户端内省配置
+# OAuth2.0 客户端配置
 #-----------------------------------------------------------------------------------
 OAUTH2_INTROSPECT_CLIENT_ID=client-credentials-introspect-client
 OAUTH2_INTROSPECT_CLIENT_SECRET=secret

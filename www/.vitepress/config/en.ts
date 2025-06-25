@@ -1286,20 +1286,20 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                             link: "/apisManagement"
                         },
                         {
-                            text: "Design Introduction",
-                            link: "/designIntroduction"
+                            text: "APIs Design Introduction",
+                            link: "/apiDesignIntroduction"
                         },
                         {
-                            text: "Design Management",
-                            link: "/designManagement"
+                            text: "APIs Design Management",
+                            link: "/apiDesignManagement"
                         },
                         {
-                            text: "Sharing Introduction",
-                            link: "/shareIntroduction"
+                            text: "APIs Sharing Introduction",
+                            link: "/apiShareIntroduction"
                         },
                         {
-                            text: "Sharing Management",
-                            link: "/shareManagement"
+                            text: "APIs Sharing Management",
+                            link: "/apiShareManagement"
                         },
                         {
                             text: "Servers Introduction",

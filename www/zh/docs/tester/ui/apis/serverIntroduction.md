@@ -1,51 +1,70 @@
 # 服务器介绍
 
-AngusTester服务器可以确保开发人员能够高效地管理和测试API接口，通过灵活的服务器定义和变量管理，团队能够轻松应对不同的开发环境和版本控制需求，从而提升整体的开发效率和软件质量。
+> AngusTester 的服务器可以确保开发人员能够高效地管理和测试API接口，通过灵活的服务器定义和变量管理，团队能够轻松应对`不同的开发环境和版本控制`需求，从而提升整体的开发效率和软件质量。
 
 ## 关于服务器
 
-在API的设计与实现中，服务器部分是至关重要的组成部分。AngusTester对服务器及其相关的动态部分进行了全面的定义，包括服务器 (server) 和变量 (variables) 两个主要部分。
+在API的设计与实现中，服务器部分是至关重要的组成部分。通过与接口服务器集成，您可以：
+- ✅ **测试阶段自动切换测试环境服务器**
+- ✅ **生产发布自动更新生产环境URL**
+- ✅ **版本变更自动同步变量配置**
 
-### 服务器 (Server)
+AngusTester对服务器及其相关的动态部分进行了全面的定义，包括：`服务器 (server) `和`变量 (variables)` 两个主要部分。
 
-服务器字段用于指定 API 的服务器列表。每个服务器都有一个基础URL和可选的描述信息，这些信息指示了API的基础路径。通过明确的服务器定义，开发人员可以快速定位和访问不同的API端点。
+### 服务器构成
 
-### 变量 (Variables)
+服务器的构成包括完整URL、服务器、端点 (endpoint) 及其关系。这种结构化的定义方式，不仅简化了API的使用流程，也提升了项目的可维护性和可扩展性。
 
-变量用于定义URL中的动态部分，允许在服务器URL中使用占位符。这些占位符可以在不同的环境中被替换为实际的值，使得API的使用更加灵活。例如，可以定义一个变量{version}来代表API的版本号，这样在实际调用时可以根据不同的环境替换为如 v1 或 v2。
-
-
-## 服务器构成
-
-服务器的构成包括完整URL、服务器、端点 (endpoint) 及其关系。
+*完整URL(path)构成示意图：*
 
 ```text
-https://api.example.com/v1/users?role=admin&status=active
-\________________________/\____/ \______________________/
-server URL       endpoint    query parameters
-                完整URL(path)
+https://dev-api.example.com/v1/users?role=admin&status=active&page=1
+\_________________________/\_______/ \____________________________/
+server URL                  endpoint        query parameters
 ```
 
-可以拆解为：
+*可以拆解为：*
+> - **完整 URL (Full URL)**：https://dev-api.example.com/v1/users?role=admin&status=active&page=1
+> - **服务器 (Server)**：https://dev-api.example.com
+> - **版本 (Version)**：v1
+> - **端点 (Endpoint)**：/users
+> - **查询参数 (Query Parameters)**：?role=admin&status=active&page=1
 
-- 完整 URL (Full URL): https://api.example.com/v1/users?role=admin&status=active
-- 服务器 (Server): https://api.example.com
-- 版本 (Version): v1
-- 端点 (Endpoint): /users
-- 查询参数 (Query Parameters): ?role=admin&status=active
+### 定义变量
 
-***这种结构化的定义方式，不仅简化了API的使用流程，也提升了项目的可维护性和可扩展性。***
+通过变量可以实现服务器动态配置和自动切换，以满足各种API应用场景。
 
-## 主要好处
+*完整URL(path)变量应用示意图：*
 
-### 易于与CI/CD集成
+```text
+https://{env}-api.example.com/{apiVersion}/users?role=admin&status=active&page=1
+\___________________________/\___________/ \____________________________/
+server URL                      endpoint        query parameters
+```
 
-在持续集成和持续部署 (CI/CD) 的工作流中，定义的服务器可以帮助自动化测试流程。通过灵活配置不同环境的 API 端点，开发团队可以确保在部署过程中快速切换环境，符合 DevOps 的要求。这种集成使得测试和部署过程变得高效且可靠。
+*变量与自定义变量值示例：*
+> - **env**：prod, beta, dev 
+> - **apiVersion**：v1, v2
 
-### 支持多个环境
+## 服务器信息
 
-AngusTester允许通过定义多个服务器或使用不同的变量值来支持不同的环境，例如开发、测试和生产环境。这使得开发者能够轻松切换环境，而不必在代码中手动更改 URL，从而减少了出错的可能性，并提高了开发效率。
+AngusTester 接口服务器和变量遵循 OpenAPI3.0规范，更多信息请查看：[OpenAPI Server Object](https://swagger.io/specification/v3/#server-object)。
 
-### 支持版本控制
+### 服务器基础配置
 
-在处理不同版本的 API 时，AngusTester 提供了灵活的版本管理方案。通过定义不同的服务器或变量值，开发团队可以轻松管理和维护各个版本。在文档中清晰地区分各个版本的服务器，不仅避免了混淆，还能提高团队协作的效率。
+| 参数       | 字段名       | 类型                          | 是否必须 | 长度限制 | 说明                                                         |
+|------------|-------------|-------------------------------|----------|----------|--------------------------------------------------------------|
+| **URL模板**  | `url`       | `string`                      | 是       | ≤400     | 目标主机URL，必须符合标准格式（支持`{env}`等模板变量）          |
+| **描述**     | `description` | `string`                    | 否       | ≤800     | 服务器描述，支持CommonMark富文本语法                          |
+| **变量定义** | `variables` | `Map[String, ServerVariable]` | 否       | /        | URL模板中的变量替换定义                                      |
+| **扩展属性** | `extensions`  | `Map[String, Object]`       | 否       | /        | OpenAPI规范扩展属性                                         |
+
+
+### 服务器变量配置
+
+| 参数       | 字段名       | 类型                  | 是否约束          | 长度限制 | 说明                                                      |
+|------------|-------------|-----------------------|-------------------|----------|-----------------------------------------------------------|
+| **枚举值**   | `_enum`     | `List[String]`       | 否                | /        | 可选值列表（定义时不能为空）                              |
+| **默认值**   | `_default`  | `string`             | 是（定义枚举时）  | ≤400     | 默认值（如定义枚举，必须为枚举项之一）                     |
+| **描述**     | `description` | `string`             | 否                | ≤800     | 变量说明，支持CommonMark富文本                            |
+| **扩展属性** | `extensions`  | `Map[String, Object]` | 否                | /        | OpenAPI规范扩展属性                                       |
