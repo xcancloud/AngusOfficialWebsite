@@ -39,6 +39,8 @@
     "vitepress-plugin-mermaid": "^2.0.17"
   },
   "dependencies": {
+    "md5": "^2.3.0",
+    "qrcode": "^1.5.4",
     "vue-router": "^4.5.1"
   }
 }

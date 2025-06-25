@@ -139,3 +139,16 @@ export function getSearchTerms (keys) {
 
   return extractedParams; // 返回提取的参数对象
 }
+
+
+export const getCurrentLanguage = () => {
+  const path = location.pathname;
+
+  const targetPath = path.split('/')[1];
+
+  const allLanguage = ['zh', 'en', 'fr', 'de', 'ja', 'zh-TW', 'pt', 'ru', 'es', 'ko', 'fa'];
+  if (allLanguage.includes(targetPath)) {
+    return `/${targetPath}`
+  }
+  return '';
+};

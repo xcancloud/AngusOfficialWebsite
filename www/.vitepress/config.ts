@@ -61,6 +61,7 @@ export default withMermaid({
             {icon: 'github', link: 'https://github.com/xcancloud'}
         ]
     },
+    
 
     locales: {
         root: {label: 'English', lang: 'en-US', link: '/en/', ...enLocaleConfig},      // 默认英语

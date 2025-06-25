@@ -20,7 +20,7 @@ const cancel = () => {
 }
 
 const ok = async () => {
-  await toSign();
+  await toSign(true);
   cancel();
 }
 
