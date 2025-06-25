@@ -37,6 +37,8 @@ import Business from './scenario/business.vue';
 import Ai from './scenario/ai.vue';
 import Deployment from './deployment/index.vue';
 import Pricing from './pricing/index.vue';
+import AngusCloud from './purchase/angusCloud.vue';
+
 
 
 export default {
@@ -57,6 +59,7 @@ export default {
         app.component('Ai', Ai);
         app.component('Deployment', Deployment);
         app.component('Pricing', Pricing);
+        app.component('AngusCloud', AngusCloud);
         for (const [name, comp] of Object.entries(ElementIcons)) {
             app.component(name, comp)
         }
