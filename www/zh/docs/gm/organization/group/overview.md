@@ -73,18 +73,19 @@ graph LR
 
 ## 组信息
 
-| 参数               | 字段名             | 类型       | 是否必须 | 长度限制 | 说明                                             |
-|--------------------|--------------------|----------|----------|----------|--------------------------------------------------|
-| ID                | id               | bigint   | 是       | /        | 组主键ID                                         |
-| 名称              | name             | string   | 是       | 100      | 组名称，如：AngusTester 开发 1 组。               |
-| 编码              | code             | string   | 是       | 80       | 组编码，如：AngusTester-Dev1。                   |
-| 是否启用          | enabled          | boolean  | 是       | /        | 是否启用。                                         |
-| 来源              | source           | string   | 是       | 20       | 用户组来源。                                       |
-| 用户目录ID        | directoryId      | bigint   | 否       | /        | 用户目录ID。                                       |
-| 用户目录组成员ID  | directoryGidNumber| string   | 否       | 40       | 用户目录组成员ID。                                 |
-| 描述              | remark           | string   | 否       | 200      | 组描述，如：负责 AngusTester 主应用开发。         |
-| 租户ID            | tenantId         | bigint   | 是       | /        | 租户ID，默认-1表示未关联租户。                      |
-| 创建人            | createdBy        | bigint   | 是       | /        | 添加组操作人。                                    |
-| 创建时间          | createdDate      | datetime | 是       | /        | 创建组时间。                                     |
-| 最后修改人        | lastModifiedBy   | bigint   | 是       | /        | 最后修改组信息操作人。                            |
-| 最后修改时间      | lastModifiedDate | datetime | 是       | /        | 最后修改组信息时间。                              |
+| 参数                | 类型         | 必填 | 长度限制 | 说明                                                                     |
+|---------------------|--------------|------|----------|------------------------------------------------------------------------|
+| ID               | `bigint`     | 只读 | /        | 组唯一标识符；<br/>系统自动生成                                                     |
+| **名称**            | `string`     | **是** | ≤100     | 组显示名称，<br/>如：AngusTester 开发 1 组                                             |
+| **编码**            | `string`     | **是** | ≤80      | 组唯一编码，<br/>如：AngusTester-Dev1                                               |
+| **是否启用**         | `boolean`    | **是** | /        | 组状态开关；默认`true`                                                         |
+| **来源**            | `enum`       | **是** | ≤20      | **组来源**：<br/>- `BACKGROUND_ADDED-后台添加`<br/>- `LDAP_SYNCHRONIZE-同步导入` |
+| 用户目录ID           | `bigint`     | 只读 | /        | 关联的用户目录ID                                                              |
+| 用户目录组成员ID     | `string`     | 只读 | /        | 用户目录中的组标识                                                              |
+| 描述                | `string`     | 否   | ≤200     | 组功能描述，<br/>如：负责AngusTester主应用开发                                             |
+| 租户ID              | `bigint`     | 只读 | /        | 关联租户：<br/>- `-1`表示未关联租户                                            |
+| 创建人              | `bigint`     | 只读 | /        | 组创建人ID）                                                                |
+| 创建时间             | `datetime`   | 只读 | /        | 组创建时间                                                                  |
+| 最后修改人           | `bigint`     | 只读 | /        | 最后修改人ID                                                                |
+| 最后修改时间         | `datetime`   | 只读 | /        | 最后修改时间                                                                 |
+

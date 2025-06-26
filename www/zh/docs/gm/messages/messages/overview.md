@@ -28,24 +28,46 @@ outline: deep
 
 ## 消息信息
 
-| 参数               | 字段名              | 类型      | 是否必须 | 长度/数量限制 | 说明                                     |
-|--------------------|---------------------|-----------|----------|---------------|----------------------------------------|
-| ID                | id                | bigint    | 是       | /             | 消息 ID，消息在系统中唯一标识。                      |
-| 标题              | title             | string    | 是       | 100           | 消息标题。                                  |
-| 内容              | content           | string    | 是       | 8000          | 消息内容。                                  |
-| 接收类型          | receiveType       | string    | 是       | 16            | 发送类型：SITE-站内消息; EMAIL-邮件消息             |
-| 发送类型          | sendType          | string    | 是       | 16            | 发送方式：SEND_NOW-立即发送 ；TIMED_SEND-定时发送    |
-| 发送时间          | timingDate        | datetime  | 是       | /             | 定时发送时间。                                |
-| 消息状态          | status            | string    | 是       | 16            | 消息状态：PENDING-待发送；SENT-已发送              |
-| 失败原因          | failureReason     | string    | 否       | 200           | 消息发送失败原因。                              |
-| 发送数量          | sentNum           | int       | 是       | /             | 已发送人数。                                 |
-| 已读数量          | readNum           | int       | 是       | /             | 已阅读人数。                                 |
-| 实际发送时间      | sendDate          | datetime  | 否       | /             | 实际发送时间。                                |
-| 接收租户ID        | receiveTenantId   | bigint    | 否       | /             | 接收租户ID。                                |
-| 接收租户名称      | receiveTenantName | string    | 否       | 100           | 接收租户名称。                                |
-| 接收对象类型      | receiveObjectType | string    | 是       | 16            | 接收对象类型：USER、DEPT、GROUP、TENANT、ALL_USER |
-| 接收对象          | receiveObjectData | json      | 否       | /             | 接收对象ID和名称                              |
-| 发送租户ID        | tenantId          | bigint    | 是       | /             | 发送租户ID。                                |
-| 发送人            | createdBy         | bigint    | 是       | /             | 发送消息操作人。                               |
-| 创建人名称        | createdByName     | string    | 否       | 100           | 创建人名称。                                 |
-| 创建时间          | createdDate       | datetime  | 是       | /             | 创建时间。                                  |
+| 参数              | 字段名              | 类型         | 必填 | 长度/数量限制 | 说明                                                                   |
+|-----------------|--------------------|--------------|----------|---------------|----------------------------------------------------------------------|
+| ID              | id                | `bigint`     | 只读 | /             | 消息唯一标识符；<br/>系统自动生成                                                  |
+| **标题**          | title             | `string`     | **是**   | ≤100          | 消息主题                                                                 |
+| **内容**          | content           | `string`     | **是**   | ≤8000         | 消息正文内容                                                               |
+| **接收类型**        | receiveType       | `string`     | **是**   | ≤16           | **发送渠道**：<br/>- `SITE`站内消息<br/>- `EMAIL`邮件消息                         |
+| **发送类型**        | sendType          | `string`     | **是**   | ≤16           | **发送方式**：<br/>- `SEND_NOW`立即发送<br/>- `TIMED_SEND`定时发送                |
+| **发送时间**        | timingDate        | `datetime`   | **条件** | /             | 定时发送时间；当发送类型为`TIMED_SEND`时必须                                        |
+| 接收租户ID          | receiveTenantId   | `bigint`     | 否       | /             | 接收方租户ID                                                              |
+| 接收租户名称         | receiveTenantName | `string`     | 否       | ≤100          | 接收方租户名称                                                              |
+| **接收对象类型**     | receiveObjectType | `string`     | **是**   | ≤16           | **接收对象**：<br/>`USER`用户, `DEPT`部门, `GROUP`组, `TENANT`租户, `ALL_USER`全员 |
+| 接收对象            | receiveObjectData | `json`       | 否       | /             | 接收对象详细信息                                                             |
+| 消息状态            | status            | `string`     | 只读 | /             | **当前状态**：<br/>- `PENDING`待发送<br/>- `SENT`已发送                         |
+| 失败原因            | failureReason     | `string`     | 只读 | /             | 发送失败原因                                                               |
+| 发送数量            | sentNum           | `int`        | 只读 | /             | 已发送人数                                                                |
+| 已读数量            | readNum           | `int`        | 只读 | /             | 已阅读人数                                                                |
+| 实际发送时间         | sendDate          | `datetime`   | 只读 | /             | 实际发送时间                                                               |
+| 发送租户ID          | tenantId          | `bigint`     | 只读 | /             | 发送方租户ID                                                              |
+| 发送人             | createdBy         | `bigint`     | 只读 | /             | 消息创建人ID                                                              |
+| 创建人名称           | createdByName     | `string`     | 只读 | /             | 创建人姓名                                                                |
+| 创建时间            | createdDate       | `datetime`   | 只读 | /             | 消息创建时间                                                               |
+
+### 接收类型（receiveType）
+| 枚举值   | 发送渠道   | 说明                     |
+|----------|------------|--------------------------|
+| `SITE`   | 站内消息   | 系统内部消息中心接收     |
+| `EMAIL`  | 邮件消息   | 通过电子邮件发送         |
+
+### 发送类型（sendType）
+| 枚举值        | 发送方式   | 说明                     |
+|---------------|------------|--------------------------|
+| `SEND_NOW`    | 立即发送   | 创建后立即发送           |
+| `TIMED_SEND`  | 定时发送   | 在指定时间自动发送       |
+
+### 接收对象类型（receiveObjectType）
+| 枚举值       | 接收对象   | 说明                     |
+|--------------|------------|--------------------------|
+| `USER`       | 用户       | 指定用户接收             |
+| `DEPT`       | 部门       | 整个部门成员接收         |
+| `GROUP`      | 小组       | 特定小组成员接收         |
+| `TENANT`     | 租户       | 整个租户成员接收         |
+| `ALL_USER`   | 全员       | 系统所有用户接收         |
+
