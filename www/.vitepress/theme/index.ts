@@ -38,6 +38,7 @@ import Ai from './scenario/ai.vue';
 import Deployment from './deployment/index.vue';
 import Pricing from './pricing/index.vue';
 import AngusCloud from './purchase/angusCloud.vue';
+import AngusPriv from './purchase/angusPriv.vue';
 import Pay from './pay/index.vue';
 import OrderDone from './order/index.vue';
 
@@ -61,6 +62,7 @@ export default {
         app.component('Deployment', Deployment);
         app.component('Pricing', Pricing);
         app.component('AngusCloud', AngusCloud);
+        app.component('AngusPriv', AngusPriv);
         app.component('Pay', Pay);
         app.component('OrderDone', OrderDone);
         for (const [name, comp] of Object.entries(ElementIcons)) {

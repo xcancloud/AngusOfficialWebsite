@@ -18,7 +18,7 @@ const changeExpand = (index) => {
 </script>
 
 <template>
-  <div class="w-300 mx-auto">
+  <div class="mx-auto">
     <p class="mb-10 text-2xl font-semibold text-black-color text-center">
       {{ title }}
     </p>
