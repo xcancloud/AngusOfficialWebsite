@@ -2,37 +2,6 @@
 
 AngusTester Mock服务管理功能旨在提供一个灵活、便捷的Mock服务创建和管理平台，方便开发者在应用开发和测试过程中模拟真实的服务接口。
 
-## 服务信息
-
-在AngusTester中，每个Mock服务包含以下字段信息：
-
-- ID：每个服务的唯一标识符，创建服务后自动分配。
-- 项目ID：Mock服务所属项目ID。
-- 名称：Mock服务的名称，便于用户识别和管理。
-- 服务来源，标记Mock服务的创建方式：
-     - 手动创建：用户手动输入相关信息创建服务。
-     - 文件导入：通过导入文件形式创建服务。
-     - 关联服务：基于已有接口服务进行关联并创建Mock服务。
-- 导入来源，标记Mock服务的数据来源：
-    - OpenAPI：符合OpenAPI规范的文档。
-    - Postman：Postman导出的接口文档。
-    - Angus：Angus平台生成的接口文档。
-- 运行状态，指示Mock服务的当前运行状态：
-    - 未启动：服务尚未启动，无法响应请求。
-    - 运行中：服务已启动，能够正常处理请求。
-- 是否有权限控制：标识该Mock服务是否启用权限控制，以确保只有授权用户可以访问。
-- 关联服务ID：如果Mock服务关联了其他服务，此字段将会记录关联服务的ID。
-- 部署节点：指定Mock服务的部署位置，便于优化服务性能和负载均衡。
-- 服务端口：定义Mock服务监听的端口号，确保请求能够正确路由到相应服务。
-- 服务域名：Mock服务的访问域名，用户通过此域名进行接口访问。
-- 接口安全配置：用于配置接口的安全性。
-- CORS配置：跨域资源共享（CORS）配置，允许浏览器跨域请求Mock接口。
-- 服务配置：主要参数配置，影响Mock服务的运行时行为。
-- 创建人：创建该Mock服务的用户。
-- 创建时间：创建Mock服务的时间。
-- 最后修改人：最后修改该Mock服务的用户。
-- 最后修改时间：最后一次修改Mock服务的时间。
-
 ## Mock服务操作
 
 AngusTester Mock服务管理模块支持以下操作：
@@ -264,3 +233,102 @@ AngusTester支持下面三种方式创建Mock服务，需要注意的事项：
 1. 进入AngusTester Mock页面，点击服务名进入服务详情。
 2. 点击“监控”查看查看Mock服务的资源使用情况和性能指标。
    ![](https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/service-monitor.png?fid=251751417168003255&fpt=km1G3oKvEE0uhztoA4O6muriThhgQ1I9bRy1T0T2)
+
+## 字段信息
+
+| 参数                 | 字段名                | 类型         | 必填     | 长度限制 | 说明                      |
+|----------------------|-----------------------|--------------|----------|----------|-------------------------|
+| **ID**               | id                   | `bigint`     | **条件** | /        | Mock服务唯一标识符；<br/>修改时必须       |
+| **项目ID**           | projectId            | `long`       | **是**   | /        | 所属项目唯一标识                |
+| **服务名称**         | name                 | `string`     | **是**   | ≤200     | Mock服务标识名称              |
+| **节点ID**           | nodeId               | `long`       | **是**   | /        | 服务运行节点唯一标识              |
+| **服务端口**         | servicePort          | `int`        | **是**   | /        | 服务监听端口（1-65535）         |
+| 服务域名             | serviceDomain        | `string`     | 否       | ≤200     | 服务访问域名                  |
+| **API认证配置**      | apisSecurity         | `list`       | 否       | /        | API认证配置列表               |
+| **跨域配置**         | apisCors             | `map`        | 否       | /        | CORS跨域资源共享配置            |
+| **服务配置**         | setting              | `map`        | 否       | /        | Mock服务高级配置              |
+| 服务来源             | source               | `enum`       | 只读     | /        | **来源枚举**：<br/>手动创建/文件导入/关联服务 |
+| 服务状态             | status               | `enum`       | 只读     | /        | **状态枚举**：<br/>未启动/运行中        |
+| 节点名称             | nodeName             | `string`     | 只读     | /        | 节点名称                    |
+| 节点IP               | nodeIp               | `string`     | 只读     | /        | 节点内网IP                  |
+| 节点公网IP           | nodePublicIp        | `string`     | 只读     | /        | 节点公网IP                  |
+| 服务域名URL          | serviceDomainUrl     | `string`     | 只读     | /        | 完整服务域名地址                |
+| 服务主机URL          | serviceHostUrl       | `string`     | 只读     | /        | 服务主机地址（IP:端口）           |
+| 代理端口             | agentPort            | `int`        | 只读     | /        | 代理服务端口，<br/>默认30010       |
+| 授权状态             | auth                 | `boolean`    | 只读     | /        | 当前授权状态                  |
+| 当前权限             | currentAuths         | `set`        | 只读     | /        | 当前用户权限集合                |
+| 关联服务状态         | assocServices        | `boolean`    | 只读     | /        | 是否关联Angus服务             |
+| 租户ID               | tenantId             | `long`       | 只读     | /        | 所属租户ID                  |
+| 创建人ID             | createdBy            | `long`       | 只读     | /        | 服务创建人ID                 |
+| 创建人姓名           | createdByName        | `string`     | 只读     | /        | 创建人姓名                   |
+| 创建时间             | createdDate          | `datetime`   | 只读     | /        | 服务创建时间                  |
+| 最后修改人ID         | lastModifiedBy       | `long`       | 只读     | /        | 最后修改人ID                 |
+| 最后修改人姓名       | lastModifiedByName   | `string`     | 只读     | /        | 最后修改人姓名                 |
+| 最后修改时间         | lastModifiedDate     | `datetime`   | 只读     | /        | 最后修改时间                  |
+
+### API认证配置（apisSecurity）
+**数据结构**：
+```json
+[
+  {
+    "in": "header",
+    "keyName": "Authorization",
+    "value": "Bearer xxxxx"
+  }
+]
+```
+**认证位置**：
+| 枚举值   | 说明         |
+|----------|--------------|
+| `header` | HTTP头部     |
+| `query`  | URL查询参数  |
+
+### 跨域配置（apisCors）
+**配置项**：
+```json
+{
+  "enabled": true,
+  "allowOrigin": "*",
+  "allowCredentials": true,
+  "allowMethods": "GET,POST,PUT,DELETE",
+  "allowHeaders": "Content-Type,Authorization",
+  "exposeHeaders": "X-Custom-Header"
+}
+```
+
+### 服务配置（setting）
+**核心配置**：
+```json
+{
+  "useSsl": false,
+  "workThreadNum": 256,
+  "enableNettyLog": false,
+  "logFileLevel": "BASIC",
+  "sendRequestLog": true,
+  "maxContentLength": 1048576000,
+  "workPushbackThreadNum": 8,
+  "maxPushbackConnectTimeout": 5000,
+  "maxPushbackRequestTimeout": -1
+}
+```
+
+### 服务来源（source）
+| 枚举值           | 说明         |
+|------------------|--------------|
+| `CREATED`        | 手动创建     |
+| `FILE_IMPORT`    | 文件导入     |
+| `ASSOC_SERVICE`  | 关联服务     |
+
+### 服务状态（status）
+| 枚举值         | 说明       |
+|----------------|------------|
+| `NOT_STARTED`  | 未启动     |
+| `RUNNING`      | 运行中     |
+
+### 日志级别（logFileLevel）
+| 枚举值   | 说明                     |
+|----------|--------------------------|
+| `NONE`   | 无日志                   |
+| `BASIC`  | 基础日志（默认）         |
+| `HEADERS`| 记录头部信息             |
+| `FULL`   | 完整请求响应日志         |

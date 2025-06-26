@@ -2,34 +2,6 @@
 
 AngusTester Mock接口为开发者和测试人员提供了灵活高效的接口模拟解决方案。通过对Mock接口的有效管理，团队可以在服务开发的不同阶段，快速响应需求变化，提高开发效率和软件质量。
 
-## 接口信息
-
-在AngusTester中，每个Mock接口包含以下字段信息：
-
-- ID：每个服务的唯一标识符，创建服务后自动分配。
-- 项目ID：Mock接口所属项目ID。
-- 名称：Mock接口的名称，便于识别和管理。
-- 描述：对Mock接口的详细描述，帮助用户理解接口的用途和功能。
-- 接口来源：指示该接口的来源，可能是自定义、第三方API等。
-- 导入来源：说明该接口是如何被导入到系统中的，例如通过文件上传或API调用。
-- 请求方式：HTTP请求方式，如GET、POST、PUT、DELETE等。
-- 接口路径：Mock接口的访问路径，例如 /api/v1/users。
-- Mock服务ID：关联的Mock服务的唯一标识符。
-- 关联服务ID：该Mock接口所关联的接口服务的唯一标识符。
-- 关联接口ID：该Mock接口所关联的接口的唯一标识符。
-- 调用次数：记录该Mock接口被调用的总次数。
-- 回推数：记录从Mock接口回推到真实接口的次数。
-- 模拟错误数：记录模拟错误响应的次数，用于分析接口稳定性。
-- 成功数：记录成功响应的次数，帮助评估Mock接口的有效性。
-- 异常数：记录异常响应的次数，用于监控接口的健康状况。
-- 最后异常原因：最近一次异常的详细原因，便于排查和解决问题。
-- 创建人：创建该Mock接口的用户。
-- 创建时间：创建Mock接口的时间。
-- 最后修改人：最后修改该Mock接口的用户。
-- 最后修改时间：最后一次修改Mock接口的时间。
-
-注意：Mock接口响应信息请查看“[模拟接口任务](https://www.xcan.cloud/help/doc/205509853639082016?c=206089861055120450)”规范内容。
-
 ## Mock接口操作
 
 AngusTester提供多种操作来管理Mock接口，具体操作及其说明如下：
@@ -281,3 +253,76 @@ AngusTester提供多种操作来管理Mock接口，具体操作及其说明如�
 ***注意事项：***
 
 - 删除后该响应将不再可用，需小心处理，避免影响测试结果。
+
+## 字段信息
+
+| 参数                 | 字段名                | 类型         | 必填     | 长度限制 | 说明                                                                 |
+|----------------------|-----------------------|--------------|----------|----------|----------------------------------------------------------------------|
+| **ID**               | id                   | `bigint`     | **条件** | /        | 接口唯一标识符；<br/>修改时必须                                           |
+| **Mock服务ID**       | mockServiceId        | `long`       | **是**   | /        | 关联Mock服务唯一标识                                                 |
+| **接口名称**         | summary              | `string`     | **是**   | ≤400     | 接口功能摘要                                                         |
+| 详细描述             | description          | `string`     | 否       | ≤20000   | 接口详细描述                                                         |
+| **HTTP方法**         | method               | `enum`       | **是**   | /        | **HTTP方法枚举**：<br/>GET/POST/PUT/DELETE等                               |
+| **接口端点**         | endpoint             | `string`     | **是**   | ≤800     | 接口访问路径                                                         |
+| 项目ID               | projectId            | `long`       | 只读     | /        | 所属项目ID                                                           |
+| 接口来源             | source               | `enum`       | 只读     | /        | **来源枚举**：<br/>手动创建/Angus文件导入/复制接口/关联接口                  |
+| 导入来源             | importSource         | `enum`       | 只读     | /        | **导入来源枚举**：<br/>OpenAPI/Postman/Angus                               |
+| 关联项目ID           | assocProjectId        | `long`       | 只读     | /        | 关联项目ID                                                           |
+| 关联项目名称         | assocProjectName     | `string`     | 只读     | /        | 关联项目名称                                                         |
+| 关联接口ID           | assocApisId          | `long`       | 只读     | /        | 关联接口ID                                                           |
+| 关联接口名称         | assocApisName        | `string`     | 只读     | /        | 关联接口名称                                                         |
+| Mock服务名称         | mockServiceName      | `string`     | 只读     | /        | 关联Mock服务名称                                                     |
+| Mock服务域名         | mockServiceDomainUrl | `string`     | 只读     | /        | Mock服务域名地址                                                     |
+| Mock服务主机地址     | mockServiceHostUrl   | `string`     | 只读     | /        | Mock服务主机地址（IP:端口）                                         |
+| 请求次数             | requestNum           | `long`       | 只读     | /        | 接口请求总次数                                                       |
+| 推送请求次数         | pushbackNum          | `long`       | 只读     | /        | 推送请求次数                                                         |
+| 模拟错误次数         | simulateErrorNum     | `long`       | 只读     | /        | 模拟错误响应次数                                                     |
+| 成功次数             | successNum           | `long`       | 只读     | /        | 请求成功次数                                                         |
+| 异常次数             | exceptionNum         | `long`       | 只读     | /        | 请求异常次数                                                         |
+| 操作不一致标记       | inconsistentOperation| `boolean`    | 只读     | /        | 接口操作是否不一致                                                   |
+| 关联接口删除状态     | assocApisDeleted     | `boolean`    | 只读     | /        | 关联接口是否已删除                                                   |
+| 实际接口方法         | apisMethod           | `enum`       | 只读     | /        | 关联接口实际HTTP方法                                                |
+| 实际接口端点         | apisEndpoint         | `string`     | 只读     | /        | 关联接口实际访问路径                                                 |
+| **响应列表**         | responses            | `list`       | 只读     | /        | Mock响应配置列表（见响应表）                                        |
+| 创建人ID             | createdBy            | `long`       | 只读     | /        | 接口创建人ID                                                         |
+| 创建人姓名           | createdByName        | `string`     | 只读     | /        | 创建人姓名                                                           |
+| 创建时间             | createdDate          | `datetime`   | 只读     | /        | 接口创建时间                                                         |
+| 最后修改人ID         | lastModifiedBy       | `long`       | 只读     | /        | 最后修改人ID                                                         |
+| 最后修改人姓名       | lastModifiedByName   | `string`     | 只读     | /        | 最后修改人姓名                                                       |
+| 最后修改时间         | lastModifiedDate     | `datetime`   | 只读     | /        | 最后修改时间                                                         |
+
+### 响应列表字段（responses）
+
+| 参数                 | 字段名                | 类型         | 说明                                                                 |
+|----------------------|-----------------------|--------------|----------------------------------------------------------------------|
+| 响应名称             | name                 | `string`     | 响应配置名称                                                         |
+| 请求匹配条件         | match                | `object`     | 请求匹配规则配置                                                     |
+| 响应内容             | content              | `object`     | Mock响应内容配置                                                    |
+| 推送配置             | pushback             | `object`     | 请求推送配置                                                         |
+| 匹配异常响应标记     | matchExceptionResponse| `boolean`    | 是否匹配异常响应                                                    |
+
+### 接口来源（source）
+| 枚举值           | 说明             |
+|------------------|------------------|
+| `CREATED`        | 手动创建         |
+| `ANGUS_IMPORT`   | Angus文件导入    |
+| `COPY_APIS`      | 复制接口         |
+| `ASSOC_APIS`     | 关联接口         |
+
+### 导入来源（importSource）
+| 枚举值       | 说明        |
+|--------------|-------------|
+| `OPENAPI`    | OpenAPI     |
+| `POSTMAN`    | Postman     |
+| `ANGUS`      | Angus       |
+
+### HTTP方法（method）
+| 枚举值       | 说明     |
+|--------------|----------|
+| `GET`        | GET      |
+| `POST`       | POST     |
+| `PUT`        | PUT      |
+| `DELETE`     | DELETE   |
+| `PATCH`      | PATCH    |
+| `OPTIONS`    | OPTIONS  |
+| `HEAD`       | HEAD     |
