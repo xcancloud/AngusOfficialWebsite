@@ -253,7 +253,7 @@ AngusTester支持下面三种方式创建Mock服务，需要注意的事项：
 | 节点IP               | nodeIp               | `string`     | 只读     | /        | 节点内网IP                  |
 | 节点公网IP           | nodePublicIp        | `string`     | 只读     | /        | 节点公网IP                  |
 | 服务域名URL          | serviceDomainUrl     | `string`     | 只读     | /        | 完整服务域名地址                |
-| 服务主机URL          | serviceHostUrl       | `string`     | 只读     | /        | 服务主机地址（IP:端口）           |
+| 服务主机URL          | serviceHostUrl       | `string`     | 只读     | /        | 服务主机地址<br/>（IP:端口）           |
 | 代理端口             | agentPort            | `int`        | 只读     | /        | 代理服务端口，<br/>默认30010       |
 | 授权状态             | auth                 | `boolean`    | 只读     | /        | 当前授权状态                  |
 | 当前权限             | currentAuths         | `set`        | 只读     | /        | 当前用户权限集合                |

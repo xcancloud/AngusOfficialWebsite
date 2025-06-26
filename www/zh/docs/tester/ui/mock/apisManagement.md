@@ -256,40 +256,41 @@ AngusTester提供多种操作来管理Mock接口，具体操作及其说明如�
 
 ## 字段信息
 
-| 参数                 | 字段名                | 类型         | 必填     | 长度限制 | 说明                                                                 |
-|----------------------|-----------------------|--------------|----------|----------|----------------------------------------------------------------------|
-| **ID**               | id                   | `bigint`     | **条件** | /        | 接口唯一标识符；<br/>修改时必须                                           |
-| **Mock服务ID**       | mockServiceId        | `long`       | **是**   | /        | 关联Mock服务唯一标识                                                 |
-| **接口名称**         | summary              | `string`     | **是**   | ≤400     | 接口功能摘要                                                         |
-| 详细描述             | description          | `string`     | 否       | ≤20000   | 接口详细描述                                                         |
-| **HTTP方法**         | method               | `enum`       | **是**   | /        | **HTTP方法枚举**：<br/>GET/POST/PUT/DELETE等                               |
-| **接口端点**         | endpoint             | `string`     | **是**   | ≤800     | 接口访问路径                                                         |
-| 项目ID               | projectId            | `long`       | 只读     | /        | 所属项目ID                                                           |
-| 接口来源             | source               | `enum`       | 只读     | /        | **来源枚举**：<br/>手动创建/Angus文件导入/复制接口/关联接口                  |
-| 导入来源             | importSource         | `enum`       | 只读     | /        | **导入来源枚举**：<br/>OpenAPI/Postman/Angus                               |
-| 关联项目ID           | assocProjectId        | `long`       | 只读     | /        | 关联项目ID                                                           |
-| 关联项目名称         | assocProjectName     | `string`     | 只读     | /        | 关联项目名称                                                         |
-| 关联接口ID           | assocApisId          | `long`       | 只读     | /        | 关联接口ID                                                           |
-| 关联接口名称         | assocApisName        | `string`     | 只读     | /        | 关联接口名称                                                         |
-| Mock服务名称         | mockServiceName      | `string`     | 只读     | /        | 关联Mock服务名称                                                     |
-| Mock服务域名         | mockServiceDomainUrl | `string`     | 只读     | /        | Mock服务域名地址                                                     |
-| Mock服务主机地址     | mockServiceHostUrl   | `string`     | 只读     | /        | Mock服务主机地址（IP:端口）                                         |
-| 请求次数             | requestNum           | `long`       | 只读     | /        | 接口请求总次数                                                       |
-| 推送请求次数         | pushbackNum          | `long`       | 只读     | /        | 推送请求次数                                                         |
-| 模拟错误次数         | simulateErrorNum     | `long`       | 只读     | /        | 模拟错误响应次数                                                     |
-| 成功次数             | successNum           | `long`       | 只读     | /        | 请求成功次数                                                         |
-| 异常次数             | exceptionNum         | `long`       | 只读     | /        | 请求异常次数                                                         |
-| 操作不一致标记       | inconsistentOperation| `boolean`    | 只读     | /        | 接口操作是否不一致                                                   |
-| 关联接口删除状态     | assocApisDeleted     | `boolean`    | 只读     | /        | 关联接口是否已删除                                                   |
-| 实际接口方法         | apisMethod           | `enum`       | 只读     | /        | 关联接口实际HTTP方法                                                |
-| 实际接口端点         | apisEndpoint         | `string`     | 只读     | /        | 关联接口实际访问路径                                                 |
-| **响应列表**         | responses            | `list`       | 只读     | /        | Mock响应配置列表（见响应表）                                        |
-| 创建人ID             | createdBy            | `long`       | 只读     | /        | 接口创建人ID                                                         |
-| 创建人姓名           | createdByName        | `string`     | 只读     | /        | 创建人姓名                                                           |
-| 创建时间             | createdDate          | `datetime`   | 只读     | /        | 接口创建时间                                                         |
-| 最后修改人ID         | lastModifiedBy       | `long`       | 只读     | /        | 最后修改人ID                                                         |
-| 最后修改人姓名       | lastModifiedByName   | `string`     | 只读     | /        | 最后修改人姓名                                                       |
-| 最后修改时间         | lastModifiedDate     | `datetime`   | 只读     | /        | 最后修改时间                                                         |
+| 参数              | 字段名                | 类型         | 必填     | 长度限制 | 说明                     |
+|-----------------|-----------------------|--------------|----------|----------|------------------------|
+| **ID**          | id                   | `bigint`     | **条件** | /        | 唯一标识符；<br/>修改时必须     |
+| **Mock服务ID**    | mockServiceId        | `long`       | **是**   | /        | 关联Mock服务唯一标识           |
+| **接口名称**        | summary              | `string`     | **是**   | ≤400     | 接口功能摘要                 |
+| 详细描述            | description          | `string`     | 否       | ≤20000   | 接口详细描述                 |
+| **HTTP方法**      | method               | `enum`       | **是**   | /        | **HTTP方法**，<br/>如：GET       |
+| **接口端点**        | endpoint             | `string`     | **是**   | ≤800     | 接口访问路径                 |
+| 项目ID            | projectId            | `long`       | 只读     | /        | 所属项目ID                 |
+| 接口来源            | source               | `enum`       | 只读     | /        | **来源**，<br/>如：手动创建          |
+| 导入来源            | importSource         | `enum`       | 只读     | /        | **导入来源**，<br/>如：OpenAPI            |
+| 关联项目ID          | assocProjectId        | `long`       | 只读     | /        | 关联项目ID                 |
+| 关联项目名称          | assocProjectName     | `string`     | 只读     | /        | 关联项目名称                 |
+| 关联接口ID          | assocApisId          | `long`       | 只读     | /        | 关联接口ID                 |
+| 关联接口名称          | assocApisName        | `string`     | 只读     | /        | 关联接口名称                 |
+| Mock服务名称        | mockServiceName      | `string`     | 只读     | /        | 关联Mock服务名称             |
+| Mock服务域名        | mockServiceDomainUrl | `string`     | 只读     | /        | Mock服务域名地址             |
+| Mock服务主机地址      | mockServiceHostUrl   | `string`     | 只读     | /        | Mock服务主机地址 |
+| 请求次数            | requestNum           | `long`       | 只读     | /        | 接口请求总次数                |
+| 推送请求次数          | pushbackNum          | `long`       | 只读     | /        | 推送请求次数                 |
+| 模拟错误次数          | simulateErrorNum     | `long`       | 只读     | /        | 模拟错误响应次数               |
+| 成功次数            | successNum           | `long`       | 只读     | /        | 请求成功次数                 |
+| 异常次数            | exceptionNum         | `long`       | 只读     | /        | 请求异常次数                 |
+| 操作不一致标记         | inconsistentOperation| `boolean`    | 只读     | /        | 接口操作是否不一致              |
+| 关联接口删除状态        | assocApisDeleted     | `boolean`    | 只读     | /        | 关联接口是否已删除              |
+| 实际接口方法          | apisMethod           | `enum`       | 只读     | /        | 关联接口实际HTTP方法           |
+| 实际接口端点          | apisEndpoint         | `string`     | 只读     | /        | 关联接口实际访问路径             |
+| **响应列表**        | responses            | `list`       | 只读     | /        | Mock响应配置列表<br/> |
+| 租户 ID           | tenantId    | `long`     | 只读   | /    | 所属租户 ID                |
+| 创建人ID           | createdBy            | `long`       | 只读     | /        | 接口创建人ID                |
+| 创建人姓名           | createdByName        | `string`     | 只读     | /        | 创建人姓名                  |
+| 创建时间            | createdDate          | `datetime`   | 只读     | /        | 接口创建时间                 |
+| 最后修改人ID         | lastModifiedBy       | `long`       | 只读     | /        | 最后修改人ID                |
+| 最后修改人姓名         | lastModifiedByName   | `string`     | 只读     | /        | 最后修改人姓名                |
+| 最后修改时间          | lastModifiedDate     | `datetime`   | 只读     | /        | 最后修改时间                 |
 
 ### 响应列表字段（responses）
 
