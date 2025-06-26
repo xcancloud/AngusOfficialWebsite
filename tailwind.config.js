@@ -248,7 +248,7 @@ module.exports = {
           green1: 'var(--vp-c-green-1)', // #18794e;
           green2: 'var(--vp-c-green-2)', // #299764;
           green3: 'var(--vp-c-green-3)', // #30a46c;
-          gree_soft: 'var(--vp-c-green-soft)', // rgba(16, 185, 129, 0.14);
+          green_soft: 'var(--vp-c-green-soft)', // rgba(16, 185, 129, 0.14);
           yellow1: 'var(--vp-c-yellow-3)', // #915930;
           yellow2: 'var(--vp-c-yellow-2)', // #946300;
           yellow3: 'var(--vp-c-yellow-3)', // #9f6a00;
@@ -286,6 +286,7 @@ module.exports = {
         12: '3rem',
         12.5: '3.125rem',
         11.25: '2.8125rem',
+        15: '3.75rem',
         42.5: '10.625rem',
       },
       boxShadow: {

@@ -689,7 +689,7 @@ onMounted(async () => {
               <em class="money-bolder">{{ dataCenterAppPrice }}</em>
               <em class="money-normal">元<em class="not-italic mx-1">/</em>年</em>
             </div>
-            <Button size="large" class="!h-14 !leading-10 bg-vp-yellow_soft border-none flex justify-between items-center w-50 !px-8" :href="`${languagePath}/purchase/enterprise?type=datacenter`">
+            <Button size="large" class="!h-14 !leading-10 bg-vp-yellow_soft border-none flex justify-between items-center w-50 !px-8" :href="`${languagePath}/purchase/angusPriv?type=datacenter`">
               <span>立即购买</span>
               <Icon icon="icon-hengjiantou" />
             </Button>

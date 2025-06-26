@@ -41,6 +41,7 @@ import AngusCloud from './purchase/angusCloud.vue';
 import AngusPriv from './purchase/angusPriv.vue';
 import Pay from './pay/index.vue';
 import OrderDone from './order/index.vue';
+import Support from './support/index.vue';
 
 
 export default {
@@ -60,6 +61,7 @@ export default {
         app.component('Business', Business);
         app.component('Ai', Ai);
         app.component('Deployment', Deployment);
+        app.component('Support', Support);
         app.component('Pricing', Pricing);
         app.component('AngusCloud', AngusCloud);
         app.component('AngusPriv', AngusPriv);
