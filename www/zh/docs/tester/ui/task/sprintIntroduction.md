@@ -72,3 +72,49 @@ AngusTester迭代管理模块是敏捷开发流程中不可或缺的一部分，
 
 - 共享权限：在迭代操作中选择“授权”，设置迭代为“无权限控制”，允许其他用户访问和执行。
 - 指定权限：设置迭代为“有权限控制”，授权特定用户、部门或用户组迭代的部分或全部权限，确保安全性和可控性。
+
+## 字段信息
+
+| 参数                 | 字段名                | 类型         | 必填     | 长度限制 | 说明                      |
+|----------------------|-----------------------|--------------|----------|----------|-------------------------|
+| **ID**               | id                   | `bigint`     | **条件** | /        | 迭代唯一标识符；修改时必须           |
+| **项目ID**           | projectId            | `long`       | **是**   | /        | 所属项目唯一标识                |
+| **迭代名称**         | name                 | `string`     | **是**   | ≤200     | 迭代标识名称                  |
+| 授权控制             | auth                 | `boolean`    | 否       | /        | 是否启用权限控制，默认`false`      |
+| **开始日期**         | startDate            | `datetime`   | **是**   | /        | 迭代开始时间                  |
+| **截止日期**         | deadlineDate         | `datetime`   | **是**   | /        | 迭代截止时间                  |
+| **负责人ID**         | ownerId              | `long`       | **是**   | /        | 迭代负责人ID                 |
+| 任务前缀             | taskPrefix           | `string`     | 否       | ≤40      | 任务编码前缀                  |
+| **工作量评估方法**   | evalWorkloadMethod   | `enum`       | **是**   | /        | 查看下面 [工作量评估方法](#)       |
+| 附件列表             | attachments          | `list`       | 否       | /        | 迭代相关附件                  |
+| 验收标准             | acceptanceCriteria   | `string`     | 否       | ≤2000    | 软件交付的具体条件和标准            |
+| 其他信息             | otherInformation     | `string`     | 否       | ≤2000    | 迭代策略、风险管理等补充信息          |
+| **迭代状态**         | status               | `enum`       | 只读     | /        | 查看下面 [迭代状态](#) |
+| 负责人姓名           | ownerName            | `string`     | 只读     | /        | 负责人姓名                   |
+| 负责人头像           | ownerAvatar          | `string`     | 只读     | /        | 负责人头像链接                 |
+| 会议列表             | meetings             | `list`       | 只读     | /        | 迭代会议详情列表                |
+| 租户ID               | tenantId             | `long`       | 只读     | /        | 所属租户ID                  |
+| 创建人ID             | createdBy            | `long`       | 只读     | /        | 迭代创建人ID                 |
+| 创建人姓名           | createdByName        | `string`     | 只读     | /        | 创建人姓名                   |
+| 创建时间             | createdDate          | `datetime`   | 只读     | /        | 迭代创建时间                  |
+| 最后修改人ID         | lastModifiedBy       | `long`       | 只读     | /        | 最后修改人ID                 |
+| 最后修改人姓名       | lastModifiedByName   | `string`     | 只读     | /        | 最后修改人姓名                 |
+| 最后修改时间         | lastModifiedDate     | `datetime`   | 只读     | /        | 最后修改时间                  |
+| 任务数量             | taskNum              | `long`       | 只读     | /        | 迭代包含的任务总数               |
+| 有效任务数量         | validNum             | `long`       | 只读     | /        | 有效任务数量（排除已取消任务）         |
+| 进度                 | progress             | `object`     | 只读     | /        | 迭代进度统计信息                |
+| 成员列表             | members              | `list`       | 只读     | /        | 迭代参与成员列表                |
+
+### 迭代状态（status）
+| 枚举值           | 说明             |
+|------------------|------------------|
+| `PENDING`        | 待开始           |
+| `IN_PROGRESS`    | 进行中           |
+| `COMPLETED`      | 已完成           |
+| `BLOCKED`        | 阻塞中           |
+
+### 工作量评估方法（evalWorkloadMethod）
+| 枚举值            | 说明     |
+|-------------------|----------|
+| `WORKING_HOURS`   | 工时     |
+| `STORY_POINT`     | 故事点   |

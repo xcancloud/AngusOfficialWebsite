@@ -1204,10 +1204,6 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                             link: "/taskManagement"
                         },
                         {
-                            text: "Version Management",
-                            link: "/versionManagement"
-                        },
-                        {
                             text: "Agile Meetings Introduction",
                             link: "/meetingIntroduction"
                         },

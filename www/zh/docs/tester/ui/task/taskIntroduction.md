@@ -85,3 +85,145 @@ AngusTester的任务管理流程设计旨在提升工作效率，确保任务能
 - 已完成：一旦任务通过审核并被确认完成，就会标记为已完成。此状态表明任务已成功实施并不再需要进一步的操作。
 - 已取消：在某些情况下，任务可能由于需求变更或项目调整被取消。在此状态下，团队成员可以记录取消的原因，以便在未来的项目中进行回顾和分析。
 
+## 任务信息
+
+| 参数                 | 字段名                | 类型         | 必填     | 长度限制 | 说明                      |
+|----------------------|-----------------------|--------------|----------|----------|-------------------------|
+| **ID**               | id                   | `bigint`     | **条件** | /        | 任务唯一标识符；<br/>修改时必须           |
+| **项目ID**           | projectId            | `long`       | 否       | /        | 所属项目唯一标识                |
+| **迭代ID**           | sprintId             | `long`       | 否       | /        | 所属迭代ID,**为空时创建Backlog** |
+| 模块ID               | moduleId             | `long`       | 否       | /        | 功能模块ID                  |
+| **任务名称**         | name                 | `string`     | **是**   | ≤400     | 任务标识名称                  |
+| 软件版本             | softwareVersion      | `string`     | 否       | ≤40      | 关联软件版本                  |
+| **任务类型**         | taskType             | `enum`       | **是**   | /        | 查看下面 [任务类型](#)          |
+| 缺陷级别             | bugLevel             | `enum`       | 否       | /        | 查看下面 [缺陷等级](#)          |
+| 目标ID               | targetId             | `long`       | 否       | /        | 关联场景或API ID             |
+| 测试类型             | testType             | `enum`       | 否       | /        | 查看下面 [测试类型](#)          |
+| 负责人ID             | assigneeId           | `long`       | 否       | /        | 任务负责人ID                 |
+| 确认人ID             | confirmorId          | `long`       | 否       | /        | 任务确认人ID                 |
+| 测试人ID             | testerId             | `long`       | 否       | /        | 任务测试人ID                 |
+| 是否遗漏缺陷         | missingBug           | `boolean`    | 否       | /        | 是否遗漏缺陷                  |
+| 标签集               | tagIds               | `set`        | 否       | /        | 关联标签ID集合                |
+| **优先级**           | priority             | `enum`       | **是**   | /        | 查看下面 [优先级](#)           |
+| 截止时间             | deadlineDate         | `datetime`   | 否       | /        | 任务截止时间                  |
+| 附件列表             | attachments          | `list`       | 否       | /        | 任务相关附件                  |
+| 描述                 | description          | `string`     | 否       | ≤6000    | 任务详细描述                  |
+| 预估工作量           | evalWorkload         | `bigdecimal` | 否       | /        | 预估工作量                   |
+| 父任务ID             | parentTaskId         | `long`       | 否       | /        | 父任务ID                   |
+| 关联任务集           | refTaskIds           | `set`        | 否       | /        | 关联任务ID集合                |
+| 关联用例集           | refCaseIds           | `set`        | 否       | /        | 关联用例ID集合                |
+| 任务编码             | code                 | `string`     | 只读     | /        | 任务唯一编码                  |
+| 迭代名称             | sprintName           | `string`     | 只读     | /        | 所属迭代名称                  |
+| 迭代权限             | sprintAuth           | `boolean`    | 只读     | /        | 迭代权限状态                  |
+| 待办标记             | backlog              | `boolean`    | 只读     | /        | 是否为待办任务                 |
+| **任务状态**         | status               | `enum`       | 只读     | /        | 查看下面 [任务状态](#)          |
+| 进度                 | progress             | `object`     | 只读     | /        | 主任务进度                   |
+| 子任务进度           | subTaskProgress      | `object`     | 只读     | /        | 子任务进度                   |
+| 模块名称             | moduleName           | `string`     | 只读     | /        | 功能模块名称                  |
+| 开始时间             | startDate            | `datetime`   | 只读     | /        | 任务开始时间                  |
+| 取消时间             | canceledDate         | `datetime`   | 只读     | /        | 任务取消时间                  |
+| 确认时间             | confirmedDate        | `datetime`   | 只读     | /        | 任务确认时间                  |
+| 完成时间             | completedDate        | `datetime`   | 只读     | /        | 任务完成时间                  |
+| 处理时间             | processedDate        | `datetime`   | 只读     | /        | 任务处理时间                  |
+| 负责人姓名           | assigneeName         | `string`     | 只读     | /        | 负责人姓名                   |
+| 确认人姓名           | confirmorName        | `string`     | 只读     | /        | 确认人姓名                   |
+| 测试人姓名           | testerName           | `string`     | 只读     | /        | 测试人姓名                   |
+| 是否未计划           | unplanned            | `boolean`    | 只读     | /        | 是否未纳入计划                 |
+| 父任务名称           | parentTaskName       | `string`     | 只读     | /        | 父任务名称                   |
+| 子任务信息           | subTaskInfos         | `list`       | 只读     | /        | 子任务详细信息                 |
+| 关联任务信息         | refTaskInfos         | `list`       | 只读     | /        | 关联任务详细信息                |
+| 关联用例信息         | refCaseInfos         | `list`       | 只读     | /        | 关联用例详细信息                |
+| 标签信息             | tags                 | `list`       | 只读     | /        | 标签详细信息                  |
+| 工作量评估方法       | evalWorkloadMethod   | `enum`       | 只读     | /        | 查看下面 [工作量评估方法](#)       |
+| 实际工作量           | actualWorkload       | `bigdecimal` | 只读     | /        | 实际消耗工作量                 |
+| 失败次数             | failNum              | `int`        | 只读     | /        | 任务处理失败次数                |
+| 总处理次数           | totalNum             | `int`        | 只读     | /        | 任务处理总次数                 |
+| 是否需确认           | confirmTask          | `boolean`    | 只读     | /        | 任务是否需要确认                |
+| 是否逾期             | overdue              | `boolean`    | 只读     | /        | 任务是否逾期                  |
+| 目标名称             | targetName           | `string`     | 只读     | /        | 关联目标名称                  |
+| 目标父级ID           | targetParentId       | `long`       | 只读     | /        | 目标父级ID                  |
+| 目标父级名称         | targetParentName     | `string`     | 只读     | /        | 目标父级名称                  |
+| 脚本ID               | scriptId             | `long`       | 只读     | /        | 关联脚本ID                  |
+| 脚本名称             | scriptName           | `string`     | 只读     | /        | 脚本名称                    |
+| 执行结果             | execResult           | `object`     | 只读     | /        | 任务执行结果                  |
+| 执行失败原因         | execFailureMessage   | `string`     | 只读     | /        | 执行失败详情                  |
+| 执行测试次数         | execTestNum          | `int`        | 只读     | /        | 执行测试次数                  |
+| 执行失败次数         | execTestFailureNum   | `int`        | 只读     | /        | 执行测试失败次数                |
+| 执行ID               | execId               | `long`       | 只读     | /        | 执行记录ID                  |
+| 执行名称             | execName             | `string`     | 只读     | /        | 执行名称                    |
+| 执行人ID             | execBy               | `long`       | 只读     | /        | 执行人ID                   |
+| 执行人姓名           | execByName           | `string`     | 只读     | /        | 执行人姓名                   |
+| 执行时间             | execDate             | `datetime`   | 只读     | /        | 执行时间                    |
+| 收藏状态             | favourite            | `boolean`    | 只读     | /        | 是否收藏                    |
+| 关注状态             | follow               | `boolean`    | 只读     | /        | 是否关注                    |
+| 评论数量             | commentNum           | `int`        | 只读     | /        | 评论数量                    |
+| 备注数量             | remarkNum            | `int`        | 只读     | /        | 备注数量                    |
+| 活动数量             | activityNum          | `int`        | 只读     | /        | 活动记录数量                  |
+| 创建人ID             | createdBy            | `long`       | 只读     | /        | 任务创建人ID                 |
+| 创建人姓名           | createdByName        | `string`     | 只读     | /        | 创建人姓名                   |
+| 创建时间             | createdDate          | `datetime`   | 只读     | /        | 任务创建时间                  |
+| 最后修改人ID         | lastModifiedBy       | `long`       | 只读     | /        | 最后修改人ID                 |
+| 最后修改人姓名       | lastModifiedByName   | `string`     | 只读     | /        | 最后修改人姓名                 |
+| 最后修改时间         | lastModifiedDate     | `datetime`   | 只读     | /        | 最后修改时间                  |
+
+::: warning 主要提示
+> *   **单一数据源：** 任务和Backlog使用同一套数据结构。
+> *   **状态转换触发：** Backlog项**被分配到迭代**是其状态转换的关键节点：
+      >     *   设置`迭代ID`。
+>     *   其`backlog`标识从`true`（待办项）变为`false`（迭代任务）。
+> *   **创建时定义类型：** 新建记录时：
+      >     *   **不填迭代ID** = 创建`backlog=true`的Backlog项。
+>     *   **填写迭代ID** = 直接创建`backlog=false`的迭代任务。
+:::
+
+### 任务类型（taskType）
+| 枚举值           | 说明               |
+|------------------|--------------------|
+| `REQUIREMENT`    | 需求               |
+| `STORY`          | 故事               |
+| `TASK`           | 任务               |
+| `BUG`            | 缺陷               |
+| `API_TEST`       | 接口测试           |
+| `SCENARIO_TEST`  | 场景测试           |
+
+### 缺陷级别（bugLevel）
+| 枚举值             | 说明               |
+|-----------------|--------------------|
+| `CRITICAL`      | 致命               |
+| `MAJOR`         | 严重               |
+| `MINOR`         | 一般               |
+| `TRIVIAL`       | 轻微               |
+| `API_TEST`      | 接口测试           |
+| `SCENARIO_TEST` | 场景测试           |
+
+### 测试类型（testType）
+| 枚举值             | 说明               |
+|-----------------|--------------------|
+| `PERFORMANCE`     | 性能测试               |
+| `FUNCTIONAL`      | 功能测试               |
+| `STABILITY`       | 稳定性测试               |
+| `CUSTOMIZATION`   | 自定义测试               |
+
+### 优先级（priority）
+| 枚举值       | 说明   |
+|--------------|--------|
+| `HIGHEST`    | 最高   |
+| `HIGH`       | 高     |
+| `MEDIUM`     | 中     |
+| `LOW`        | 低     |
+| `LOWEST`     | 最低   |
+
+### 任务状态（status）
+| 枚举值         | 说明               |
+|----------------|--------------------|
+| `PENDING`      | 待处理             |
+| `IN_PROGRESS`  | 进行中             |
+| `CONFIRMING`   | 待确认             |
+| `COMPLETED`    | 已完成             |
+| `CANCELED`     | 已取消             |
+
+### 工作量评估方法（evalWorkloadMethod）
+| 枚举值           | 说明               |
+|------------------|--------------------|
+| `WORKING_HOURS`  | 工时评估           |
+| `STORY_POINT`    | 故事点评估         |

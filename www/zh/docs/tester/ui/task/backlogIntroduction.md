@@ -40,3 +40,7 @@ Backlog包括两个主要部分：产品 Backlog 和 迭代 Backlog。
 
 - Backlog 是一个动态的工具，随着项目进展和需求变化，团队需定期审视和更新 Backlog，添加新的用户故事和任务，删除不再需要的项。
 - 在每个 Sprint 规划会议中，团队会从 Backlog 中选择高优先级的工作项，以制定 Sprint 目标。团队会讨论每个项的细节，确保大家对 Sprint 的工作有清晰的理解。
+
+## 字段信息
+
+请查看 [研发任务介绍 -> 任务信息](taskIntroduction).

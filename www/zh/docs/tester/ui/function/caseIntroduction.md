@@ -96,11 +96,11 @@ AngusTester的用例管理流程设计旨在提升工作效率，确保用例能
 | **计划ID**           | planId               | `long`       | **是**   | /        | 关联测试计划唯一标识                                                 |
 | 模块ID               | moduleId             | `long`       | 否       | /        | 所属功能模块ID                                                       |
 | 软件版本             | softwareVersion      | `string`     | 否       | ≤40      | 目标软件版本                                                         |
-| 优先级               | priority             | `enum`       | 否       | /        | **优先级枚举**：<br/>最高/高/中/低/最低                                   |
+| 优先级               | priority             | `enum`       | 否       | /        | 查看下面 [优先级](#)                                  |
 | **截止日期**         | deadlineDate         | `datetime`   | **是**   | /        | 用例执行截止时间                                                     |
 | 预估工作量           | evalWorkload         | `bigdecimal` | 否       | /        | 预估执行工作量                                                       |
 | 前置条件             | precondition         | `string`     | 否       | ≤2000    | 执行前置条件                                                         |
-| 步骤视图             | stepView             | `enum`       | 否       | /        | **步骤视图枚举**：<br/>表格视图/文本视图                                  |
+| 步骤视图             | stepView             | `enum`       | 否       | /        | 查看下面 [步骤视图](#)                                 |
 | **测试步骤**         | steps                | `list`       | 否       | /        | 测试步骤列表（最大100步）                                            |
 | 描述                 | description          | `string`     | 否       | ≤2000    | 用例详细描述                                                         |
 | **开发人员ID**       | developerId          | `long`       | **是**   | /        | 关联开发人员唯一标识                                                 |
@@ -116,13 +116,13 @@ AngusTester的用例管理流程设计旨在提升工作效率，确保用例能
 | 计划授权状态         | planAuth             | `boolean`    | 只读     | /        | 计划是否启用权限控制                                                 |
 | 模块名称             | moduleName           | `string`     | 只读     | /        | 所属模块名称                                                         |
 | 是否逾期             | overdue              | `boolean`    | 只读     | /        | 执行是否逾期                                                         |
-| 工作量评估方法       | evalWorkloadMethod   | `enum`       | 只读     | /        | **评估方法枚举**：<br/>工时/故事点                                        |
+| 工作量评估方法       | evalWorkloadMethod   | `enum`       | 只读     | /        | 查看下面 [工作量评估方法](#)                                         |
 | 实际工作量           | actualWorkload       | `bigdecimal` | 只读     | /        | 实际消耗工作量                                                       |
 | 评审状态             | review               | `boolean`    | 只读     | /        | 是否经过评审                                                         |
 | 评审人ID             | reviewerId           | `long`       | 只读     | /        | 评审人ID                                                             |
 | 评审人姓名           | reviewerName         | `string`     | 只读     | /        | 评审人姓名                                                           |
 | 评审时间             | reviewDate           | `datetime`   | 只读     | /        | 评审时间                                                             |
-| **评审状态**         | reviewStatus         | `enum`       | 只读     | /        | **评审状态枚举**：<br/>待评审/评审通过/评审未通过                         |
+| **评审状态**         | reviewStatus         | `enum`       | 只读     | /        | 查看下面 [评审状态](#)                           |
 | 评审备注             | reviewRemark         | `string`     | 只读     | /        | 评审意见备注                                                         |
 | 评审次数             | reviewNum            | `int`        | 只读     | /        | 评审总次数                                                           |
 | 评审失败次数         | reviewFailNum        | `int`        | 只读     | /        | 评审未通过次数                                                       |
@@ -131,7 +131,7 @@ AngusTester的用例管理流程设计旨在提升工作效率，确保用例能
 | 是否未计划           | unplanned            | `boolean`    | 只读     | /        | 是否未纳入计划                                                       |
 | 测试次数             | testNum              | `int`        | 只读     | /        | 执行测试总次数                                                       |
 | 测试失败次数         | testFailNum          | `int`        | 只读     | /        | 测试失败次数                                                         |
-| **测试结果**         | testResult           | `enum`       | 只读     | /        | **测试结果枚举**：<br/>待测试/测试通过/测试未通过/阻塞中/已取消            |
+| **测试结果**         | testResult           | `enum`       | 只读     | /        | 查看下面 [测试结果](#)            |
 | 测试备注             | testRemark           | `string`     | 只读     | /        | 测试结果备注                                                         |
 | 结果处理时间         | testResultHandleDate | `datetime`   | 只读     | /        | 测试结果处理时间                                                     |
 | 标签信息             | tags                 | `list`       | 只读     | /        | 标签详细信息列表                                                     |
@@ -167,7 +167,7 @@ AngusTester的用例管理流程设计旨在提升工作效率，确保用例能
 ]
 ```
 
-**视图模式**：
+### 步骤视图（stepView）
 | 模式       | 显示方式           |
 |------------|--------------------|
 | `TABLE`    | 表格形式展示步骤   |
@@ -181,6 +181,19 @@ AngusTester的用例管理流程设计旨在提升工作效率，确保用例能
 | `MEDIUM`     | 中     |
 | `LOW`        | 低     |
 | `LOWEST`     | 最低   |
+
+### 工作量评估方法（evalWorkloadMethod）
+| 枚举值           | 说明               |
+|------------------|--------------------|
+| `WORKING_HOURS`  | 工时评估           |
+| `STORY_POINT`    | 故事点评估         |
+
+### 评审状态（reviewStatus）
+| 枚举值         | 说明         |
+|----------------|--------------|
+| `PENDING`      | 待评审       |
+| `PASSED`       | 评审通过     |
+| `FAILED`   | 评审未通过   |
 
 ### 测试结果（testResult）
 | 枚举值         | 说明         |

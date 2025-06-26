@@ -1232,10 +1232,6 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                             link: '/taskManagement',
                         },
                         {
-                            text: '版本管理',
-                            link: '/versionManagement',
-                        },
-                        {
                             text: '敏捷会议介绍',
                             link: '/meetingIntroduction',
                         },
