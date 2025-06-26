@@ -6,9 +6,11 @@ import { Button, Select, InputNumber, SelectOption } from 'ant-design-vue';
 import { maxVersion } from '@/utils/version';
 import { round } from '@/utils/math';
 
+import { getCurrentLanguage } from '@/utils/index';
 import { getOptions, getSpecInfo } from './pricing';
 import CommonProblem  from './commonProblem.vue';
 
+const languagePath = getCurrentLanguage();
 const activeIndex = ref('cloud');
 const specInfo = ref({})
 const banners = ref({});
@@ -578,7 +580,7 @@ onMounted(async () => {
         <div class="flex items-center mt-20 btns">
           <Button
             class="mr-4 cursor-pointer text-base rounded w-40 h-12.5 text-center font-medium select-none primary-btn"
-            to="/purchase/angustester"
+            :href="`${languagePath}/purchase/angusCloud`"
           >
             {{ banners.button?.[0] }}
         </Button>
@@ -663,7 +665,7 @@ onMounted(async () => {
               <em class="money-bolder">{{ enterpriseAppPrice }}</em>
               <em class="money-normal">元<em class="not-italic mx-1">/</em>年</em>
             </div>
-            <Button type="primary" size="large" class="!h-14 !leading-10 w-50 px-8" href="/purchase/angustester/enterprise">
+            <Button type="primary" size="large" class="!h-14 !leading-10 w-50 px-8" :href="`${languagePath}/purchase/angusPriv?type=enterprise`">
               <span class="text-white">立即购买</span>
               <Icon icon="icon-hengjiantou" />
             </Button>
@@ -687,7 +689,7 @@ onMounted(async () => {
               <em class="money-bolder">{{ dataCenterAppPrice }}</em>
               <em class="money-normal">元<em class="not-italic mx-1">/</em>年</em>
             </div>
-            <Button size="large" class="!h-14 !leading-10 bg-vp-yellow_soft border-none flex justify-between items-center w-50 !px-8" href="/purchase/angustester/datacenter">
+            <Button size="large" class="!h-14 !leading-10 bg-vp-yellow_soft border-none flex justify-between items-center w-50 !px-8" :href="`${languagePath}/purchase/enterprise?type=datacenter`">
               <span>立即购买</span>
               <Icon icon="icon-hengjiantou" />
             </Button>
@@ -798,7 +800,7 @@ onMounted(async () => {
               <em>{{ dayTotalPrice }}</em>
               <em>元<em class="not-italic mx-1">/</em>天</em>
             </div>
-            <a class="btn-link cyan" href="/purchase/angustester?t=d">
+            <a class="btn-link cyan" :href="`${languagePath}/purchase/angusCloud?t=d`">
               <span>立即购买</span>
               <Icon icon="icon-hengjiantou" />
             </a>
@@ -913,7 +915,7 @@ onMounted(async () => {
               <em>{{ monthTotalPrice }}</em>
               <em>元<em class="not-italic mx-1">/</em>月</em>
             </div>
-            <a class="btn-link blue" to="/purchase/angustester?t=m">
+            <a class="btn-link blue" :href="`${languagePath}/purchase/angusCloud?t=m`">
               <span>立即购买</span>
               <Icon icon="icon-hengjiantou" />
             </a>
@@ -1022,7 +1024,7 @@ onMounted(async () => {
               <em>{{ yearTotalPrice }}</em>
               <em>元<em class="not-italic mx-1">/</em>年</em>
             </div>
-            <a class="btn-link yellow" to="/purchase/angustester?t=y">
+            <a class="btn-link yellow" :href="`${languagePath}/purchase/angusCloud?t=y`">
               <span>立即购买</span>
               <Icon icon="icon-hengjiantou" />
             </a>
@@ -1089,7 +1091,7 @@ onMounted(async () => {
   display: inline-block;
   width: 1px;
   height: 44px;
-  margin: 0 60px;
+  margin: 0 2rem;
   transform: rotate(15deg);
   background-color: rgba(15, 23, 35, 100%);
   font-style: normal;
@@ -1125,10 +1127,6 @@ horizon-tab-desc {
   transition: all 300ms linear 100ms;
   border: 1px solid #f0f0f0;
   border-radius: 20px;
-}
-
-.card-item:last-child {
-  margin-right: 0;
 }
 
 .card-item:hover {
@@ -1198,10 +1196,6 @@ horizon-tab-desc {
   align-items: flex-start;
   margin-bottom: 14px;
   line-height: 24px;
-}
-
-.row-container:last-child {
-  margin-bottom: 0;
 }
 
 .row-container .icon {
@@ -1316,10 +1310,6 @@ horizon-tab-desc {
 
 .card-row.mb-5 {
   margin-bottom: 20px;
-}
-
-.card-row:last-child {
-  margin-bottom: 0;
 }
 
 .card-row-label {

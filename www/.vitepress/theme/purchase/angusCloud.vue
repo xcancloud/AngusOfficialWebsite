@@ -1389,7 +1389,7 @@ em {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   border-color: #e9e9e9;
-  background: #f7f8fb;
+  /* background: #f7f8fb; */
   line-height: 35px;
 }
 
