@@ -201,3 +201,40 @@ AngusTester提供多种操作来管理变量，具体操作及其说明如下：
 ***注意事项：***
 
 - 场景只有引入已定义变量才会生效，不建立引用关系直接使用变量占位符不会生效。
+
+
+## 变量信息
+
+| 参数             | 字段名          | 类型       | 必填     | 长度限制 | 说明                                    |
+|------------------|-----------------|------------|----------|----------|---------------------------------------|
+| **ID**           | id              | `bigint`   | **条件** | /        | 唯一标识符；<br/>系统自动生成；<br/>修改时必须          |
+| **项目ID**       | projectId       | `long`     | **是**   | /        | 所属项目唯一标识                              |
+| **变量名称**     | name            | `string`   | **是**   | ≤100     | 变量唯一标识名称                              |
+| 描述             | description     | `string`   | 否       | ≤800     | 变量功能描述                                |
+| **变量值**       | value           | `string`   | **条件** | ≤4096    | 变量值，<br/>非提取类型时必须                         |
+| **密码类型**     | passwordValue   | `boolean`  | **是**   | /        | 是否为密码类型值                              |
+| 提取规则         | extraction      | `object`   | 否       | /        | 数据提取规则配置                              |
+| 是否已提取       | extracted       | `boolean`  | 只读     | /        | 数据是否已完成提取                             |
+| 数据来源         | dataSource      | `enum`     | 只读     | /        | **数据来源枚举**：<br/>静态值/值提取/文件提取/Http提取/Jdbc提取 |
+| 租户 ID          | tenantId    | `long`     | 只读   | /    | 所属租户 ID                     |
+| 创建人ID         | createdBy       | `long`     | 只读     | /        | 变量创建人ID                               |
+| 创建人姓名       | createdByName   | `string`   | 只读     | /        | 创建人姓名                                 |
+| 创建时间         | createdDate     | `datetime` | 只读     | /        | 变量创建时间                                |
+| 最后修改人ID     | lastModifiedBy  | `long`     | 只读     | /        | 最后修改人ID                               |
+| 最后修改人姓名   | lastModifiedByName| `string`  | 只读     | /        | 最后修改人姓名                               |
+| 最后修改时间     | lastModifiedDate| `datetime` | 只读     | /        | 最后修改时间                                |
+
+### 提取配置（extraction）
+
+请查看测试规范：[参数化 -> 提取配置](https://www.xcan.cloud/en/docs/tester/specification/content/parameterization)
+
+### 数据来源（dataSource）
+
+| 枚举值                  | 说明             |
+|--------------------------|------------------|
+| `STATIC_VALUE`           | 静态值           |
+| `EXTRACT_VALUE`          | 值提取           |
+| `EXTRACT_FILE`           | 文件提取         |
+| `EXTRACT_HTTP`           | Http提取         |
+| `EXTRACT_HTTP_SAMPLING`  | Http采样提取     |
+| `EXTRACT_JDBC`           | Jdbc提取         |

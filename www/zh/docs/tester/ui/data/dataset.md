@@ -189,3 +189,45 @@ AngusTester提供多种操作来管理数据集，具体操作及其说明如下
 ***注意事项：***
 
 - 场景只有引入已定义数据集才会生效，不建立引用关系直接使用数据集占位符不会生效。
+
+## 字段信息
+
+| 参数             | 字段名                | 类型       | 必填     | 长度限制  | 说明                                                     |
+|------------------|---------------------|------------|----------|----------|----------------------------------------------------------|
+| **ID**           | id                  | `bigint`   | **条件** | /        | 唯一标识符；修改时必须提供                             |
+| **项目ID**       | projectId           | `long`     | **是**   | /        | 所属项目唯一标识                                         |
+| **数据集名称**   | name                | `string`   | **是**   | ≤100     | 数据集唯一标识名称                                       |
+| 描述             | description         | `string`   | 否       | ≤200     | 数据集功能描述                                           |
+| **参数列表**     | parameters          | `list`     | **是**   | /        | 数据集参数定义列表（至少一个参数）                        |
+| 提取规则         | extraction          | `object`   | 否       | /        | 数据提取规则配置                                         |
+| 是否已提取       | extracted           | `boolean`  | 只读     | /        | 数据是否已完成提取                                       |
+| 数据来源         | dataSource          | `enum`     | 只读     | /        | **数据来源枚举**：静态值/值提取/文件提取/Http提取/Jdbc提取 |
+| 租户 ID          | tenantId        | `long`     | 只读   | /    | 所属租户 ID         |
+| 创建人ID         | createdBy           | `long`     | 只读     | /        | 数据集创建人ID                                           |
+| 创建人姓名       | createdByName       | `string`   | 只读     | /        | 创建人姓名                                               |
+| 创建时间         | createdDate         | `datetime` | 只读     | /        | 数据集创建时间                                           |
+| 最后修改人ID     | lastModifiedBy      | `long`     | 只读     | /        | 最后修改人ID                                             |
+| 最后修改人姓名   | lastModifiedByName  | `string`   | 只读     | /        | 最后修改人姓名                                           |
+
+### 参数字段（parameters）
+
+| 参数          | 字段名       | 类型       | 必填    | 长度限制 | 说明                     |
+|---------------|-------------|------------|---------|----------|--------------------------|
+| **参数名称**  | name        | `string`   | **是** | ≤100     | 参数唯一标识名称         |
+| 参数值        | value       | `string`   | 否     | ≤200     | 参数默认值               |
+| 是否模拟值    | hasMockValue| `boolean`  | 只读    | /        | 是否使用模拟值           |
+
+### 提取配置（extraction）
+
+请查看测试规范：[参数化 -> 提取配置](https://www.xcan.cloud/en/docs/tester/specification/content/parameterization)
+
+### 数据来源（dataSource）
+
+| 枚举值                  | 说明             |
+|--------------------------|------------------|
+| `STATIC_VALUE`           | 静态值           |
+| `EXTRACT_VALUE`           | 值提取           |
+| `EXTRACT_FILE`            | 文件提取         |
+| `EXTRACT_HTTP`            | Http提取         |
+| `EXTRACT_HTTP_SAMPLING`   | Http采样提取     |
+| `EXTRACT_JDBC`            | Jdbc提取         |

@@ -86,3 +86,107 @@ AngusTester的用例管理流程设计旨在提升工作效率，确保用例能
 - 测试未通过：用例在测试过程中发现问题，需要开发人员修复后重新测试。
 - 阻塞中：用例因为某些原因（如依赖其他功能、资源不足等）无法继续推进。
 - 已取消：由于各种原因（如需求变更、优先级调整等），该用例被取消，不再进行。
+
+## 字段信息
+
+| 参数                 | 字段名                | 类型         | 必填     | 长度限制 | 说明                                                                 |
+|----------------------|-----------------------|--------------|----------|----------|----------------------------------------------------------------------|
+| **ID**               | id                   | `bigint`     | **条件** | /        | 用例唯一标识符；<br/>修改时必须                                           |
+| **用例名称**         | name                 | `string`     | **是**   | ≤400     | 用例功能描述                                                         |
+| **计划ID**           | planId               | `long`       | **是**   | /        | 关联测试计划唯一标识                                                 |
+| 模块ID               | moduleId             | `long`       | 否       | /        | 所属功能模块ID                                                       |
+| 软件版本             | softwareVersion      | `string`     | 否       | ≤40      | 目标软件版本                                                         |
+| 优先级               | priority             | `enum`       | 否       | /        | **优先级枚举**：<br/>最高/高/中/低/最低                                   |
+| **截止日期**         | deadlineDate         | `datetime`   | **是**   | /        | 用例执行截止时间                                                     |
+| 预估工作量           | evalWorkload         | `bigdecimal` | 否       | /        | 预估执行工作量                                                       |
+| 前置条件             | precondition         | `string`     | 否       | ≤2000    | 执行前置条件                                                         |
+| 步骤视图             | stepView             | `enum`       | 否       | /        | **步骤视图枚举**：<br/>表格视图/文本视图                                  |
+| **测试步骤**         | steps                | `list`       | 否       | /        | 测试步骤列表（最大100步）                                            |
+| 描述                 | description          | `string`     | 否       | ≤2000    | 用例详细描述                                                         |
+| **开发人员ID**       | developerId          | `long`       | **是**   | /        | 关联开发人员唯一标识                                                 |
+| **测试人员ID**       | testerId             | `long`       | **是**   | /        | 关联测试人员唯一标识                                                 |
+| 标签集               | tagIds               | `set`        | 否       | /        | 关联标签ID集合                                                       |
+| 附件列表             | attachments          | `list`       | 否       | /        | 用例相关附件                                                         |
+| 关联任务集           | refTaskIds           | `set`        | 否       | /        | 关联任务ID集合                                                       |
+| 关联用例集           | refCaseIds           | `set`        | 否       | /        | 关联用例ID集合                                                       |
+| 用例编号             | code                 | `string`     | 只读     | /        | 用例唯一编号（系统生成）                                             |
+| 版本号               | version              | `int`        | 只读     | /        | 用例版本号                                                           |
+| 项目ID               | projectId            | `long`       | 只读     | /        | 所属项目ID                                                           |
+| 计划名称             | planName             | `string`     | 只读     | /        | 关联计划名称                                                         |
+| 计划授权状态         | planAuth             | `boolean`    | 只读     | /        | 计划是否启用权限控制                                                 |
+| 模块名称             | moduleName           | `string`     | 只读     | /        | 所属模块名称                                                         |
+| 是否逾期             | overdue              | `boolean`    | 只读     | /        | 执行是否逾期                                                         |
+| 工作量评估方法       | evalWorkloadMethod   | `enum`       | 只读     | /        | **评估方法枚举**：<br/>工时/故事点                                        |
+| 实际工作量           | actualWorkload       | `bigdecimal` | 只读     | /        | 实际消耗工作量                                                       |
+| 评审状态             | review               | `boolean`    | 只读     | /        | 是否经过评审                                                         |
+| 评审人ID             | reviewerId           | `long`       | 只读     | /        | 评审人ID                                                             |
+| 评审人姓名           | reviewerName         | `string`     | 只读     | /        | 评审人姓名                                                           |
+| 评审时间             | reviewDate           | `datetime`   | 只读     | /        | 评审时间                                                             |
+| **评审状态**         | reviewStatus         | `enum`       | 只读     | /        | **评审状态枚举**：<br/>待评审/评审通过/评审未通过                         |
+| 评审备注             | reviewRemark         | `string`     | 只读     | /        | 评审意见备注                                                         |
+| 评审次数             | reviewNum            | `int`        | 只读     | /        | 评审总次数                                                           |
+| 评审失败次数         | reviewFailNum        | `int`        | 只读     | /        | 评审未通过次数                                                       |
+| 测试人员姓名         | testerName           | `string`     | 只读     | /        | 测试人员姓名                                                         |
+| 开发人员姓名         | developerName        | `string`     | 只读     | /        | 开发人员姓名                                                         |
+| 是否未计划           | unplanned            | `boolean`    | 只读     | /        | 是否未纳入计划                                                       |
+| 测试次数             | testNum              | `int`        | 只读     | /        | 执行测试总次数                                                       |
+| 测试失败次数         | testFailNum          | `int`        | 只读     | /        | 测试失败次数                                                         |
+| **测试结果**         | testResult           | `enum`       | 只读     | /        | **测试结果枚举**：<br/>待测试/测试通过/测试未通过/阻塞中/已取消            |
+| 测试备注             | testRemark           | `string`     | 只读     | /        | 测试结果备注                                                         |
+| 结果处理时间         | testResultHandleDate | `datetime`   | 只读     | /        | 测试结果处理时间                                                     |
+| 标签信息             | tags                 | `list`       | 只读     | /        | 标签详细信息列表                                                     |
+| 关联任务信息         | refTaskInfos         | `list`       | 只读     | /        | 关联任务详细信息                                                     |
+| 关联用例信息         | refCaseInfos         | `list`       | 只读     | /        | 关联用例详细信息                                                     |
+| 全版本用例           | allVersionCaseVos    | `map`        | 只读     | /        | 所有历史版本用例信息                                                 |
+| 进度信息             | progress             | `object`     | 只读     | /        | 用例执行进度                                                         |
+| 收藏状态             | favourite            | `boolean`    | 只读     | /        | 是否收藏                                                             |
+| 关注状态             | follow               | `boolean`    | 只读     | /        | 是否关注                                                             |
+| 评论数量             | commentNum           | `int`        | 只读     | /        | 评论数量                                                             |
+| 活动数量             | activityNum          | `int`        | 只读     | /        | 活动记录数量                                                         |
+| 租户ID               | tenantId             | `long`       | 只读     | /        | 所属租户ID                                                           |
+| 创建人ID             | createdBy            | `long`       | 只读     | /        | 用例创建人ID                                                         |
+| 创建人姓名           | createdByName        | `string`     | 只读     | /        | 创建人姓名                                                           |
+| 创建人头像           | avatar               | `string`     | 只读     | /        | 创建人头像地址                                                       |
+| 创建时间             | createdDate          | `datetime`   | 只读     | /        | 用例创建时间                                                         |
+| 最后修改人ID         | lastModifiedBy       | `long`       | 只读     | /        | 最后修改人ID                                                         |
+| 最后修改人姓名       | lastModifiedByName   | `string`     | 只读     | /        | 最后修改人姓名                                                       |
+| 最后修改时间         | lastModifiedDate     | `datetime`   | 只读     | /        | 最后修改时间                                                         |
+
+### 测试步骤（steps）
+**数据结构**：
+```json
+[
+  {
+    "step": "输入用户名和密码",
+    "expectedResult": "登录成功"
+  },
+  {
+    "step": "点击支付按钮",
+    "expectedResult": "跳转支付页面"
+  }
+]
+```
+
+**视图模式**：
+| 模式       | 显示方式           |
+|------------|--------------------|
+| `TABLE`    | 表格形式展示步骤   |
+| `TEXT`     | 纯文本形式展示步骤 |
+
+### 优先级（priority）
+| 枚举值       | 说明   |
+|--------------|--------|
+| `HIGHEST`    | 最高   |
+| `HIGH`       | 高     |
+| `MEDIUM`     | 中     |
+| `LOW`        | 低     |
+| `LOWEST`     | 最低   |
+
+### 测试结果（testResult）
+| 枚举值         | 说明         |
+|----------------|--------------|
+| `PENDING`      | 待测试       |
+| `PASSED`       | 测试通过     |
+| `NOT_PASSED`   | 测试未通过   |
+| `BLOCKED`      | 阻塞中       |
+| `CANCELED`     | 已取消       |

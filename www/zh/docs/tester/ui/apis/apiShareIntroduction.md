@@ -107,7 +107,7 @@ graph LR
 | **服务 ID**      | **servicesId**              | `long`     | **是**   | /     | 关联的服务 ID                                                                                         |
 | **接口 ID 集合** | **apisIds**                 | `set`      | **条件** | /     | 当 shareScope 为接口时必填                                                                            |
 | **分享页面地址** | **baseUrl**                 | `string`   | **是**   | ≤2000 | 前端分享页面基础 URL                                                                                  |
-| 租户 ID          | **tenantId**                | `long`     | 只读     | /     | 所属租户 ID                                                                                           |
+| 租户 ID          | tenantId                | `long`     | 只读     | /     | 所属租户 ID                                                                                           |
 | 创建人 ID        | **createdBy**               | `long`     | 只读     | /     | 创建人 ID                                                                                             |
 | 创建人           | **createdBy<br/>Name**      | `string`   | 只读     | /     | 创建人姓名                                                                                            |
 | 创建时间         | **createdDate**             | `datetime` | 只读     | /     | 创建时间                                                                                              |

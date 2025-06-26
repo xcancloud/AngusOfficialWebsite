@@ -191,7 +191,7 @@ graph LR
 | 关注状态       | **follow**                     | `boolean`            | 否      | /        | 是否关注                                                                                                    |
 | 同步名称       | **syncName**                   | `string`             | 只读      | /        | 同步配置名称                                                                                                 |
 | 解析引用模型     | **resolvedRef<br/>Models**      | `map`                | 只读      | /        | 解析后的引用模型                                                                                             |
-| 租户 ID      | **tenantId**                   | `long`               | 只读      | /        | 所属租户 ID                                                                                                 |
+| 租户 ID      | tenantId                   | `long`               | 只读      | /        | 所属租户 ID                                                                                                 |
 | 创建人        | **createdBy<br/>Name**          | `string`             | 只读      | /        | 创建人姓名                                                                                                  |
 | 创建时间       | **createdDate**                | `datetime`           | 只读      | /        | 创建时间                                                                                                    |
 | 最后修改人      | **lastModified<br/>ByName**     | `string`             | 只读      | /        | 最后修改人姓名                                                                                              |

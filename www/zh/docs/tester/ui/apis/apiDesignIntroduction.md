@@ -108,7 +108,7 @@ sequenceDiagram
 | 设计来源         | **designSource**            | `enum`     | 否     | /    | **来源**:<br>• `SYNCHRONOUS_SERVICE` - 同步服务<br>• `FILE_IMPORT` - 文件导入<br>• `MANUAL_CREATED` - 手动创建 |
 | 来源 ID          | **designSource<br/>Id**     | `long`     | 否     | /    | 设计来源对象 ID                                                                                                    |
 | 来源名称         | **designSource<br/>Name**   | `string`   | 只读   | /    | 设计来源名称                                                                                                       |
-| 租户 ID          | **tenantId**                | `long`     | 只读   | /    | 所属租户 ID                                                                                                        |
+| 租户 ID          | tenantId                | `long`     | 只读   | /    | 所属租户 ID                                                                                                        |
 | 创建人 ID        | **createdBy**               | `long`     | 只读   | /    | 创建人 ID                                                                                                          |
 | 创建人           | **createdBy<br/>Name**      | `string`   | 只读   | /    | 创建人姓名                                                                                                         |
 | 创建时间         | **createdDate**             | `datetime` | 只读   | /    | 创建时间                                                                                                           |

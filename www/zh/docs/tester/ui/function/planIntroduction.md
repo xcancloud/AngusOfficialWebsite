@@ -38,3 +38,52 @@ AngusTester测试计划旨在为软件测试活动提供一个系统化的框架
 
 - 共享权限：在计划操作中选择“授权”，设置计划为“无权限控制”，允许其他用户访问和执行。
 - 指定权限：设置计划为“有权限控制”，授权特定用户、部门或用户组计划的部分或全部权限，确保安全性和可控性。
+
+## 计划信息
+
+| 参数                 | 字段名                | 类型         | 必填     | 长度限制 | 说明                                                                 |
+|----------------------|-----------------------|--------------|----------|----------|----------------------------------------------------------------------|
+| **ID**               | id                   | `bigint`     | **条件** | /        | 计划唯一标识符；修改时必须                                           |
+| **项目ID**           | projectId            | `long`       | **是**   | /        | 所属项目唯一标识                                                     |
+| **计划名称**         | name                 | `string`     | **是**   | ≤200     | 计划简要概述                                                         |
+| 授权控制             | auth                 | `boolean`    | 否       | /        | 是否启用权限控制（默认`false`）                                      |
+| **开始日期**         | startDate            | `datetime`   | **是**   | /        | 计划启动时间                                                         |
+| **截止日期**         | deadlineDate         | `datetime`   | **是**   | /        | 计划完成时间                                                         |
+| **负责人ID**         | ownerId              | `long`       | **是**   | /        | 计划负责人唯一标识                                                   |
+| **测试人员职责**     | testerResponsibilities| `map`        | **是**   | /        | 测试人员职责分配（格式：`{人员ID: 职责描述}`）                        |
+| **测试范围**         | testingScope         | `string`     | **是**   | ≤2000    | 测试活动覆盖范围                                                     |
+| **测试目标**         | testingObjectives    | `string`     | **是**   | ≤2000    | 测试活动预期目标                                                     |
+| 验收标准             | acceptanceCriteria   | `string`     | 否       | /        | 软件交付验收条件                                                     |
+| 其他信息             | otherInformation     | `string`     | 否       | /        | 补充说明信息                                                         |
+| 附件列表             | attachments          | `list`       | 否       | /        | 相关文档资料                                                         |
+| 用例前缀             | casePrefix           | `string`     | 否       | ≤40      | 用例标识前缀（设置后不可修改）                                      |
+| **启用评审**         | review               | `boolean`    | **是**   | /        | 是否启用用例评审                                                     |
+| **工作量评估方法**   | evalWorkloadMethod   | `enum`       | **是**   | /        | **评估方法枚举**：工时/故事点                                        |
+| **计划状态**         | status               | `enum`       | 只读     | /        | **状态枚举**：待开始/进行中/已完成/阻塞中                            |
+| 负责人姓名           | ownerName            | `string`     | 只读     | /        | 负责人姓名                                                           |
+| 负责人头像           | ownerAvatar          | `string`     | 只读     | /        | 负责人头像地址                                                       |
+| 成员列表             | members              | `list`       | 只读     | /        | 计划成员详细信息                                                     |
+| 租户ID               | tenantId             | `long`       | 只读     | /        | 所属租户ID                                                           |
+| 创建人ID             | createdBy            | `long`       | 只读     | /        | 计划创建人ID                                                         |
+| 创建人姓名           | createdByName        | `string`     | 只读     | /        | 创建人姓名                                                           |
+| 创建时间             | createdDate          | `datetime`   | 只读     | /        | 计划创建时间                                                         |
+| 最后修改人ID         | lastModifiedBy       | `long`       | 只读     | /        | 最后修改人ID                                                         |
+| 最后修改人姓名       | lastModifiedByName   | `string`     | 只读     | /        | 最后修改人姓名                                                       |
+| 最后修改时间         | lastModifiedDate     | `datetime`   | 只读     | /        | 最后修改时间                                                         |
+| 用例总数             | caseNum              | `long`       | 只读     | /        | 关联测试用例数量                                                     |
+| 有效用例数           | validCaseNum         | `long`       | 只读     | /        | 有效用例数量                                                         |
+| 进度信息             | progress             | `object`     | 只读     | /        | 计划进度详情                                                         |
+
+### 计划状态（status）
+| 枚举值         | 说明               |
+|----------------|--------------------|
+| `PENDING`      | 待开始             |
+| `IN_PROGRESS`  | 进行中             |
+| `COMPLETED`    | 已完成             |
+| `BLOCKED`      | 阻塞中             |
+
+### 工作量评估方法（evalWorkloadMethod）
+| 枚举值           | 说明               |
+|------------------|--------------------|
+| `WORKING_HOURS`  | 工时评估           |
+| `STORY_POINT`    | 故事点评估         |
