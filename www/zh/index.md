@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "AngusTester"
   text: "让企业快速搭建自己的研发中台"
-  tagline: "智能化 · 敏捷驱动 · 开放源码 · 高性能"
+  tagline: "敏捷驱动 · 智能化 · 高性能 · 开放源码"
   image:
     src: /hero.png
     alt: AngusTester
