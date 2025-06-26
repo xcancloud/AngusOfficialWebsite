@@ -148,54 +148,54 @@ graph LR
 
 ## 接口信息
 
-| 参数         | 字段名                           | 类型                  | 是否必须 | 长度限制 | 说明                                                                                                         |
-|------------|---------------------------------|-----------------------|----------|----------|-------------------------------------------------------------------------------------------------------------|
-| **接口 ID**  | **id**                          | `long`               | **条件**       | /        | 接口唯一标识，修改时必须                                                                                                  |
-| **服务 ID**  | **serviceId**                   | `long`               | **是**   | /        | 所属服务 ID                                                                                                  |
-| **协议类型**   | **protocol**                    | `enum`               | **是**   | /        | **协议枚举**:<br>• `http`<br>• `https`<br>• `ws`<br>• `wss`                                                  |
-| **请求方法**   | **method**                      | `enum`               | **是**   | /        | **方法枚举**:<br>• `GET`<br>• `HEAD`<br>• `POST`<br>• `PUT`<br>• `PATCH`<br>• `DELETE`<br>• `OPTIONS`<br>• `TRACE` |
-| **端点路径**   | **endpoint**                    | `string`             | **是**   | ≤800     | API 路径（不含查询参数），如：/api/v1/users/{id}                                                             |
-| **接口名称**   | **summary**                     | `string`             | **是**   | /        | 接口摘要或名称                                                                                                |
-| 接口描述       | **description**                 | `string`             | 否       | ≤20000   | 详细描述，支持 CommonMark 富文本                                                                               |
-| 标签         | **tags**                        | `list`               | 否       | /        | OpenAPI 标签列表                                                                                            |
-| 操作 ID      | **operationId**                 | `string`             | 否       | ≤400     | OpenAPI 操作标识符                                                                                           |
-| 外部文档       | **externalDocs**                | `object`             | 否       | /        | 关联外部文档                                                                                                  |
-| 请求参数       | **parameters**                  | `list`               | 否       | ≤100     | 请求参数列表                                                                                                  |
-| 请求体        | **requestBody**                 | `object`             | 否       | /        | 请求体定义                                                                                                   |
-| 响应定义       | **responses**                   | `map`                | 否       | /        | 响应定义集合                                                                                                  |
-| 弃用状态       | **deprecated**                  | `boolean`            | 否       | /        | 是否已弃用（默认`false`）                                                                                     |
-| 安全要求       | **security**                    | `list`               | 否       | /        | 安全要求列表                                                                                                  |
-| 扩展属性       | **extensions**                  | `map`                | 否       | /        | OpenAPI 扩展字段                                                                                            |
-| 认证方案       | **authentication**              | `object`             | 否       | /        | 安全认证方案                                                                                                  |
-| 断言配置       | **assertions**                  | `list`               | 否       | ≤100     | 接口执行结果断言                                                                                              |
-| **接口状态**   | **status**                      | `enum`               | **是**   | /        | **状态枚举**:<br>• `UNKNOWN` - 未知<br>• `IN_DESIGN` - 设计中<br>• `IN_DEV` - 开发中<br>• `DEV_COMPLETED` - 开发完成<br>• `RELEASED` - 已发布 |
-| **负责人 ID** | **ownerId**                     | `long`               | **是**   | /        | 接口负责人 ID                                                                                                |
-| 负责人        | **ownerName**                   | `string`             | 否       | /        | 负责人姓名                                                                                                   |
-| 授权控制       | **auth**                        | `boolean`            | 否       | /        | 是否启用授权控制                                                                                              |
-| 服务授权       | **serviceAuth**                 | `boolean`            | 否       | /        | 是否继承服务级授权                                                                                             |
-| 安全标记       | **secured**                     | `boolean`            | 否       | /        | 是否启用安全机制                                                                                              |
-| 功能测试       | **testFunc**                    | `boolean`            | 否       | /        | 是否启用功能测试（默认`true`）                                                                                 |
-| 功能测试通过     | **testFunc<br/>Passed**              | `boolean`            | 否       | /        | 功能测试是否通过                                                                                              |
-| 功能不通过原因    | **testFunc<br/>FailureMessage** | `string`             | 否       | /        | 功能测试不通过或失败原因                                                                                      |
-| 性能测试       | **testPerf**                    | `boolean`            | 否       | /        | 是否启用性能测试（默认`true`）                                                                                 |
-| 性能测试通过     | **testPerf<br/>Passed**              | `boolean`            | 否       | /        | 性能测试是否通过                                                                                              |
-| 性能不通过原因    | **testPerf<br/>FailureMessage** | `string`             | 否       | /        | 性能测试不通过或失败原因                                                                                      |
-| 稳定性测试      | **testStability**               | `boolean`            | 否       | /        | 是否启用稳定性测试（默认`true`）                                                                               |
-| 稳定性测试通过    | **testStability<br/>Passed**         | `boolean`            | 否       | /        | 稳定性测试是否通过                                                                                            |
-| 稳定性不通过原因   | **testStability<br/>FailureMessage** | `string`       | 否       | /        | 稳定性测试不通过或失败原因                                                                                     |
-| 数据集结束策略    | **datasetAction<br/>OnEOF**          | `enum`               | 否       | /        | 数据集读取结束策略（默认`RECYCLE`）                                                                            |
-| 数据集共享模式    | **datasetSharing<br/>Mode**          | `enum`               | 否       | /        | 多线程数据集共享模式（默认`ALL_THREAD`）                                                                      |
-| 可用服务器      | **availableServers**            | `list`               | 否       | /        | 可用服务器列表                                                                                               |
-| 标签模型       | **tagSchemas**                  | `map`                | 否       | /        | 标签模型定义                                                                                                 |
-| 收藏状态       | **favourite**                   | `boolean`            | 否       | /        | 是否收藏                                                                                                    |
-| 关注状态       | **follow**                      | `boolean`            | 否       | /        | 是否关注                                                                                                    |
-| 同步名称       | **syncName**                    | `string`             | 否       | /        | 同步配置名称                                                                                                 |
-| 解析引用模型     | **resolvedRef<br/>Models**           | `map`                | 否       | /        | 解析后的引用模型                                                                                             |
-| 租户 ID      | **tenantId**                    | `long`               | 否       | /        | 所属租户 ID                                                                                                 |
-| 创建人        | **createdBy<br/>Name**               | `string`             | 否       | /        | 创建人姓名                                                                                                  |
-| 创建时间       | **createdDate**                 | `datetime`           | 否       | /        | 创建时间                                                                                                    |
-| 最后修改人      | **lastModified<br/>ByName**          | `string`             | 否       | /        | 最后修改人姓名                                                                                              |
-| 最后修改时间     | **lastModified<br/>Date**            | `datetime`           | 否       | /        | 最后修改时间                                                                                                |
+| 参数         | 字段名                           | 类型                  | 必填     | 长度限制 | 说明                                                                                                         |
+|------------|--------------------------------|-----------------------|--------|----------|-------------------------------------------------------------------------------------------------------------|
+| **接口 ID**  | **id**                         | `long`               | **条件** | /        | 接口唯一标识，修改时必须                                                                                                  |
+| **服务 ID**  | **serviceId**                  | `long`               | **是**  | /        | 所属服务 ID                                                                                                  |
+| **协议类型**   | **protocol**                   | `enum`               | **是**  | /        | **协议枚举**:<br>• `http`<br>• `https`<br>• `ws`<br>• `wss`                                                  |
+| **请求方法**   | **method**                     | `enum`               | **是**  | /        | **方法枚举**:<br>• `GET`<br>• `HEAD`<br>• `POST`<br>• `PUT`<br>• `PATCH`<br>• `DELETE`<br>• `OPTIONS`<br>• `TRACE` |
+| **端点路径**   | **endpoint**                   | `string`             | **是**  | ≤800     | API 路径（不含查询参数），如：/api/v1/users/{id}                                                             |
+| **接口名称**   | **summary**                    | `string`             | **是**  | /        | 接口摘要或名称                                                                                                |
+| 接口描述       | **description**                | `string`             | 否      | ≤20000   | 详细描述，支持 CommonMark 富文本                                                                               |
+| 标签         | **tags**                       | `list`               | 否      | /        | OpenAPI 标签列表                                                                                            |
+| 操作 ID      | **operationId**                | `string`             | 否      | ≤400     | OpenAPI 操作标识符                                                                                           |
+| 外部文档       | **externalDocs**               | `object`             | 否      | /        | 关联外部文档                                                                                                  |
+| 请求参数       | **parameters**                 | `list`               | 否      | ≤100     | 请求参数列表                                                                                                  |
+| 请求体        | **requestBody**                | `object`             | 否      | /        | 请求体定义                                                                                                   |
+| 响应定义       | **responses**                  | `map`                | 否      | /        | 响应定义集合                                                                                                  |
+| 弃用状态       | **deprecated**                 | `boolean`            | 否      | /        | 是否已弃用（默认`false`）                                                                                     |
+| 安全要求       | **security**                   | `list`               | 否      | /        | 安全要求列表                                                                                                  |
+| 扩展属性       | **extensions**                 | `map`                | 否      | /        | OpenAPI 扩展字段                                                                                            |
+| 认证方案       | **authentication**             | `object`             | 否      | /        | 安全认证方案                                                                                                  |
+| 断言配置       | **assertions**                 | `list`               | 否      | ≤100     | 接口执行结果断言                                                                                              |
+| **接口状态**   | **status**                     | `enum`               | **是**  | /        | **状态枚举**:<br>• `UNKNOWN` - 未知<br>• `IN_DESIGN` - 设计中<br>• `IN_DEV` - 开发中<br>• `DEV_COMPLETED` - 开发完成<br>• `RELEASED` - 已发布 |
+| **负责人 ID** | **ownerId**                    | `long`               | **是**  | /        | 接口负责人 ID                                                                                                |
+| 负责人        | **ownerName**                  | `string`             | 否      | /        | 负责人姓名                                                                                                   |
+| 授权控制       | **auth**                       | `boolean`            | 否      | /        | 是否启用授权控制                                                                                              |
+| 服务授权       | **serviceAuth**                | `boolean`            | 只读     | /        | 是否继承服务级授权                                                                                             |
+| 安全标记       | **secured**                    | `boolean`            | 否      | /        | 是否启用安全机制                                                                                              |
+| 功能测试       | **testFunc**                   | `boolean`            | 否      | /        | 是否启用功能测试（默认`true`）                                                                                 |
+| 功能测试通过     | **testFunc<br/>Passed**        | `boolean`            | 只读      | /        | 功能测试是否通过                                                                                              |
+| 功能不通过原因    | **testFunc<br/>FailureMessage** | `string`             | 只读      | /        | 功能测试不通过或失败原因                                                                                      |
+| 性能测试       | **testPerf**                   | `boolean`            | 否      | /        | 是否启用性能测试（默认`true`）                                                                                 |
+| 性能测试通过     | **testPerf<br/>Passed**         | `boolean`            | 只读      | /        | 性能测试是否通过                                                                                              |
+| 性能不通过原因    | **testPerf<br/>FailureMessage** | `string`             | 只读      | /        | 性能测试不通过或失败原因                                                                                      |
+| 稳定性测试      | **testStability**              | `boolean`            | 否      | /        | 是否启用稳定性测试（默认`true`）                                                                               |
+| 稳定性测试通过    | **testStability<br/>Passed**    | `boolean`            | 只读      | /        | 稳定性测试是否通过                                                                                            |
+| 稳定性不通过原因   | **testStability<br/>FailureMessage** | `string`       | 只读      | /        | 稳定性测试不通过或失败原因                                                                                     |
+| 数据集结束策略    | **datasetAction<br/>OnEOF**     | `enum`               | 否      | /        | 数据集读取结束策略（默认`RECYCLE`）                                                                            |
+| 数据集共享模式    | **datasetSharing<br/>Mode**     | `enum`               | 否      | /        | 多线程数据集共享模式（默认`ALL_THREAD`）                                                                      |
+| 可用服务器      | **availableServers**           | `list`               | 否      | /        | 可用服务器列表                                                                                               |
+| 标签模型       | **tagSchemas**                 | `map`                | 否      | /        | 标签模型定义                                                                                                 |
+| 收藏状态       | **favourite**                  | `boolean`            | 否      | /        | 是否收藏                                                                                                    |
+| 关注状态       | **follow**                     | `boolean`            | 否      | /        | 是否关注                                                                                                    |
+| 同步名称       | **syncName**                   | `string`             | 只读      | /        | 同步配置名称                                                                                                 |
+| 解析引用模型     | **resolvedRef<br/>Models**      | `map`                | 只读      | /        | 解析后的引用模型                                                                                             |
+| 租户 ID      | **tenantId**                   | `long`               | 只读      | /        | 所属租户 ID                                                                                                 |
+| 创建人        | **createdBy<br/>Name**          | `string`             | 只读      | /        | 创建人姓名                                                                                                  |
+| 创建时间       | **createdDate**                | `datetime`           | 只读      | /        | 创建时间                                                                                                    |
+| 最后修改人      | **lastModified<br/>ByName**     | `string`             | 只读      | /        | 最后修改人姓名                                                                                              |
+| 最后修改时间     | **lastModified<br/>Date**       | `datetime`           | 只读      | /        | 最后修改时间                                                                                                |
 
 ### 接口状态流转
 

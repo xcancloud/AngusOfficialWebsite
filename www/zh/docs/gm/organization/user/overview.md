@@ -71,46 +71,46 @@ graph TB
 
 ## 用户信息
 
-| 参数             | 字段名                   | 类型     | 是否必须 | 长度限制 | 说明                               |
-| ---------------- | ------------------------ | -------- | -------- | -------- |----------------------------------|
-|ID               |ID                       | bigint   | 是       | /        | 用户ID，用户在系统中唯一标识                  |
-| 名称             | firstName                | string   | 是       | 100      | 用户名字，如：云婷                        |
-| 姓氏             | lastName                 | string   | 是       | 100      | 用户姓氏，如：王                         |
-| 姓名             | fullName                 | string   | 是       | 100      | 用户的全名，由名字和姓氏组成，用于标识用户的真实身份，如：王云婷 |
-| 用户名           | username                 | string   | 是       | 100      | 用户在系统中的唯一标识                      |
-| 手机号           | mobile                   | string   | 是       | 16       | 用户手机号                            |
-| 座机号           | landline                 | string   | 否       | 40       | 用户座机号                            |
-| 邮箱             | email                    | string   | 是       | 100      | 用户电子邮箱地址                         |
-| 性别             | gender                   | string   | 否       | 10       | 用户性别                             |
-| 职务             | title                    | string   | 否       | 100      | 用户担任的职务                          |
-| 地址             | address                  | string   | 否       | 200      | 用户联系地址                           |
-| 系统身份         | sysAdmin                 | int      | 是       | /        | 用户系统身份(默认角色)                     |
-| 来源             | source                   | string   | 是       | 40       | 用户来源                             |
-| 锁定状态         | locked                   | boolean  | 是       | /        | 用户锁定状态                           |
-| 在线状态         | online                   | boolean  | 是       | /        | 用户在线状态                           |
-| 最近上线         | onlineDate               | datetime | 否       | /        | 用户最近上线时间                         |
-| 下线时间         | offlineDate              | datetime | 否       | /        | 用户上次下线时间                         |
-| 添加人           | createdBy                | bigint   | 是       | /        | 添加用户操作人                          |
-| 加入时间         | createdDate              | datetime | 是       | /        | 用户加入或创建用户时间                      |
-| 最后修改人       | lastModifiedBy           | bigint   | 是       | /        | 最后修改用户信息操作人                      |
-| 最后修改时间     | lastModifiedDate         | datetime | 是       | /        | 最后修改用户信息时间                       |
-| 国际电话区号     | itc                      | string   | 否       | 8        | 国际电话区号                           |
-| 国家编码         | country                  | string   | 否       | 16       | 国家编码                             |
-| 注册账号类型     | signupAccountType        | string   | 否       | 16       | 注册账号类型                           |
-| 注册账号         | signupAccount            | string   | 否       | 100      | 租户注册账号                           |
-| 注册设备ID      | signupDeviceId           | string   | 否       | 100      | 注册设备ID                           |
-| 租户ID          | tenantId                 | bigint   | 是       | /        | 所属租户ID                           |
-| 租户名称         | tenantName               | string   | 是       | 100      | 租户名称                             |
-| 头像地址         | avatar                   | string   | 否       | 400      | 用户头像地址                           |
-| 用户目录ID      | directoryId              | bigint   | 否       | /        | 用户目录ID                           |
-| 主部门ID        | mainDeptId               | bigint   | 否       | /        | 主部门ID                            |
-| 部门负责人       | deptHead                 | boolean  | 否       | /        | 是否部门负责人                          |
-| 到期标记         | expired                  | boolean  | 是       | /        | 到期标记                             |
-| 到期时间         | expiredDate              | datetime | 否       | /        | 到期时间                             |
-| 启用状态         | enabled                  | boolean  | 是       | /        | 用户状态                             |
-| 禁用原因         | disableReason            | string   | 否       | 200      | 禁用原因                             |
-| 删除状态         | deleted                  | boolean  | 是       | /        | 删除状态                             |
-| 最后锁定时间     | lastLockDate             | datetime | 否       | /        | 最后锁定时间                           |
-| 锁定开始时间     | lockStartDate            | datetime | 否       | /        | 锁定开始时间                           |
-| 锁定结束时间     | lockEndDate              | datetime | 否       | /        | 锁定结束时间                           |
-| 最后密码修改时间 | lastModifiedPasswordDate | datetime | 否       | /        | 最后修改密码的时间                        |
+| 参数                 | 类型         | 必填 | 长度限制 | 说明                     |
+|----------------------|--------------|------|----------|------------------------|
+| **ID**                   | `bigint`     | **条件** | /        | 唯一标识符；<br/>系统自动生成；<br/>修改时必须    |
+| **名称**             | `string`     | **是** | ≤100     | 用户名字，<br/>如：云婷         |
+| **姓氏**             | `string`     | **是** | ≤100     | 用户姓氏，<br/>如：王          |
+| **姓名**             | `string`     | **是** | ≤100     | 用户全名（名字+姓氏），<br/>如：王云婷 |
+| **用户名**           | `string`     | **是** | ≤100     | 系统登录唯一标识               |
+| **手机号**           | `string`     | **是** | ≤16      | 用户手机号                  |
+| 座机号               | `string`     | 否   | ≤40      | 用户座机号                  |
+| **邮箱**             | `string`     | **是** | ≤100     | 用户电子邮箱地址               |
+| 性别                 | `string`     | 否   | ≤10      | 用户性别                   |
+| 职务                 | `string`     | 否   | ≤100     | 用户担任的职务                |
+| 地址                 | `string`     | 否   | ≤200     | 用户联系地址                 |
+| **系统身份**         | `int`        | **是** | /        | 用户默认角色权限               |
+| **锁定状态**         | `boolean`    | **是** | /        | 账户是否被锁定                |
+| **启用状态**         | `boolean`    | **是** | /        | 用户状态；<br/>默认启用             |
+| 来源                 | `string`     | 只读 | /        | 用户来源                   |
+| 在线状态             | `boolean`    | 只读 | /        | 用户当前是否在线               |
+| 最近上线             | `datetime`   | 只读 | /        | 用户最近上线时间               |
+| 下线时间             | `datetime`   | 只读 | /        | 用户上次下线时间               |
+| 添加人               | `bigint`     | 只读 | /        | 添加用户操作人                |
+| 加入时间             | `datetime`   | 只读 | /        | 用户加入或创建时间              |
+| 最后修改人           | `bigint`     | 只读 | /        | 最后修改用户信息操作人            |
+| 最后修改时间         | `datetime`   | 只读 | /        | 最后修改用户信息时间             |
+| 国际电话区号         | `string`     | 否   | ≤8       | 国际电话区号                 |
+| 国家编码             | `string`     | 否   | ≤16      | 国家编码                   |
+| 注册账号类型         | `string`     | 只读 | /        | 注册账号类型                 |
+| 注册账号             | `string`     | 只读 | /        | 租户注册账号                 |
+| 注册设备ID           | `string`     | 只读 | /        | 注册设备ID                 |
+| 租户ID               | `bigint`     | 只读 | /        | 所属租户ID                 |
+| 租户名称             | `string`     | 只读 | /        | 租户名称                   |
+| 头像地址             | `string`     | 只读 | /        | 用户头像地址                 |
+| 用户目录ID           | `bigint`     | 只读 | /        | 用户目录ID                 |
+| 主部门ID             | `bigint`     | 否   | /        | 主部门ID                  |
+| 部门负责人           | `boolean`    | 否   | /        | 是否部门负责人                |
+| 到期标记             | `boolean`    | 只读 | /        | 到期标记                   |
+| 到期时间             | `datetime`   | 否   | /        | 到期时间                   |
+| 禁用原因             | `string`     | 否   | ≤200     | 禁用原因                   |
+| 删除状态             | `boolean`    | 只读 | /        | 删除状态                   |
+| 最后锁定时间         | `datetime`   | 否   | /        | 最后锁定时间                 |
+| 锁定开始时间         | `datetime`   | 否   | /        | 锁定开始时间                 |
+| 锁定结束时间         | `datetime`   | 否   | /        | 锁定结束时间                 |
+| 最后密码修改时间     | `datetime`   | 只读 | /        | 最后修改密码的时间              |
