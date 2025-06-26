@@ -96,21 +96,21 @@ graph LR
 
 ## 分享信息
 
-| 参数                | 字段名                   | 类型         | 是否必须 | 长度限制 | 说明                                                                                    |
-| ------------------- | ------------------------ | ------------ | -------- | -------- |---------------------------------------------------------------------------------------|
-| **分享 ID**         | **id**                   | `long`       | **条件** | /        | 分享记录唯一标识，修改时必须                                                                        |
-| **分享名称**        | **name**                 | `string`     | **是**   | ≤100     | 分享配置名称                                                                                |
-| 分享备注        | **remark**               | `string`     | 否       | ≤400     | 分享说明，显示在分享页面                                                                          |
-| 过期时间        | **expiredDate**          | `datetime`   | 否       | /        | 分享链接过期时间                                                                              |
-| **显示选项**        | **displayOptions**       | `object`     | **是**   | /        | 分享页面显示配置                                                                              |
-| **分享范围**        | **shareScope**           | `enum`       | **是**   | /        | **范围枚举**:<br>• `SERVICES` - 整个服务<br>• `PARTIAL_APIS` - 多个接口<br>• `SINGLE_APIS` - 单个接口 |
-| **服务 ID**         | **servicesId**           | `long`       | **是**   | /        | 关联的服务 ID                                                                              |
-| **接口 ID 集合**    | **apisIds**              | `set`        | **条件** | /        | 当 shareScope 为接口时必填                                                                   |
-| **分享页面地址**    | **baseUrl**              | `string`     | **是**   | ≤2000    | 前端分享页面基础 URL                                                                          |
-| 租户 ID      | **tenantId**                    | `long`               | 否       | /        | 所属租户 ID                                                                                                 |
-| 创建人 ID       | **createdBy**            | `long`       | 否       | /        | 创建人 ID                                                                                |
-| 创建人          | **createdBy<br/>Name**        | `string`     | 否       | /        | 创建人姓名                                                                                 |
-| 创建时间        | **createdDate**          | `datetime`   | 否       | /        | 创建时间                                                                                  |
-| 最后修改人 ID   | **lastModified<br/>By**       | `long`       | 否       | /        | 最后修改人 ID                                                                              |
-| 最后修改人      | **lastModified<br/>ByName**   | `string`     | 否       | /        | 最后修改人姓名                                                                               |
-| 最后修改时间   | **lastModified<br/>Date**     | `datetime`   | 否       | /        | 最后修改时间                                                                                |
+| 参数             | 字段名                         | 类型       | 必填     | 长度限制  | 说明                                                                                                  |
+| ---------------- |-----------------------------| ---------- | -------- |-------| ----------------------------------------------------------------------------------------------------- |
+| **ID**           | **id**                      |   `bigint`  | **条件**       | /     | 唯一标识符；<br/>系统自动生成；<br/>修改时必须
+| **分享名称**     | **name**                    | `string`   | **是**   | ≤100  | 分享配置名称                                                                                          |
+| 分享备注         | **remark**                  | `string`   | 否       | ≤400  | 分享说明，显示在分享页面                                                                              |
+| 过期时间         | **expiredDate**             | `datetime` | 否       | /     | 分享链接过期时间                                                                                      |
+| **显示选项**     | **displayOptions**          | `object`   | **是**   | /     | 分享页面显示配置                                                                                      |
+| **分享范围**     | **shareScope**              | `enum`     | **是**   | /     | **范围枚举**:<br>• `SERVICES` - 整个服务<br>• `PARTIAL_APIS` - 多个接口<br>• `SINGLE_APIS` - 单个接口 |
+| **服务 ID**      | **servicesId**              | `long`     | **是**   | /     | 关联的服务 ID                                                                                         |
+| **接口 ID 集合** | **apisIds**                 | `set`      | **条件** | /     | 当 shareScope 为接口时必填                                                                            |
+| **分享页面地址** | **baseUrl**                 | `string`   | **是**   | ≤2000 | 前端分享页面基础 URL                                                                                  |
+| 租户 ID          | **tenantId**                | `long`     | 只读     | /     | 所属租户 ID                                                                                           |
+| 创建人 ID        | **createdBy**               | `long`     | 只读     | /     | 创建人 ID                                                                                             |
+| 创建人           | **createdBy<br/>Name**      | `string`   | 只读     | /     | 创建人姓名                                                                                            |
+| 创建时间         | **createdDate**             | `datetime` | 只读     | /     | 创建时间                                                                                              |
+| 最后修改人 ID    | **lastModified<br/>By**     | `long`     | 只读     | /     | 最后修改人 ID                                                                                         |
+| 最后修改人       | **lastModified<br/>ByName** | `string`   | 只读     | /     | 最后修改人姓名                                                                                        |
+| 最后修改时间     | **lastModified<br/>Date**   | `datetime` | 只读     | /     | 最后修改时间                                                                                          |
