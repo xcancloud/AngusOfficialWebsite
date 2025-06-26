@@ -30,3 +30,36 @@ AngusTester的场景功能适用于多种测试需求，具体包括但不限于
 - 执行配置：配置测试执行的相关参数，包括环境设置、数据准备和执行顺序等。
 - 执行测试：运行场景测试，监控测试过程并记录结果，确保每个步骤的正确性。
 - 结果分析：测试完成后，分析测试结果，评估场景的有效性和系统的表现，以便进行必要的改进。
+
+
+## 场景信息
+
+| 参数                 | 字段名                | 类型         | 必填     | 长度限制 | 说明                                         |
+|----------------------|-----------------------|--------------|----------|----------|--------------------------------------------|
+| **ID**               | id                   | `bigint`     | **条件** | /        | 场景唯一标识符；修改时必须                              |
+| **项目ID**           | projectId            | `long`       | **是**   | /        | 所属项目唯一标识                                   |
+| **场景名称**         | name                 | `string`     | **是**   | ≤200     | 场景业务名称                                     |
+| **插件类型**         | plugin               | `string`     | **是**   | ≤40      | 场景执行插件类型                                   |
+| 描述                 | description          | `string`     | 否       | ≤800     | 场景详细描述                                     |
+| 脚本内容             | script               | `object`     | 否       | /        | YAML/JSON格式的脚本内容，查看 [测试规范](../../specification/introduction.md)               |
+| 授权控制             | auth                 | `boolean`    | 否       | /        | 是否启用权限控制，<br/>默认`false`                         |
+| 启用功能测试         | testFunc             | `boolean`    | 否       | /        | 是否启用功能测试，<br/>默认`true`                          |
+| 启用性能测试         | testPerf             | `boolean`    | 否       | /        | 是否启用性能测试，<br/>默认`true`                          |
+| 启用稳定性测试       | testStability        | `boolean`    | 否       | /        | 是否启用稳定性测试，<br/>默认`true`                         |
+| 脚本类型             | scriptType           | `enum`       | 只读     | /        | **脚本类型枚举**：<br/>功能测试/性能测试/稳定性测试/自定义测试/模拟数据/模拟接口 |
+| 脚本ID               | scriptId             | `long`       | 只读     | /        | 关联脚本ID                                     |
+| 脚本名称             | scriptName           | `string`     | 只读     | /        | 关联脚本名称                                     |
+| 功能测试通过状态     | testFuncPassed       | `boolean`    | 只读     | /        | 功能测试是否通过                                   |
+| 功能测试失败原因     | testFuncFailure<br/>Message| `string`     | 只读     | /        | 功能测试失败详细信息                                 |
+| 性能测试通过状态     | testPerfPassed       | `boolean`    | 只读     | /        | 性能测试是否通过                                   |
+| 性能测试失败原因     | testPerfFailure<br/>Message| `string`     | 只读     | /        | 性能测试失败详细信息                                 |
+| 稳定性测试通过状态   | testStability<br/>Passed  | `boolean`    | 只读     | /        | 稳定性测试是否通过                                  |
+| 稳定性测试失败原因   | testStability<br/>FailureMessage| `string`  | 只读     | /        | 稳定性测试失败详细信息                                |
+| 收藏状态             | favourite            | `boolean`    | 只读     | /        | 是否收藏                                       |
+| 关注状态             | follow               | `boolean`    | 只读     | /        | 是否关注                                       |
+| 创建人ID             | createdBy            | `long`       | 只读     | /        | 场景创建人ID                                    |
+| 创建人姓名           | createdByName        | `string`     | 只读     | /        | 创建人姓名                                      |
+| 创建时间             | createdDate          | `datetime`   | 只读     | /        | 场景创建时间                                     |
+| 最后修改人ID         | lastModifiedBy       | `long`       | 只读     | /        | 最后修改人ID                                    |
+| 最后修改人姓名       | lastModifiedByName   | `string`     | 只读     | /        | 最后修改人姓名                                    |
+| 最后修改时间         | lastModifiedDate     | `datetime`   | 只读     | /        | 最后修改时间                                     |
