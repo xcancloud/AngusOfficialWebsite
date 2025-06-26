@@ -1115,6 +1115,10 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                             link: "/module"
                         },
                         {
+                            text: 'Software Version Management',
+                            link: '/softwareVersion',
+                        },
+                        {
                             text: "Tag Management",
                             link: "/tag"
                         }

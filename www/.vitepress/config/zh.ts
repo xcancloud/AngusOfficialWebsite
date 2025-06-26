@@ -1143,6 +1143,10 @@ function testerDocsSidebar(): DefaultTheme.SidebarItem[] {
                             link: '/module',
                         },
                         {
+                            text: '版本管理',
+                            link: '/softwareVersion',
+                        },
+                        {
                             text: '标签管理',
                             link: '/tag',
                         }
