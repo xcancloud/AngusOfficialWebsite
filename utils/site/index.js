@@ -140,7 +140,8 @@ const checkSigninStatus = () => {
 
 const getSigninUrl = async () => {
 
-  return await site.getUrl('gm');
+  const gmUrl = await site.getUrl('gm');
+  return gmUrl;
   // const clientId = cookie.get('clientId');
   // if (clientId === 'xcan_op') {
   //   return import.meta.env.VITE_APP_OPSIGNIN;
@@ -154,7 +155,7 @@ const toSign = async (rediectFlag = false) => {
   }
   let rediectUrl = '';
   if (rediectFlag) {
-    rediectUrl = '?t=' + binary.toBinary(location.href);
+    rediectUrl = '/signin?t=' + binary.toBinary(location.href);
   }
   // 清空 cookie
   const value = cookie.get();

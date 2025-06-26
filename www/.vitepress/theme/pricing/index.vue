@@ -7,6 +7,7 @@ import { maxVersion } from '@/utils/version';
 import { round } from '@/utils/math';
 
 import { getOptions, getSpecInfo } from './pricing';
+import CommonProblem  from './commonProblem.vue';
 
 const activeIndex = ref('cloud');
 const specInfo = ref({})
@@ -797,7 +798,7 @@ onMounted(async () => {
               <em>{{ dayTotalPrice }}</em>
               <em>元<em class="not-italic mx-1">/</em>天</em>
             </div>
-            <a class="btn-link cyan" to="/purchase/angustester?t=d">
+            <a class="btn-link cyan" href="/purchase/angustester?t=d">
               <span>立即购买</span>
               <Icon icon="icon-hengjiantou" />
             </a>
@@ -1031,6 +1032,7 @@ onMounted(async () => {
       </div>
 
     </div>
+    <commonProblem  class="mb-15" :title="buyFAQ.name" :list="buyFAQ.items" />
   </div>
 </template>
 <style scoped>

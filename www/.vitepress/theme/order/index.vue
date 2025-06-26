@@ -60,7 +60,6 @@ const loadOrderInfo = async () => {
     return;
   }
   const [error, { data = {} }] = await http.get(`${ESS}/order/${orderId.value}`);
-  debugger;
   if (error) {
     notification.error({
       message: error.message
