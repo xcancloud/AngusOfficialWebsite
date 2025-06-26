@@ -63,3 +63,50 @@ AngusTester的脚本功能可以帮助测试人员和开发团队编写一系列
 
 - 共享权限：在脚本操作中选择“授权”，设置脚本为“无权限控制”，允许其他用户访问和执行。
 - 指定权限：设置脚本为“有权限控制”，授权特定用户、部门或用户组脚本的部分或全部权限，确保安全性和可控性。
+
+## 脚本信息
+
+| 参数                 | 字段名                | 类型         | 必填     | 长度限制 | 说明                      |
+|----------------------|-----------------------|--------------|----------|----------|-------------------------|
+| **ID**               | id                   | `bigint`     | **条件** | /        | 脚本唯一标识符；<br/>修改时必须      |
+| **项目ID**           | projectId            | `long`       | **是**   | /        | 所属项目唯一标识                |
+| **脚本名称**         | name                 | `string`     | **是**   | ≤200     | 脚本标识名称                  |
+| **脚本类型**         | type                 | `enum`       | **是**   | /        | 查看下面 [脚本来源（source）](#)  |
+| **脚本内容**         | content              | `string`     | **是**   | ≤10MB    | YAML/JSON格式脚本内容         |
+| 授权控制             | auth                 | `boolean`    | 否       | /        | 是否启用权限控制，<br/>默认`false` |
+| 描述                 | description          | `string`     | 否       | ≤800     | 脚本功能描述                  |
+| 服务ID               | serviceId            | `long`       | 只读     | /        | 关联服务ID                  |
+| 脚本来源             | source               | `enum`       | 只读     | /        | 查看下面 [脚本类型（type）](#)    |
+| 来源ID               | sourceId             | `long`       | 只读     | /        | 来源对象ID                  |
+| 来源名称             | sourceName           | `string`     | 只读     | /        | 来源名称                    |
+| 标签                 | tags                 | `list`       | 只读     | /        | 脚本标签列表                  |
+| 权限列表             | permissions          | `list`       | 只读     | /        | 脚本权限配置                  |
+| 插件类型             | plugin               | `string`     | 只读     | /        | 执行插件类型                  |
+| 租户ID               | tenantId             | `long`       | 只读     | /        | 所属租户ID                  |
+| 创建人ID             | createdBy            | `long`       | 只读     | /        | 脚本创建人ID                 |
+| 创建人姓名           | createdByName        | `string`     | 只读     | /        | 创建人姓名                   |
+| 创建时间             | createdDate          | `datetime`   | 只读     | /        | 脚本创建时间                  |
+| 最后修改人ID         | lastModifiedBy       | `long`       | 只读     | /        | 最后修改人ID                 |
+| 最后修改人姓名       | lastModifiedByName   | `string`     | 只读     | /        | 最后修改人姓名                 |
+| 最后修改时间         | lastModifiedDate     | `datetime`   | 只读     | /        | 最后修改时间                  |
+
+### 脚本类型（type）
+| 枚举值               | 说明               |
+|----------------------|--------------------|
+| `TEST_FUNCTIONALITY` | 功能测试           |
+| `TEST_PERFORMANCE`   | 性能测试           |
+| `TEST_STABILITY`     | 稳定性测试         |
+| `TEST_CUSTOMIZATION` | 自定义测试         |
+| `MOCK_DATA`          | 模拟数据           |
+| `MOCK_APIS`          | 模拟接口           |
+
+### 脚本来源（source）
+| 枚举值             | 说明             |
+|--------------------|------------------|
+| `USER_DEFINED`     | 自定义创建       |
+| `IMPORTED`         | 导入创建         |
+| `SERVICE_SMOKE`    | 服务冒烟测试     |
+| `SERVICE_SECURITY` | 服务安全测试     |
+| `API`              | 接口测试         |
+| `SCENARIO`         | 场景测试         |
+| `GENERATE_DATA`    | 生成数据         |
