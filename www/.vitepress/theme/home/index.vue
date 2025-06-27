@@ -151,7 +151,7 @@
           <div class="inline-block">
             <Icon icon="icon-duihao" class="text-5 text-vp-red3" />
           </div>
-          <div class="text-4 font-semibold">自主研发高性能测试引擎</div>
+          <div class="text-4 font-semibold">自主研发高性能测引擎</div>
         </div>
         <div class="text-left flex items-center leading-8 py-2 space-x-1">
           <div class="inline-block">
@@ -172,13 +172,13 @@
           <div class="inline-block">
             <Icon icon="icon-duihao" class="text-5 text-vp-purple1" />
           </div>
-          <div class="text-4 font-semibold">提高用户可见性和信任度</div>
+          <div class="text-4 font-semibold">用户可见、信任度提高</div>
         </div>
         <div class="text-left flex items-center leading-8 py-2 space-x-1">
           <div class="inline-block">
             <Icon icon="icon-duihao" class="text-5 text-vp-purple1" />
           </div>
-          <div class="text-4 font-semibold">技术加速进化​，构建群体智慧引擎</div>
+          <div class="text-4 font-semibold">技术加速进化，构建群体智慧引擎</div>
         </div>
       </div>
 
