@@ -77,7 +77,7 @@
   <div class="home-page">
 
     <!--核心优势-->
-    <div class="mt-10 adjust-content-padding py-10">
+    <!-- <div class="mt-10 adjust-content-padding py-10">
       <div class="text-center font-semibold text-black-color text-8">
         {{ pageContent.productAdvantage?.name }}
       </div>
@@ -92,6 +92,96 @@
           </div>
         </div>
       </div>
+    </div> -->
+    <div class="text-center font-semibold text-black-color text-8">
+      {{ pageContent.productAdvantage?.name }}
+    </div>
+    <div class="mt-10 adjust-content-padding py-10 version-editions-grid">
+      <!--敏捷驱动-->
+      <div class="w-60 p-6 border-t-4 hover:bg-vp-gray_soft transition-all shadow-vp1 border-vp-indigo1 rounded text-center space-y-2">
+        <div class="inline-block w-20 h-20 rounded-full bg-vp-gray_soft relative">
+          <Icon icon="icon-feiji" class="animate-size text-10 absolute top-1/2 left-1/2" />
+        </div>
+        <div class="font-semibold text-6">敏捷驱动</div>
+        <div class="inline-block w-1/3 h-1 rounded bg-vp-indigo1"></div>
+        <div class="text-left flex items-center leading-8 py-2 space-x-1 border-b border-dashed">
+          <div class="inline-block">
+            <Icon icon="icon-duihao" class="text-5 text-vp-indigo1" />
+          </div>
+          <div class="text-4 font-semibold">快速响应客户需求</div>
+        </div>
+        <div class="text-left flex items-center leading-8 py-2 space-x-1">
+          <div class="inline-block">
+            <Icon icon="icon-duihao" class="text-5 text-vp-indigo1" />
+          </div>
+          <div class="text-4 font-semibold">帮助团队管理项目全生命周期</div>
+        </div>
+      </div>
+
+      <!--智能化-->
+      <div class="w-60 p-6 border-t-4 hover:bg-vp-gray_soft transition-all shadow-vp1 border-vp-green1 rounded text-center space-y-2">
+        <div class="inline-block w-20 h-20 rounded-full bg-vp-gray_soft relative">
+          <Icon icon="icon-a-zidonghuazhinenghua" class=" animate-updown text-10 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-2/4" />
+        </div>
+        <div class="font-semibold text-6">智能化</div>
+        <div class="inline-block w-1/3 h-1 rounded bg-vp-green1"></div>
+        <div class="text-left flex items-center leading-8 py-2 space-x-1 border-b border-dashed">
+          <div class="inline-block">
+            <Icon icon="icon-duihao" class="text-5 text-vp-green1" />
+          </div>
+          <div class="text-4 font-semibold">加速研发和测试活动</div>
+        </div>
+        <div class="text-left flex items-center leading-8 py-2 space-x-1">
+          <div class="inline-block">
+            <Icon icon="icon-duihao" class="text-5 text-vp-green1" />
+          </div>
+          <div class="text-4 font-semibold">测试用例和脚本效率提升150%</div>
+        </div>
+      </div>
+
+
+      <!--高性能-->
+      <div class="w-60 p-6 border-t-4 hover:bg-vp-gray_soft transition-all shadow-vp1 border-vp-red3 rounded text-center space-y-2">
+        <div class="inline-block w-20 h-20 rounded-full bg-vp-gray_soft relative">
+          <Icon icon="icon-gaoxingneng" class="animate-rotate text-10 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-2/4" />
+        </div>
+        <div class="font-semibold text-6">高性能</div>
+        <div class="inline-block w-1/3 h-1 rounded bg-vp-red3"></div>
+        <div class="text-left flex items-center leading-8 py-2 space-x-1 border-b border-dashed">
+          <div class="inline-block">
+            <Icon icon="icon-duihao" class="text-5 text-vp-red3" />
+          </div>
+          <div class="text-4 font-semibold">自主研发高性能测试引擎</div>
+        </div>
+        <div class="text-left flex items-center leading-8 py-2 space-x-1">
+          <div class="inline-block">
+            <Icon icon="icon-duihao" class="text-5 text-vp-red3" />
+          </div>
+          <div class="text-4 font-semibold">可满足百万并发和千万QPS场景</div>
+        </div>
+      </div>
+
+      <!--开放源码-->
+      <div class="w-60 p-6 border-t-4 hover:bg-vp-gray_soft transition-all shadow-vp1 border-vp-purple1 rounded text-center space-y-2">
+        <div class="inline-block w-20 h-20 rounded-full bg-vp-gray_soft relative">
+          <Icon icon="icon-fuwugongxiang" class="animate-rotate text-10 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-2/4" />
+        </div>
+        <div class="font-semibold text-6">开放源码</div>
+        <div class="inline-block w-1/3 h-1 rounded bg-vp-purple1"></div>
+        <div class="text-left flex items-center leading-8 py-2 space-x-1 border-b border-dashed">
+          <div class="inline-block">
+            <Icon icon="icon-duihao" class="text-5 text-vp-purple1" />
+          </div>
+          <div class="text-4 font-semibold">提高用户可见性和信任度</div>
+        </div>
+        <div class="text-left flex items-center leading-8 py-2 space-x-1">
+          <div class="inline-block">
+            <Icon icon="icon-duihao" class="text-5 text-vp-purple1" />
+          </div>
+          <div class="text-4 font-semibold">技术加速进化​，构建群体智慧引擎</div>
+        </div>
+      </div>
+
     </div>
 
     <!--全流程支持-->
@@ -620,4 +710,52 @@
 .home-page .quick-links .quick-links-content .icon {
   margin-left: 8px;
 }
+
+@keyframes size {
+  0% {
+    transform: scale(1) translate(-50%, -50%);
+  }
+  50% {
+    transform: scale(1.1) translate(-45%, -45%);
+  }
+  100% {
+    transform: scale(1) translate(-50%, -50%);
+  } 
+}
+
+@keyframes updown {
+  0% {
+    transform:  translate(-50%, -50%);
+  }
+  50% {
+    transform: translate(-50%, -35%);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform:  rotate(0deg) translate(-50%, -50%);
+  }
+  100% {
+    transform: rotate(360deg) translate(-50%, -50%);
+  }
+}
+
+.animate-size {
+  animation: size 2s infinite;
+}
+
+.animate-updown {
+  animation: updown 2s infinite;
+}
+
+.animate-rotate {
+  animation: rotate 4s linear infinite;
+  transform-origin: left top;
+}
+
+
 </style>

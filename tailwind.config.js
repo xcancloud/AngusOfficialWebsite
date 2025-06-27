@@ -297,6 +297,11 @@ module.exports = {
         'blue-sh': '0px 5px 10px 0px rgba(32, 152, 255, 0.2)',
         'orange-sh': '0px 5px 10px 0px rgba(255, 152, 40, 0.2);',
         'price-sh': '0px 15px 40px 0px rgba(29, 42, 100, 0.05);',
+        'vp1': 'var(--vp-shadow-1)',
+        'vp2': 'var(--vp-shadow-2)',
+        'vp3': 'var(--vp-shadow-3)',
+        'vp4': 'var(--vp-shadow-4)',
+        'vp5': 'var(--vp-shadow-5)',
       },
       letterSpacing: {
         0.25: '0.0625rem',
