@@ -25,6 +25,14 @@ import 'virtual:group-icons.css';
 import { theme } from 'vitepress-openapi/client';
 import 'vitepress-openapi/dist/style.css';
 
+// plugin enhanced readabilities
+import { h } from 'vue'
+import {
+    NolebaseEnhancedReadabilitiesMenu,
+    NolebaseEnhancedReadabilitiesScreenMenu,
+} from '@nolebase/vitepress-plugin-enhanced-readabilities/client'
+import '@nolebase/vitepress-plugin-enhanced-readabilities/client/style.css'
+
 // plugin lumen
 import { DocVideoLink } from '@theojs/lumen';
 
@@ -47,6 +55,16 @@ import ServiceSupport from './support/serviceSupport.vue';
 
 export default {
     extends: DefaultTheme,
+
+    // plugin enhanced readabilities
+    Layout: () => {
+        return h(DefaultTheme.Layout, null, {
+            // Added a reading-enhanced menu to the navigation bar for wider screens
+            'nav-bar-content-after': () => h(NolebaseEnhancedReadabilitiesMenu),
+            // Added a reading enhancement menu for narrower screens (typically smaller than the iPad Mini)
+            'nav-screen-content-after': () => h(NolebaseEnhancedReadabilitiesScreenMenu),
+        })
+    },
 
     enhanceApp({app, router, siteData}) {
         // ...

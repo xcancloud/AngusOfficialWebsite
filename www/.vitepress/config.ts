@@ -94,6 +94,21 @@ export default withMermaid({
         },
 
         envDir: resolve(__dirname, '../../conf'),
+
+        optimizeDeps: {
+            exclude: [
+                '@nolebase/vitepress-plugin-enhanced-readabilities/client',
+                'vitepress',
+                '@nolebase/ui',
+            ],
+        },
+        ssr: {
+            noExternal: [
+                '@nolebase/vitepress-plugin-enhanced-readabilities',
+                '@nolebase/ui',
+            ],
+        },
+
         server: server
     },
 
