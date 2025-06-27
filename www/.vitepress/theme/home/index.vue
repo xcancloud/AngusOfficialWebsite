@@ -93,9 +93,12 @@
         </div>
       </div>
     </div> -->
+    <div class="text-center font-semibold text-black-color text-8">
+      {{ pageContent.productAdvantage?.name }}
+    </div>
     <div class="mt-10 adjust-content-padding py-10 version-editions-grid">
       <!--敏捷驱动-->
-      <div class="w-60 p-6 border-t-4 shadow-vp1 border-vp-indigo1 rounded text-center space-y-2">
+      <div class="w-60 p-6 border-t-4 hover:bg-vp-gray_soft transition-all shadow-vp1 border-vp-indigo1 rounded text-center space-y-2">
         <div class="inline-block w-20 h-20 rounded-full bg-vp-gray_soft relative">
           <Icon icon="icon-feiji" class="animate-size text-10 absolute top-1/2 left-1/2" />
         </div>
@@ -116,7 +119,7 @@
       </div>
 
       <!--智能化-->
-      <div class="w-60 p-6 border-t-4 shadow-vp1 border-vp-green1 rounded text-center space-y-2">
+      <div class="w-60 p-6 border-t-4 hover:bg-vp-gray_soft transition-all shadow-vp1 border-vp-green1 rounded text-center space-y-2">
         <div class="inline-block w-20 h-20 rounded-full bg-vp-gray_soft relative">
           <Icon icon="icon-a-zidonghuazhinenghua" class=" animate-updown text-10 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-2/4" />
         </div>
@@ -138,7 +141,7 @@
 
 
       <!--高性能-->
-      <div class="w-60 p-6 border-t-4 shadow-vp1 border-vp-red3 rounded text-center space-y-2">
+      <div class="w-60 p-6 border-t-4 hover:bg-vp-gray_soft transition-all shadow-vp1 border-vp-red3 rounded text-center space-y-2">
         <div class="inline-block w-20 h-20 rounded-full bg-vp-gray_soft relative">
           <Icon icon="icon-gaoxingneng" class="animate-rotate text-10 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-2/4" />
         </div>
@@ -159,7 +162,7 @@
       </div>
 
       <!--开放源码-->
-      <div class="w-60 p-6 border-t-4 shadow-vp1 border-vp-purple1 rounded text-center space-y-2">
+      <div class="w-60 p-6 border-t-4 hover:bg-vp-gray_soft transition-all shadow-vp1 border-vp-purple1 rounded text-center space-y-2">
         <div class="inline-block w-20 h-20 rounded-full bg-vp-gray_soft relative">
           <Icon icon="icon-fuwugongxiang" class="animate-rotate text-10 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-2/4" />
         </div>
