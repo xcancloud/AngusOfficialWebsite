@@ -87,7 +87,7 @@ function nav(): DefaultTheme.NavItem[] {
                 },
                 {
                     text: '技术支持',
-                    link: '/zh/support'
+                    link: '/zh/support/support'
                 },
                 {
                     text: '常见问题(FAQ)',

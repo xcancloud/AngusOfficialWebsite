@@ -4,8 +4,9 @@ import { PUB_ESS } from '@xcan-angus/tools';
 import { Button } from 'ant-design-vue';
 
 import http from '@/utils/http';
+import { getCurrentLanguage } from '@/utils/index';
 
-
+const languagePath = getCurrentLanguage();
 const pageData = ref<{[key: string]: any}>({});
 const banner = ref({});
 const services = ref([]);
@@ -90,7 +91,7 @@ onMounted(() => {
               v-show="item.buttonName"
               type="primary"
               class="w-30 flex items-center"
-              :href="item.buttonUrl">
+              :href="`${languagePath}${item.buttonUrl}`">
               <div class="text-white-1 text-3.5 font-medium flex items-center">
                 <span class="mr-2">{{ item.buttonName }}</span>
                 <Icon icon="icon-hengjiantou" />
@@ -109,7 +110,7 @@ onMounted(() => {
               v-show="item.buttonName"
               type="primary"
               class="w-30 flex items-center"
-              :href="item.buttonUrl">
+              :href="`${languagePath}${item.buttonUrl}`">>
               <div class="text-white-1 text-3.5 font-medium flex items-center">
                 <span class="mr-2">{{ item.buttonName }}</span>
                 <Icon icon="icon-hengjiantou" />
@@ -124,10 +125,6 @@ onMounted(() => {
 
       </div>
     </div>
-
-
-
-
   </div>
 </template>
 <style scoped>
