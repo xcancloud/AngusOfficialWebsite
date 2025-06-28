@@ -35,11 +35,13 @@
   },
   "workflow": {
     "name": "全流程支持",
-    "description": "贯穿软件开发与测试全生命周期的端到端解决方案。"
+    "description": "贯穿软件开发与测试全生命周期的端到端解决方案。",
+    "image": "/assets/image/home/tester-flow.png"
   },
   "function": {
     "name": "产品功能",
-    "description": "通过集成先进技术和自动化流程，推动团队实现规范化、高效的协作，显著提升研发和测试的效率。"
+    "description": "通过集成先进技术和自动化流程，推动团队实现规范化、高效的协作，显著提升研发和测试的效率。",
+    "image": "/assets/image/home/tester-function.png"
   },
   "feature": {
     "name": "产品特性",
@@ -348,7 +350,7 @@
     "function": {
       "kind": [
         {
-          "name": "功能测试",
+          "name": "报告与分析",
           "release": true
         },
         {
@@ -400,19 +402,6 @@
           ],
           "name": "消息队列"
         },
-        "cache": {
-          "kind": [
-            {
-              "name": "Redis",
-              "release": false
-            },
-            {
-              "name": "Memcached",
-              "release": false
-            }
-          ],
-          "name": "缓存服务"
-        },
         "noSQL": {
           "kind": [
             {
@@ -442,19 +431,6 @@
           ],
           "name": "NoSQL"
         },
-        "other": {
-          "kind": [
-            {
-              "name": "Nginx",
-              "release": false
-            },
-            {
-              "name": "ElasticSearch",
-              "release": false
-            }
-          ],
-          "name": "其他"
-        },
         "dataSource": {
           "kind": [
             {
@@ -475,6 +451,19 @@
             }
           ],
           "name": "数据库"
+        },
+        "other": {
+          "kind": [
+            {
+              "name": "Nginx",
+              "release": true
+            },
+            {
+              "name": "ElasticSearch",
+              "release": true
+            }
+          ],
+          "name": "其他"
         }
       },
       "name": "中间件",

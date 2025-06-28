@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import {ref, computed, watch} from 'vue';
+import {ref, computed} from 'vue';
 
 // Configuration data i18n support
 import {t} from '../../utils/i18nData'
@@ -179,7 +179,7 @@ const selectPlugins = (index) => {
                 v-for="(item, index) in plugins?.protocol?.kind"
                 :key="index"
                 :class="[
-            'font-semibold text-center text-1xl md:text-[18px] flex items-center rounded-lg px-3 py-1.5 md:px-4 md:py-2 shadow-sm transition-all hover:shadow-md',
+            'font-semibold text-center text-1xl md:text-[16px] flex items-center rounded-lg px-3 py-1.5 md:px-4 md:py-2 shadow-sm transition-all hover:shadow-md',
             item.release === true || item.release === 'true'
               ? 'bg-gradient-to-r from-green-100 to-teal-100 dark:from-green-800 dark:to-teal-800 border border-green-200 dark:border-green-700 text-green-700 dark:text-green-200 hover:from-green-200 hover:to-teal-200 dark:hover:from-green-700 dark:hover:to-teal-700'
               : 'bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-600'
@@ -195,7 +195,7 @@ const selectPlugins = (index) => {
                 v-for="(item, index) in plugins?.mockdata?.kind"
                 :key="index"
                 :class="[
-            'font-semibold text-center text-1xl md:text-[18px] flex items-center rounded-lg px-3 py-1.5 md:px-4 md:py-2 shadow-sm transition-all hover:shadow-md',
+            'font-semibold text-center text-1xl md:text-[16px] flex items-center rounded-lg px-3 py-1.5 md:px-4 md:py-2 shadow-sm transition-all hover:shadow-md',
             item.release === true || item.release === 'true'
               ? 'bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-800 dark:to-indigo-800 border border-blue-200 dark:border-blue-700 text-blue-700 dark:text-blue-200 hover:from-blue-200 hover:to-indigo-200 dark:hover:from-blue-700 dark:hover:to-indigo-700'
               : 'bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-600'
@@ -211,7 +211,7 @@ const selectPlugins = (index) => {
                 v-for="(item, index) in plugins?.function?.kind"
                 :key="index"
                 :class="[
-            'font-semibold text-center text-1xl md:text-[18px] flex items-center rounded-lg px-3 py-1.5 md:px-4 md:py-2 shadow-sm transition-all hover:shadow-md',
+            'font-semibold text-center text-1xl md:text-[16px] flex items-center rounded-lg px-3 py-1.5 md:px-4 md:py-2 shadow-sm transition-all hover:shadow-md',
             item.release === true || item.release === 'true'
               ? 'bg-gradient-to-r from-amber-100 to-orange-100 dark:from-amber-800 dark:to-orange-800 border border-amber-200 dark:border-amber-700 text-amber-700 dark:text-amber-200 hover:from-amber-200 hover:to-orange-200 dark:hover:from-amber-700 dark:hover:to-orange-700'
               : 'bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-600'
@@ -270,7 +270,7 @@ const selectPlugins = (index) => {
             <div class="flex items-center">
               <div class="w-12 h-12 flex justify-center items-center rounded-full"
                    :style="{  background: `rgba(${item.iconContent.color[0]},0.3)`, lineClamp: 3,  }"
-                   style="min-width: 36px; margin-right: 18px;">
+                   style="min-width: 36px; margin-right: 16px;">
                 <Icon class="text-7" :icon="item.iconContent.icon"/>
               </div>
               <div class="font-semibold text-5 text-black-color">
@@ -292,7 +292,7 @@ const selectPlugins = (index) => {
       <div class="text-center font-mono font-medium mt-2 text-slate-500 text-5">
         {{ t('workflow.description') }}
       </div>
-      <img src="/assets/image/home/tester-flow.png" class="mt-10">
+      <img :src="t('workflow.image')" class="mt-10">
     </div>
 
     <div class="mt-6 adjust-content-padding py-10 text-center ">
@@ -302,7 +302,7 @@ const selectPlugins = (index) => {
       <div class="text-center font-mono font-medium mt-2 text-slate-500 text-5">
         {{ t('function.description') }}
       </div>
-      <img src="/assets/image/home/tester-function.png" class="mt-10">
+      <img :src="t('function.image')" class="mt-10">
     </div>
   </div>
 </template>

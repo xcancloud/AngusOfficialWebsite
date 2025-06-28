@@ -35,11 +35,13 @@
   },
   "workflow": {
     "name": "Full Lifecycle Support",
-    "description": "Comprehensive solution spanning the entire software development and testing lifecycle."
+    "description": "Comprehensive solution spanning the entire software development and testing lifecycle.",
+    "image": "/assets/image/home/tester-flow-en.png"
   },
   "function": {
-    "name": "Product Functions",
-    "description": "Drives standardized, efficient team collaboration through integrated advanced technology and automated processes, significantly improving R&D and testing efficiency."
+    "name": "Product Modules",
+    "description": "Drives standardized, efficient team collaboration through integrated advanced technology and automated processes, significantly improving R&D and testing efficiency.",
+    "image": "/assets/image/home/tester-function-en.png"
   },
   "feature": {
     "name": "Product Features",
@@ -348,7 +350,7 @@
     "function": {
       "kind": [
         {
-          "name": "Functional Testing",
+          "name": "Reporting and Analysis",
           "release": true
         },
         {
@@ -400,19 +402,6 @@
           ],
           "name": "Message Queues"
         },
-        "cache": {
-          "kind": [
-            {
-              "name": "Redis",
-              "release": false
-            },
-            {
-              "name": "Memcached",
-              "release": false
-            }
-          ],
-          "name": "Caching Services"
-        },
         "noSQL": {
           "kind": [
             {
@@ -442,19 +431,6 @@
           ],
           "name": "NoSQL Databases"
         },
-        "other": {
-          "kind": [
-            {
-              "name": "Nginx",
-              "release": false
-            },
-            {
-              "name": "ElasticSearch",
-              "release": false
-            }
-          ],
-          "name": "Others"
-        },
         "dataSource": {
           "kind": [
             {
@@ -475,6 +451,19 @@
             }
           ],
           "name": "Databases"
+        },
+        "other": {
+          "kind": [
+            {
+              "name": "Nginx",
+              "release": true
+            },
+            {
+              "name": "ElasticSearch",
+              "release": true
+            }
+          ],
+          "name": "Others"
         }
       },
       "name": "Middleware",
