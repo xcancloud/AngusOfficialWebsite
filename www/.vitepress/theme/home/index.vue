@@ -123,28 +123,7 @@ const selectPlugins = (index) => {
       </div>
     </div>
 
-    <div class="mt-6 adjust-content-padding py-10 text-center ">
-      <div class="font-semibold text-black-color text-8">
-        {{ t('workflow.name') }}
-      </div>
-      <div class="text-center font-mono font-medium mt-2 text-slate-500 text-5">
-        {{ t('workflow.description') }}
-      </div>
-      <img src="/assets/image/home/tester-flow.png" class="mt-10">
-    </div>
-
-    <div class="mt-6 adjust-content-padding py-10 text-center ">
-      <div class="font-semibold text-black-color text-8">
-        {{ t('function.name') }}
-      </div>
-      <div class="text-center font-mono font-medium mt-2 text-slate-500 text-5">
-        {{ t('function.description') }}
-      </div>
-      <img src="/assets/image/home/tester-function.png" class="mt-10">
-    </div>
-
-    <div class="adjust-content-padding bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-800
-              dark:to-gray-900 py-8 md:py-12 md:mt-12 rounded-xl shadow-lg " style="margin-top: 40px;">
+    <div class="adjust-content-padding py-8 md:py-12 md:mt-12" style="margin-top: 40px;">
       <div class="plugin-editions-grid">
         <div class="mb-8">
           <p class="text-2xl md:text-5xl font-bold text-center text-indigo-800 dark:text-indigo-300 mb-6">
@@ -306,6 +285,25 @@ const selectPlugins = (index) => {
       </div>
     </div>
 
+    <div class="mt-6 adjust-content-padding py-10 text-center ">
+      <div class="font-semibold text-black-color text-8">
+        {{ t('workflow.name') }}
+      </div>
+      <div class="text-center font-mono font-medium mt-2 text-slate-500 text-5">
+        {{ t('workflow.description') }}
+      </div>
+      <img src="/assets/image/home/tester-flow.png" class="mt-10">
+    </div>
+
+    <div class="mt-6 adjust-content-padding py-10 text-center ">
+      <div class="font-semibold text-black-color text-8">
+        {{ t('function.name') }}
+      </div>
+      <div class="text-center font-mono font-medium mt-2 text-slate-500 text-5">
+        {{ t('function.description') }}
+      </div>
+      <img src="/assets/image/home/tester-function.png" class="mt-10">
+    </div>
   </div>
 </template>
 <style scoped>

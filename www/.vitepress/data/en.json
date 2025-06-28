@@ -117,7 +117,7 @@
       },
       {
         "detail": "Simplified scripting with YAML/JSON specifications instead of Python/C.",
-        "feature": "Specification-Based Testing",
+        "feature": "Specification Testing",
         "iconContent": {
           "icon": "icon-peizhijiandan",
           "color": [
@@ -137,7 +137,7 @@
       },
       {
         "detail": "End-to-end API lifecycle management: design to code generation.",
-        "feature": "API Asset Management",
+        "feature": "API Management",
         "iconContent": {
           "icon": "icon-APIzichan",
           "color": [
@@ -147,7 +147,7 @@
       },
       {
         "detail": "Import APIs from Swagger, OpenAPI, and Postman formats.",
-        "feature": "Multi-Platform API Import",
+        "feature": "API Import",
         "iconContent": {
           "icon": "icon-zhichiduopingtaishujudaoru",
           "color": [
@@ -157,7 +157,7 @@
       },
       {
         "detail": "Rapid API simulation for parallel development/testing. Prevents production issues.",
-        "feature": "Service Simulation",
+        "feature": "Api Mock",
         "iconContent": {
           "icon": "icon-shujuhefuwumoni",
           "color": [
@@ -167,7 +167,7 @@
       },
       {
         "detail": "Realistic test data generation for system testing and demos.",
-        "feature": "Data Simulation",
+        "feature": "Data Mock",
         "iconContent": {
           "icon": "icon-shujumoni",
           "color": [

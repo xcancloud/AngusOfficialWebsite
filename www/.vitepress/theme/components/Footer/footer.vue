@@ -92,7 +92,7 @@ watch(isDark, () => {
         <!-- Links section -->
         <ul v-if="section.links" class="footer-links">
           <li v-for="(link, linkIndex) in section.links" :key="linkIndex">
-            <a href="#">
+            <a :href="link.link">
               <i :class="['fas', link.icon]"></i> {{ link.text }}
             </a>
           </li>
