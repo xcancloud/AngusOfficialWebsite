@@ -27,7 +27,7 @@
 > 1. 避免同时安装多个JDK版本
 > 2. Linux系统需关闭Swap分区
 >
-> 📚 完整文档：[部署应用](../installation/AngusTester)
+> 📚 完整文档：[部署应用](../installation/AngusGM)
 
 #### **Q4：不同版本如何收费？**
 > 🆓 **免费政策**：
