@@ -43,6 +43,7 @@ prepare_environment() {
 # Build web module
 npm_build () {
   echo "INFO: npm install start"
+  # npm cache clean --force
   npm install
 
   if [ $? -ne 0 ]; then
