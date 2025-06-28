@@ -53,7 +53,9 @@ npm_build () {
   echo "INFO: npm install end"
 
   echo "INFO: npm run docs:build start"
-  npm run docs:build
+  env0=${env##*.};
+
+  npm run docs:build:${env0}
   if [ $? -ne 0 ]; then
     echo "ERROR: 'npm run docs:build' failed, exiting script"
     exit 1
