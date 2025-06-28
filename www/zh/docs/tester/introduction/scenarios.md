@@ -101,17 +101,6 @@ flowchart LR
 > - ⏱️ 网络延迟模拟
 > - 🧪 异常场景构造
 
-**核心功能**：
-```mermaid
-pie
-    title 服务模拟能力分布
-    “参数匹配响应” ： 35
-    “动态数据生成” ： 25
-    “错误注入” ： 20
-    “网络延迟” ： 15
-    “异步回调” ： 5
-```
-
 <Vid src="/video/tester/introduction/mock.mp4" />
 
 ## 业务全景看板

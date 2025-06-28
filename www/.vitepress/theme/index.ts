@@ -39,8 +39,8 @@ import { DocVideoLink } from '@theojs/lumen';
 import AuthConfirmModal from './components/authConfirmModel.vue';
 import LoginConfirmModal from './components/loginConfirmModel.vue';
 import HomePage from './home/index.vue';
+import Footer from './components/Footer/footer.vue';
 import Icon from './components/Icon/index.vue';
-import OpenBanner from './components/OpenBanner/index.vue';
 import Business from './scenario/business.vue';
 import Ai from './scenario/ai.vue';
 import Deployment from './deployment/index.vue';
@@ -51,7 +51,6 @@ import Pay from './pay/index.vue';
 import OrderDone from './order/index.vue';
 import Support from './support/index.vue';
 import ServiceSupport from './support/serviceSupport.vue';
-
 
 export default {
     extends: DefaultTheme,
@@ -76,7 +75,6 @@ export default {
         app.component('AuthConfirmModal', AuthConfirmModal);
         app.component('HomePage', HomePage);
         app.component('Icon', Icon);
-        app.component('OpenBanner', OpenBanner);
         app.component('Business', Business);
         app.component('Ai', Ai);
         app.component('Deployment', Deployment);
@@ -87,6 +85,8 @@ export default {
         app.component('AngusPriv', AngusPriv);
         app.component('Pay', Pay);
         app.component('OrderDone', OrderDone);
+        app.component('Footer', Footer);
+
         for (const [name, comp] of Object.entries(ElementIcons)) {
             app.component(name, comp)
         }

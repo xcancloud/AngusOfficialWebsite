@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "AngusTester"
   text: "Enable Enterprises to Rapidly Build Their R&D Middle Office"
-  tagline: "Intelligence · Agile-Driven · Open Source · High Performance"
+  tagline: "Agile-Driven · Intelligence · High Performance · Open Source"
   image:
     src: /hero.png
     alt: AngusTester
@@ -18,7 +18,11 @@ hero:
     - theme: alt
       text: Download & Install
       link: /en/docs/tester/installation/AngusTester
+footer: false
 ---
+
+<HomePage />
+<Footer />
 
 <style>
 @media (min-width: 960px) {

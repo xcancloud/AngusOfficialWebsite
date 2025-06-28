@@ -1,0 +1,616 @@
+{
+  "advantage": {
+    "name": "核心优势",
+    "description": "通过创新技术，为您的软件质量保驾护航，赋能企业数字化转型。",
+    "items": [
+      {
+        "title": "敏捷",
+        "items": [
+          "快速响应客户需求",
+          "帮助团队管理项目全生命周期"
+        ]
+      },
+      {
+        "title": "智能",
+        "items": [
+          "加速开发和测试活动",
+          "让研发与测试效率提升200%"
+        ]
+      },
+      {
+        "title": "性能",
+        "items": [
+          "自主研发高性能测引擎",
+          "可满足百万并发和千万QPS场景"
+        ]
+      },
+      {
+        "title": "开源",
+        "items": [
+          "用户可见、信任度提高",
+          "技术加速进化，构建群体智慧引擎"
+        ]
+      }
+    ]
+  },
+  "workflow": {
+    "name": "全流程支持",
+    "description": "贯穿软件开发与测试全生命周期的端到端解决方案。"
+  },
+  "function": {
+    "name": "产品功能",
+    "description": "通过集成先进技术和自动化流程，推动团队实现规范化、高效的协作，显著提升研发和测试的效率。"
+  },
+  "feature": {
+    "name": "产品特性",
+    "description": "满足用户多元需求场景，大幅提升市场竞争力与客户粘性，最终驱动商业价值增长300%。",
+    "items": [
+      {
+        "detail": "项目支持多种业务模板，如：敏捷项目管理、一般项目管理、测试项目管理。",
+        "feature": "多项目模版",
+        "iconContent": {
+          "icon": "icon-renwuguanli",
+          "color": [
+            "40, 177, 255"
+          ]
+        }
+      },
+      {
+        "detail": "一切活动皆是任务，支持需求、故事、任务、Bug(缺陷)、接口测试、场景测试、功能测试等研发和测试活动跟进与管理。",
+        "feature": "全面协同",
+        "iconContent": {
+          "icon": "icon-kaifazhongdingyiceshi",
+          "color": [
+            "169, 113, 255"
+          ]
+        }
+      },
+      {
+        "detail": "极高的测试性能，相比JMeter整体性能提升30%以上，能够满足Http、WebSocket等协议百万并发连接和千万级QPS性能场景。",
+        "feature": "高性能",
+        "iconContent": {
+          "icon": "icon-gaoxingneng",
+          "color": [
+            "253,76,92"
+          ]
+        }
+      },
+      {
+        "detail": "除了单机测试，支持分布式环境、不同地理区域百台规模压测节点测试。",
+        "feature": "分布式",
+        "iconContent": {
+          "icon": "icon-fenbushi",
+          "color": [
+            "40,177,255"
+          ]
+        }
+      },
+      {
+        "detail": "可自动生成测试用例和脚本，以及根据测试目标和关注点生成对应执行配置。",
+        "feature": "自动化",
+        "iconContent": {
+          "icon": "icon-a-zidonghuazhinenghua",
+          "color": [
+            "0,187,152"
+          ]
+        }
+      },
+      {
+        "detail": "可以通过AI智能助手文本交互方式，查询知识库、编写用例、编写脚本等，简化工作流程和提升工作效率。",
+        "feature": "智能化",
+        "iconContent": {
+          "icon": "icon-zhinenghua",
+          "color": [
+            "255, 200, 62"
+          ]
+        }
+      },
+      {
+        "detail": "极大地提高了应用程序的可定制性、可扩展性、可维护性，用户安装和更新插件时无需升级主应用。",
+        "feature": "插件化",
+        "iconContent": {
+          "icon": "icon-chajianhua",
+          "color": [
+            "253,76,92"
+          ]
+        }
+      },
+      {
+        "detail": "与通过Python和C语言编写脚本不同，AngusTester使用YAML和JSON文本规范定义脚本，手动编写脚本时更加简单。",
+        "feature": "基于规范测试",
+        "iconContent": {
+          "icon": "icon-peizhijiandan",
+          "color": [
+            "169,113,255"
+          ]
+        }
+      },
+      {
+        "detail": "相比单个步骤的测试，场景包含更多步骤和流程；此外，用户可以通过场景设计界面代替手动编写脚本。",
+        "feature": "场景设计",
+        "iconContent": {
+          "icon": "icon-changjingsheji",
+          "color": [
+            "0, 187, 152"
+          ]
+        }
+      },
+      {
+        "detail": "支持设计、文档化、测试、监控、Mock、代码生成等接口全生命周期管理，最终可达到API资产化要求。",
+        "feature": "API资产",
+        "iconContent": {
+          "icon": "icon-APIzichan",
+          "color": [
+            "40, 177, 255"
+          ]
+        }
+      },
+      {
+        "detail": "支持 Swagger2.0、OpenAPI3.x、Postman2.0、Postman2.1 多种格式数据导入以及自定义导入扩展。",
+        "feature": "多平台接口导入",
+        "iconContent": {
+          "icon": "icon-zhichiduopingtaishujudaoru",
+          "color": [
+            "255,200,62"
+          ]
+        }
+      },
+      {
+        "detail": "可快速生成并模拟您所依赖的 API，使开发和测试先行，以实现更快的开发、更全面的测试；也可避免直接与生产系统联调造成的脏数据问题。",
+        "feature": "服务模拟",
+        "iconContent": {
+          "icon": "icon-shujuhefuwumoni",
+          "color": [
+            "255, 200, 62"
+          ]
+        }
+      },
+      {
+        "detail": "支持丰富的数据模拟函数，为系统测试、服务模拟、项目演示等场景生成相比随机数据更加真实的数据。",
+        "feature": "数据模拟",
+        "iconContent": {
+          "icon": "icon-shujumoni",
+          "color": [
+            "253, 76, 92"
+          ]
+        }
+      },
+      {
+        "detail": "支持业务效能指标、测试指标（功能测试、性能测试、稳定性测试）设定。",
+        "feature": "指标管理",
+        "iconContent": {
+          "icon": "icon-ceshizhibiaoguanli",
+          "color": [
+            "0, 187, 152"
+          ]
+        }
+      },
+      {
+        "detail": "通过量化评估团队表现，识别改进机会，推动持续改进和效率提升。提高团队对目标导向性。",
+        "feature": "团队指标设置",
+        "iconContent": {
+          "icon": "icon-a-mianxiangKPIkaohe",
+          "color": [
+            "253,76,92"
+          ]
+        }
+      },
+      {
+        "detail": "多租户支持，提供完善的的RestFul风格API方便与其他CI系统或研发系统集成。",
+        "feature": "服务共享",
+        "iconContent": {
+          "icon": "icon-fuwugongxiang",
+          "color": [
+            "169,113,255"
+          ]
+        }
+      },
+      {
+        "detail": "最大化帮助团队成员之前共享脚本、参数化文件、场景设计、接口、报告等。",
+        "feature": "成果共享",
+        "iconContent": {
+          "icon": "icon-chengguogongxiang",
+          "color": [
+            "255, 200, 62"
+          ]
+        }
+      },
+      {
+        "detail": "支持项目、功能测试、接口测试、场景测试、任务执行等16类业务模版设置和生成报告。",
+        "feature": "专业化报告",
+        "iconContent": {
+          "icon": "icon-zhuanyehuadebaogao",
+          "color": [
+            "40,177,255"
+          ]
+        }
+      },
+      {
+        "detail": "除了内建身份管理，扩展支持 LDAP/Active Directory服务和 OAuth2 用户单点认证身份接入。",
+        "feature": "身份管理扩展支持",
+        "iconContent": {
+          "icon": "icon-zhichisanfangrenzhengjieru",
+          "color": [
+            "169,113,255"
+          ]
+        }
+      },
+      {
+        "detail": "支持 Https 安全传输协议，数据级别的权限控制以及基于策略的访问控制（PBAC）权限方案。",
+        "feature": "安全性",
+        "iconContent": {
+          "icon": "icon-anquanxing",
+          "color": [
+            "255,200,62"
+          ]
+        }
+      }
+    ]
+  },
+  "plugin": {
+    "name": "插件化实现",
+    "protocol": {
+      "kind": [
+        {
+          "name": "Http(s)",
+          "release": true
+        },
+        {
+          "name": "WebSocket",
+          "release": true
+        },
+        {
+          "name": "TCP",
+          "release": true
+        },
+        {
+          "name": "LDAP",
+          "release": true
+        },
+        {
+          "name": "JDBC",
+          "release": true
+        },
+        {
+          "name": "JMS",
+          "release": true
+        },
+        {
+          "name": "MAIL(POP3/IMAP)",
+          "release": true
+        },
+        {
+          "name": "SMTP",
+          "release": true
+        },
+        {
+          "name": "FTP",
+          "release": true
+        },
+        {
+          "name": "Dubbo",
+          "release": false
+        },
+        {
+          "name": "gRPC",
+          "release": false
+        }
+      ],
+      "name": "协议",
+      "iconContent": {
+        "icon": "icon-xieyichajian",
+        "color": [
+          "255,255,255",
+          "0,119,255"
+        ]
+      }
+    },
+    "mockdata": {
+      "kind": [
+        {
+          "name": "MockCsv",
+          "release": true
+        },
+        {
+          "name": "MockExcel",
+          "release": true
+        },
+        {
+          "name": "MockJson",
+          "release": true
+        },
+        {
+          "name": "MockSql",
+          "release": true
+        },
+        {
+          "name": "MockTab",
+          "release": true
+        },
+        {
+          "name": "MockXml",
+          "release": true
+        },
+        {
+          "name": "MockCustom",
+          "release": true
+        }
+      ],
+      "name": "数据",
+      "iconContent": {
+        "icon": "icon-shuju",
+        "color": [
+          "255,255,255",
+          "0,119,255"
+        ]
+      }
+    },
+    "function": {
+      "kind": [
+        {
+          "name": "功能测试",
+          "release": true
+        },
+        {
+          "name": "安全测试",
+          "release": false
+        },
+        {
+          "name": "事件通知-华为云短信",
+          "release": true
+        },
+        {
+          "name": "事件通知-阿里云短信",
+          "release": true
+        },
+        {
+          "name": "接口签名",
+          "release": false
+        }
+      ],
+      "name": "功能",
+      "iconContent": {
+        "icon": "icon-gongneng",
+        "color": [
+          "255,255,255",
+          "0,119,255"
+        ]
+      }
+    },
+    "middleware": {
+      "kind": {
+        "mq": {
+          "kind": [
+            {
+              "name": "Kafka",
+              "release": true
+            },
+            {
+              "name": "RabbitMQ",
+              "release": true
+            },
+            {
+              "name": "ZeroMQ",
+              "release": false
+            },
+            {
+              "name": "RocketMQ",
+              "release": false
+            }
+          ],
+          "name": "消息队列"
+        },
+        "cache": {
+          "kind": [
+            {
+              "name": "Redis",
+              "release": false
+            },
+            {
+              "name": "Memcached",
+              "release": false
+            }
+          ],
+          "name": "缓存服务"
+        },
+        "noSQL": {
+          "kind": [
+            {
+              "name": "MongoDB",
+              "release": true
+            },
+            {
+              "name": "ClickHouse",
+              "release": false
+            },
+            {
+              "name": "HBase",
+              "release": false
+            },
+            {
+              "name": "Cassandra",
+              "release": false
+            },
+            {
+              "name": "TSDB",
+              "release": false
+            },
+            {
+              "name": "InfluxDB",
+              "release": false
+            }
+          ],
+          "name": "NoSQL"
+        },
+        "other": {
+          "kind": [
+            {
+              "name": "Nginx",
+              "release": false
+            },
+            {
+              "name": "ElasticSearch",
+              "release": false
+            }
+          ],
+          "name": "其他"
+        },
+        "dataSource": {
+          "kind": [
+            {
+              "name": "MySQL",
+              "release": true
+            },
+            {
+              "name": "SQLServer",
+              "release": true
+            },
+            {
+              "name": "PostgreSQL",
+              "release": true
+            },
+            {
+              "name": "Oracle",
+              "release": true
+            }
+          ],
+          "name": "数据库"
+        }
+      },
+      "name": "中间件",
+      "iconContent": {
+        "icon": "icon-zhongjianjian",
+        "color": [
+          "255,255,255",
+          "0,119,255"
+        ]
+      }
+    }
+  },
+  "footer": {
+    "brand": {
+      "name": "AngusTester",
+      "description": "AngusTester是专业的研发与测试管理平台，为团队提供高效的任务管理、测试管理、事件追踪和自动化测试解决方案，助力提升软件质量和交付速度。"
+    },
+    "sections": [
+      {
+        "title": "产品功能",
+        "links": [
+          {
+            "text": "任务管理",
+            "icon": "fa-chevron-right",
+            "link": "https://www.xcan.cloud/zh/docs/tester/ui/task/taskIntroduction"
+          },
+          {
+            "text": "测试管理",
+            "icon": "fa-chevron-right",
+            "link": "https://www.xcan.cloud/zh/docs/tester/ui/function/caseManagement"
+          },
+          {
+            "text": "API管理",
+            "icon": "fa-chevron-right",
+            "link": "https://www.xcan.cloud/zh/docs/tester/ui/apis/apisIntroduction"
+          },
+          {
+            "text": "自动化测试",
+            "icon": "fa-chevron-right",
+            "link": "https://www.xcan.cloud/zh/docs/tester/ui/scenarios/introduction"
+          },
+          {
+            "text": "接口模拟",
+            "icon": "fa-chevron-right",
+            "link": "https://www.xcan.cloud/zh/docs/tester/ui/mock/introduction"
+          },
+          {
+            "text": "报告与分析",
+            "icon": "fa-chevron-right",
+            "link": "https://www.xcan.cloud/zh/docs/tester/ui/report/introduction"
+          }
+        ]
+      },
+      {
+        "title": "资源中心",
+        "links": [
+          {
+            "text": "文档中心",
+            "icon": "fa-chevron-right",
+            "link": "https://www.xcan.cloud/zh/docs/tester/introduction/about"
+          },
+          {
+            "text": "专题博客",
+            "icon": "fa-chevron-right",
+            "link": "https://www.xcan.cloud/zh/blog/"
+          },
+          {
+            "text": "快速入门",
+            "icon": "fa-chevron-right",
+            "link": "https://www.xcan.cloud/zh/gettingStarted"
+          },
+          {
+            "text": "API参考",
+            "icon": "fa-chevron-right",
+            "link": "https://www.xcan.cloud/zh/docs/tester/apis/introduction"
+          },
+          {
+            "text": "下载安装",
+            "icon": "fa-chevron-right",
+            "link": "https://www.xcan.cloud/zh/docs/tester/installation/AngusTester"
+          },
+          {
+            "text": "常见问题",
+            "icon": "fa-chevron-right",
+            "link": "https://www.xcan.cloud/zh/faq"
+          }
+        ]
+      },
+      {
+        "title": "联系我们",
+        "contact": [
+          {
+            "text": "+86 153 2187 5180",
+            "icon": "fa-phone-alt"
+          },
+          {
+            "text": "technical_support@xcan.cloud",
+            "icon": "fa-headset"
+          },
+          {
+            "text": "business@xcan.cloud",
+            "icon": "fa-envelope"
+          },
+          {
+            "text": "工作日 9:00 - 18:00",
+            "icon": "fa-clock"
+          },
+          {
+            "text": "北京市昌平区立汤路186甲3号楼10层1016室",
+            "icon": "fa-map-marker-alt"
+          }
+        ]
+      }
+    ],
+    "social": [
+      {
+        "platform": "GitHub",
+        "icon": "fab fa-github",
+        "link": "https://github.com/xcancloud"
+      },
+      {
+        "platform": "Twitter",
+        "icon": "fab fa-twitter",
+        "link": "#"
+      },
+      {
+        "platform": "LinkedIn",
+        "icon": "fab fa-linkedin-in",
+        "link": "#"
+      },
+      {
+        "platform": "YouTube",
+        "icon": "fab fa-youtube",
+        "link": "#"
+      }
+    ],
+    "copyright": "©2025 晓蚕云(北京) 科技有限公司 版权所有 @ 京ICP备2021037962号-1 京公网安备11011402012129号"
+  }
+}

@@ -1,0 +1,616 @@
+{
+  "advantage": {
+    "name": "Core Advantages",
+    "description": "Empowering enterprise digital transformation through innovative technology to ensure software quality.",
+    "items": [
+      {
+        "title": "Agile",
+        "items": [
+          "Rapid response to customer needs",
+          "Full lifecycle project management for teams"
+        ]
+      },
+      {
+        "title": "Intelligent",
+        "items": [
+          "Accelerates development and testing activities",
+          "Boosts R&D and testing efficiency by 200%"
+        ]
+      },
+      {
+        "title": "Performance",
+        "items": [
+          "Self-developed high-performance testing engine",
+          "Supports million-level concurrency and 10M QPS scenarios"
+        ]
+      },
+      {
+        "title": "Open Source",
+        "items": [
+          "Visible source code enhances trust",
+          "Accelerates technological evolution and collective intelligence"
+        ]
+      }
+    ]
+  },
+  "workflow": {
+    "name": "Full Lifecycle Support",
+    "description": "Comprehensive solution spanning the entire software development and testing lifecycle."
+  },
+  "function": {
+    "name": "Product Functions",
+    "description": "Drives standardized, efficient team collaboration through integrated advanced technology and automated processes, significantly improving R&D and testing efficiency."
+  },
+  "feature": {
+    "name": "Product Features",
+    "description": "Meets diverse user needs, enhances market competitiveness and customer retention, ultimately driving 300% business value growth.",
+    "items": [
+      {
+        "detail": "Predefined templates for Agile, General, and Test Project Management.",
+        "feature": "Multi-Project Templates",
+        "iconContent": {
+          "icon": "icon-renwuguanli",
+          "color": [
+            "40, 177, 255"
+          ]
+        }
+      },
+      {
+        "detail": "Task-based management for requirements, stories, bugs, and all testing activities.",
+        "feature": "Comprehensive Collaboration",
+        "iconContent": {
+          "icon": "icon-kaifazhongdingyiceshi",
+          "color": [
+            "169, 113, 255"
+          ]
+        }
+      },
+      {
+        "detail": "30% faster than JMeter with million-level concurrency and 10M QPS support.",
+        "feature": "High Performance",
+        "iconContent": {
+          "icon": "icon-gaoxingneng",
+          "color": [
+            "253,76,92"
+          ]
+        }
+      },
+      {
+        "detail": "Distributed testing across regions with hundreds of load nodes.",
+        "feature": "Distributed Architecture",
+        "iconContent": {
+          "icon": "icon-fenbushi",
+          "color": [
+            "40,177,255"
+          ]
+        }
+      },
+      {
+        "detail": "Automated test case, script, and configuration generation.",
+        "feature": "Automation",
+        "iconContent": {
+          "icon": "icon-a-zidonghuazhinenghua",
+          "color": [
+            "0,187,152"
+          ]
+        }
+      },
+      {
+        "detail": "AI assistant for knowledge queries, test case creation, and scripting.",
+        "feature": "Intelligence",
+        "iconContent": {
+          "icon": "icon-zhinenghua",
+          "color": [
+            "255, 200, 62"
+          ]
+        }
+      },
+      {
+        "detail": "Plugin updates without app upgrades. Enhanced customization and scalability.",
+        "feature": "Plugin Architecture",
+        "iconContent": {
+          "icon": "icon-chajianhua",
+          "color": [
+            "253,76,92"
+          ]
+        }
+      },
+      {
+        "detail": "Simplified scripting with YAML/JSON specifications instead of Python/C.",
+        "feature": "Specification-Based Testing",
+        "iconContent": {
+          "icon": "icon-peizhijiandan",
+          "color": [
+            "169,113,255"
+          ]
+        }
+      },
+      {
+        "detail": "Multi-step scenario design replaces manual scripting.",
+        "feature": "Scenario Design",
+        "iconContent": {
+          "icon": "icon-changjingsheji",
+          "color": [
+            "0, 187, 152"
+          ]
+        }
+      },
+      {
+        "detail": "End-to-end API lifecycle management: design to code generation.",
+        "feature": "API Asset Management",
+        "iconContent": {
+          "icon": "icon-APIzichan",
+          "color": [
+            "40, 177, 255"
+          ]
+        }
+      },
+      {
+        "detail": "Import APIs from Swagger, OpenAPI, and Postman formats.",
+        "feature": "Multi-Platform API Import",
+        "iconContent": {
+          "icon": "icon-zhichiduopingtaishujudaoru",
+          "color": [
+            "255,200,62"
+          ]
+        }
+      },
+      {
+        "detail": "Rapid API simulation for parallel development/testing. Prevents production issues.",
+        "feature": "Service Simulation",
+        "iconContent": {
+          "icon": "icon-shujuhefuwumoni",
+          "color": [
+            "255, 200, 62"
+          ]
+        }
+      },
+      {
+        "detail": "Realistic test data generation for system testing and demos.",
+        "feature": "Data Simulation",
+        "iconContent": {
+          "icon": "icon-shujumoni",
+          "color": [
+            "253, 76, 92"
+          ]
+        }
+      },
+      {
+        "detail": "Configurable metrics for business efficiency and testing performance.",
+        "feature": "Metrics Management",
+        "iconContent": {
+          "icon": "icon-ceshizhibiaoguanli",
+          "color": [
+            "0, 187, 152"
+          ]
+        }
+      },
+      {
+        "detail": "Quantify team performance. Identify improvements and enhance goals.",
+        "feature": "Team Metrics",
+        "iconContent": {
+          "icon": "icon-a-mianxiangKPIkaohe",
+          "color": [
+            "253,76,92"
+          ]
+        }
+      },
+      {
+        "detail": "Multi-tenant with RESTful APIs for CI system integration.",
+        "feature": "Service Sharing",
+        "iconContent": {
+          "icon": "icon-fuwugongxiang",
+          "color": [
+            "169,113,255"
+          ]
+        }
+      },
+      {
+        "detail": "Team sharing of scripts, scenarios, APIs, and reports.",
+        "feature": "Achievement Sharing",
+        "iconContent": {
+          "icon": "icon-chengguogongxiang",
+          "color": [
+            "255, 200, 62"
+          ]
+        }
+      },
+      {
+        "detail": "16+ templates and professional reports for all testing types.",
+        "feature": "Professional Reporting",
+        "iconContent": {
+          "icon": "icon-zhuanyehuadebaogao",
+          "color": [
+            "40,177,255"
+          ]
+        }
+      },
+      {
+        "detail": "Extended identity management with LDAP/AD and OAuth2 SSO.",
+        "feature": "Extended Identity",
+        "iconContent": {
+          "icon": "icon-zhichisanfangrenzhengjieru",
+          "color": [
+            "169,113,255"
+          ]
+        }
+      },
+      {
+        "detail": "HTTPS security, data-level permissions, and PBAC access control.",
+        "feature": "Security",
+        "iconContent": {
+          "icon": "icon-anquanxing",
+          "color": [
+            "255,200,62"
+          ]
+        }
+      }
+    ]
+  },
+  "plugin": {
+    "name": "Plugin Implementation",
+    "protocol": {
+      "kind": [
+        {
+          "name": "Http(s)",
+          "release": true
+        },
+        {
+          "name": "WebSocket",
+          "release": true
+        },
+        {
+          "name": "TCP",
+          "release": true
+        },
+        {
+          "name": "LDAP",
+          "release": true
+        },
+        {
+          "name": "JDBC",
+          "release": true
+        },
+        {
+          "name": "JMS",
+          "release": true
+        },
+        {
+          "name": "MAIL(POP3/IMAP)",
+          "release": true
+        },
+        {
+          "name": "SMTP",
+          "release": true
+        },
+        {
+          "name": "FTP",
+          "release": true
+        },
+        {
+          "name": "Dubbo",
+          "release": false
+        },
+        {
+          "name": "gRPC",
+          "release": false
+        }
+      ],
+      "name": "Protocols",
+      "iconContent": {
+        "icon": "icon-xieyichajian",
+        "color": [
+          "255,255,255",
+          "0,119,255"
+        ]
+      }
+    },
+    "mockdata": {
+      "kind": [
+        {
+          "name": "MockCsv",
+          "release": true
+        },
+        {
+          "name": "MockExcel",
+          "release": true
+        },
+        {
+          "name": "MockJson",
+          "release": true
+        },
+        {
+          "name": "MockSql",
+          "release": true
+        },
+        {
+          "name": "MockTab",
+          "release": true
+        },
+        {
+          "name": "MockXml",
+          "release": true
+        },
+        {
+          "name": "MockCustom",
+          "release": true
+        }
+      ],
+      "name": "Data",
+      "iconContent": {
+        "icon": "icon-shuju",
+        "color": [
+          "255,255,255",
+          "0,119,255"
+        ]
+      }
+    },
+    "function": {
+      "kind": [
+        {
+          "name": "Functional Testing",
+          "release": true
+        },
+        {
+          "name": "Security Testing",
+          "release": false
+        },
+        {
+          "name": "Notification-Huawei SMS",
+          "release": true
+        },
+        {
+          "name": "Notification-Alibaba SMS",
+          "release": true
+        },
+        {
+          "name": "API Signing",
+          "release": false
+        }
+      ],
+      "name": "Functions",
+      "iconContent": {
+        "icon": "icon-gongneng",
+        "color": [
+          "255,255,255",
+          "0,119,255"
+        ]
+      }
+    },
+    "middleware": {
+      "kind": {
+        "mq": {
+          "kind": [
+            {
+              "name": "Kafka",
+              "release": true
+            },
+            {
+              "name": "RabbitMQ",
+              "release": true
+            },
+            {
+              "name": "ZeroMQ",
+              "release": false
+            },
+            {
+              "name": "RocketMQ",
+              "release": false
+            }
+          ],
+          "name": "Message Queues"
+        },
+        "cache": {
+          "kind": [
+            {
+              "name": "Redis",
+              "release": false
+            },
+            {
+              "name": "Memcached",
+              "release": false
+            }
+          ],
+          "name": "Caching Services"
+        },
+        "noSQL": {
+          "kind": [
+            {
+              "name": "MongoDB",
+              "release": true
+            },
+            {
+              "name": "ClickHouse",
+              "release": false
+            },
+            {
+              "name": "HBase",
+              "release": false
+            },
+            {
+              "name": "Cassandra",
+              "release": false
+            },
+            {
+              "name": "TSDB",
+              "release": false
+            },
+            {
+              "name": "InfluxDB",
+              "release": false
+            }
+          ],
+          "name": "NoSQL Databases"
+        },
+        "other": {
+          "kind": [
+            {
+              "name": "Nginx",
+              "release": false
+            },
+            {
+              "name": "ElasticSearch",
+              "release": false
+            }
+          ],
+          "name": "Others"
+        },
+        "dataSource": {
+          "kind": [
+            {
+              "name": "MySQL",
+              "release": true
+            },
+            {
+              "name": "SQLServer",
+              "release": true
+            },
+            {
+              "name": "PostgreSQL",
+              "release": true
+            },
+            {
+              "name": "Oracle",
+              "release": true
+            }
+          ],
+          "name": "Databases"
+        }
+      },
+      "name": "Middleware",
+      "iconContent": {
+        "icon": "icon-zhongjianjian",
+        "color": [
+          "255,255,255",
+          "0,119,255"
+        ]
+      }
+    }
+  },
+  "footer": {
+    "brand": {
+      "name": "AngusTester",
+      "description": "AngusTester is a professional R&D and testing management platform that provides efficient task management, test management, issue tracking, and automated testing solutions to help teams improve software quality and delivery speed."
+    },
+    "sections": [
+      {
+        "title": "Product",
+        "links": [
+          {
+            "text": "Task Management",
+            "icon": "fa-chevron-right",
+            "link": "https://www.xcan.cloud/en/docs/tester/ui/task/taskIntroduction"
+          },
+          {
+            "text": "Test Management",
+            "icon": "fa-chevron-right",
+            "link": "https://www.xcan.cloud/en/docs/tester/ui/function/caseManagement"
+          },
+          {
+            "text": "API Management",
+            "icon": "fa-chevron-right",
+            "link": "https://www.xcan.cloud/en/docs/tester/ui/apis/apisIntroduction"
+          },
+          {
+            "text": "Automated Testing",
+            "icon": "fa-chevron-right",
+            "link": "https://www.xcan.cloud/en/docs/tester/ui/scenarios/introduction"
+          },
+          {
+            "text": "API Mocking",
+            "icon": "fa-chevron-right",
+            "link": "https://www.xcan.cloud/en/docs/tester/ui/mock/introduction"
+          },
+          {
+            "text": "Reporting & Analysis",
+            "icon": "fa-chevron-right",
+            "link": "https://www.xcan.cloud/en/docs/tester/ui/report/introduction"
+          }
+        ]
+      },
+      {
+        "title": "Resources",
+        "links": [
+          {
+            "text": "Documentation Center",
+            "icon": "fa-chevron-right",
+            "link": "https://www.xcan.cloud/en/docs/tester/introduction/about"
+          },
+          {
+            "text": "Technical Blog",
+            "icon": "fa-chevron-right",
+            "link": "https://www.xcan.cloud/en/blog/"
+          },
+          {
+            "text": "Quick Start Guide",
+            "icon": "fa-chevron-right",
+            "link": "https://www.xcan.cloud/en/gettingStarted"
+          },
+          {
+            "text": "API Reference",
+            "icon": "fa-chevron-right",
+            "link": "https://www.xcan.cloud/en/docs/tester/apis/introduction"
+          },
+          {
+            "text": "Download & Installation",
+            "icon": "fa-chevron-right",
+            "link": "https://www.xcan.cloud/en/docs/tester/installation/AngusTester"
+          },
+          {
+            "text": "FAQs",
+            "icon": "fa-chevron-right",
+            "link": "https://www.xcan.cloud/en/faq"
+          }
+        ]
+      },
+      {
+        "title": "Contact Us",
+        "contact": [
+          {
+            "text": "+86 153 2187 5180",
+            "icon": "fa-phone-alt"
+          },
+          {
+            "text": "technical_support@xcan.cloud",
+            "icon": "fa-headset"
+          },
+          {
+            "text": "business@xcan.cloud",
+            "icon": "fa-envelope"
+          },
+          {
+            "text": "Working Hours: 9:00 AM - 6:00 PM",
+            "icon": "fa-clock"
+          },
+          {
+            "text": "Room 1016, 10th Floor, Building 3A, 186 Litang Road, Changping District, Beijing",
+            "icon": "fa-map-marker-alt"
+          }
+        ]
+      }
+    ],
+    "social": [
+      {
+        "platform": "GitHub",
+        "icon": "fab fa-github",
+        "link": "https://github.com/xcancloud"
+      },
+      {
+        "platform": "Twitter",
+        "icon": "fab fa-twitter",
+        "link": "#"
+      },
+      {
+        "platform": "LinkedIn",
+        "icon": "fab fa-linkedin-in",
+        "link": "#"
+      },
+      {
+        "platform": "YouTube",
+        "icon": "fab fa-youtube",
+        "link": "#"
+      }
+    ],
+    "copyright": "©2025 Xiao Can Yun (Beijing) Technology Co., Ltd. All rights reserved. @ ICP No. 2021037962-1 Beijing Public Network Security No. 11011402012129"
+  }
+}
