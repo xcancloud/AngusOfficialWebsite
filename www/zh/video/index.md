@@ -3,5 +3,5 @@ layout: page
 footer: false
 ---
 
-<Video />
+<VideoHome />
 <Footer />

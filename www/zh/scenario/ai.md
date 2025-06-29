@@ -1,5 +1,7 @@
 ---
-layout: home
-
+layout: page
+footer: false
 ---
 <Ai />
+
+<Footer />
