@@ -31,6 +31,7 @@ const compareVersion = (v1, v2) => {
     }
   
     return versions.reduce((prev, cur) => {
+      debugger;
       if (compareVersion(prev, cur) === -1) {
         prev = cur;
       }
