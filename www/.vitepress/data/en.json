@@ -479,7 +479,7 @@
   "footer": {
     "brand": {
       "name": "AngusTester",
-      "description": "AngusTester is a professional R&D and testing management platform that provides efficient task management, test management, issue tracking, and automated testing solutions to help teams improve software quality and delivery speed."
+      "description": "A professional R&D and testing platform that provides teams with efficient integrated solutions to help improve software quality and delivery speed."
     },
     "sections": [
       {
@@ -600,6 +600,7 @@
         "link": "#"
       }
     ],
-    "copyright": "©2025 Xiao Can Yun (Beijing) Technology Co., Ltd. All rights reserved. @ ICP No. 2021037962-1 Beijing Public Network Security No. 11011402012129"
+    "copyright": "©2025 xcan.cloud All rights reserved",
+    "ICP": "ICP No. 2021037962-1 Beijing Public Network Security No. 11011402012129"
   }
 }

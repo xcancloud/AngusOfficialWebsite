@@ -79,6 +79,7 @@ watch(isDark, () => {
             <i :class="social.icon"></i>
           </a>
         </div>
+          <!-- TODO 添加二维码：gzh.jpg（关注公众号）qywx.jpg（企业微信）  -->
       </div>
 
       <!-- Dynamically generated sections -->
@@ -111,6 +112,8 @@ watch(isDark, () => {
     <div class="footer-bottom">
       <div class="footer-copyright">
         {{ footerContent.copyright }}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/assets/image/jinghui.png" width="15px" >
+        {{ footerContent.ICP }}
       </div>
     </div>
   </footer>
@@ -284,6 +287,12 @@ watch(isDark, () => {
   opacity: 0.8;
   text-align: center;
   width: 100%;
+  white-space: nowrap;
+}
+
+.footer-copyright img {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 /* Brand logo */
@@ -410,6 +419,35 @@ watch(isDark, () => {
 
   .footer-social {
     gap: 0.7rem;
+  }
+
+  .qr-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px;
+    background-color: #f5f7ff;
+    border-radius: 8px;
+    max-width: 500px;
+    margin: 50px auto;
+  }
+
+  .qr-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .qr-image {
+    width: 38px;
+    height: 38px;
+    margin-bottom: 8px;
+  }
+
+  .qr-text {
+    font-size: 14px;
+    text-align: center;
+    color: #333;
   }
 }
 </style>
