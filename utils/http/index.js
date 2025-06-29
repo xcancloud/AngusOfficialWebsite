@@ -1,10 +1,8 @@
 import axios from 'axios';
 import cookie from 'js-cookie';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
-import { angusTools } from '../index';
+import { http, PUB_ESS, } from '@xcan-angus/tools';
 import { getUrl } from '../site/index';
-
-const { http, PUB_ESS,  } = angusTools;
 
 
 import { toSign } from '../site';

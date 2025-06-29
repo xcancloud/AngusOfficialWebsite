@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import cookies from 'js-cookie';
-export * as angusTools from '@xcan-angus/tools';
+
 
 /**
  * 文件大小格式化方法
@@ -152,3 +152,7 @@ export const getCurrentLanguage = () => {
   }
   return '';
 };
+
+export {
+
+}
