@@ -16,9 +16,9 @@ const editionType = ref(searchParams.get('type') || 'CLOUD_SERVICE');
 const version = ref(searchParams.get('version'));
 const nodeInputError = ref(false);
 const duration = ref(1);
-const nodeNum = ref();
+const nodeNum = ref(1);
 const selectNode = ref('Node4C8GSpec');
-const nodeSpecNum = ref(0); // 节点规格数量
+const nodeSpecNum = ref(1); // 节点规格数量
 const bandwidthNum = ref(0); // 带宽
 const systemDiskNum = ref(0); // 系统盘
 const nodeUsedNum = ref(0); // 已经使用的节点配额
@@ -580,7 +580,7 @@ onMounted(async () => {
         </div>
         <div class="form-row-value">
           <InputNumber
-            v-model="nodeNum"
+            v-model:value="nodeNum"
             :error="nodeInputError"
             :step="1"
             :min="nodeInfo.realmin"
@@ -616,41 +616,139 @@ onMounted(async () => {
           <span>购买节点</span><em>:</em>
         </div>
         <div class="form-row-value">
-          <div class="table-header">
-            <div class="table-col">
-              节点规格
+          <div class="inline-block">
+  
+            <div class="table-header">
+              <div class="table-col">
+                节点规格
+              </div>
+              <!-- <div class="table-col">
+                系统盘
+              </div>
+              <div class="table-col">
+                带宽
+              </div>
+              <div class="table-col">
+                数量
+              </div> -->
             </div>
-            <div class="table-col">
-              系统盘
+            <div class="table-body">
+              <div class="table-col">
+                <Select
+                  v-model:value="selectNode"
+                  :options="nodeOptions"/>
+              </div>
+              <!-- <div class="table-col">
+                {{ systemDiskNum }}G
+              </div>
+              <div class="table-col">
+                {{ bandwidthNum }}Mbps
+              </div>
+              <div class="table-col">
+                <InputNumber v-model:value="nodeSpecNum" :min="nodeSpecMin" :max="nodeSpecMax" :maxlength="5" size="small" />
+              </div> -->
             </div>
-            <div class="table-col">
-              带宽
-            </div>
-            <div class="table-col">
-              数量
-            </div>
+            
           </div>
-          <div class="table-body">
-            <div class="table-col">
-              <Select
-                v-model="selectNode"
-                :options="nodeOptions"
-                :get-popup-container="getPopupContainer"
-              />
+          <div class="inline-block">
+  
+            <div class="table-header">
+              <div class="table-col">
+                系统盘
+              </div>
+              <!-- <div class="table-col">
+                系统盘
+              </div>
+              <div class="table-col">
+                带宽
+              </div>
+              <div class="table-col">
+                数量
+              </div> -->
             </div>
-            <div class="table-col">
-              {{ systemDiskNum }}G
+            <div class="table-body">
+              <div class="table-col">
+                {{ systemDiskNum }}G
+              </div>
+              <!-- <div class="table-col">
+                {{ systemDiskNum }}G
+              </div>
+              <div class="table-col">
+                {{ bandwidthNum }}Mbps
+              </div>
+              <div class="table-col">
+                <InputNumber v-model:value="nodeSpecNum" :min="nodeSpecMin" :max="nodeSpecMax" :maxlength="5" size="small" />
+              </div> -->
             </div>
-            <div class="table-col">
-              {{ bandwidthNum }}Mbps
+            
+          </div>
+          <div class="inline-block">
+  
+            <div class="table-header">
+              <div class="table-col">
+                带宽
+              </div>
+              <!-- <div class="table-col">
+                系统盘
+              </div>
+              <div class="table-col">
+                带宽
+              </div>
+              <div class="table-col">
+                数量
+              </div> -->
             </div>
-            <div class="table-col">
-              <InputNumber v-model="nodeSpecNum" :min="nodeSpecMin" :max="nodeSpecMax" :maxlength="5" size="small" />
+            <div class="table-body">
+              <div class="table-col">
+                {{ bandwidthNum }}Mbps
+              </div>
+              <!-- <div class="table-col">
+                {{ systemDiskNum }}G
+              </div>
+              <div class="table-col">
+                {{ bandwidthNum }}Mbps
+              </div>
+              <div class="table-col">
+                <InputNumber v-model:value="nodeSpecNum" :min="nodeSpecMin" :max="nodeSpecMax" :maxlength="5" size="small" />
+              </div> -->
             </div>
+            
+          </div>
+          <div class="inline-block">
+  
+            <div class="table-header">
+              <div class="table-col">
+                数量
+              </div>
+              <!-- <div class="table-col">
+                系统盘
+              </div>
+              <div class="table-col">
+                带宽
+              </div>
+              <div class="table-col">
+                数量
+              </div> -->
+            </div>
+            <div class="table-body">
+              <div class="table-col">
+                <InputNumber v-model:value="nodeSpecNum" :min="nodeSpecMin" :max="nodeSpecMax" :maxlength="5" size="small" />
+              </div>
+              <!-- <div class="table-col">
+                {{ systemDiskNum }}G
+              </div>
+              <div class="table-col">
+                {{ bandwidthNum }}Mbps
+              </div>
+              <div class="table-col">
+                <InputNumber v-model:value="nodeSpecNum" :min="nodeSpecMin" :max="nodeSpecMax" :maxlength="5" size="small" />
+              </div> -->
+            </div>
+            
           </div>
           <div class="tip">
-            购买节点数不能大于节点配额。
-          </div>
+              购买节点数不能大于节点配额。
+            </div>
         </div>
       </div>
 
@@ -660,7 +758,7 @@ onMounted(async () => {
           <em>:</em>
         </div>
         <div class="form-row-value">
-          <Select v-model="duration" class="w-45" :get-popup-container="getPopupContainer">
+          <Select v-model:value="duration" class="w-45">
             <SelectOption v-for="item in timeOptions" :key="item.value" :value="item.value">
               <div :title="item.label" class="flex items-center w-full">
                 <span>{{ item.label }}</span>
@@ -678,12 +776,9 @@ onMounted(async () => {
         </div>
         <div class="form-row-value">
           <Select
-            v-model="couponId"
+            v-model:value="couponId"
             allow-clear
-            style="width: 318px;"
-            :placeholder="couponPlaceholder"
-            :get-popup-container="getPopupContainer"
-          >
+            :placeholder="couponPlaceholder">
             <template #notFoundContent>
               <div class="flex justify-center">
                 无可用优惠券
@@ -715,9 +810,8 @@ onMounted(async () => {
         class="custom-alert"
         @close="onClose"
       />
-      <div class="box-shadow" />
-      <div class="inner-footer-container">
-        <div class="inner-footer-row">
+      <div class="editions-grid mt-10">
+        <div class="mx-auto">
           <div class="inner-footer-col">
             <div class="col-label">
               原价<em>:</em>
@@ -728,6 +822,22 @@ onMounted(async () => {
           </div>
           <div class="inner-footer-col">
             <div class="col-label">
+              金额满减优惠<em>:</em>
+            </div>
+            <div class="col-value">
+              <em class="small-money-symbol">￥</em><em>{{ round(discountByPriceAmount) }}</em><em
+                class="small-money-unit"
+              >元</em>
+            </div>
+          </div>
+          
+          
+          
+        </div>
+
+        <div class="mx-auto">
+          <div class="inner-footer-col">
+            <div class="col-label">
               时长满减优惠<em>:</em>
             </div>
             <div class="col-value">
@@ -736,6 +846,20 @@ onMounted(async () => {
               >元</em>
             </div>
           </div>
+
+          <div class="inner-footer-col">
+            <div class="col-label">
+              优惠券优惠<em>:</em>
+            </div>
+            <div class="col-value">
+              <em class="small-money-symbol">￥</em><em>{{ round(discountByCouponAmount) }}</em><em
+                class="small-money-unit"
+              >元</em>
+            </div>
+          </div>
+        </div>
+
+        <div class="mx-auto" >
           <div class="inner-footer-col">
             <div class="col-label">
               支付金额<em>:</em>
@@ -744,6 +868,16 @@ onMounted(async () => {
               <em class="money-symbol">￥</em><em>{{ payAmount }}</em><em class="money-unit">元</em>
             </div>
           </div>
+          <div class="inner-footer-col">
+            <Checkbox v-model:checked="agreeFlag" class="col-label">
+              <span>我已同意</span>
+              <span class="link">《晓蚕云产品服务协议》</span>
+            </Checkbox>
+          </div>
+        </div>
+
+        <div class="mx-auto w-85">
+          
           <div class="inner-footer-col cursor-pointer w-30">
             <Popover :mouse-enter-delay="0.3">
               <template #content>
@@ -756,7 +890,30 @@ onMounted(async () => {
                       {{ durationMap[duration] }}
                     </div>
                   </div>
-
+                  <div v-if="serviceInfo && serviceInfo.specId" class="content-row">
+                    <div class="content-label">
+                      服务费<em>:</em>
+                    </div>
+                    <div class="content-value w-28">
+                      <em class="multi-symbol">*</em><em>1</em>
+                    </div>
+                    <div class="content-value">
+                      <em class="small-money-symbol">￥</em><em>{{ round(servicePrice) }}</em>
+                      <em class="small-money-unit">元</em>
+                    </div>
+                  </div>
+                  <div class="content-row">
+                    <div class="content-label">
+                      并发数<em>:</em>
+                    </div>
+                    <div class="content-value w-28">
+                      <em class="multi-symbol">*</em><em>{{ concurrencyNum }}</em>
+                    </div>
+                    <div class="content-value">
+                      <em class="small-money-symbol">￥</em><em>{{ round(concurrencyPrice) }}</em>
+                      <em class="small-money-unit">元</em>
+                    </div>
+                  </div>
                   <div class="content-row">
                     <div class="content-label">
                       节点配额<em>:</em>
@@ -769,84 +926,46 @@ onMounted(async () => {
                       <em class="small-money-unit">元</em>
                     </div>
                   </div>
-                  <div class="custom-row-label">
-                    购买节点<em>:</em>
-                  </div>
-                  <div style="height: 31px; line-height: 30px;" class="table-header border-none">
-                    <div style="width: 150px;" class="table-col">
-                      节点规格
+                  <div class="content-row">
+                    <div class="content-label">
+                      并发任务数<em>:</em>
                     </div>
-                    <div style="width: 80px;" class="table-col">
-                      系统盘
+                    <div class="content-value w-28">
+                      <em class="multi-symbol">*</em><em>{{ taskNum }}</em>
                     </div>
-                    <div style="width: 80px;" class="table-col">
-                      带宽
-                    </div>
-                    <div style="width: 80px;" class="table-col">
-                      数量
-                    </div>
-                    <div style="width: 150px;" class="table-col">
-                      价格
+                    <div class="content-value">
+                      <em class="small-money-symbol">￥</em><em>{{ round(taskPrice) }}</em>
+                      <em class="small-money-unit">元</em>
                     </div>
                   </div>
-                  <div style="height: 32px;" class="table-body border-none">
-                    <div style="width: 150px;" class="table-col">
-                      {{ nodeSpecMap[selectNode].name }}
+                  <div class="content-row">
+                    <div class="content-label">
+                      用户数<em>:</em>
                     </div>
-                    <div style="width: 80px;" class="table-col">
-                      {{ systemDiskNum }}G
+                    <div class="content-value w-28">
+                      <em class="multi-symbol">*</em><em>{{ userNum }}</em>
                     </div>
-                    <div style="width: 80px;" class="table-col">
-                      {{ bandwidthNum }}Mbps
-                    </div>
-                    <div style="width: 80px;" class="table-col">
-                      {{ nodeSpecNum }}
-                    </div>
-                    <div style="width: 150px;" class="table-col">
-                      <em class="small-money-symbol">￥</em>
-                      <span>{{ round(nodeSpecPrice + systemDiskPrice + bandwidthPrice) }}</span>
+                    <div class="content-value">
+                      <em class="small-money-symbol">￥</em><em>{{ round(userPrice) }}</em>
                       <em class="small-money-unit">元</em>
                     </div>
                   </div>
                 </div>
               </template>
               <span class="flex items-center">
-                <Icon icon="color: #ff7200;" type="icon-shuoming" class="mr-1 text-3" />
+                <Icon style="color: #ff7200;" icon="icon-shuoming" class="mr-1 text-3" />
                 <span class="col-label">费用明细</span>
               </span>
             </Popover>
           </div>
-        </div>
-
-        <div class="inner-footer-row">
-          <div class="inner-footer-col">
-            <div class="col-label">
-              金额满减优惠<em>:</em>
-            </div>
-            <div class="col-value">
-              <em class="small-money-symbol">￥</em><em>{{ round(discountByPriceAmount) }}</em><em
-                class="small-money-unit"
-              >元</em>
-            </div>
-          </div>
-          <div class="inner-footer-col">
-            <div class="col-label">
-              优惠券优惠<em>:</em>
-            </div>
-            <div class="col-value">
-              <em class="small-money-symbol">￥</em><em>{{ round(discountByCouponAmount) }}</em><em
-                class="small-money-unit"
-              >元</em>
-            </div>
-          </div>
-          <div class="inner-footer-col">
-            <Checkbox v-model="agreeFlag" class="col-label">
-              <span>我已同意</span>
-              <span class="link">《晓蚕云产品服务协议》</span>
-            </Checkbox>
-          </div>
+         
           <div class="inner-footer-col w-30">
-            <Button :loading="confirmLoading" :disabled="!agreeFlag" class="w-28" type="primary" @click="createOrder">
+            <Button
+              :loading="confirmLoading"
+              :disabled="!agreeFlag"
+              class="w-28"
+              type="primary"
+              @click="createOrder">
               提交订单
             </Button>
           </div>
@@ -882,7 +1001,7 @@ em {
 
 .table-header,
 .table-body {
-  width: 560px;
+  /* width: 560px; */
 }
 
 .table-header {
@@ -894,8 +1013,8 @@ em {
   border-right-width: 1px;
   border-left-width: 1px;
   border-style: solid;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  /* border-top-left-radius: 4px;
+  border-top-right-radius: 4px; */
   border-color: #e9e9e9;
   background: #f7f8fb;
   line-height: 35px;
@@ -945,8 +1064,8 @@ em {
   align-items: center;
   border-width: 1px;
   border-style: solid;
-  border-bottom-right-radius: 4px;
-  border-bottom-left-radius: 4px;
+  /* border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px; */
   border-color: #e9e9e9;
 }
 
@@ -1027,8 +1146,10 @@ em {
 
 .form-row-value {
   position: relative;
-  width: 600px;
+  /* width: 600px; */
   color: rgba(68, 76, 90, 100%);
+  flex: 1;
+  min-width: 160px;
 }
 
 .form-row-value .tip {
@@ -1168,5 +1289,11 @@ em {
 .content-value {
   display: flex;
   align-items: center;
+}
+
+.editions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
 }
 </style>
