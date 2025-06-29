@@ -125,11 +125,17 @@ watch(isDark, () => {
   background: var(--vp-bg);
   color: var(--vp-text);
   padding: 4rem 1.5rem 2rem;
-  position: relative;
   overflow: hidden;
   margin-top: 60px;
-  width: 100%;
   box-sizing: border-box;
+
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-bottom: -50vw;
 }
 
 /* Content container */
