@@ -52,6 +52,7 @@ import Pay from './pay/index.vue';
 import OrderDone from './order/index.vue';
 import Support from './support/index.vue';
 import ServiceSupport from './support/serviceSupport.vue';
+import Node from './purchase/node.vue';
 
 export default {
     extends: DefaultTheme,
@@ -85,6 +86,7 @@ export default {
         app.component('Pricing', Pricing);
         app.component('AngusCloud', AngusCloud);
         app.component('AngusPriv', AngusPriv);
+        app.component('Node', Node);
         app.component('Pay', Pay);
         app.component('OrderDone', OrderDone);
         app.component('Footer', Footer);

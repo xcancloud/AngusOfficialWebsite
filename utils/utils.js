@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 
+
 /**
  * 返回数据类型
  * @param {*} data

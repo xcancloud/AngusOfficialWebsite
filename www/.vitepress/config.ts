@@ -106,6 +106,7 @@ export default withMermaid({
             noExternal: [
                 '@nolebase/vitepress-plugin-enhanced-readabilities',
                 '@nolebase/ui',
+                '@xcan-angus/tools'
             ],
         },
 
