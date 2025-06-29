@@ -25,14 +25,22 @@ import 'virtual:group-icons.css';
 import { theme } from 'vitepress-openapi/client';
 import 'vitepress-openapi/dist/style.css';
 
+// plugin enhanced readabilities
+import { h } from 'vue'
+import {
+    NolebaseEnhancedReadabilitiesMenu,
+    NolebaseEnhancedReadabilitiesScreenMenu,
+} from '@nolebase/vitepress-plugin-enhanced-readabilities/client'
+import '@nolebase/vitepress-plugin-enhanced-readabilities/client/style.css'
+
 // plugin lumen
 import { DocVideoLink } from '@theojs/lumen';
 
 import AuthConfirmModal from './components/authConfirmModel.vue';
 import LoginConfirmModal from './components/loginConfirmModel.vue';
 import HomePage from './home/index.vue';
+import Footer from './components/Footer/footer.vue';
 import Icon from './components/Icon/index.vue';
-import OpenBanner from './components/OpenBanner/index.vue';
 import Business from './scenario/business.vue';
 import Ai from './scenario/ai.vue';
 import Deployment from './deployment/index.vue';
@@ -45,9 +53,18 @@ import Support from './support/index.vue';
 import ServiceSupport from './support/serviceSupport.vue';
 import Node from './purchase/node.vue';
 
-
 export default {
     extends: DefaultTheme,
+
+    // plugin enhanced readabilities
+    Layout: () => {
+        return h(DefaultTheme.Layout, null, {
+            // Added a reading-enhanced menu to the navigation bar for wider screens
+            'nav-bar-content-after': () => h(NolebaseEnhancedReadabilitiesMenu),
+            // Added a reading enhancement menu for narrower screens (typically smaller than the iPad Mini)
+            'nav-screen-content-after': () => h(NolebaseEnhancedReadabilitiesScreenMenu),
+        })
+    },
 
     enhanceApp({app, router, siteData}) {
         // ...
@@ -59,7 +76,6 @@ export default {
         app.component('AuthConfirmModal', AuthConfirmModal);
         app.component('HomePage', HomePage);
         app.component('Icon', Icon);
-        app.component('OpenBanner', OpenBanner);
         app.component('Business', Business);
         app.component('Ai', Ai);
         app.component('Deployment', Deployment);
@@ -71,6 +87,8 @@ export default {
         app.component('Node', Node);
         app.component('Pay', Pay);
         app.component('OrderDone', OrderDone);
+        app.component('Footer', Footer);
+
         for (const [name, comp] of Object.entries(ElementIcons)) {
             app.component(name, comp)
         }

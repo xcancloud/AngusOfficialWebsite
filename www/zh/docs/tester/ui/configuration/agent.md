@@ -34,6 +34,7 @@
    ```text
    wss://bj-c1-prod-angusproxy.xcan.cloud/angusProxy
    ```
+![proxy-edit.png](images/proxy-edit.png)
 
 ::: warning 重要提醒
 ⚠️ 云代理无法访问内网服务

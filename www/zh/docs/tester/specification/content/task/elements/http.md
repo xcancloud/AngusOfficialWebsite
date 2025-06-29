@@ -553,7 +553,7 @@ $.store.book[*]
 ```  
 
 **表达式**：
-```xpath  
+```txt  
 //person  
 ```  
 

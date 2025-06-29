@@ -66,15 +66,15 @@ export default withMermaid({
     locales: {
         root: {label: 'English', lang: 'en-US', link: '/en/', ...enLocaleConfig},      // 默认英语
         zh: {label: '简体中文', lang: 'zh-CN', link: '/zh/', ...zhLocaleConfig},      // 简体中文
-        fr: {label: 'Français', lang: 'fr'},         // 法语
-        de: {label: 'Deutsch', lang: 'de'},          // 德语
-        ja: {label: '日本語', lang: 'ja'},            // 日语
-        'zh-TW': {label: '繁體中文', lang: 'zh-TW'},   // 繁体中文
-        pt: {label: 'Português', lang: 'pt'},        // 葡萄牙语
-        ru: {label: 'Русский', lang: 'ru'},          // 俄语
-        es: {label: 'Español', lang: 'es'},          // 西班牙语
-        ko: {label: '한국어', lang: 'ko'},             // 韩语
-        fa: {label: 'فارسی', lang: 'fa'}             // 波斯语
+        // fr: {label: 'Français', lang: 'fr'},         // 法语
+        // de: {label: 'Deutsch', lang: 'de'},          // 德语
+        // ja: {label: '日本語', lang: 'ja'},            // 日语
+        // 'zh-TW': {label: '繁體中文', lang: 'zh-TW'},   // 繁体中文
+        // pt: {label: 'Português', lang: 'pt'},        // 葡萄牙语
+        // ru: {label: 'Русский', lang: 'ru'},          // 俄语
+        // es: {label: 'Español', lang: 'es'},          // 西班牙语
+        // ko: {label: '한국어', lang: 'ko'},             // 韩语
+        // fa: {label: 'فارسی', lang: 'fa'}             // 波斯语
     },
 
     markdown: {
@@ -94,6 +94,21 @@ export default withMermaid({
         },
 
         envDir: resolve(__dirname, '../../conf'),
+
+        optimizeDeps: {
+            exclude: [
+                '@nolebase/vitepress-plugin-enhanced-readabilities/client',
+                'vitepress',
+                '@nolebase/ui',
+            ],
+        },
+        ssr: {
+            noExternal: [
+                '@nolebase/vitepress-plugin-enhanced-readabilities',
+                '@nolebase/ui',
+            ],
+        },
+
         server: server
     },
 

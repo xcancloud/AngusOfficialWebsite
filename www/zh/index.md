@@ -18,9 +18,13 @@ hero:
     - theme: alt
       text: 下载安装
       link: /zh/docs/tester/installation/AngusTester
+
+footer: false
 ---
 
 <HomePage />
+<Footer />
+
 <style>
 @media (min-width: 960px) {
     [data-v-72cc4481] .image-src {
