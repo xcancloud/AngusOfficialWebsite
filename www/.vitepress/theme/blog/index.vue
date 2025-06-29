@@ -1,140 +1,3 @@
-<template>
-  <!-- 增强版顶部Banner -->
-  <div class="banner-container">
-    <div class="banner-content">
-      <div class="banner-text">
-        <h1 class="banner-title">{{ messages.bannerTitle }}</h1>
-        <p class="banner-description">{{ messages.bannerDescription }}</p>
-        <div class="banner-cta">
-          <button class="cta-button">{{ messages.exploreButton }}</button>
-          <button class="cta-button secondary" @click="scrollToSubscribe">
-            {{ messages.subscribeButton }}
-          </button>
-        </div>
-      </div>
-      <div class="banner-graphic">
-        <div class="graphic-element"></div>
-        <div class="graphic-element"></div>
-        <div class="graphic-element"></div>
-      </div>
-    </div>
-
-    <!-- 波浪分隔线 -->
-    <div class="wave-divider">
-      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="wave-fill"></path>
-        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="wave-fill"></path>
-        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="wave-fill"></path>
-      </svg>
-    </div>
-  </div>
-
-  <div class="blog-container">
-    <!-- 标签过滤区域 -->
-    <div class="filter-section">
-      <h2 class="filter-title">{{ messages.filterTitle }}</h2>
-      <div class="tags-container">
-        <button
-            v-for="(tag, index) in allTags"
-            :key="index"
-            class="tag-btn"
-            :class="{ 'active': activeTag === tag }"
-            @click="toggleTag(tag)"
-        >
-          {{ tag }}
-        </button>
-      </div>
-      <div v-if="activeTag" class="active-filter-info">
-        {{ messages.filteringBy }}: <strong>{{ activeTag }}</strong>
-        <button class="clear-filter-btn" @click="clearFilter">
-          {{ messages.clearFilter }}
-        </button>
-      </div>
-    </div>
-
-    <!-- 博客文章列表 -->
-    <div class="blog-list">
-      <div
-          v-for="(post, index) in filteredPosts"
-          :key="index"
-          class="blog-card"
-          :style="`--delay: ${index * 0.1}s;`"
-      >
-        <div
-            class="card-img"
-            :style="post.image ? `background-image: url(${post.image})` : ''"
-        >
-          <span class="tag-badge" v-for="tag in post.tags" :key="tag">{{ tag }}</span>
-        </div>
-        <div class="card-content">
-          <h3 class="post-title">{{ post.title }}</h3>
-          <p class="post-description">{{ post.description }}</p>
-          <div class="post-meta">
-            <div class="author-info">
-              <div class="author-avatar"></div>
-              <div>
-                <div class="author-name">{{ post.author }}</div>
-                <div class="post-date">{{ formatDate(post.date) }}</div>
-              </div>
-            </div>
-            <div class="read-time">{{ post.readTime }} {{ messages.minRead }}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 没有文章时的提示 -->
-    <div v-if="filteredPosts.length === 0" class="no-results">
-      <div class="no-results-icon">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
-          <path d="M12 8V12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M12 16H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <h3>{{ messages.noResultsTitle }}</h3>
-      <p>{{ messages.noResultsDescription }}</p>
-      <button class="clear-filter-btn" @click="clearFilter">
-        {{ messages.clearFilter }}
-      </button>
-    </div>
-
-    <!-- 订阅表单 -->
-    <div class="subscription-section" ref="subscribeSection">
-      <div class="subscribe-content">
-        <div class="subscribe-text">
-          <h2 class="subscribe-title">{{ messages.subscribeTitle }}</h2>
-          <p class="subscribe-description">{{ messages.subscribeDescription }}</p>
-        </div>
-        <form @submit.prevent="handleSubscription" class="subscribe-form">
-          <div class="input-group">
-            <input
-                type="email"
-                v-model="subscriberEmail"
-                :placeholder="messages.emailPlaceholder"
-                required
-                class="email-input"
-            >
-            <button type="submit" class="subscribe-btn">
-              {{ messages.subscribeButton }}
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M12 5L19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-          </div>
-          <p class="privacy-note">{{ messages.privacyNote }}</p>
-        </form>
-      </div>
-      <div class="subscribe-graphic">
-        <div class="graphic-element"></div>
-        <div class="graphic-element"></div>
-        <div class="graphic-element"></div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { ref, computed, reactive } from 'vue'
 
@@ -142,7 +5,7 @@ import { ref, computed, reactive } from 'vue'
 const messages = reactive({
   bannerTitle: "探索前沿技术，分享专业智慧",
   bannerDescription: "专注于软件开发、软件测试和人工智能的技术博客，致力于分享实用的技术教程和行业洞察",
-  exploreButton: "探索文章",
+  sign_up_now: '立即注册',
   subscribeButton: "订阅更新",
   filterTitle: "按标签筛选",
   clearFilter: "清除筛选",
@@ -293,6 +156,144 @@ function scrollToSubscribe() {
   }
 }
 </script>
+
+
+<template>
+  <!-- 增强版顶部Banner -->
+  <div class="banner-container">
+    <div class="banner-content">
+      <div class="banner-text">
+        <h1 class="banner-title">{{ messages.bannerTitle }}</h1>
+        <p class="banner-description">{{ messages.bannerDescription }}</p>
+        <div class="banner-cta">
+          <button class="cta-button">{{ messages.sign_up_now }}</button>
+          <button class="cta-button secondary" @click="scrollToSubscribe">
+            {{ messages.subscribeButton }}
+          </button>
+        </div>
+      </div>
+      <div class="banner-graphic">
+        <div class="graphic-element"></div>
+        <div class="graphic-element"></div>
+        <div class="graphic-element"></div>
+      </div>
+    </div>
+
+    <!-- 波浪分隔线 -->
+    <div class="wave-divider">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="wave-fill"></path>
+        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="wave-fill"></path>
+        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="wave-fill"></path>
+      </svg>
+    </div>
+  </div>
+
+  <div class="blog-container">
+    <!-- 标签过滤区域 -->
+    <div class="filter-section">
+      <h2 class="filter-title">{{ messages.filterTitle }}</h2>
+      <div class="tags-container">
+        <button
+            v-for="(tag, index) in allTags"
+            :key="index"
+            class="tag-btn"
+            :class="{ 'active': activeTag === tag }"
+            @click="toggleTag(tag)"
+        >
+          {{ tag }}
+        </button>
+      </div>
+      <div v-if="activeTag" class="active-filter-info">
+        {{ messages.filteringBy }}: <strong>{{ activeTag }}</strong>
+        <button class="clear-filter-btn" @click="clearFilter">
+          {{ messages.clearFilter }}
+        </button>
+      </div>
+    </div>
+
+    <!-- 博客文章列表 -->
+    <div class="blog-list">
+      <div
+          v-for="(post, index) in filteredPosts"
+          :key="index"
+          class="blog-card"
+          :style="`--delay: ${index * 0.1}s;`"
+      >
+        <div
+            class="card-img"
+            :style="post.image ? `background-image: url(${post.image})` : ''"
+        >
+          <span class="tag-badge" v-for="tag in post.tags" :key="tag">{{ tag }}</span>
+        </div>
+        <div class="card-content">
+          <h3 class="post-title">{{ post.title }}</h3>
+          <p class="post-description">{{ post.description }}</p>
+          <div class="post-meta">
+            <div class="author-info">
+              <div class="author-avatar"></div>
+              <div>
+                <div class="author-name">{{ post.author }}</div>
+                <div class="post-date">{{ formatDate(post.date) }}</div>
+              </div>
+            </div>
+            <div class="read-time">{{ post.readTime }} {{ messages.minRead }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 没有文章时的提示 -->
+    <div v-if="filteredPosts.length === 0" class="no-results">
+      <div class="no-results-icon">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 8V12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M12 16H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>{{ messages.noResultsTitle }}</h3>
+      <p>{{ messages.noResultsDescription }}</p>
+      <button class="clear-filter-btn" @click="clearFilter">
+        {{ messages.clearFilter }}
+      </button>
+    </div>
+
+    <!-- 订阅表单 -->
+    <div class="subscription-section" ref="subscribeSection">
+      <div class="subscribe-content">
+        <div class="subscribe-text">
+          <h2 class="subscribe-title">{{ messages.subscribeTitle }}</h2>
+          <p class="subscribe-description">{{ messages.subscribeDescription }}</p>
+        </div>
+        <form @submit.prevent="handleSubscription" class="subscribe-form">
+          <div class="input-group">
+            <input
+                type="email"
+                v-model="subscriberEmail"
+                :placeholder="messages.emailPlaceholder"
+                required
+                class="email-input"
+            >
+            <button type="submit" class="subscribe-btn">
+              {{ messages.subscribeButton }}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 5L19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <p class="privacy-note">{{ messages.privacyNote }}</p>
+        </form>
+      </div>
+      <div class="subscribe-graphic">
+        <div class="graphic-element"></div>
+        <div class="graphic-element"></div>
+        <div class="graphic-element"></div>
+      </div>
+    </div>
+  </div>
+</template>
 
 <style scoped>
 /* 精简变量定义 */
