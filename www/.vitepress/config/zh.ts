@@ -109,7 +109,7 @@ function nav(): DefaultTheme.NavItem[] {
             ]
         },
         {text: '专题博客', link: '/zh/blog/index'},
-        {text: '视频教学', link: '/zh/video'},
+        {text: '视频教学', link: '/zh/video/index'},
         {text: '购买&定价', items: [
             {
                 text: '定价',

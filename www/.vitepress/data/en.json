@@ -807,5 +807,110 @@
         }
       ]
     }
+  },
+  "video": {
+    "lang": {
+      "pageTitle": "Development Tutorials",
+      "bannerSubtitle": "Master cutting-edge technologies, enhance professional skills, join our developer community",
+      "signUpNow": "Sign Up Now",
+      "subscribeButton": "Subscribe for Updates",
+      "featuredVideos": "Featured Videos",
+      "courseCategories": "Course Categories",
+      "subscribeTitle": "Subscribe to Latest Tutorials",
+      "subscribeDescription": "Get the latest development tutorials, technical insights, and exclusive resources. Be the first to know about new course releases.",
+      "emailPlaceholder": "Please enter your email",
+      "subscribeBtn": "Subscribe Now"
+    },
+    "featuredVideos": [
+      {
+        "title": "Vue 3.0: From Beginner to Master",
+        "author": "Zhang Jishu",
+        "date": "2023-06-15",
+        "description": "Comprehensive guide to Vue 3's new features and best practices, including Composition API and reactivity principles",
+        "views": "12k",
+        "duration": "24:18",
+        "thumbnail": "https://picsum.photos/id/237/400/225"
+      },
+      {
+        "title": "In-depth Analysis of React Hooks",
+        "author": "Wang QianDuan",
+        "date": "2023-07-22",
+        "description": "Deep dive into React Hooks' working principles and practical application scenarios",
+        "views": "8,900",
+        "duration": "32:05",
+        "thumbnail": "https://picsum.photos/id/238/400/225"
+      },
+      {
+        "title": "TypeScript Advanced Techniques",
+        "author": "Li Jiagoushi",
+        "date": "2023-08-10",
+        "description": "Master TypeScript's advanced type system, generics applications, and engineering practices",
+        "views": "6,500",
+        "duration": "28:42",
+        "thumbnail": "https://picsum.photos/id/239/400/225"
+      },
+      {
+        "title": "Next.js Practical Development",
+        "author": "Zhao Quanzhan",
+        "date": "2023-05-30",
+        "description": "Build a complete Next.js application from scratch, covering core features like SSR and data fetching",
+        "views": "5,700",
+        "duration": "36:14",
+        "thumbnail": "https://picsum.photos/id/240/400/225"
+      },
+      {
+        "title": "Node.js Performance Optimization",
+        "author": "Qian Houduan",
+        "date": "2023-07-01",
+        "description": "Strategies and practical techniques to enhance Node.js application performance",
+        "views": "4,300",
+        "duration": "31:27",
+        "thumbnail": "https://picsum.photos/id/241/400/225"
+      }
+    ],
+    "courses": [
+      {
+        "title": "Environment Setup Guide",
+        "description": "Complete guide to configuring development environments from scratch",
+        "video_count": 18,
+        "total_duration": "5h 42m",
+        "thumbnail": "https://picsum.photos/id/242/400/225"
+      },
+      {
+        "title": "Automated Testing",
+        "description": "Master efficient automated testing strategies and tools",
+        "video_count": 15,
+        "total_duration": "4h 20m",
+        "thumbnail": "https://picsum.photos/id/243/400/225"
+      },
+      {
+        "title": "Agile Development Practices",
+        "description": "Practical guide to modern agile development workflows",
+        "video_count": 12,
+        "total_duration": "3h 58m",
+        "thumbnail": "https://picsum.photos/id/245/400/225"
+      },
+      {
+        "title": "CI/CD Pipelines",
+        "description": "Building efficient continuous integration and deployment systems",
+        "video_count": 10,
+        "total_duration": "3h 15m",
+        "thumbnail": "https://picsum.photos/id/245/400/225"
+      },
+      {
+        "title": "Cloud-Native Architecture",
+        "description": "Designing modern applications based on cloud services",
+        "video_count": 20,
+        "total_duration": "6h 30m",
+        "thumbnail": "https://picsum.photos/id/246/400/225"
+      },
+      {
+        "title": "Microservices Design",
+        "description": "Building and maintaining large-scale microservices architecture",
+        "video_count": 16,
+        "total_duration": "5h 10m",
+        "thumbnail": "https://picsum.photos/id/247/400/225"
+      }
+    ]
   }
 }

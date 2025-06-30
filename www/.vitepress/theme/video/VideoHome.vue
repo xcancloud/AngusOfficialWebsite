@@ -1,19 +1,23 @@
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, computed } from 'vue'
 
-// 多语言文案对象
-const lang = reactive({
-  page_title: '探索精彩的开发教程',
-  banner_subtitle: '掌握前沿技术，提升专业技能，加入我们的开发者社区',
-  sign_up_now: '立即注册',
-  subscribeButton: '订阅更新',
-  featured_videos: '精选视频',
-  course_categories: '课程分类',
-  subscribe_title: '订阅最新教程',
-  subscribe_description: '获取最新的开发教程、技术资讯和独家资源，第一时间了解新课程发布',
-  email_placeholder: '请输入您的电子邮箱',
-  subscribe_btn: '立即订阅'
-})
+import {useSafeI18n} from "../../utils/i18nData.js";
+
+const {safeGet} = useSafeI18n();
+// 公共文案
+const lang = computed(() => {
+  return safeGet('video.lang', '')
+});
+
+// 精选视频数据
+const featuredVideos = computed(() => {
+  return safeGet('video.featuredVideos', '')
+});
+
+// 课程数据
+const courses = computed(() => {
+  return safeGet('video.courses', '')
+});
 
 // 订阅逻辑
 const email = ref('')
@@ -40,100 +44,6 @@ function scrollToSubscribe() {
   }
 }
 
-// 精选视频数据
-const featuredVideos = ref([
-  {
-    title: 'Vue 3.0 从入门到精通',
-    author: '张技术',
-    date: '2023-06-15',
-    description: '全面掌握Vue 3的新特性和最佳实践，包括Composition API、响应式原理等',
-    views: '1.2万',
-    duration: '24:18',
-    thumbnail: 'https://picsum.photos/id/237/400/225'
-  },
-  {
-    title: 'React Hooks 深度解析',
-    author: '王前端',
-    date: '2023-07-22',
-    description: '深入剖析React Hooks的工作原理和实际应用场景',
-    views: '8,900',
-    duration: '32:05',
-    thumbnail: 'https://picsum.photos/id/238/400/225'
-  },
-  {
-    title: 'TypeScript 高级技巧',
-    author: '李架构师',
-    date: '2023-08-10',
-    description: '掌握TypeScript的高级类型系统、泛型应用和工程实践',
-    views: '6,500',
-    duration: '28:42',
-    thumbnail: 'https://picsum.photos/id/239/400/225'
-  },
-  {
-    title: 'Next.js 实战开发',
-    author: '赵全栈',
-    date: '2023-05-30',
-    description: '从零构建一个完整的Next.js应用，涵盖SSR、数据获取等核心功能',
-    views: '5,700',
-    duration: '36:14',
-    thumbnail: 'https://picsum.photos/id/240/400/225'
-  },
-  {
-    title: 'Node.js 性能优化',
-    author: '钱后端',
-    date: '2023-07-01',
-    description: '提升Node.js应用性能的多种策略和实践技巧',
-    views: '4,300',
-    duration: '31:27',
-    thumbnail: 'https://picsum.photos/id/241/400/225'
-  }
-])
-
-// 课程数据
-const courses = ref([
-  {
-    title: '安装教学',
-    description: '从零开始配置开发环境的完整指南',
-    video_count: 18,
-    total_duration: '5小时42分',
-    thumbnail: 'https://picsum.photos/id/242/400/225'
-  },
-  {
-    title: '自动化测试',
-    description: '掌握高效自动化测试策略和工具',
-    video_count: 15,
-    total_duration: '4小时20分',
-    thumbnail: 'https://picsum.photos/id/243/400/225'
-  },
-  {
-    title: '敏捷开发实践',
-    description: '现代敏捷开发流程的实战指南',
-    video_count: 12,
-    total_duration: '3小时58分',
-    thumbnail: 'https://picsum.photos/id/244/400/225'
-  },
-  {
-    title: 'CI/CD流水线',
-    description: '构建高效的持续集成和部署系统',
-    video_count: 10,
-    total_duration: '3小时15分',
-    thumbnail: 'https://picsum.photos/id/245/400/225'
-  },
-  {
-    title: '云原生架构',
-    description: '设计基于云服务的现代化应用',
-    video_count: 20,
-    total_duration: '6小时30分',
-    thumbnail: 'https://picsum.photos/id/246/400/225'
-  },
-  {
-    title: '微服务设计',
-    description: '构建和维护大规模微服务架构',
-    video_count: 16,
-    total_duration: '5小时10分',
-    thumbnail: 'https://picsum.photos/id/247/400/225'
-  }
-])
 </script>
 
 <template>
@@ -144,10 +54,10 @@ const courses = ref([
         <section class="video-banner">
           <div class="video-banner-content">
             <div class="video-banner-text">
-              <h1>{{ lang.page_title }}</h1>
-              <p>{{ lang.banner_subtitle }}</p>
+              <h1>{{ lang.pageTitle }}</h1>
+              <p>{{ lang.bannerSubtitle }}</p>
               <div class="video-banner-actions">
-                <button class="btn btn-primary">{{ lang.sign_up_now }}</button>
+                <button class="btn btn-primary">{{ lang.signUpNow }}</button>
                 <button class="btn btn-outline" @click="scrollToSubscribe">{{ lang.subscribeButton }}</button>
               </div>
             </div>
@@ -163,7 +73,7 @@ const courses = ref([
 
       <!-- 精选视频区域 -->
       <div class="section-header">
-        <h2 class="section-title">{{ lang.featured_videos }}</h2>
+        <h2 class="section-title">{{ lang.featuredVideos }}</h2>
       </div>
 
       <div class="video-grid">
@@ -187,7 +97,7 @@ const courses = ref([
 
       <!-- 课程视频区域 -->
       <div class="section-header">
-        <h2 class="section-title">{{ lang.course_categories }}</h2>
+        <h2 class="section-title">{{ lang.courseCategories }}</h2>
       </div>
 
       <div class="course-grid">
@@ -211,11 +121,11 @@ const courses = ref([
 
       <!-- 订阅表单 -->
       <section class="video-subscribe" ref="subscribeSection">
-        <h2 class="video-subscribe-title">{{ lang.subscribe_title }}</h2>
-        <p class="video-subscribe-subtitle">{{ lang.subscribe_description }}</p>
+        <h2 class="video-subscribe-title">{{ lang.subscribeTitle }}</h2>
+        <p class="video-subscribe-subtitle">{{ lang.subscribeDescription }}</p>
         <form class="video-subscribe-form" @submit.prevent="submitSubscribe">
-          <input type="email" class="form-control" :placeholder="lang.email_placeholder" required v-model="email">
-          <button type="submit" class="btn btn-primary">{{ lang.subscribe_btn }}</button>
+          <input type="email" class="form-control" :placeholder="lang.emailPlaceholder" required v-model="email">
+          <button type="submit" class="btn btn-primary">{{ lang.subscribeBtn }}</button>
         </form>
       </section>
     </div>

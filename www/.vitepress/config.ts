@@ -9,6 +9,7 @@ import {groupIconMdPlugin, groupIconVitePlugin} from 'vitepress-plugin-group-ico
 
 export default withMermaid({
     title: 'XCan Cloud',
+    appearance: true,
 
     lastUpdated: true,
     cleanUrls: true,

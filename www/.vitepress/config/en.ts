@@ -82,7 +82,7 @@ function nav(): DefaultTheme.NavItem[] {
             ]
         },
         {text: 'Blog', link: '/en/blog/index'},
-        {text: 'Video', link: '/en/video'},
+        {text: 'Video', link: '/en/video/index'},
         {text: 'Pricing', items: [
             {
                 text: '定价',
