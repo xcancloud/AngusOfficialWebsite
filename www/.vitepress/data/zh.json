@@ -602,5 +602,210 @@
     ],
     "copyright": "©2025 xcan.cloud 版权所有",
     "ICP": "京ICP备2021037962号-1 京公网安备 11011402012129号"
+  },
+  "scenario": {
+    "business": {
+      "banner": {
+        "title": "专为IT企业设计，针对20人以下团队免费",
+        "description": "详细了解AngusTester的强大功能，包括规划、跟踪、协作和测试。立即注册，免费亲自试用，体验如何提升团队效率与项目管理！",
+        "button": {
+          "label": "开始试用",
+          "url": "#"
+        }
+      },
+      "sectionTitle": "全流程研发测试管理平台",
+      "features": [
+        {
+          "title": "项目管理与流程",
+          "description": [
+            "定义管理和组织任务、测试、需求、工作流程、资源的基本单位，为团队提供了一个集中化方式来计划、跟踪、报告和验收工作进展。",
+            "\n一、添加项目\n建立管理组织研发和测试活动的工作流程基本单元。\n\n二、指定迭代和测试计划\n明确研发和测试活动的负责人、时间、目标、验收标准等。\n\n三、开展研发和测试活动\n按照计划开展研发和测试活动，随时跟踪和管理项目中的工作任务、缺陷、需求、用户故事、测试等工作项。\n\n四、报告结果\n总结研发和测试活动的各个方面，包括项目进展、效能分析、数据资产、测试结果等，为项目的成功交付提供有力支持。"
+          ],
+          "image": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/01-%E9%A1%B9%E7%9B%AE%E6%B5%81%E7%A8%8B.gif?fid=251751339858591758",
+          "video": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/01-%E9%A1%B9%E7%9B%AE%E6%B5%81%E7%A8%8B.mp4?fid=251751339858591816&fpt=ggksoHPteDAgBSEMSUPqcHSFQWGn23POg5Jvqt9G",
+          "learnMore": {
+            "label": "了解更多",
+            "url": "#"
+          }
+        },
+        {
+          "title": "任务协同",
+          "description": [
+            "丰富的功能和多样的任务视图，可在团队内部和团队之间实现直观轻松的协作、提及、评论、备注等。",
+            "\n可以完成以下工作：\n通过\"迭代\"组织规划团队成员开展项目活动和排期；\n以明确负责人方式进行任务分配、确认和协作；\n报告和分析项目的健康状况、进展情况和问题趋势。"
+          ],
+          "image": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/02-%E4%BB%BB%E5%8A%A1%E5%8D%8F%E5%90%8C.gif?fid=251751339858591760",
+          "video": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/02-%E4%BB%BB%E5%8A%A1%E5%8D%8F%E5%90%8C.mp4?fid=251751339858591818&fpt=PFxtOunmMTVFBlH0mzDwlTaOHXdQY2emstybSdAu",
+          "learnMore": {
+            "label": "了解更多",
+            "url": "#"
+          }
+        },
+        {
+          "title": "功能测试",
+          "description": [
+            "功能测试管理模块，用于建立评审机制和验证软件系统是否符合规格说明和用户需求的过程。",
+            "\n可以完成以下工作：\n通过\"计划\"组织测试人员开展功能测试活动；\n组织用例评审及早发现潜在的缺陷和错误等；\n报告和分析项目的健康状况、进展情况和问题趋势。"
+          ],
+          "image": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/03-%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95.gif?fid=251751339858591762",
+          "video": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/03-%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95.mp4?fid=251751339858591820&fpt=V8Kgo5Ju6mvzks5EB3DjNCPv6jBjrkj77LpkVgjN",
+          "learnMore": {
+            "label": "了解更多",
+            "url": "#"
+          }
+        },
+        {
+          "title": "接口测试",
+          "description": [
+            "接口管理模块，可以帮助开发人员和测试人员轻松地添加、测试、调试和文档化API，最终帮助企业达成API资产化目的。",
+            "\n可以完成以下工作：\n在线编辑、调试接口；\n管理项目、服务、接口以及测试任务；\n开展接口功能测试、性能测试和稳定性测试，保证交付稳定且满足性能指标要求的系统。"
+          ],
+          "image": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/04-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95.gif?fid=251751339858591764",
+          "video": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/04-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95.mp4?fid=251751339858591822&fpt=C4p5oIQln8MXXpvtRMqMUJedKobpraybgvDGtM2C",
+          "learnMore": {
+            "label": "了解更多",
+            "url": "#"
+          }
+        },
+        {
+          "title": "场景测试",
+          "description": [
+            "场景管理模块，场景可以帮助您编排更加复杂的需求或用户故事，相比单个步骤的测试用例，场景可以包含更多步骤和流程。",
+            "\n可以完成以下工作：\n在线编辑、调试场景；\n快速生成场景测试脚本和任务；\n监控业务场景运行，触发通知或者告警。"
+          ],
+          "image": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/05-%E5%9C%BA%E6%99%AF%E6%B5%8B%E8%AF%95.gif?fid=251751339858591766",
+          "video": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/05-%E5%9C%BA%E6%99%AF%E6%B5%8B%E8%AF%95.mp4?fid=251751417168003119&fpt=PhlWjkXOU9fpgzsg04ntvjY4fugbe6CLjlQG5GOF",
+          "learnMore": {
+            "label": "了解更多",
+            "url": "#"
+          }
+        },
+        {
+          "title": "服务模拟",
+          "description": [
+            "可快速生成并模拟您所依赖的 API，使开发和测试先行，以实现更快的开发和更全面的测试，更早地交付稳定的产品或应用。通过Mock也可避免直接与生产系统联调造成的脏数据问题。",
+            "\n可以完成以下工作：\n1. 能够根据请求路径、方法和参数模拟不同响应的HTTP请求。\n2. 支持用户自定义响数据格式，以及设置响应状态码。\n3. 回推场景模拟，支持触发异步和同步回推请求。\n4. 支持响应延迟的选项，模拟网络延迟或服务器处理时间。\n5. 支持使用Mock函数生成动态数据，生成不同的响应内容。\n6. 支持模拟不同类型的错误响应，以便测试客户端的错误处理逻辑。"
+          ],
+          "image": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/06-%E5%9C%BA%E6%99%AF%E6%BC%94%E7%A4%BA-%E6%9C%8D%E5%8A%A1%E6%A8%A1%E6%8B%9F.gif?fid=251751417168003091",
+          "video": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/06-%E5%9C%BA%E6%99%AF%E6%BC%94%E7%A4%BA-%E6%9C%8D%E5%8A%A1%E6%A8%A1%E6%8B%9F.mp4?fid=251751417168003121&fpt=6RIOs6pzYsvVQ0HgoyaLPTgDgnNuyf0Pt4LBwsG9",
+          "learnMore": {
+            "label": "了解更多",
+            "url": "#"
+          }
+        },
+        {
+          "title": "看板(大屏)",
+          "description": [
+            "通过据资产大屏和效能大屏帮助团队和管理层监控、分析和优化项目进展与质量。",
+            "\n数据资产看板：\n集中展示项目中的各种数据资产，比如任务、测试用例、缺陷报告、接口、脚本、报告等，使得团队能够直观地了解数据的现状。\n\n效能分析看板：\n实时展示项目的关键性能指标（KPI），如工作量、任务数、效率、缺陷率、逾期等，帮助团队监控项目的健康状况和进展。"
+          ],
+          "image": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/06-%E7%9C%8B%E6%9D%BF%E5%A4%A7%E5%B1%8F.gif?fid=251751339858591768",
+          "video": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/07-%E7%9C%8B%E6%9D%BF%E5%A4%A7%E5%B1%8F.mp4?fid=251751417168003123&fpt=7HRGQrRyBDViUSwsD9bmuTPdw4tJeYSHwyspdEPm",
+          "learnMore": {
+            "label": "了解更多",
+            "url": "#"
+          }
+        },
+        {
+          "title": "分析与报告",
+          "description": [
+            "帮助团队可以全面总结研发和测试活动的各个方面，包括进度、效能、质量、执行情况、结果分析等等，这有助于提高透明度和沟通，为项目的成功交付提供有力支持。",
+            "支持5大类报告：项目报告、研发任务报告、功能测试报告、接口测试报告、执行报告。"
+          ],
+          "image": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/07-%E6%8A%A5%E5%91%8A%E4%B8%8E%E5%88%86%E6%9E%90.gif?fid=251751339858591770",
+          "video": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/08-%E6%8A%A5%E5%91%8A%E4%B8%8E%E5%88%86%E6%9E%90.mp4?fid=251751417168003125&fpt=8iZzcxqICmQMnmFRkJrahUO8TpvNZixGW48vcBlh",
+          "learnMore": {
+            "label": "了解更多",
+            "url": "#"
+          }
+        }
+      ],
+      "footer": {
+        "title": "立即体验专为小型团队设计的免费研发测试平台",
+        "button": {
+          "label": "免费注册使用",
+          "tag": "20人以下永久免费",
+          "url": "#"
+        }
+      },
+      "videoNotSupported": "您的浏览器不支持视频播放。"
+    },
+    "ai": {
+      "banner": {
+        "title": "人工智能与软件研发测试场景结合",
+        "description": "运用先进的人工智能技术优化研发与测试流程，提升团队协作与生产力，让您的项目在激烈的市场竞争中始终保持领先！",
+        "button": {
+          "label": "立即使用",
+          "url": "#"
+        }
+      },
+      "features": [
+        {
+          "title": "知识智能助手",
+          "description": [
+            "AngusTester知识智能助手是研发团队的智能伙伴，可快速获取和整理项目相关知识，提供实时建议，解决技术难题。",
+            "无论是技术问题还是项目管理，AI助手都能提供精准支持，助力团队快速迭代，提升决策效率30%以上。"
+          ],
+          "image": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI%E9%A9%B1%E5%8A%A8-%E6%99%BA%E8%83%BD%E5%8A%A9%E6%89%8B.gif?fid=251751339858591774",
+          "video": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI%E9%A9%B1%E5%8A%A8-%E6%99%BA%E8%83%BD%E5%8A%A9%E6%89%8B.mp4?fid=251751417168003133&fpt=zBos2rmi3WSfSPjoeaGEAeziBBwo1Aiv8vXYKZQ4",
+          "learnMore": {
+            "label": "了解更多",
+            "url": "#"
+          }
+        },
+        {
+          "title": "智能产品Backlog生成",
+          "description": [
+            "AngusTester通过AI智能分析需求，自动生成详细的产品Backlog条目，确保团队始终聚焦于高优先级任务。",
+            "告别繁琐的手动输入，系统可自动整理任务、排序优先级并优化协作流程，释放团队30%以上的管理时间。"
+          ],
+          "image": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI%E9%A9%B1%E5%8A%A8-%E7%BC%96%E5%86%99%E4%BA%A7%E5%93%81Backlog.gif?fid=251751339858591776",
+          "video": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI%E9%A9%B1%E5%8A%A8-%E7%BC%96%E5%86%99%E4%BA%A7%E5%93%81Backlog.mp4?fid=251751417168003131&fpt=TSxOCVXAP4jNZB4kzIeZtiR2GnWXVeRABfQP5Eud",
+          "learnMore": {
+            "label": "了解更多",
+            "url": "#"
+          }
+        },
+        {
+          "title": "研发任务智能拆解",
+          "description": [
+            "AngusTester通过智能算法自动拆解功能需求，生成详细的研发任务列表，清晰划分团队职责。",
+            "无论是大型项目还是小型功能开发，系统都能高效分解任务，提高工作效率40%，减少沟通成本。"
+          ],
+          "image": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI%E9%A9%B1%E5%8A%A8-%E6%8B%86%E5%88%86%E5%AD%90%E4%BB%BB%E5%8A%A1.gif?fid=251751339858591772",
+          "video": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI%E9%A9%B1%E5%8A%A8-%E6%8B%86%E5%88%86%E5%AD%90%E4%BB%BB%E5%8A%A1.mp4?fid=251751417168003135&fpt=XxedAypqKEH76vCV2w47os60suAi2bS39BduwfqD",
+          "learnMore": {
+            "label": "了解更多",
+            "url": "#"
+          }
+        },
+        {
+          "title": "功能测试用例自动生成",
+          "description": [
+            "AngusTester根据功能需求自动生成全面的测试用例，确保每个功能都经过严格验证，提高测试覆盖率30%。",
+            "AI驱动的测试生成减少了人为失误，使产品在发布前具备更高的稳定性和可靠性，降低缺陷率40%。"
+          ],
+          "image": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI%E9%A9%B1%E5%8A%A8-%E7%BC%96%E5%86%99%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B.gif?fid=251751339858591778",
+          "video": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI%E9%A9%B1%E5%8A%A8-%E7%BC%96%E5%86%99%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B.mp4?fid=251751417168003129&fpt=xGbTgkZXiWqWlVS15RVNYePlaU4gPVqLyCmujlEA",
+          "learnMore": {
+            "label": "了解更多",
+            "url": "#"
+          }
+        },
+        {
+          "title": "接口测试脚本自动化",
+          "description": [
+            "AngusTester通过智能分析接口文档和业务逻辑，自动编写接口测试脚本，确保系统无缝对接。",
+            "支持RESTful API、GraphQL等多种接口类型，提升测试效率50%，保障系统高效可靠运行。"
+          ],
+          "image": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI%E9%A9%B1%E5%8A%A8-%E7%BC%96%E5%86%99%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC.gif?fid=251751339858591780",
+          "video": "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI%E9%A9%B1%E5%8A%A8-%E7%BC%96%E5%86%99%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC.mp4?fid=251751417168003127&fpt=B2Yuz8VP6MbNmXUfzDSLCc7LVYRMIZZq1Sycr3Tw",
+          "learnMore": {
+            "label": "了解更多",
+            "url": "#"
+          }
+        }
+      ]
+    }
   }
 }

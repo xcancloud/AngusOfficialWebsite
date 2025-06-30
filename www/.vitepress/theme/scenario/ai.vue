@@ -1,114 +1,36 @@
-<script>
-export default {
-  name: 'AngusTesterPage',
-  data() {
-    return {
-      // 使用TypeScript对象结构存储内容
-      content: {
-        banner: {
-          title: "人工智能与软件研发测试场景结合",
-          description: "运用先进的人工智能技术优化研发与测试流程，提升团队协作与生产力，让您的项目在激烈的市场竞争中始终保持领先！",
-          button: {
-            label: "立即使用",
-            url: "#"
-          }
-        },
-        features: [
-          {
-            title: "知识智能助手",
-            description: [
-              "AngusTester知识智能助手是研发团队的智能伙伴，可快速获取和整理项目相关知识，提供实时建议，解决技术难题。",
-              "无论是技术问题还是项目管理，AI助手都能提供精准支持，助力团队快速迭代，提升决策效率30%以上。"
-            ],
-            image: "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI%E9%A9%B1%E5%8A%A8-%E6%99%BA%E8%83%BD%E5%8A%A9%E6%89%8B.gif?fid=251751339858591774",
-            video: "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI%E9%A9%B1%E5%8A%A8-%E6%99%BA%E8%83%BD%E5%8A%A9%E6%89%8B.mp4?fid=251751417168003133&fpt=zBos2rmi3WSfSPjoeaGEAeziBBwo1Aiv8vXYKZQ4",
-            learnMore: {
-              label: "了解更多",
-              url: "#"
-            }
-          },
-          {
-            title: "智能产品Backlog生成",
-            description: [
-              "AngusTester通过AI智能分析需求，自动生成详细的产品Backlog条目，确保团队始终聚焦于高优先级任务。",
-              "告别繁琐的手动输入，系统可自动整理任务、排序优先级并优化协作流程，释放团队30%以上的管理时间。"
-            ],
-            image: "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI%E9%A9%B1%E5%8A%A8-%E7%BC%96%E5%86%99%E4%BA%A7%E5%93%81Backlog.gif?fid=251751339858591776",
-            video: "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI%E9%A9%B1%E5%8A%A8-%E7%BC%96%E5%86%99%E4%BA%A7%E5%93%81Backlog.mp4?fid=251751417168003131&fpt=TSxOCVXAP4jNZB4kzIeZtiR2GnWXVeRABfQP5Eud",
-            learnMore: {
-              label: "了解更多",
-              url: "#"
-            }
-          },
-          {
-            title: "研发任务智能拆解",
-            description: [
-              "AngusTester通过智能算法自动拆解功能需求，生成详细的研发任务列表，清晰划分团队职责。",
-              "无论是大型项目还是小型功能开发，系统都能高效分解任务，提高工作效率40%，减少沟通成本。"
-            ],
-            image: "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI%E9%A9%B1%E5%8A%A8-%E6%8B%86%E5%88%86%E5%AD%90%E4%BB%BB%E5%8A%A1.gif?fid=251751339858591772",
-            video: "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI%E9%A9%B1%E5%8A%A8-%E6%8B%86%E5%88%86%E5%AD%90%E4%BB%BB%E5%8A%A1.mp4?fid=251751417168003135&fpt=XxedAypqKEH76vCV2w47os60suAi2bS39BduwfqD",
-            learnMore: {
-              label: "了解更多",
-              url: "#"
-            }
-          },
-          {
-            title: "功能测试用例自动生成",
-            description: [
-              "AngusTester根据功能需求自动生成全面的测试用例，确保每个功能都经过严格验证，提高测试覆盖率30%。",
-              "AI驱动的测试生成减少了人为失误，使产品在发布前具备更高的稳定性和可靠性，降低缺陷率40%。"
-            ],
-            image: "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI%E9%A9%B1%E5%8A%A8-%E7%BC%96%E5%86%99%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B.gif?fid=251751339858591778",
-            video: "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI%E9%A9%B1%E5%8A%A8-%E7%BC%96%E5%86%99%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B.mp4?fid=251751417168003129&fpt=xGbTgkZXiWqWlVS15RVNYePlaU4gPVqLyCmujlEA",
-            learnMore: {
-              label: "了解更多",
-              url: "#"
-            }
-          },
-          {
-            title: "接口测试脚本自动化",
-            description: [
-              "AngusTester通过智能分析接口文档和业务逻辑，自动编写接口测试脚本，确保系统无缝对接。",
-              "支持RESTful API、GraphQL等多种接口类型，提升测试效率50%，保障系统高效可靠运行。"
-            ],
-            image: "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI%E9%A9%B1%E5%8A%A8-%E7%BC%96%E5%86%99%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC.gif?fid=251751339858591780",
-            video: "https://bj-c1-prod-files.xcan.cloud/storage/pubapi/v1/file/AI%E9%A9%B1%E5%8A%A8-%E7%BC%96%E5%86%99%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC.mp4?fid=251751417168003127&fpt=B2Yuz8VP6MbNmXUfzDSLCc7LVYRMIZZq1Sycr3Tw",
-            learnMore: {
-              label: "了解更多",
-              url: "#"
-            }
-          }
-        ]
-      }
+<script setup>
+import {computed} from 'vue';
+import {useSafeI18n} from "../../utils/i18nData.js";
+
+const {safeGet} = useSafeI18n();
+const content = computed(() => {
+  return safeGet('scenario.ai', '')
+});
+
+// 方法改为函数声明
+const showVideo = (index) => {
+  const mediaContainer = document.querySelectorAll('.feature-media')[index];
+  const img = mediaContainer.querySelector('img');
+  const video = mediaContainer.querySelector('.feature-video');
+  const playBtn = mediaContainer.querySelector('.play-btn');
+
+  // 隐藏图片和播放按钮
+  if (img && playBtn) {
+    img.style.display = 'none';
+    playBtn.style.display = 'none';
+  }
+
+  // 显示并播放视频
+  if (video) {
+    video.style.display = 'block';
+    video.play();
+
+    // 视频结束时重置状态
+    video.onended = function() {
+      img.style.display = 'block';
+      playBtn.style.display = 'flex';
+      video.style.display = 'none';
     };
-  },
-  methods: {
-    showVideo(index) {
-      const mediaContainer = document.querySelectorAll('.feature-media')[index];
-      const img = mediaContainer.querySelector('img');
-      const video = mediaContainer.querySelector('.feature-video');
-      const playBtn = mediaContainer.querySelector('.play-btn');
-
-      // 隐藏图片和播放按钮
-      if (img && playBtn) {
-        img.style.display = 'none';
-        playBtn.style.display = 'none';
-      }
-
-      // 显示并播放视频
-      if (video) {
-        video.style.display = 'block';
-        video.play();
-
-        // 视频结束时重置状态
-        video.onended = function() {
-          img.style.display = 'block';
-          playBtn.style.display = 'flex';
-          video.style.display = 'none';
-        };
-      }
-    }
   }
 };
 </script>
