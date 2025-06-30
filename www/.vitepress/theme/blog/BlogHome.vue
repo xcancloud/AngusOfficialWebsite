@@ -1,87 +1,18 @@
 <script setup>
 import { ref, computed, reactive } from 'vue'
 
+import {useSafeI18n} from "../../utils/i18nData.js";
+const {safeGet} = useSafeI18n();
+
 // 多语言消息对象
-const messages = reactive({
-  bannerTitle: "探索前沿技术，分享专业智慧",
-  bannerDescription: "专注于软件开发、软件测试和人工智能的技术博客，致力于分享实用的技术教程和行业洞察",
-  sign_up_now: '立即注册',
-  subscribeButton: "订阅更新",
-  filterTitle: "按标签筛选",
-  clearFilter: "清除筛选",
-  filteringBy: "正在筛选",
-  minRead: "分钟阅读",
-  noResultsTitle: "没有找到匹配的文章",
-  noResultsDescription: "尝试选择其他标签或清除筛选条件",
-  subscribeTitle: "订阅最新文章",
-  subscribeDescription: "获取前端技术最新动态和文章更新",
-  emailPlaceholder: "输入您的邮箱地址",
-  privacyNote: "我们尊重您的隐私，绝不会分享您的邮箱"
-})
+const messages = computed(() => {
+  return safeGet('blog.messages', '')
+});
 
 // 博客文章数据
-const blogPosts = ref([
-  {
-    id: 1,
-    title: "Vue 3 组合式 API 深度指南",
-    description: "探索 Vue 3 组合式 API 的强大功能和实用技巧，提高开发效率和代码复用性。",
-    date: "2023-05-15",
-    readTime: 8,
-    tags: ["Vue", "JavaScript"],
-    author: "张明",
-    image: "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    id: 2,
-    title: "现代 CSS 布局完全指南",
-    description: "掌握 CSS Grid 和 Flexbox 等现代布局技术，创建响应式和灵活的页面布局。",
-    date: "2023-06-20",
-    readTime: 12,
-    tags: ["CSS", "前端"],
-    author: "李华",
-    image: "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    id: 3,
-    title: "Vitepress 主题开发详解",
-    description: "从零开始创建自定义 Vitepress 主题，打造个人化文档网站和博客。",
-    date: "2023-07-10",
-    readTime: 15,
-    tags: ["Vitepress", "Vue"],
-    author: "王芳",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    id: 4,
-    title: "TypeScript 类型系统高级技巧",
-    description: "深入了解 TypeScript 高级类型系统，掌握泛型、条件类型等复杂类型操作。",
-    date: "2023-07-25",
-    readTime: 10,
-    tags: ["TypeScript"],
-    author: "赵强",
-    image: "https://images.unsplash.com/photo-1579820011850-7e626c40b5ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    id: 5,
-    title: "前端性能优化实践",
-    description: "网站性能优化的现代策略和工具，包含图片优化、代码拆分和懒加载技术。",
-    date: "2023-08-05",
-    readTime: 9,
-    tags: ["性能优化"],
-    author: "陈静",
-    image: "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    id: 6,
-    title: "Webpack 5 配置指南",
-    description: "从初级到高级的 Webpack 5 配置教程，涵盖常用加载器和插件使用方法。",
-    date: "2023-08-12",
-    readTime: 14,
-    tags: ["Webpack"],
-    author: "刘伟",
-    image: "" // 测试空图片情况
-  }
-])
+const posts = computed(() => {
+  return safeGet('blog.posts', '')
+});
 
 // 标签相关逻辑
 const activeTag = ref(null)
@@ -89,7 +20,7 @@ const activeTag = ref(null)
 // 所有标签列表
 const allTags = computed(() => {
   const tags = new Set()
-  blogPosts.value.forEach(post => {
+  posts.value.forEach(post => {
     post.tags.forEach(tag => tags.add(tag))
   })
   return Array.from(tags)
@@ -97,8 +28,8 @@ const allTags = computed(() => {
 
 // 过滤博客文章
 const filteredPosts = computed(() => {
-  if (!activeTag.value) return blogPosts.value
-  return blogPosts.value.filter(post => post.tags.includes(activeTag.value))
+  if (!activeTag.value) return posts.value
+  return posts.value.filter(post => post.tags.includes(activeTag.value))
 })
 
 // 切换标签

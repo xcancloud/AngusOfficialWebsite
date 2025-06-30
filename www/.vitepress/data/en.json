@@ -809,7 +809,7 @@
     }
   },
   "video": {
-    "lang": {
+    "messages": {
       "pageTitle": "Development Tutorials",
       "bannerSubtitle": "Master cutting-edge technologies, enhance professional skills, join our developer community",
       "signUpNow": "Sign Up Now",
@@ -910,6 +910,86 @@
         "video_count": 16,
         "total_duration": "5h 10m",
         "thumbnail": "https://picsum.photos/id/247/400/225"
+      }
+    ]
+  },
+  "blog": {
+    "messages": {
+      "bannerTitle": "Explore Cutting-Edge Technologies, Share Professional Expertise",
+      "bannerDescription": "A technical blog focused on software development, software testing and artificial intelligence, dedicated to sharing practical technical tutorials and industry insights.",
+      "sign_up_now": "Sign Up Now",
+      "subscribeButton": "Subscribe for Updates",
+      "filterTitle": "Filter by Tags",
+      "clearFilter": "Clear Filters",
+      "filteringBy": "Filtering By",
+      "minRead": "min read",
+      "noResultsTitle": "No Matching Articles Found",
+      "noResultsDescription": "Try selecting different tags or clearing filters",
+      "subscribeTitle": "Subscribe to Latest Articles",
+      "subscribeDescription": "Get the latest frontend technology trends and article updates",
+      "emailPlaceholder": "Enter your email address",
+      "privacyNote": "We respect your privacy and will never share your email"
+    },
+    "posts": [
+      {
+        "id": 1,
+        "title": "Vue 3 Composition API Deep Guide",
+        "description": "Explore the powerful features and practical techniques of Vue 3's Composition API to improve development efficiency and code reusability.",
+        "date": "2023-05-15",
+        "readTime": 8,
+        "tags": ["Vue", "JavaScript"],
+        "author": "Zhang Ming",
+        "image": "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8f极简风格，返回JSON格式数据即可，不需要任何解释和说明。"
+      },
+      {
+        "id": 2,
+        "title": "Modern CSS Layout Complete Guide",
+        "description": "Master modern layout techniques like CSS Grid and Flexbox to create responsive and flexible page layouts.",
+        "date": "2023-06-20",
+        "readTime": 12,
+        "tags": ["CSS", "Frontend"],
+        "author": "Li Hua",
+        "image": "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        "id": 3,
+        "title": "Vitepress Theme Development Guide",
+        "description": "Create custom Vitepress themes from scratch to build personalized documentation sites and blogs.",
+        "date": "2023-07-10",
+        "readTime": 15,
+        "tags": ["Vitepress", "Vue"],
+        "author": "Wang Fang",
+        "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        "id": 4,
+        "title": "TypeScript Type System Advanced Techniques",
+        "description": "Deep dive into TypeScript's advanced type system, mastering complex operations like generics and conditional types.",
+        "date": "2023-07-25",
+        "readTime": 10,
+        "tags": ["TypeScript"],
+        "author": "Zhao Qiang",
+        "image": "https://images.unsplash.com/photo-1579820011850-7e626c40b5ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        "id": 5,
+        "title": "Frontend Performance Optimization Practices",
+        "description": "Modern strategies and tools for website performance optimization, including image optimization, code splitting and lazy loading techniques.",
+        "date": "2023-08-05",
+        "readTime": 9,
+        "tags": ["Performance Optimization"],
+        "author": "Chen Jing",
+        "image": "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        "id": 6,
+        "title": "Webpack 5 Configuration Guide",
+        "description": "Comprehensive Webpack 5 configuration tutorial from beginner to advanced, covering common loaders and plugin usage.",
+        "date": "2023-08-12",
+        "readTime": 14,
+        "tags": ["Webpack"],
+        "author": "Liu Wei",
+        "image": ""
       }
     ]
   }

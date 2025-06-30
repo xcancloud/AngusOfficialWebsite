@@ -2,11 +2,11 @@
 import { ref, computed } from 'vue'
 
 import {useSafeI18n} from "../../utils/i18nData.js";
-
 const {safeGet} = useSafeI18n();
-// 公共文案
-const lang = computed(() => {
-  return safeGet('video.lang', '')
+
+// 多语言消息对象
+const messages = computed(() => {
+  return safeGet('video.messages', '')
 });
 
 // 精选视频数据
@@ -54,11 +54,11 @@ function scrollToSubscribe() {
         <section class="video-banner">
           <div class="video-banner-content">
             <div class="video-banner-text">
-              <h1>{{ lang.pageTitle }}</h1>
-              <p>{{ lang.bannerSubtitle }}</p>
+              <h1>{{ messages.pageTitle }}</h1>
+              <p>{{ messages.bannerSubtitle }}</p>
               <div class="video-banner-actions">
-                <button class="btn btn-primary">{{ lang.signUpNow }}</button>
-                <button class="btn btn-outline" @click="scrollToSubscribe">{{ lang.subscribeButton }}</button>
+                <button class="btn btn-primary">{{ messages.signUpNow }}</button>
+                <button class="btn btn-outline" @click="scrollToSubscribe">{{ messages.subscribeButton }}</button>
               </div>
             </div>
             <div class="video-banner-shapes">
@@ -73,7 +73,7 @@ function scrollToSubscribe() {
 
       <!-- 精选视频区域 -->
       <div class="section-header">
-        <h2 class="section-title">{{ lang.featuredVideos }}</h2>
+        <h2 class="section-title">{{ messages.featuredVideos }}</h2>
       </div>
 
       <div class="video-grid">
@@ -97,7 +97,7 @@ function scrollToSubscribe() {
 
       <!-- 课程视频区域 -->
       <div class="section-header">
-        <h2 class="section-title">{{ lang.courseCategories }}</h2>
+        <h2 class="section-title">{{ messages.courseCategories }}</h2>
       </div>
 
       <div class="course-grid">
@@ -121,11 +121,11 @@ function scrollToSubscribe() {
 
       <!-- 订阅表单 -->
       <section class="video-subscribe" ref="subscribeSection">
-        <h2 class="video-subscribe-title">{{ lang.subscribeTitle }}</h2>
-        <p class="video-subscribe-subtitle">{{ lang.subscribeDescription }}</p>
+        <h2 class="video-subscribe-title">{{ messages.subscribeTitle }}</h2>
+        <p class="video-subscribe-subtitle">{{ messages.subscribeDescription }}</p>
         <form class="video-subscribe-form" @submit.prevent="submitSubscribe">
-          <input type="email" class="form-control" :placeholder="lang.emailPlaceholder" required v-model="email">
-          <button type="submit" class="btn btn-primary">{{ lang.subscribeBtn }}</button>
+          <input type="email" class="form-control" :placeholder="messages.emailPlaceholder" required v-model="email">
+          <button type="submit" class="btn btn-primary">{{ messages.subscribeBtn }}</button>
         </form>
       </section>
     </div>
