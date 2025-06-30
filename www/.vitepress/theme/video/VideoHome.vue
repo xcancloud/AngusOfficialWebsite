@@ -225,11 +225,6 @@ const courses = ref([
 <style>
 :root {
   /* Vitepress主题变量 */
-  --vp-c-brand: #666cd1;
-  --vp-c-brand-light: #5dabff;
-  --vp-c-brand-lighter: #7ebdff;
-  --vp-c-brand-dark: #337ecc;
-  --vp-c-brand-darker: #282d32;
   --vp-c-text-1: rgba(60, 60, 67, 0.9);
   --vp-c-text-2: rgba(60, 60, 67, 0.78);
   --vp-c-text-3: rgba(60, 60, 67, 0.56);

@@ -158,6 +158,13 @@
 :root {
     --vp-font-size-base: 14px;
     --vp-code-font-size: 12x;
+
+    /*Top Banner*/
+    --vp-c-brand: #666cd1;
+    --vp-c-brand-light: #5dabff;
+    --vp-c-brand-lighter: #7ebdff;
+    --vp-c-brand-dark: #337ecc;
+    --vp-c-brand-darker: #282d32;
 }
 
 body {

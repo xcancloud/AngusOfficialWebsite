@@ -233,11 +233,6 @@ export default {
 
 <style scoped>
 :root {
-  --vp-c-brand: #42b983;
-  --vp-c-brand-light: #42d392;
-  --vp-c-brand-lighter: #35eb9a;
-  --vp-c-brand-dark: #33a06f;
-  --vp-c-brand-darker: #155f3e;
   --vp-c-text-1: #213547;
   --vp-c-text-2: rgba(60, 60, 67, 0.78);
   --vp-c-text-3: rgba(60, 60, 67, 0.56);
@@ -251,7 +246,6 @@ export default {
 }
 
 .angus-tester-page {
-  font-family: var(--vp-font-family-base);
   color: var(--vp-c-text-1);
   background-color: var(--vp-c-bg-soft);
   line-height: 1.6;
@@ -266,7 +260,7 @@ export default {
 
 /* Banner样式 - 横向占满整个屏幕 */
 .full-width-banner {
-  background: linear-gradient(135deg, var(--vp-c-brand-darker), var(--vp-c-brand-dark));
+  background: linear-gradient(135deg, var(--vp-c-brand-light), var(--vp-c-brand));
   color: white;
   padding: 80px 0 60px;
   text-align: center;
@@ -494,7 +488,7 @@ export default {
 
 /* 页脚样式 */
 .footer {
-  background: var(--vp-c-brand-darker);
+  background: var(--vp-c-brand-lighter);
   color: white;
   text-align: center;
   padding: 60px 0;
